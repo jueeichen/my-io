@@ -5,6 +5,7 @@ const {UserModel, ChatModel} = require('../dbs/models/reg');
 router.get('/a', function (ctx, next) {
   ctx.body = 'this a users response!';
 });
+/*注册一个用户注册的路由:*/
 router.post('/register', async function (ctx) {
   const {username, password, type} = ctx.request.body;
   console.log('register', username, password, type);
