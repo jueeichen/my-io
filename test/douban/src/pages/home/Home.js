@@ -31,6 +31,20 @@ export default class Home extends Component {
     alert('你按下了按钮', this.state.status)
     console.log('躺尸好你个大傻逼')
   }
+  sendWebSocketMsg = (msg) => {
+    let ws = new WebSocket("ws://121.40.165.18:8800");
+    ws.onopen = () => {
+      ws.send('你好啊'); // send a message
+    };
+    ws.onmessage = e => {
+      // a message was received
+      const result = e.data;
+      if (result) {// 成功
+        const wsMsg = result;
+        console.log(wsMsg);
+      }
+    }
+  }
 
   render() {
     let pic = {
@@ -153,7 +167,24 @@ class Blink extends Component {
 class PizzaTranslator extends Component {
   // constructor(props) {
   //   super(props);
-  state = {text: ''};
+  state = {text: '',
+    response:''
+  };
+  sendWebSocketMsg = (msg) => {
+    let ws = new WebSocket("ws://localhost:3000");
+    ws.onopen = () => {
+      ws.send(msg); // send a message
+    };
+    ws.onmessage = e => {
+      // a message was received
+      const result = e.data;
+      if (result) {// 成功
+        const wsMsg = result;
+        console.log(wsMsg);
+        this.setState({response:wsMsg})
+      }
+    }
+  }
 
   // }
   render() {
@@ -162,9 +193,28 @@ class PizzaTranslator extends Component {
         <TextInput
           style={{height: 40}}
           placeholder="Type here to translate!"
-          onChangeText={(text) => this.setState({text})}
+          onChangeText={(text) => this.setState({text})  }
         />
+        <TouchableOpacity style={{
+          height: 40,
+          width: 100,
+          backgroundColor: 'green',
+          justifyContent: 'center',
+          borderRadius: 20
+        }} onPress={() => this.sendWebSocketMsg(this.state.text)}>
+          <Text style={{
+            color: 'red',
+            textAlign: 'center'
+          }}>
+            点我
+          </Text>
+        </TouchableOpacity>
         <Text style={{padding: 10, fontSize: 42}}>
+
+          {this.state.response}
+        </Text>
+        <Text style={{padding: 10, fontSize: 42}}>
+
           {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
         </Text>
       </View>

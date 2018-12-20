@@ -3,7 +3,6 @@ import {StyleSheet, View, Text, Button} from 'react-native';
 export default  class DetailsScreen extends Component {
   pushToNav = (navigation) => {
     this.props.navigation.push(navigation)
-    alert('傻吊')
   }
 
   render() {
@@ -13,6 +12,14 @@ export default  class DetailsScreen extends Component {
         <Button
           title="Go to Details... Test"
           onPress={() => this.pushToNav('Test')}
+        />
+        <Button
+          title="Go to Details... Home"
+          onPress={() => this.pushToNav('Home')}
+        />
+        <Button
+          title="Go to Details... WebPage"
+          onPress={() => this.pushToNav('WebPage')}
         />
       </View>
     );

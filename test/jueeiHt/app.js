@@ -9,11 +9,14 @@ const onerror = require('koa-onerror');
 const bodyparser = require('koa-bodyparser')();
 const logger = require('koa-logger');
 const cors = require('koa-cors')();
+
+
 //注册路由
 const index = require('./routes/index');
 const users = require('./routes/users');
 const login = require('./routes/login');
-
+// const ws = require('./routes/websocket');
+// app.use(ws());//开启websocket监听
 // middlewares
 app.use(convert(bodyparser));
 app.use(convert(json()));
@@ -44,7 +47,7 @@ router.use('/login', login.routes(), login.allowedMethods());
 app.use(router.routes(), router.allowedMethods());
 // response
 
-app.on('error', function(err, ctx){
+app.on('error', function (err, ctx) {
   console.log(err)
   log.error('server error', err, ctx);
 });

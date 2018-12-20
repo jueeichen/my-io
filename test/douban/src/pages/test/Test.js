@@ -20,10 +20,14 @@ class Test extends Component {
     this.props.decrease();
   }
 
+
+
   componentDidMount() {
-    this.props.getHomes(() => {
-      console.log(this.props.itemData);
-    })
+    // this.props.getLogin(() => {
+    //   console.log(this.props.loginData);
+    // })
+
+
 
   }
 
@@ -51,8 +55,8 @@ const styles = StyleSheet.create({})
 //   counter: state.counter
 // }, {reset1})
 
-import {increase, decrease, reset1, getHomes} from '../../redux/actions';
+import {increase, decrease, reset1, getHomes, getLogin, sendWebSocketMsg} from '../../redux/actions';
 
 export default connect(
   state => ({counter: state.counter}),
-  {increase, decrease, reset1, getHomes})(Test);
+  {increase, decrease, reset1, getHomes, getLogin, sendWebSocketMsg})(Test);
