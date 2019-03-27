@@ -1,13 +1,12 @@
 
 <template>
   <div>
-    <h1 class="test">1212425345</h1>
-    <p>234234234234</p>
-    <p>234234234234</p>
-    <p>234234234234</p>
-    <p>234234234234</p>
-    <p>234234234234</p>
-    <p>234234234234</p>
+    <h1>JJJJJJJJJJJ</h1>
+    <p>UUUUUUUUUUUU</p>
+    <p>EEEEEEEEEEEE</p>
+    <p>EEEEEEEEEEEE</p>
+    <p>IIIIIIIIIIII</p>
+    <p class="test">这是Jueei的demo 点击测试zepto</p>
   </div>
 </template>
 
@@ -15,7 +14,7 @@
   export default {
     mounted() {
       $('.test').click(function () {
-        alert('123')
+        alert('测试zepto成功')
       })
     }
   }

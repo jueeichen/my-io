@@ -171,7 +171,7 @@ class PizzaTranslator extends Component {
     response:''
   };
   sendWebSocketMsg = (msg) => {
-    let ws = new WebSocket("ws://localhost:3000");
+    let ws = new WebSocket("ws://localhost:4002");
     ws.onopen = () => {
       ws.send(msg); // send a message
     };

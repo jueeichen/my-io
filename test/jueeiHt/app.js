@@ -15,9 +15,10 @@ const cors = require('koa-cors')();
 const index = require('./routes/index');
 const users = require('./routes/users');
 const login = require('./routes/login');
-// const ws = require('./routes/websocket');
-// app.use(ws());//开启websocket监听
-// middlewares
+const userm = require('./routes/usermessage');
+const ws = require('./routes/websocket');
+ws();//webscoket接口
+
 app.use(convert(bodyparser));
 app.use(convert(json()));
 app.use(convert(logger()));
@@ -43,6 +44,7 @@ app.use(async (ctx, next) => {
 router.use('/', index.routes(), index.allowedMethods());
 router.use('/users', users.routes(), users.allowedMethods());
 router.use('/login', login.routes(), login.allowedMethods());
+router.use('/userm', userm.routes(), userm.allowedMethods());
 
 app.use(router.routes(), router.allowedMethods());
 // response

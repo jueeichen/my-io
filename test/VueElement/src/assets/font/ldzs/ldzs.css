@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "ldzs";
+  src: url("ldzs.woff2") format("woff2"),
+       url("ldzs.woff") format("woff"),
+       url("ldzs.ttf") format("truetype"),
+       url("ldzs.eot") format("embedded-opentype"),
+       url("ldzs.svg") format("svg"),
+       url("ldzs.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}

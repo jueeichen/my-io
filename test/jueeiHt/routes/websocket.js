@@ -1,18 +1,18 @@
 module.exports = function () {
-  const Koa1 = require('koa'),
+  const Koa = require('koa'),
     route = require('koa-route'),
     websockify = require('koa-websocket');
 
-  const app1 = websockify(new Koa1());
+  const app = websockify(new Koa());
 // Regular middleware
 // Note it's app.ws.use and not app.use
-  app1.ws.use(function (ctx, next) {
+  app.ws.use(function (ctx, next) {
     // return `next` to pass the context (ctx) on to the next ws middleware
     return next(ctx);
   });
 
 // Using routes
-  app1.ws.use(route.all('/', function (ctx) {
+  app.ws.use(route.all('/', function (ctx) {
     // `ctx` is the regular koa context created from the `ws` onConnection `socket.upgradeReq` object.
     // the websocket is added to the context on `ctx.websocket`.
     ctx.websocket.on('message', function (message) {
@@ -23,7 +23,7 @@ module.exports = function () {
     });
   }));
 
-  app1.listen(3000);
+  app.listen(4002);
 }
 
 

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>Title</title>
+
+</head>
+<body>
+<div id="test">
+
+</div>
+
+<script>
+  let arr = [
+    129 * 2, 1080, 48 * 2, 38 * 4, 16 * 2, 58 * 2,
+     108 * 2, 88 * 2, 48 * 3,
+    28 * 2, 48 * 2, 38 * 2, 88 * 2, 38 * 2,
+
+    68, 12 * 2, 38 * 2, 48, 18 * 2, 58, 38, 68,
+
+    28, 128 * 2, 48 * 2, 28, 40 * 2, 48, 88, 18, 28 * 2
+  ]
+  let sum = 0;
+  arr.forEach((item, index) => {
+    sum += item
+  })
+  let str = arr.join("元 ")
+  console.log(str+'元 ');
+  console.log(`您应该付款${sum}元`);
+</script>
+</body>
+</html>
