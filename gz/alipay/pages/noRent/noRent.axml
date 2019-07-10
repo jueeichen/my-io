@@ -1,0 +1,12 @@
+<view class="container flexContainer pageGreyBg">
+  <view class="noRentImg">
+    <image src="/assets/images/noData.png" mode="" />
+  </view>
+  <view class="noRentText">
+    <view class="renText1">暂无可借充电宝，</view>
+    <block class="renText2">您可进入首页，查找附近的充电宝，进行租借。 </block>
+  </view>
+  <view class="noRentBtnWrap">
+    <button class="noRentBtn" type="primary">查找充电宝</button>
+  </view>
+</view>

@@ -1,0 +1,67 @@
+.depositDetails {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #F4F5FD;
+}
+
+
+.depositDetails .totle-number {
+  color: #999999;
+  font-size: 24rpx;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.depositDetails .totle-number text {
+  color: #999999;
+}
+
+
+.content-container {
+  margin-top: 30px;
+}
+
+.content-container .content-item {
+  width: 100%;
+  height: 200rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+
+.content-container .content-item .top {
+  color: #666666;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.content-container .content-item .top .right {
+  color: #31A5F1;
+}
+
+.content-container .content-item .left {
+  float: left;
+}
+
+.content-container .content-item .right {
+  text-align: right;
+}
+
+
+.content-container .content-item .text {
+  color: #999999;
+  font-size: 28rpx;
+}
+
+.content-container .content-item .text .text-item {
+  margin-bottom: 10rpx;
+  height: 20px;
+}
+.noData{text-align: center;}
+.noDataImg{height:313rpx;padding-top: 240rpx;}
+.noDataImg image {display: inline-block; width: 294rpx;height:254rpx;}
+.noDataTitle{color:#999;font-size: 28rpx;}

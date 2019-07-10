@@ -1,0 +1,9 @@
+{  
+  "defaultTitle": "会员中心",
+  "titleBarColor": "#2db1f0",
+  "usingComponents": {
+    "list": "mini-antui/es/list/index",
+    "list-item": "mini-antui/es/list/list-item/index",
+    "dev-modal": "/components/devModal/devModal"
+  }
+}

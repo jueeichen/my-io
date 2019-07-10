@@ -1,0 +1,14 @@
+<view class="container flexContainer pageGreyBg">
+  <view class="noRentImg">
+    <image src="/assets/images/noData.png" mode="" />
+  </view>
+  <view class="noRentText">
+    <view class="renText1">{{content}}</view>
+    <block class="renText2">您可进入首页，查找附近的充电宝，进行租借。 </block>
+  </view>
+  <view class="noRentBtnWrap">
+    <navigator open-type="redirect" url='../../pages/map/map'>
+      <button class="noRentBtn">查找充电宝</button>
+    </navigator>
+  </view>
+</view>

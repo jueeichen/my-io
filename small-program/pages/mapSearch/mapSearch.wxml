@@ -1,0 +1,33 @@
+<view class='mapSearch'>
+  <view class="flex-wrp" style="flex-direction:column;">
+    <view class="flex-item top">
+      <map id="mapSearch" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}"
+      bindregionchange="onRegionchange"
+       bindtap="onMapTap" show-location></map>
+       <cover-image class='markerIco' src="/assets/images/marker.png"></cover-image>
+      <view class='search-input'>
+        <input bindfocus="onFocusSearch" bindinput="onSearchInput" bindconfirm="onSearchConfirm" focus="{{searchInputFocus}}">
+        <view class='input-container' wx:if="{{showSearchIcon}}">
+          <icon type="search" size="15" color="#ccc" />
+          <view class='text'>搜索地点</view>
+        </view>
+        </input>
+        <view class='btn' bindtap='searchBtnTap'>搜索</view>
+      </view>
+    </view>
+    <view class="flex-item bottom">
+      <view class="bottomSelect">
+        <cover-view class="btn" bindtap='ensureSelectedPlace'>
+          <cover-image src='../../assets/images/searchSureBtn.png'></cover-image>
+        </cover-view>
+        <view class='content'>
+          <view class='select-item' wx:for="{{searchInputPlaceList}}" data-place="{{item.title}}" bindtap='selectPlace'
+          wx:key="{{index}}"
+          >
+            <image class='select-img' src='../../assets/images/bottomSelect.png' hidden='{{!item.selected}}'></image>
+            {{item.title}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

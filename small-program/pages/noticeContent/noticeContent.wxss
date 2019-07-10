@@ -1,0 +1,42 @@
+
+.noticeContentWrap{
+  
+}
+.noticeContentWrap .noticeTitle{
+  margin-top: 50rpx;
+  text-align: left;
+  font-size: 30rpx;
+  color: #333;
+  padding: 0 20rpx;
+}
+.noticeContentWrap .noticeOther{
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 28rpx;
+  margin-top: 32rpx;
+  padding: 0 20rpx;
+
+}
+.noticeContentWrap .newContent{
+  margin-top: 30rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+}
+.noticeContentWrap .newContent view{
+  margin-bottom: 10rpx;
+}
+.newContent{
+  text-align: center;
+  width: 100%;
+}
+.main_img{
+  width: 710rpx;
+  height: auto;
+  display: inline-block
+}
+.main_text{
+  width: 706rpx;
+  display: inline-block;
+  text-align: left
+}

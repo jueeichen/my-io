@@ -1,0 +1,146 @@
+.memberContainer{
+  background-color: #F7F6FA
+}
+.memberHeadTop{
+  height: 416rpx;
+  background-color: #fff;
+}
+.memberHead{
+  width:100%;
+  height: 416rpx;
+  padding-top: 30rpx;
+  background: url(/assets/images/memberHeadbg.png) no-repeat;
+  background-size: 100% 334rpx;
+}
+.memTop{
+  margin:0 46rpx 0;
+  display: flex;
+  justify-content: space-between;
+}
+.information{
+  display: flex;
+}
+.information .avatar{
+  width:110rpx;
+  height: 110rpx;
+}
+.information .infText{
+  margin-left: 36rpx;
+  color: #fff;
+}
+.infText .userName{
+  margin: 20rpx 0 12rpx 0;
+  font-size: 28rpx;
+}
+.infText .userId{
+  font-size: 24rpx;
+}
+.avatar image{
+  width:100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.mesageBox{
+  width:67rpx;
+  height: 67rpx;
+  margin: 10rpx 10rpx 0 0;
+  position: relative;
+}
+.mesageBox .mesLink{
+  width:100%;
+  height: 100%;
+  display: block;
+}
+.mesageBox .mesIco{
+  width: 49rpx;
+  height: 49rpx;
+  margin: 17rpx 0 0 17rpx;
+}
+.mesageBox .dot{
+  position: absolute;
+  top:12rpx;
+  right: 2rpx;
+  width: 18rpx;
+  height: 18rpx;
+  background-color: #F54937;
+  border-radius: 50%;
+}
+
+.moneyDepositWrap{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 52rpx;
+  width:748rpx;
+  height: 198rpx;
+  background: url(/assets/images/batterybg.png) no-repeat;
+  background-size: cover
+}
+.moneyText{
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-top: 18rpx;
+  height: 142rpx;
+  margin-left: 64rpx;
+  font-size:24rpx;
+  color:#999
+}
+.moneyText .money{
+  font-size:28rpx;
+  color: #28BDF0;
+  margin-left: 30rpx;
+}
+.depositText{
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-top: 18rpx;
+  height: 142rpx;
+  font-size:24rpx;
+  color:#999;
+  margin-left: 80rpx;
+}
+.depositText .deposit{
+  font-size:28rpx;
+  color: #28BDF0;
+  margin-left: 30rpx;
+}
+.moneyDivid{
+  width:14rpx;
+  height: 27rpx;
+  margin-top: 80rpx;
+}
+.moneyDivid image{
+  width:100%;
+  height: 100%;
+}
+.moneyDepositWrap .returnDepositMoney{
+  width: 263rpx;
+  height: 93rpx;
+  position: absolute;
+  bottom:-15rpx;
+  left:50%;
+  margin-left: -131rpx;
+}
+.returnDepositMoney .returnDepositMoneyBtn{
+  width: 100%;
+  height: 100%;
+}
+.returnDepositMoneyImg{
+  width: 100%;
+  height: 100%;
+}
+.memList .am-list-content,.memList .am-list-extra{
+  font-size: 30rpx;
+  color: #333;
+  font-family: "pingFang SC" "pingFang";
+}
+.memList .am-list-thumb{
+  width:40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+}
+.am-list-body{
+  border: none
+}

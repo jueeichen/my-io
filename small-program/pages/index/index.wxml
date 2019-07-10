@@ -1,0 +1,78 @@
+<view class="container">
+<form-button/>
+  <view class='headtop'>
+    <view class='htitle'><image src="/assets/images/indexheadbg.png" mode="" /></view>
+    <view class='hmember need_tap'>
+      <view class="hmemberBtn" bindtap="toMember">
+        <image  src="/assets/images/indexmemberbtn.png" mode="" />
+      </view>
+    </view>
+  </view>
+
+  <view class="indPro">
+    <image src='/assets/images/indPro.png' mode="" />
+  </view>
+
+  <view class="indProductInfo">
+    <view class="indProductBox1" wx:if="{{isShowActive}}">
+        <image src="/assets/images/infXian.png" mode="" />
+        <text class="intext">{{activeText}}</text>
+    </view>
+    <!-- <view class="indProductBox">
+      <image src="/assets/images/infZhima.png" mode="" />
+      <text class="des">芝麻分550分以上免押金租借</text>
+    </view> -->
+    <view class="indProductBox">
+      <image src="/assets/images/infYidi.png" mode="" />
+      <text class="des">支持异地归还</text>
+    </view>
+    <view class="indProductBox">
+      <image src="/assets/images/infChatou.png" mode="" />
+      <text class="des">自带三种充电插头</text>
+    </view>
+  </view>
+
+  <view class="timeCharging">
+    <image src="/assets/images/timeChargingico.png" mode="" />
+    <text class="des">{{activeTextEx}}{{chargeText}}</text>
+  </view>
+
+  <form bindsubmit="toRent" onReset="" report-submit="true">
+    <view class="leaseBtn">
+      <button form-type="submit" class="defBtn" id="rentId" >租借</button>
+    </view>
+  </form>
+
+
+  <view class="agrument">点击租借即同意<navigator  bindtap='toAgreements' class="argumentLink">《用户协议》</navigator></view>
+
+  <!-- <cutdown-modal isPopShow="{{isPopShow}}">
+    <view slot="popMainContent" class="popMContext dContext">
+        <block wx:if="{{userLeaseStatus == 3}}">
+          <text>您有未支付订单，请先支付费用，再租借充电宝。</text>
+        </block>
+        <block wx:else="{{userLeaseStatus == 2}}">
+          <text>当前有充电宝在使用，您可查看充电宝使用情况。</text>
+        </block>
+        <view class="autoJump">1秒后自动跳转...</view>
+    </view>
+  </cutdown-modal> -->
+
+
+<!-- 弹窗 -->
+<view class="pop_windows" wx:if="{{isPopShow}}">
+<!-- 遮罩层 -->
+<view class='pop_mark'></view>
+<!-- 内容 -->
+<view class="pop_content">
+ <image src="/assets/images/payWithdrawalIco.png"  />
+   <text wx:if="{{true}}">{{popMessage}}</text>
+   <text wx:elif=""></text>
+   <text wx:else=""></text>
+   <view class='pop_btn'>
+   <view class='pop_btn_right' bindtap='returnDeposit'>{{timeOverNum}}秒后自动跳转</view>
+   
+   </view>
+</view>
+</view>
+</view>

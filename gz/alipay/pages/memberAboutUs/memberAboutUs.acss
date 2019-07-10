@@ -1,0 +1,43 @@
+.memberAboutUsWrap{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+.aboutLogo{
+  margin-top: 102rpx;
+}
+.aboutLogo .aboutLogoImg{
+  width:159rpx;
+  height: 234rpx;
+}
+.aboutLogo .aboutLogoImg image{
+  width: 100%;
+  height: 100%
+}
+.aboutLogo .aboutLogoTit{
+  margin-top: 30rpx;
+  font-size: 36rpx;
+  text-align: center;
+}
+
+.aboutList{
+  width:100%;
+  margin-top: 78rpx;
+}
+.aboutList .aboutListBox{
+  display: flex;
+  justify-content: space-between;
+  line-height: 98rpx;
+  font-size: 28rpx;
+  border-bottom: 1px solid #EEE;
+  padding: 0 20rpx;
+}
+.aboutOrgName{
+  margin-top:10rpx; 
+  display: block;
+  text-align: center
+}
+.aboutOrgName view{
+  display: inline-block;
+  font-size:35rpx ;
+}

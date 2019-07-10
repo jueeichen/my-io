@@ -1,0 +1,35 @@
+<view class="container pageGreyBg helpBoxListsWrap">
+  
+  <view class="helpBoxLists bgfff">
+    
+    <!-- 暂无数据 -->
+    <view class="noData" a:if="{{isNoData}}">
+      <view class="noDataImg"><image src="/assets/images/noData.png" mode="" /></view>
+      <view class="noDataTitle">暂无数据!</view>
+    </view>
+
+    <!-- 有数据 -->
+    <view class="helpScrollWrap" a:elif="{{ helpLists.length != 0 }}">
+
+      <view class="helpBox {{ item.status == true ? 'helpBoxDown': '' }}" data-key="{{index}}" data-status="{{item.status}}" a:for="{{helpLists}}" onTap="handleHelp" >
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q{{++index}}</view>
+          </view>
+          <view class="title">{{item.title}}</view>
+          <view class="arrow" ></view>
+        </view>
+        <view class="helpBoxText" a:if="{{item.status == true}}">
+          {{item.content}}
+        </view>
+      </view>
+
+      <!-- 我是底线 -->
+      <view class="moreBaseline" a:if="{{ lineStatus }}">- 我是底线 -</view>
+      
+    </view>
+
+  </view>
+  <view class="customerService" onTap="handlePhone"><image src="/assets/images/customerServiceIco.png" mode="" />联系客服</view>
+</view>

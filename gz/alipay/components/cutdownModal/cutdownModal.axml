@@ -1,0 +1,12 @@
+<view class="pagePop payPop {{isPopShow ? '' : 'hideClass'}}">
+  <view class="popWindow payWithdrawal">
+    <slot name="popTopIco" />
+
+    <view class="popMainContent drawContent bgfff {{isPopShow ? 'anniToDown' : ''}}">
+      <slot name="popMainContent" />
+    </view>
+
+  </view>
+</view>
+
+

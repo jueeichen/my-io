@@ -1,0 +1,68 @@
+.feedbackWrap{
+  box-sizing: border-box;
+ padding: 20rpx
+}
+.feedTit{
+  margin-top: 40rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+.feedTit2{
+  padding-left: 20rpx;
+}
+.feedTit .fRed{
+  font-size: 30rpx;
+  color: #F54937;
+}
+.feedSelect{
+  position: relative;
+  margin-top: 16rpx;
+  height: 78rpx;
+  line-height: 78rpx;
+  border:1rpx solid #CCC;
+  border-radius: 10rpx;
+  padding:0 20rpx;
+}
+.feedSelect .picker{
+  width:100%;
+  height: 78rpx;
+}
+.feedSelect .feedSnInput{
+  display: block;
+  width:100%;
+  height:100%;
+  font-size: 26rpx;
+  padding:0;
+  color: #666;
+}
+.feedbackWrap .feedContent{
+  margin-top: 16rpx;
+  width: 675rpx;
+  height: 200rpx;
+  padding: 14rpx;
+  border:1rpx solid #CCC;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+.feedBtnWrap{
+ width:100%;
+  height: 118rpx;
+  margin-top: 100rpx;
+}
+.feedBtn{
+  color:white;
+  height: 98rpx;
+
+  font-size: 34rpx;
+ box-shadow:0px 5px 10px 0px rgba(255,113,35,0.5);
+  border-radius: 10rpx;
+  background: linear-gradient(0deg,rgba(255,113,35,1) 0%,rgba(255,199,32,1) 100%);
+}
+.feedSelect .inputArrow{
+  position: absolute;
+  top:35rpx;
+  right: 20rpx;
+  width:24rpx;
+  height: 12rpx;
+}

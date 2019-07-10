@@ -1,0 +1,16 @@
+<view class="container memberAboutUsWrap">
+  <view class="aboutLogo">
+    <view class="aboutLogoImg"> <image src="{{appLogo}}" mode="" /> </view>
+    <view class="aboutOrgName">
+      <view>{{orgName}}</view>
+    </view>
+  </view>
+
+  <view class="aboutList">
+    <view class="aboutListBox" a:for="{{aboutLists}}" data-key="{{index}}" onTap="handleAboutus">
+      <view>{{item.title}}</view>
+      <view>{{item.text}}</view>
+    </view>
+  </view>
+
+</view>

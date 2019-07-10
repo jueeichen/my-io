@@ -1,0 +1,17 @@
+<view class="container noticeContentWrap">
+  <view class="noticeTitle">{{content.title}}</view>
+  <view class="noticeOther">
+    <!-- <view class="source">{{content.sendByName}}</view> -->
+    <view class="time">{{content.createBy}}</view>
+  </view>
+  <view class="newContent">
+    <!-- <import src="/assets/wxParse/wxParse.axml"/> -->
+    <!-- <template is="wxParse" data="{{wxParseData:article.nodes}}"/> -->
+    <image src="{{newImg}}" mode="" class="main_img" />
+    <view class="main_text">
+      <!-- {{content.content}} -->
+    <import src="../../assets/wxParse/wxParse.wxml"/>
+   <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+     </view>
+  </view>
+</view>

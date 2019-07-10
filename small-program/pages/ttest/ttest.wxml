@@ -1,0 +1,10 @@
+<!--pages/ttest/ttest.wxml-->
+
+
+<view>
+  <form-button/>
+  <view class="test1 need_tap" bindtap="test1">测试按钮1</view>
+<submit-button class="btn">
+ <view slot="reference" class="wx_btn">的萨芬撒地方</view>
+</submit-button>
+</view>

@@ -1,0 +1,37 @@
+<view class="container pageGreyBg nearbyStoreWrap {{ isNoData == true ? 'flexContainer': '' }}">
+    <view class="nearbyStoreLists">
+
+      <!-- 暂无数据 -->
+      <view class="noData" a:if="{{isNoData}}">
+        <view class="noDataImg"><image src="/assets/images/noData.png" mode="" /></view>
+        <view class="noDataTitle">周边暂无门店!</view>
+      </view>
+
+      <!-- 有数据 -->
+      <view class="storeScrollWrap" a:elif="{{ sotreLists.length != 0 }}">
+        
+        <view class="storeItem" a:for="{{sotreLists}}">
+          <view class="storeImg">
+            <image class='storeImgSrc' src="{{item.shopLogo}}"></image>
+          </view>
+          <view class="storeItemContent">
+            <view class="distanceMi">{{item.juli}}m</view>
+            <view class="titP">{{item.shopName}}</view>
+            <view class="titP">{{item.provinceName}}{{item.cityName}}{{item.districtName}}{{item.detailAddr}}</view>
+            <view class="titP">营业时间：{{item.businessHours}}</view>
+            <view class="oTher">
+              <view class="oTherSapn borrowNum {{item.canBorrowNum == 0 ? 'Unavailable' : 'available'}}">可借{{item.canBorrowNum}}</view>
+              <view class="oTherSapn stillNum {{item.canBackNum == 0 ? 'Unavailable' : 'available'}}">可还{{item.canBackNum}}</view>
+            </view>
+            <view class="alsoChargingStatus" a:if="{{item.canBackNum == 0}}">无可归还充电宝请选择其他门店</view>          
+          </view>
+        </view>
+
+        <!-- 我是底线 -->
+        <view class="moreBaseline" a:if="{{ lineStatus }}">- 我是底线 -</view>
+      </view>
+
+      
+
+    </view>
+</view>

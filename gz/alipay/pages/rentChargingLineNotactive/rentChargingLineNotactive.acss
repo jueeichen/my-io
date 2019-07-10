@@ -1,0 +1,21 @@
+.flexNoScan{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+.nosacnImg{
+  margin-top: 146rpx;
+  width:501rpx;
+  height: 478rpx;
+}
+.nosacnImg image{
+  width: 100%;
+  height: 100%;
+}
+.noScanText{
+  margin-top: 10px;
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+  line-height: 40rpx
+}

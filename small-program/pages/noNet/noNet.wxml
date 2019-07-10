@@ -1,0 +1,9 @@
+<view class="container flexNoScan pageGreyBg">
+  <view class="nosacnImg">
+    <image src="/assets/images/noNet.png" mode="" />
+  </view>
+  <view class="noScanText">
+    <view class="renText1">服务异常 请稍后重试</view>
+  
+  </view>
+</view>

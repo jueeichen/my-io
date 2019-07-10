@@ -1,0 +1,19 @@
+<view class="container">
+  <image src="{{appLogo}}" />
+  <view class="font_bold">
+    登录后开发者将获得以下权限
+  </view>
+  <view class="font_normal">获得你的公开信息（昵称、头像等）</view>
+  <view class="login-box">
+    <button open-type="getUserInfo" class="wx-login-btn" bindgetuserinfo="wxLogin">确认登录</button>
+  </view>
+  <view class="botom_font">
+
+    <view class="botom_font_normal"> 登录即表示同意
+      <view class="botom_font_bold">《用户协议》</view>
+    </view>
+
+
+
+  </view>
+</view>

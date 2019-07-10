@@ -1,0 +1,345 @@
+<view class="container pageGreyBg helpBoxListsWrap">
+  <view class="helpBoxLists bgfff">
+    <!-- 暂无数据 -->
+    <view class="noData" hidden="{{!isNoData}}">
+      <view class="noDataImg">
+        <image src="/assets/images/noData.png" mode="" />
+      </view>
+      <view class="noDataTitle">暂无数据!
+      </view>
+    </view>
+    <!-- 有数据 -->
+    <view class="helpScrollWrap" hidden="{{isNoData}}">
+      <!-- 模板 -->
+      <!-- <view class="helpBox {{ item.status == true ? 'helpBoxDown': '' }}" data-key="{{index}}" data-status="{{item.status}}" a:for="{{helpLists}}" bindtap="handleHelp"><view class="helpBoxTitle"><view class="hQImg"><image src="/assets/images/hQico.png" mode="" /><view class="num">Q{{++index}}
+            </view></view><view class="title">{{item.title}}
+          </view><view class="arrow"></view></view><view class="helpBoxText" wx:if="{{item.status == true}}">{{item.content}}        
+        </view></view> -->
+      <!-- 模板 -->
+      <view class="helpBox  {{ helpLists[0].status == true ? 'helpBoxDown': '' }}" data-key="0" data-status="{{helpLists[0].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q1
+            </view>
+          </view>
+          <view class="title">{{helpLists[0].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[0].status == true}}">
+        <text class="textLeft">
+（1）租借充电宝                                      
+          </text>
+        <text class="textLeft">
+①微信扫描柜机上的二维码                                        
+          </text>
+        <text class="textLeft">
+②支付99元押金                                        
+          </text>
+        <text class="textLeft">
+③柜机弹出充电宝                                        
+          </text>
+        <text class="textLeft">
+④取走充电宝                                        
+          </text>
+        <text class="textLeft">
+⑤租借充电宝成功                                        
+          </text>
+        <text class="textLeft">
+（2）租借充电线                                        
+          </text>
+        <text class="textLeft">
+①用微信扫描充电线上的二维码                                      
+          </text>
+        <text class="textLeft">
+②收费套餐选择                                        
+          </text>
+        <text class="textLeft">
+③支付套餐费用                                      
+          </text>
+        <text class="textLeft">
+④充电线接通电源，输入启动密码，启动设备，开始计时                       
+          </text>
+        <text class="textLeft">
+⑤租借充电线成功                  
+          </text>
+        </text>
+      </view>
+      <view class="helpBox  {{ helpLists[1].status == true ? 'helpBoxDown': '' }}" data-key="1" data-status="{{helpLists[1].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q2
+            </view>
+          </view>
+          <view class="title">{{helpLists[1].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[1].status == true}}">
+          <text class="textLeft">采用分时计费规则，从借出充电宝后开始计时，还回充电宝后结束（具体以租借记录时间为准）。超出免费时长部分按小时数计费，不足1小时按1小时计算，每天封顶20元（具体价格以系统租借记录显示的收费标准为准）。              
+          </text>
+        </text>
+      </view>
+      <view class="helpBox  {{ helpLists[2].status == true ? 'helpBoxDown': '' }}" data-key="2" data-status="{{helpLists[2].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q3
+            </view>
+          </view>
+          <view class="title">{{helpLists[2].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[2].status == true}}">
+          <text class="textLeft">
+充电宝和充电线自带三种充电插头，分别为Micro USB接口、USB Type C接口和Lightning接口三种接口，支持安卓手机和苹果手机充电。                    
+          </text>
+        </text>
+      </view>
+      <view class="helpBox  {{ helpLists[3].status == true ? 'helpBoxDown': '' }}" data-key="3" data-status="{{helpLists[3].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q4
+            </view>
+          </view>
+          <view class="title">{{helpLists[3].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[3].status == true}}">
+          <text class="textLeft">
+          ①找到柜机（可通过附近门店查看最近柜机位置） 
+          </text>
+        <text class="textLeft">
+②把充电宝插回柜机中，支付订单后，小程序给用户发送归还成功的通知       
+          </text>
+        <text class="textLeft">
+备注：            
+          </text>
+        <text class="textLeft">
+①选择押金手动退还的用户，还宝成功后，先完成订单支付，再在个人中心-退押金手动申请退押金；            
+          </text>
+        <text class="textLeft">
+②选择押金自动退还的用户，还宝成功后，扣除订单费用，自动原路退还剩余押金。
+          </text>
+        </text>
+      </view>
+      <view class="helpBox  {{ helpLists[4].status == true ? 'helpBoxDown': '' }}" data-key="4" data-status="{{helpLists[4].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q5
+            </view>
+          </view>
+          <view class="title">{{helpLists[4].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[4].status == true}}">
+          <text class="textLeft">
+①押金手动退还流程：点击个人中心—退押金，押金原路返还，预计5个工作日到账，请耐心等待；
+          
+          </text>
+        <text class="textLeft">
+②押金自动原路退还：交押金的时候，选择押金自动退还，充电宝归还并支付完成，押金将自动原路退还。
+          
+          </text>
+        <text class="textLeft">
+备注：如有未支付订单并勾选了押金自动退还的用户，押金先抵扣订单费用，再退还剩余押金。
+          
+          </text>
+        </text>
+      </view>
+      <view class="helpBox  {{ helpLists[5].status == true ? 'helpBoxDown': '' }}" data-key="5" data-status="{{helpLists[5].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q6
+            </view>
+          </view>
+          <view class="title">{{helpLists[5].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[5].status == true}}">
+          <text class="textLeft">
+          充电宝电量≥60%才可以成功弹出，用户可以扫描柜机上的二维码，重新租借。                                                         
+          </text>
+        </text>
+      </view>
+      <view class="helpBox  {{ helpLists[6].status == true ? 'helpBoxDown': '' }}" data-key="6" data-status="{{helpLists[6].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q7
+            </view>
+          </view>
+          <view class="title">{{helpLists[6].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[6].status == true}}">
+          <text class="textLeft">您可以归还充电宝后重新租借一个，在免费体验时间之内归还充电宝不会产生费用；如果超过免费体验时间将按照收费标准收取对应费用。       
+          </text>
+        </text>
+      </view>
+      <view class="helpBox  {{ helpLists[7].status == true ? 'helpBoxDown': '' }}" data-key="7" data-status="{{helpLists[7].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q8
+            </view>
+          </view>
+          <view class="title">{{helpLists[7].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[7].status == true}}">
+          <text class="textLeft">
+          在会员中心—关于我们—客服电话，请拨打客服电话进行处理。                               
+          </text>
+        </text>
+      </view>
+      <view class="helpBox  {{ helpLists[8].status == true ? 'helpBoxDown': '' }}" data-key="8" data-status="{{helpLists[8].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q9
+            </view>
+          </view>
+          <view class="title">{{helpLists[8].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[8].status == true}}">
+          <text class="textLeft">
+          可以通过首页左下角查找按钮功能，找到附近的其他柜机进行归还。                                              
+          </text>
+        </text>
+      </view>
+      <view class="helpBox  {{ helpLists[9].status == true ? 'helpBoxDown': '' }}" data-key="9" data-status="{{helpLists[9].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q10
+            </view>
+          </view>
+          <view class="title">{{helpLists[9].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[9].status == true}}">
+          <text class="textLeft">押金退还不收取提现费                                                                     
+          </text>
+        </text>
+      </view>
+      <view class="helpBox  {{ helpLists[10].status == true ? 'helpBoxDown': '' }}" data-key="10" data-status="{{helpLists[10].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q11
+            </view>
+          </view>
+          <view class="title">{{helpLists[10].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[10].status == true}}">
+          <text class="textLeft">如用户租借充电宝，租借时间≥7天，订单状态显示已超时，没有按时归还，平台将直接扣除99元押金。                                                                  
+          </text>
+        </text>
+      </view>
+      <view class="helpBox  {{ helpLists[11].status == true ? 'helpBoxDown': '' }}" data-key="11" data-status="{{helpLists[11].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q12
+            </view>
+          </view>
+          <view class="title">{{helpLists[11].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[11].status == true}}">
+          <text class="textLeft">     ①确认充电线接通电源，指示灯亮起                          
+          </text>
+        <text class="textLeft">
+②微信/支付宝扫码，支付后点击完成获取密码                    
+          </text>
+        <text class="textLeft">
+③在设备上输入密码后指示灯变绿即可充电                    
+          </text>
+        <text class="textLeft">
+备注：                    
+          </text>
+        <text class="textLeft">
+①设备中途断开电源，再次扫码获取启动密码，输入密码恢复使用；                 
+          </text>
+        <text class="textLeft">
+②同时长按1和2可免费应急充电5分钟。                   
+          </text>
+        </text>
+      </view>
+      <view class="helpBox  {{ helpLists[12].status == true ? 'helpBoxDown': '' }}" data-key="12" data-status="{{helpLists[12].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q13
+            </view>
+          </view>
+          <view class="title">{{helpLists[12].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[12].status == true}}">
+          <text class="textLeft">线充有多个套餐选择，根据时间不同价格不同，具体的付费套餐以页面显示为准。                                                                     
+          </text>
+        </text>
+      </view>
+      <view class="helpBox  {{ helpLists[13].status == true ? 'helpBoxDown': '' }}" data-key="13" data-status="{{helpLists[13].status}}" bindtap="handleHelp">
+        <view class="helpBoxTitle">
+          <view class="hQImg">
+            <image src="/assets/images/hQico.png" mode="" />
+            <view class="num">Q14
+            </view>
+          </view>
+          <view class="title">{{helpLists[13].title}}
+          </view>
+          <view class="arrow">
+          </view>
+        </view>
+        <text class="helpBoxText" wx:if="{{helpLists[13].status == true}}">
+          <text class="textLeft">
+          ①每个用户每次均可免费充电5分钟；                                             </text>
+        <text class="textLeft">
+          ②每个用户每月有一次免费体验1小时充电的机会，活动时间以平台通知为准。                                          
+          </text>
+        </text>
+      </view>
+      <!-- 内容结束： -->
+    </view>
+    <!-- 我是底线 -->
+    <view class="moreBaseline" wx:if="{{ lineStatus }}">- 我是底线 -
+    </view>
+  </view>
+</view>
+<view class="customerService" bindtap="makePhoneCall">
+  <!-- <image src="/assets/images/customerServiceIco.png" mode="" /> -->联系客服
+</view>

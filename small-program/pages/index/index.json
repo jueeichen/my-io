@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "特耐王",
+  "usingComponents": {
+    "form-button": "/components/formButton/formButton"
+  },
+  "disableScroll": true,
+  "navigationBarBackgroundColor": "#FF7123",
+  "navigationBarTextStyle": "white"
+}

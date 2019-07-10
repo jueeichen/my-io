@@ -1,0 +1,38 @@
+<view class="container usingPowerBankWrap" bindtap="isShowMessageFalse">
+  <view class="usingPowerBankAd">
+    <image src="../../assets/images/usingPowerBankBg.png" mode="" />
+  </view>
+  <view class="usingPowerContent">
+    <image class='content-image' src='../../assets/images/usingPowerContent.png'></image>
+    <view class="startTiming">{{userTime}}
+    </view>
+    <view class="startMoney">
+      <view class="money">
+        <view class="dollar">￥
+        </view>        {{useAmount}}        
+        <image class="help" src="../../assets/images/moneyHelpIco.png" mode="" catchtap='isShowMessageTrue' />
+      </view>
+      <!-- <view class="triangle" wx:if="{{isShowMessage}}"></view> -->
+      <view class="moneyMessage" wx:if="{{isShowMessage}}">
+        <view>{{chargingStandard}} 
+        </view>
+      </view>
+    </view>
+    <view class="startBottom">
+      <navigator class="useBotBox useBotBox1" url="/pages/member/member">
+        <view class="uImg">
+          <image src="../../assets/images/useMemberIco.png" mode="" />
+        </view>
+        <view class="title">个人中心
+        </view>
+      </navigator>
+      <navigator class="useBotBox useBotBox2" url="/pages/memberHelp/memberHelp">
+        <view class="uImg">
+          <image src="../../assets/images/useHelpIco.png" mode="" />
+        </view> 
+        <view class="title">帮助中心
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

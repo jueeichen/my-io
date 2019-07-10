@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "归还成功",
+  "usingComponents": {
+    "dev-modal": "/components/devModal/devModal"
+  }
+}

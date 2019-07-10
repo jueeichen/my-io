@@ -1,0 +1,102 @@
+
+.htitle image{
+  width: 100%;
+  height: 264rpx;
+}
+.indPro{
+  width: 347rpx;
+  height: 461rpx;
+  margin: 0 auto
+}
+.indPro image{
+  width: 100%;
+  height: 100%;
+}
+
+.hmember{
+  margin-top: -80rpx;
+  display: flex;
+  justify-content: flex-end
+}
+.hmember .hmemberBtn{
+  display: block;
+  width: 189rpx;
+  height: 101rpx;
+}
+.hmemberBtn image{
+  width: 100%;
+  height: 100%;
+}
+.indProductInfo{
+  margin: -68rpx 0 0 168rpx;
+}
+.indProductBox1{ 
+  display: flex;
+  align-items: center;
+  margin-bottom: 26rpx;
+}
+.indProductBox1 image{
+  width:30rpx;
+  height:30rpx;
+}
+.indProductBox1 .intext{
+  width:261rpx;
+  height:36rpx;
+  font-size:36rpx;
+  font-weight:bold;
+  margin-left: 22rpx;
+  color:rgba(51,51,51,1);
+  text-shadow:0px 4px 40px rgba(54,153,241,0.39);
+  background:linear-gradient(0deg,rgba(54,153,241,1) 0%, rgba(23,231,239,1) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.indProductBox{
+  line-height: 50rpx;
+  display: flex;
+  align-items: center;
+}
+.indProductBox image{
+  width:32rpx;
+  height: 33rpx;
+}
+.indProductBox .des{
+  color: #666;
+  font-weight:400;
+  font-size: 30rpx;
+  margin-left: 22rpx;
+}
+.timeCharging{
+  margin-top: 48rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.timeCharging image{
+  width:133rpx;
+  height: 48rpx;
+  margin-right: 17rpx;
+}
+.timeCharging .des{
+  font-size: 24rpx;
+  color: #999;
+}
+.leaseBtn{
+  margin: 22rpx 20rpx 0;
+}
+.leaseBtn .defBtn {
+  color: #fff;
+  font-size: 34rpx;
+  border-radius: 10rpx;
+  letter-spacing:45rpx
+}
+.agrument{
+  margin-top: 27rpx;
+  text-align: center;
+  color:#9a9a9a;
+  font-size: 24rpx;
+}
+.agrument .argumentLink{
+  display: inline-block;
+  color: #31a5f1;
+}

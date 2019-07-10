@@ -1,0 +1,9 @@
+<view class="container flexNoScan pageGreyBg">
+  <view class="nosacnImg">
+    <image src="/assets/images/lineNotactiveImg.png" mode="" />
+  </view>
+  <view class="noScanText">
+    <view class="renText1">设备未激活，不能使用</view>
+    <block class="renText2">请联系商家激活设备 </block>
+  </view>
+</view>

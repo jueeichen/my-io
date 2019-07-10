@@ -1,0 +1,62 @@
+<view class="container mapSearch">
+  <map class='mymap'
+       id="myMap" 
+       longitude="{{longitude}}"
+       latitude="{{latitude}}"
+       scale="{{scale}}"
+       onRegionChange="onRegionChange" 
+       markers = "{{markers}}"
+       onMarkerTap = "handleThisMarker"
+       onTap = "handleMapEvent"
+       style="width:100%; height:100%"
+       show-location />
+  
+ 
+  
+  <!-- head -->
+  <cover-view class='headTop'>
+    <cover-view class='hCenterLeft'>
+      <cover-view class='hCenterBtn'>
+        <cover-image class='hCenterImg' src="{{userInfo.avatar}}" onTap="jumpMemberCenter"></cover-image>
+      </cover-view>
+      <cover-image class='hCenterSlogn' src="/assets/images/hCenterSlogn.png"></cover-image>
+    </cover-view>
+    <cover-image class="hShopBtn" src="/assets/images/hShopBtn.png" onTap="jumpShopLists"></cover-image>
+  </cover-view>
+
+  <!-- centerIco -->
+  <cover-image class='markerIco' src="/assets/images/marker.png"></cover-image>
+  <!-- ad -->
+  <view hidden="true">
+    <cover-image class='mapadWrap' src="/assets/images/mapad01.png" ></cover-image>
+  </view>
+  <cover-image class='searchLoationIco' src="/assets/images/searchLoationIco.png" onTap="jumpModifyLocation"></cover-image>
+  <cover-image class='moveTolocationIco' src="/assets/images/moveTolocationIco.png" onTap="getLocatPosition"></cover-image>
+  <cover-image class='mapQuestionsIco' src="/assets/images/mapQuestionsIco.png" onTap="jumpQuestions"></cover-image>
+  
+  
+
+  <!-- btn -->
+  <cover-view class='sweepcodeBtn' a:if="{{usingStatus == 0}}" onTap="sweepCodeFn">扫码租借</cover-view>
+  <cover-view class='sweepcodeBtn usingStatus' a:elif="{{usingStatus == 1}}" onTap="toOrderDetail">租借中</cover-view>
+  <cover-view class='sweepcodeBtn usingStatus' a:if="{{usingStatus == 2}}" onTap="toPaymentOrder">待支付</cover-view>
+  
+
+  <!-- 浮层 目标点 -->
+  <cover-view class="targetPop" a:if="{{targetChargingStatus}}">
+    <cover-image class='shopImg' src="{{targetBattery.shopLogo}}"></cover-image>
+    <cover-view class="shopPopContent">
+      <cover-view class="titP">
+        <cover-view class="title">{{targetBattery.title}}</cover-view>
+        <cover-view class="distanceMi">{{targetBattery.juli}}m</cover-view>
+      </cover-view>
+      <cover-view class="titP">{{targetBattery.detailAddr}}</cover-view>
+      <cover-view class="titP">营业时间：{{targetBattery.businessHours}}</cover-view>
+      <cover-view class="oTher">
+        <cover-view class="oTherSapn borrowNum  {{targetBattery.canBorrowNum == 0 ? 'Unavailable' : 'available'}}">可借{{targetBattery.canBorrowNum}}</cover-view>
+        <cover-view class="oTherSapn stillNum {{targetBattery.canBackNum == 0 ? 'Unavailable' : 'available'}}">可还{{targetBattery.canBackNum}}</cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+
+</view>

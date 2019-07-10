@@ -1,0 +1,62 @@
+<view class="container modifyLocation" style="overflow-y:hidden">
+  <view class="modifySearchWrap">
+    <search-bar
+    value="{{searchValue}}"
+    placeholder="搜索地址"
+    onFocus="handleFocus"
+    onSubmit="handleSubmit"
+    onCancel="handleCancel"
+    showCancelButton="{{false}}" />
+  </view>
+
+  <!-- 搜索列表同步 -->
+  <view class="searchLists {{isShowPoi ? '' : 'searchHide'}}">
+    <view class="addressLists">
+      <list>
+        <block a:for="{{searchPoisLists}}">
+          <list-item
+            align="{{item.align}}"
+            index="{{item.location}}"
+            onClick="onItemClick"
+            key="{{index}}"
+          >
+          {{item.name}}
+          </list-item>
+        </block>
+      </list>
+    </view>
+  </view>
+
+  <view class="{{isShowPoi ? 'searchHide' : ''}}">
+    <view class="modifyLoactionWrap">
+      <map class='modifyLocalMap'
+        id="modifyLocalMap" 
+        longitude="{{longitude}}"
+        latitude="{{latitude}}"
+        scale="{{scale}}"
+        onRegionChange="onRegionChange" 
+        markers = "{{markers}}"
+        style="width:100%;height:100%;"
+        show-location />
+      <!-- centerIco -->
+      <cover-image class='markerIco' src="/assets/images/marker.png"></cover-image>
+      <cover-image class='searchSureBtn' src="/assets/images/searchSureBtn.png" onTap="handleSearchSureBtn"></cover-image>
+      <cover-image class='moveTolocationIco' src="/assets/images/moveTolocationIco.png" onTap="getLocatPosition"></cover-image>
+    </view>
+    
+    <view class="poisOptionsWrap" style="height: {{winHeight}}rpx">
+      <scroll-view scroll-y="{{true}}" style="height: 100%;" onScrollToLower="lower"  >
+        <view  class="scroll-view-item bc_blue">
+          <radio-group class="radio-group" onChange="radioChange">
+            <label class="radio" a:for="{{poisLists}}" a:key="{{index}}" >
+              <radio value="{{item.name}}" index="{{index}}"  checked="checked"  a:if=" {{index == 0 || !index }} " />
+              <radio value="{{item.name}}" index="{{index}}"  checked="{{item.checked}}"  a:if=" {{index != 0 }} " />{{item.name}}
+            </label>
+          </radio-group>
+        </view>
+      </scroll-view>
+      
+    </view>
+  
+  </view>
+</view>

@@ -1,0 +1,41 @@
+<view class="container pageGreyBg {{ isNoData == true ? 'flexContainer': '' }}">
+  <view>
+    <!-- 暂无数据 -->
+    <view class="noData" a:if="{{isNoData}}">
+      <view class="noDataImg"><image src="/assets/images/noData.png" mode="" /></view>
+      <view class="noDataTitle">暂无明细!</view>
+    </view>
+
+    <!-- 有数据 -->
+    <view class="helpScrollWrap" a:elif="{{ accountLists.length != 0 }}">
+      <view class="totalNum">共计：<text class="number">{{depositTotal}}条</text></view>
+      <view class="tranList">
+
+        <view class="bgfff tranBox moneyType-2" data-key="{{index}}"  a:for="{{depositLists}}">
+          <view class="tranCtxWrap">
+            <view class="tranCtx">
+              <view class="title">
+                <view class="label">支付订单号：{{item.orderNo}}</view>
+                <view class="money">{{item.type}}{{item.transAmount}}</view>
+              </view>
+              <view class="tranContent">
+                <view class="tBox">
+                  <text class="label">{{item.tradeType}}</text>
+                  <text class="labTxt">{{item.payType}}</text>
+                </view>
+                <view class="tBox">
+                  <text class="label">交易时间：</text>
+                  <text class="labTxt">{{item.createBy}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 我是底线 -->
+        <view class="moreBaseline" a:if="{{ lineStatus }}">- 我是底线 -</view>
+
+      </view>
+    </view>
+  </view>
+</view>

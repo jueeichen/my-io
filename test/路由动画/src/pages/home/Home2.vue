@@ -2,11 +2,13 @@
 <template>
   <div>
     <h1>333333333444</h1>
+    <p @click="$router.back()">返回上一页</p>
     <p>3333333</p>
     <p>EEEEE33333EEEEEEE</p>
     <p>EEEEEE33EEEEEE</p>
     <p>IIIIIII333IIIII</p>
     <p class="test">这是Jueei的demo 点击测试zepto</p>
+
   </div>
 </template>
 

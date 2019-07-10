@@ -1,0 +1,8 @@
+.argumentWrap{
+  font-size: 30rpx;
+  line-height: 48rpx;
+  padding:30rpx 20rpx;
+}
+.argumentWrap view{
+  margin-bottom: 10rpx;
+}

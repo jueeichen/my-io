@@ -1,0 +1,35 @@
+.container{
+  text-align: center
+}
+.noRentImg{
+  width:519rpx;
+  height: 313rpx;
+  display: inline-block;
+  margin-top: 100rpx;
+
+}
+.noRentImg image{
+  width: 294rpx;
+  height: 254rpx;
+}
+.noRentText{
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+  line-height: 40rpx
+}
+.noRentBtnWrap{
+  display: inline-block;
+  margin-top: 150rpx;
+  /* width:228rpx; */
+  border-radius:10px;
+  background-color: pink;
+}
+.noRentBtnWrap .noRentBtn{
+  background:linear-gradient(0deg,rgba(255,113,35,1) 0%,rgba(255,199,32,1) 100%);
+  color: #fff;
+  font-size:34rpx;
+  font-weight:400;
+
+}

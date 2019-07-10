@@ -1,0 +1,61 @@
+<view class="container">
+
+  <view class='headtop'>
+    <view class='htitle'><image src="/assets/images/indexheadbg.png" mode="" /></view>
+    <view class='hmember'>
+      <navigator class="hmemberBtn" open-type="navigate" url='/pages/member/member'><image src="/assets/images/indexmemberbtn.png" mode="" /></navigator>
+    </view>
+  </view>
+
+  <view class="indPro">
+    <image src='/assets/images/indPro.png' mode="">
+  </view>
+
+  <view class="indProductInfo">
+    <view class="indProductBox1" a:if="{{isShowActive}}">
+        <image src="/assets/images/infXian.png" mode="" />
+        <text class="intext">{{activeText}}</text>
+    </view>
+    <view class="indProductBox">
+      <image src="/assets/images/infZhima.png" mode="" />
+      <text class="des">芝麻分550分以上免押金租借</text>
+    </view>
+    <view class="indProductBox">
+      <image src="/assets/images/infYidi.png" mode="" />
+      <text class="des">支持异地归还</text>
+    </view>
+    <view class="indProductBox">
+      <image src="/assets/images/infChatou.png" mode="" />
+      <text class="des">自带三种充电插头</text>
+    </view>
+  </view>
+
+  <view class="timeCharging">
+    <image src="/assets/images/timeChargingico.png" mode="" />
+    <text class="des">{{chargeTextEx}}{{chargeText}}</text>
+  </view>
+
+  <form onSubmit="toRent" onReset="" report-submit="true">
+    <view class="leaseBtn">
+      <button formType="submit" class="defBtn" id="rentId" >租借</button>
+    </view>
+  </form>
+
+  <view class="agrument">点击租借即同意<navigator url="/pages/agreements/agreements" redirect class="argumentLink">《用户协议》</navigator></view>
+
+  <cutdown-modal isPopShow="{{isPopShow}}">
+    <!-- 内容 -->
+    <view slot="popMainContent" class="popMContext dContext">
+        <!--没有未支付订单-->
+        <block a:if="{{userLeaseStatus == 3}}">
+          <text>您有未支付订单，请先支付费用，再租借充电宝。</text>
+        </block>
+        <!-- 有未支付订单 -->
+        <block a:elif="{{userLeaseStatus == 2}}">
+          <text>当前有充电宝在使用，您可查看充电宝使用情况。</text>
+        </block>
+        <view class="autoJump">1秒后自动跳转...</view>
+    </view>
+  </cutdown-modal>
+  
+</view>

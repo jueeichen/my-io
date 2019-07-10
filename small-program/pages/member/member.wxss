@@ -1,0 +1,309 @@
+.memberContainer {
+  background-color: white;
+}
+
+.memberHeadTop {
+  height: 416rpx;
+  background-color: #fff;
+  position: relative;
+}
+
+.memberHead {
+  width: 100%;
+  height: 416rpx;
+}
+
+.memberHead_bg {
+  width: 100vw;
+  height: 300rpx;
+}
+
+.memTop {
+  margin: 0 46rpx 0;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 670rpx;
+}
+
+.information {
+  display: flex;
+}
+
+.information .avatar {
+  width: 110rpx;
+  height: 110rpx;
+}
+
+.information .infText {
+  margin-left: 36rpx;
+  color: #fff;
+}
+
+.infText .userName {
+  margin: 20rpx 0 12rpx 0;
+  font-size: 28rpx;
+}
+
+.infText .userId {
+  font-size: 24rpx;
+}
+
+.avatar image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.mesageBox {
+  width: 67rpx;
+  height: 67rpx;
+  margin: 10rpx 10rpx 0 0;
+  position: relative;
+}
+
+.mesageBox .mesLink {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mesageBox .mesIco {
+  width: 49rpx;
+  height: 49rpx;
+  margin: 17rpx 0 0 17rpx;
+}
+
+.mesageBox .dot {
+  position: absolute;
+  top: 12rpx;
+  right: 2rpx;
+  width: 18rpx;
+  height: 18rpx;
+  background-color: #f54937;
+  border-radius: 50%;
+}
+
+.moneyDepositWrap {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -150rpx;
+  width: 100vw;
+  height: 198rpx;
+}
+
+.moneyDepositWrap_bg {
+  position: absolute;
+  top: 0;
+  width: 748rpx;
+  height: 202rpx;
+  display: inline-block;
+}
+
+.moneyText {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-top: 18rpx;
+  height: 142rpx;
+  margin-left: 64rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.moneyText .money {
+  font-size: 28rpx;
+  color: #28bdf0;
+  margin-left: 30rpx;
+}
+
+.depositText {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  margin-top: 18rpx;
+  height: 142rpx;
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 80rpx;
+}
+
+.depositText .deposit {
+  font-size: 28rpx;
+  color: #28bdf0;
+  margin-left: 30rpx;
+}
+
+.moneyDivid {
+  width: 14rpx;
+  height: 27rpx;
+  margin-top: 70rpx;
+  margin-left: 25rpx;
+  position: relative;
+}
+
+.moneyDivid image {
+  width: 100%;
+  height: 100%;
+}
+
+.moneyDepositWrap .returnDepositMoney {
+  width: 263rpx;
+  height: 93rpx;
+  position: absolute;
+  bottom: -15rpx;
+  left: 50%;
+  margin-left: -131rpx;
+}
+
+.returnDepositMoney .returnDepositMoneyBtn {
+  width: 100%;
+  height: 100%;
+}
+
+.returnDepositMoneyImg {
+  width: 100%;
+  height: 100%;
+}
+
+/* .memList .am-list-content,.memList .am-list-extra{
+  font-size: 30rpx;
+  color: #333;
+  font-family: "pingFang SC" "pingFang";
+} */
+
+/* .memList .am-list-thumb{
+  width:40rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+} */
+
+/* .am-list-body{
+  border: none
+} */
+
+.memlist_li {
+  box-sizing: border-box;
+  float: left;
+  height: 94rpx;
+  width: 100vw;
+  padding: 0rpx 0 0rpx 40rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.memlist_li_main {
+  float: left;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.memlist_li_content {
+  box-sizing: border-box;
+  float: right;
+  width: 639rpx;
+  padding-right: 40rpx;
+  position: relative;
+}
+
+.memlist_li_right {
+  float: right;
+  width: 13rpx;
+  height: 24rpx;
+  margin-top: 10rpx;
+}
+
+.memlist_li_content::after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1rpx;
+  background-color: #eee;
+  top: 65rpx;
+}
+
+/* 弹窗 */
+
+.pop_windows {
+    width: 100vw;
+  height: 100vh;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  top:0;
+}
+
+.pop_mark {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 99
+}
+
+.pop_content {
+  width: 542rpx;
+  height: 364rpx;
+  background-color: white;
+  position:relative;
+  z-index: 100;
+  display: inline-block;
+  top:35%;
+  border-radius: 10rpx;
+}
+
+.pop_content image {
+  width: 232rpx;
+  height: 232rpx;
+  display: inline-block;
+  margin-top: -100rpx;
+}
+
+.pop_content text {
+  display: block;
+  color:#666666;
+  height: 100rpx;
+}
+
+.pop_btn{
+margin-top: 30rpx;
+
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 80rpx;
+  padding-top:20rpx; 
+  color:#FF7123;
+  border-top:1rpx solid #eee;
+  font-size: 34rpx;
+}
+.pop_btn_right{
+  box-sizing: border-box;
+  display: inline-block;
+  width:50%;
+  height: 100%;
+  border-right: 1rpx solid #eee
+}
+.pop_btn_no{
+  display: inline-block;
+   width:50%;
+  height: 100%;
+
+}
+
+.memlist_padding{
+  margin-top:-10rpx;
+}
+
+.memlist_ul{
+  padding-top:12rpx;
+
+}

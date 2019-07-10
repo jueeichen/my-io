@@ -1,0 +1,9 @@
+<view class="container flexNoScan pageGreyBg">
+  <view class="nosacnImg">
+    <image src="/assets/images/noScanImg.png" mode="" />
+  </view>
+  <view class="noScanText">
+    <view class="renText1">请使用微信扫描二维码</view>
+    <block class="renText2">租借充电宝。 </block>
+  </view>
+</view>

@@ -1,0 +1,210 @@
+
+.mymap{
+  display: flex;
+  width:100%;
+  height: 100%;
+  position: relative;
+}
+.markerIco{
+  width: 34rpx;
+  height:57rpx;
+  position: fixed;
+  top:50%;
+  left:50%;
+  margin-left: -17rpx;
+  margin-top: -58rpx;
+  background: transparent;
+}
+
+.headTop{
+  width:100%;
+  height:100rpx;
+  background-color: #fff;
+  position: fixed;
+  top:0;
+  left:0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  box-shadow:0px 5px 10px 0px rgba(201,201,201,0.5);
+}
+
+.hCenterLeft{
+  display: flex;
+  align-items: center;
+}
+.hCenterBtn{
+  width:74rpx;
+  height:74rpx;
+  text-align: center;
+  font-size: 14px;
+  margin-left: 20rpx;
+  border-radius: 200rpx;
+  border:1px solid transparent;
+  background-color: #f3f3f3;
+  overflow: hidden;
+}
+.hCenterBtn .hCenterImg{
+  width:100%;
+  height:100%;
+  border-radius: 200rpx;
+  border:1px solid transparent;
+  overflow: hidden;
+
+}
+.hCenterSlogn{
+  width:304rpx;
+  height: 60rpx;
+  margin-left: 10rpx;
+}
+
+.headContent .hbtn{
+  height:60rpx;
+  line-height: 60rpx;
+  padding:0 30rpx;
+  margin-right: 20rpx;
+  border-radius: 30rpx;
+  color: #181818;
+  font-size: 14px;
+}
+.headContent .hbtn.curr{
+  color:#fff;
+  background: #47e962;
+}
+.hShopBtn{
+  width:176rpx;
+  height: 60rpx;
+}
+
+.mapadWrap{
+  width:710rpx;
+  height:100rpx;;
+  position: fixed;
+  top:124rpx;
+  left:50%;
+  margin-left: -355rpx;
+}
+
+/* button */
+.sweepcodeBtn{
+  position: fixed;
+  left:50%;
+  bottom: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  width:710rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #fff;
+  font-size: 34rpx;
+  margin-left: -355rpx;
+  border:1px solid #3699F1;
+  border-radius: 10rpx;
+  background-color: #3699F1;
+}
+.usingStatus{
+  color: rgba(255,255,255,.6)
+}
+.sweepcodeBtn .ustatusTitle,.sweepcodeBtn .ustatusDes{
+  background: #3699F1;
+}
+.sweepcodeBtn .ustatusTitle{
+  font-size: 34rpx;
+}
+.sweepcodeBtn .ustatusDes{
+  font-size: 24rpx;
+}
+
+
+/* ico btn */
+.searchLoationIco{
+  position: fixed;
+  left:5rpx;;
+  bottom: 280rpx;
+  width:105rpx;
+  height: 105rpx;
+}
+.moveTolocationIco{
+  position: fixed;
+  left:5rpx;;
+  bottom: 170rpx;
+  width:105rpx;
+  height: 105rpx;
+}
+.mapQuestionsIco{
+  position: fixed;
+  right:5rpx;;
+  bottom: 170rpx;
+  width:105rpx;
+  height: 105rpx;
+}
+
+/**/
+.targetPop{
+  position: fixed;
+  left:50%;
+  bottom: 160rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width:650rpx;
+  height: 190rpx;
+  padding: 30rpx;
+  margin-left: -355rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  border:1px solid #fff;
+  box-shadow:0px 0px 15px 0px rgba(174,182,215,0.2);
+}
+.targetPop .shopImg{
+  width:190rpx;
+  height: 190rpx;
+  border-radius: 10rpx;
+  background-color: #e6e6e6;
+}
+.shopPopContent{
+  position: relative;
+  width:90%;
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.shopPopContent .titP{
+  display: flex;
+  justify-content: space-between;
+  line-height: 50rpx;
+  height: 50rpx;
+  overflow: hidden;
+}
+.shopPopContent .titP .title{
+  flex: 1;
+}
+.shopPopContent .titP .distanceMi{
+  width:120rpx;
+  text-align: right;
+  color: #333;
+  font-size:30rpx;
+}
+.shopPopContent .oTher{
+  display: flex;
+}
+.oTher .oTherSapn{
+  height: 46rpx;
+  line-height: 46rpx;
+  padding: 0 24rpx;
+  margin-right: 10rpx;
+  border:1px solid #fff;
+  text-align: center;
+}
+.oTher .oTherSapn.available{
+  color: #47AE51;
+  background-color:#ECF7ED;
+}
+.oTher .oTherSapn.Unavailable{
+  color: #333;
+  background-color:#eee;
+}

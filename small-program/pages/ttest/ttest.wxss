@@ -1,0 +1,22 @@
+.test1{
+  background: pink;
+  width: 100rpx
+}
+
+.need_tap{
+  position: relative
+}
+.btn{
+  width: 300rpx
+}
+.wx_btn{
+  background: linear-gradient(0deg,rgba(255,113,35,1) 0%,rgba(255,199,32,1) 100%);
+  width: 710rpx;
+  height: 500rpx;
+  line-height: 500rpx;
+  display: inline-block;
+  color: #fff;
+  font-size: 34rpx;
+  border-radius: 10rpx;
+
+}

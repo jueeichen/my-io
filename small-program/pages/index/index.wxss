@@ -1,0 +1,206 @@
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.htitle image{
+  width: 100%;
+  height: 264rpx;
+}
+.indPro{
+  width: 347rpx;
+  height: 430rpx;
+  margin: 0 auto
+}
+.indPro image{
+  width: 100%;
+  height: 100%;
+}
+
+.hmember{
+  margin-top: -80rpx;
+  display: flex;
+  justify-content: flex-end
+}
+.hmember .hmemberBtn{
+  display: block;
+  width: 213rpx;
+  height: 101rpx;
+  margin-right: -30rpx;
+}
+.hmemberBtn image{
+  width: 100%;
+  height: 100%;
+}
+.indProductInfo{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.indProductBox1{ 
+  display: flex;
+  align-items: center;
+  margin-bottom: 26rpx;
+  height:40rpx;
+}
+.indProductBox1 image{
+  width:30rpx;
+  height:30rpx;
+}
+.indProductBox1 .intext{
+  width:261rpx;
+  height:40rpx;
+  line-height: 36rpx;
+  font-size:36rpx;
+  font-weight:bold;
+  margin-left: 22rpx;
+  color:rgba(51,51,51,1);
+  text-shadow:0px 4px 40px rgba(54,153,241,0.39);
+  background:linear-gradient(0deg, #ff7123 0%, #ffa039  100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.indProductBox{
+  line-height: 50rpx;
+  display: flex;
+  align-items: center;
+}
+.indProductBox image{
+  width:32rpx;
+  height: 33rpx;
+}
+.indProductBox .des{
+  color: #666;
+  font-weight:400;
+  font-size: 30rpx;
+  margin-left: 22rpx;
+}
+.timeCharging{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 220rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.timeCharging image{
+  width:133rpx;
+  height: 48rpx;
+  margin-right: 17rpx;
+  position: relative;
+  top: 6rpx;
+}
+.timeCharging .des{
+  font-size: 24rpx;
+  color: #999;
+  white-space: nowrap;
+}
+.leaseBtn{
+  width: 100vw;
+  text-align: center;
+  position: absolute;
+  bottom: 100rpx;
+}
+.leaseBtn .defBtn {
+  width: 90vw;
+  display: inline-block;
+  color: #fff;
+  font-size: 34rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  letter-spacing:40rpx;
+  text-indent:40rpx;
+  background: linear-gradient(0deg,rgba(255,113,35,1) 0%,rgba(255,199,32,1) 100%);
+}
+
+.agrument{
+  position: absolute;
+  bottom: 50rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color:#9a9a9a;
+  font-size: 24rpx;
+}
+.agrument .argumentLink{
+  display: inline-block;
+  color: #31a5f1;
+}
+
+
+
+/* 弹窗 */
+
+.pop_windows {
+    width: 100vw;
+  height: 100vh;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  top:0;
+}
+
+.pop_mark {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 99
+}
+
+.pop_content {
+  width: 542rpx;
+  height: 364rpx;
+  background-color: white;
+  position:relative;
+  z-index: 100;
+  display: inline-block;
+  top:35%;
+  border-radius: 10rpx;
+  border:1rpx solid #999;
+  padding: 0 30rpx;
+}
+
+.pop_content image {
+  width: 232rpx;
+  height: 232rpx;
+  display: inline-block;
+  margin-top: -100rpx;
+}
+
+.pop_content text {
+  display: block;
+  color:#666666;
+  height: 100rpx;
+}
+
+.pop_btn{
+  margin-top: 40rpx;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 80rpx;
+  padding-top:15rpx; 
+  color:#ffa039;
+  border-top:1rpx solid #eee;
+  font-size: 34rpx;
+}
+.pop_btn_right{
+  box-sizing: border-box;
+  display: inline-block;
+  width:220rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size:25rpx;
+}
+
+
+/* 需要点击 */
+.need_tap{
+  position: relative
+}

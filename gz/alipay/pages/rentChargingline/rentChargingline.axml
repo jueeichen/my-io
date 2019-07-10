@@ -1,0 +1,30 @@
+<view class="container pageGreyBg rentLineContainer">
+  <view class="rentLineWrap">
+    <view class="rentLineHead">
+      <view class="lineHTop">
+        <view class="sn">{{snNo}}</view>
+        <view class="records" onTap="toRentRecord">使用记录</view>
+      </view>
+      <view class="lineHDes">
+        请确认线充已插电，且指示灯亮起，支付成功后点击完成获取密码，在设备上输入密码即可充电
+      </view>
+    </view>
+
+    <view class="rentlineBoxLists">
+      <view class="rentListBox" a:for="{{rentLists}}">
+        <view url="#" class="boxLink" onTap="jumpLinePwd" data-type="{{item.id}}">
+          <view class="chargeTime">充电{{item.rentHours}}小时</view>
+          <view class="chargeMoney"><text class="money">{{item.amount}}</text>元</view>
+          <view class="bgimg"></view>
+        </view>
+      </view>
+      
+    </view>
+
+    <view class="rentlineAgreement">
+      点击租借即同意<navigator url="#" class="agreementLink">《用户协议》</navigator>
+    <view>
+
+    <view>{{djsTime}}</view>
+  </view>
+</view>

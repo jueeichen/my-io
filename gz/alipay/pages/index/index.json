@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "特耐王",
+  "usingComponents": {
+    "cutdown-modal": "/components/cutdownModal/cutdownModal"
+  }
+}

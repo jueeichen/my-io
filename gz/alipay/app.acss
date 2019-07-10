@@ -1,0 +1,75 @@
+@import "/assets/wxParse/wxParse.acss";
+
+page {
+  flex: 1;
+  display: flex;
+  background: #fff;
+  font-family: "pingFang SC" "pingFang";
+  font-size: 28rpx;
+  color:#666;
+}
+.tc{
+  text-align: center
+}
+.container{
+  width:100%;
+  overflow-x: hidden;
+}
+.container.pageGreyBg{
+  background-color: #F4F5FD
+}
+.flexContainer{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+}
+image{
+  width:30rpx;
+  height: 30rpx;
+  background-size: cover;
+}
+button{
+  border: none;
+  border: 0;
+  background-color: #31A5F1;
+}
+.bgfff{
+  background-color: #fff
+}
+
+
+/*我是底线*/
+.moreBaseline{
+  text-align: center;
+  line-height: 42rpx;
+  color: #acacac;
+  font-size: 24rpx;
+  margin-top: 12rpx;
+}
+
+/*暂无数据*/
+.noData{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+}
+.noData .noDataImg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:519rpx;
+  height: 313rpx;
+}
+.noData .noDataImg image{
+  width:100%;
+  height: 100%;
+}
+.noData .noDataTitle {
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #666;
+}

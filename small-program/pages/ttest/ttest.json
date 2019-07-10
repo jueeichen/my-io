@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "form-button":"/components/formButton/formButton",
+    "submit-button":"/components/submitButton/submitButton"
+  }
+}

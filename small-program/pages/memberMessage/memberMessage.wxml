@@ -1,0 +1,103 @@
+<view class="container">
+  <!-- <tabs tabs="{{tabs}}" onTabClick="handleTabClick" onChange="handleTabChange" activeTab="{{activeTab}}">
+   -->
+  <view class="nav bc_white">
+    <view class="{{selected?'red':'default'}} mTab" bindtap="selected">
+
+      <view class='tabText'>消息提醒</view>
+      <text class='sys_num' wx:if="{{isShowDot1}}">{{newsUnreadNum}}</text>
+
+    </view>
+    <view class="{{selected1?'red':'default'}} mTab" bindtap="selected1">
+      <view class='tabText'>系统公告</view>
+      <text class='sys_num' wx:if="{{isShowDot2}}">{{noticeUnreadNum}}</text>
+    </view>
+  </view>
+  <!-- activeTab -->
+  <block>
+    <tab-content key="1" class="tabInfo">
+      <view class="tab-content {{selected?'show':'hidden'}}">
+        <!-- 内容 -->
+        <!-- 暂无数据 -->
+        <!-- a:if="{{isNoData1}}" -->
+
+         <view class="noData" wx:if="{{isNoData1}}">
+            <view class="noDataImg">
+              <image src="/assets/images/noData.png" mode="" />
+            </view>
+            <view class="noDataTitle" >暂无消息!                                                
+            </view>
+          </view> 
+
+        <!-- 有数据 -->
+        <!-- a:if="{{!isNoData1}}" a:for="{{messageLists}}" data-key="{{index}}" -->
+        <view class="helpScrollWrap" wx:if="{{isNoData2}}"  wx:for="{{messageLists}}" wx:key="{{index}}">
+          <!-- {{item.createBy}} -->
+          <view class="helpScrollWrap_time">{{item.createBy}}
+          </view>
+          <view class="helpScrollWrap_content">
+            <view class="helpScrollWrap_title">
+              <!-- a:if="{{item.isRead==='0'}}" -->
+              <view class="helpScrollWrap_redpop" wx:if="{{item.isRead}}"></view>
+              <!-- {{item.title}} -->
+              <text class="helpScrollWrap_title_main">{{item.title}}
+                </text>
+            </view>
+            <!-- {{item.content}}  -->
+            <text class="helpScrollWrap_text">
+            {{item.content}}
+            </text>
+          </view>
+        </view>
+        <!-- a:if="{{messageBaseLine}}" -->
+        <view class="moreBaseline" wx:if="{{messageBaseLine}}">- 我是底线 -</view>
+      </view>
+    </tab-content>
+  </block>
+  <block>
+    <tab-content key="2">
+      <view class="tab-content {{selected1?'show':'hidden'}}">
+        <!-- 内容 -->
+        <!-- 暂无数据 -->
+        <view class="noData" wx:if="{{isNoData3}}">
+            <view class="noDataImg">
+              <image src="/assets/images/noData.png" mode="" />
+            </view>
+            <view class="noDataTitle">暂无消息!                                                
+            </view>
+          </view>
+        <!-- 有数据 -->
+        <view wx:for="{{noticeList}}" wx:if="{{isNoData4}}" wx:key="{{index}}" bindtap="jumpNoticeDetile" data-key="{{index}}">
+          <view class="helpScrollWrap_time sys_topTitle">{{item.createBy}}</view>
+          <view class='sys_wrap'>
+            <view class='sys_one'>
+              <view class='sys_title'>
+                <view class='sys_titleText'>{{item.title}}</view>
+                <image src='/assets/images/right_arrow.png'></image>
+              </view>
+              <view class='sys_infoWrap'>
+                <view class='sys_img'>
+                  <image src='{{item.newsImage}}'></image>
+                </view>
+                <view>
+                 <view class='sys_info'>
+                 <!-- 123 {{item.content}} -->
+                 <import src="../../assets/wxParse/wxParse.wxml"/>
+                  <template is="wxParse" data="{{wxParseData:contentArr[index].nodes}}"/>
+                 </view>
+                     
+                
+                </view>
+               
+              </view>
+            </view>
+
+          </view>
+        </view>
+        <view class="moreBaseline" wx:if="{{noticeMessageBaseLine}}">- 我是底线 -
+        </view>
+      </view>
+    </tab-content>
+  </block>
+  <!-- </tabs> -->
+</view>

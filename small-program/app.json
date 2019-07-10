@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/map/map",
+    "pages/index/index",
+    "pages/memberLeaseDetail/memberLeaseDetail",
+    "pages/paymentOrder/paymentOrder",
+    "pages/rentalRecords/rentalRecords",
+    "pages/login/login",
+    "pages/depositDetails/depositDetails",
+    "pages/transactionDetails/transactionDetails",
+    "pages/payDeposit/payDeposit",
+    "pages/usingPowerBank/usingPowerBank",
+    "pages/treasureState/treasureState",
+    "pages/mapSearch/mapSearch",
+    "pages/nearbyStores/nearbyStores",
+    "pages/rentChargingline/rentChargingline",
+    "pages/providePassWord/providePassWord",
+    "pages/logs/logs",
+    "pages/orderDetail/orderDetail",
+    "pages/memberAboutUs/memberAboutUs",
+    "pages/memberHelp/memberHelp",
+    "pages/memberMessage/memberMessage",
+    "pages/member/member",
+    "pages/memberDepositRefund/memberDepositRefund",
+    "pages/feedback/feedback",
+    "pages/noRent/noRent",
+    "pages/noScan/noScan",
+    "pages/noActive/noActive",
+    "pages/noNet/noNet",
+    "pages/operationSuccess/operationSuccess",
+    "pages/operationFailed/operationFailed",
+    "pages/noticeContent/noticeContent",
+    "pages/agreements/agreements",
+    "pages/rechargeAgreement/rechargeAgreement",
+    "pages/ttest/ttest"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F7F7F7",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于地图展示"
+    }
+  }
+}

@@ -8,17 +8,19 @@ export default  class DetailsScreen extends Component {
   render() {
     return (
       <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
-        <Text>Details Screen</Text>
+        <Text>
+          潘老师你个大傻逼 原生app你懂个求求 weex的demo都启动不了.js
+          </Text>
         <Button
-          title="Go to Details... Test"
+          title="nav Test"
           onPress={() => this.pushToNav('Test')}
         />
         <Button
-          title="Go to Details... Home"
+          title="nav Home"
           onPress={() => this.pushToNav('Home')}
         />
         <Button
-          title="Go to Details... WebPage"
+          title="nav WebPage"
           onPress={() => this.pushToNav('WebPage')}
         />
       </View>

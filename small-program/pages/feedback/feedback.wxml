@@ -1,0 +1,41 @@
+
+
+<view class="container feedbackWrap">
+  <form bindsubmit="handleFeedback">
+    <view class="feedTit"><text class="fRed">*</text>反馈类别</view>
+    <view class="feedSelect">
+      <picker bindchange="handleTypeInput" name="type" value="{{index}}" range="{{typeLists}}">
+        <view class="picker">
+          <block wx:if="{{!typeIndex}}">{{typeLists[0]}}</block>
+          <block wx:else="{{typeIndex}}">{{typeLists[typeIndex]}}</block>
+        </view>
+      </picker>
+      <image class="inputArrow" src="/assets/images/inputArrow.png" mode="" />
+    </view>
+
+    <view class="feedTit feedTit2" wx:if="{{isShowCategory}}"><text class="fRed">*</text>反馈类型</view>
+    <view class="feedSelect" wx:if="{{isShowCategory}}">
+      <picker bindchange="handleCategoryInput" name="category" value="{{index}}" range="{{categoryLists}}">
+        <view class="picker">
+          <block wx:if="{{!categoryIndex}}">{{categoryLists[0]}}</block>
+          <block wx:else="{{categoryIndex}}">{{categoryLists[categoryIndex]}}</block>
+        </view>
+      </picker>
+      <image class="inputArrow" src="/assets/images/inputArrow.png" mode="" />
+    </view>
+
+    <view class="feedTit feedTit2" wx:if="{{isShowCategory}}"><text class="fRed">*</text>SN码</view>
+    <view class="feedSelect" wx:if="{{isShowCategory}}">
+      <input class="feedSnInput" placeholder="" name="snNo" />
+    </view>
+
+    <view class="feedTit"><text class="fRed">*</text>反馈内容</view>
+    <view>
+      <textarea class="feedContent" placeholder="" name="content" />
+    </view>
+
+    <view class="feedBtnWrap">
+      <button form-type="submit"   class="feedBtn">反馈</button>
+    </view>
+  </form>
+</view>

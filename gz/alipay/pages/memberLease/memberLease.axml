@@ -1,0 +1,226 @@
+<view class="container pageGreyBg memberLeaseWrap">
+
+    <tabs
+      class="leaseTabsWrap"
+      tabs="{{tabs}}"
+      onTabClick="handleTabClick"
+      onChange="handleTabChange"
+      activeTab="{{activeTab}}"
+    >
+      <block>
+        <tab-content key="1">
+          <view class="tab-content">
+
+            <!-- 暂无数据 -->
+            <view class="noData leaseNoData" a:if="{{isBatteryNoData}}">
+              <view class="noDataImg"><image src="/assets/images/noData.png" mode="" /></view>
+              <view class="noDataTitle">暂无数据!</view>
+            </view>
+
+            <!-- 有数据 -->
+            <view class="batteryScrollWrap" a:elif="{{ batteryLists.length != 0 }}">
+              <scroll-view class="scroll-view_H" scroll-y="{{true}}" style="height: {{winHeight}}rpx" onScrollToUpper="upper" onScrollToLower="lower">
+                <view class="ordNumberTit">订单总数{{batteryTotal}}条</view>
+                <view class="leaseListsContent">
+
+                  <view class="leaseListsbox bgfff" a:for="{{batteryLists}}">
+
+                    <!-- 租借中布局 -->
+                    <view a:if="{{item.status == 2}}">
+                      <navigator url="/pages/memberLeaseDetail/memberLeaseDetail?orderNo={{item.orderNo}}">
+                        <view class="leaType leaType-1">
+                          <view class="typeTit">租借中</view>
+                          <view class="money"></view>
+                        </view>
+                        <view class="leaItemWrap">
+                          <view class="leaItem">
+                            <view class="label">借出时间</view>
+                            <view class="labelText">
+                              <view class="labTextCt">{{item.borrowTimeStr}}</view>
+                            </view>
+                          </view>
+                          <view class="leaItem">
+                            <view class="label">借用地点</view>
+                            <view class="labelText">
+                              <view class="labTextCt">{{item.borrowProvinceName}}{{item.borrowCityName}}{{item.borrowDistrictName}}{{item.borrowAddr}}</view>
+                            </view>
+                          </view>
+                          <view class="leaItem">
+                            <view class="label">订 单 号</view>
+                            <view class="labelText">
+                              <view class="labTextCt">{{item.orderNo}}</view>
+                            </view>
+                          </view>
+                          <view class="leaItem">
+                            <view class="label">收费标准</view>
+                            <view class="labelText">
+                              <view class="labTextCt">{{item.chargingStandard}}</view>
+                            </view>
+                          </view>
+                        </view>
+                      </navigator>
+                    </view>
+
+                    <!-- 非租借中，(归还未支付，已购买，已完成) 布局-->
+                    <view a:if="{{item.status != 2}}">
+                      <navigator url="/pages/memberLeaseDetail/memberLeaseDetail?orderNo={{item.orderNo}}">
+                        <view class="leaType {{ item.status == 3 ? 'leaType-2': '' }}" a:if="{{item.status == 3}}">
+                          <view class="typeTit">归还未支付</view>
+                          <view class="money">{{item.realAmount}}元</view>
+                        </view>
+
+                        <view class="leaType {{ item.status == 5 ? 'leaType-3': '' }}" a:if="{{item.status == 5}}">
+                          <view class="typeTit">已购买</view>
+                          <view class="money">{{item.realAmount}}元</view>
+                        </view>
+
+                        <view class="leaType {{ item.status == 4 ? 'leaType-4': '' }}" a:if="{{item.status == 4}}">
+                          <view class="typeTit">已完成</view>
+                          <view class="money">{{item.realAmount}}元</view>
+                        </view>
+
+                        <view class="leaItemWrap">
+                          <view class="leaItem">
+                            <view class="label">借出时间</view>
+                            <view class="labelText">
+                              <view class="labTextCt">{{item.borrowTimeStr}}</view>
+                            </view>
+                          </view>
+                          <view class="leaItem" a:if="{{item.status != 5}}">
+                            <view class="label">借出时长</view>
+                            <view class="labelText">
+                              <view class="labTextCt">{{item.borrowHours}}分钟</view>
+                            </view>
+                          </view>
+                          <view class="leaItem" a:if="{{item.status == 5}}">
+                            <view class="label">购买时间</view>
+                            <view class="labelText">
+                              <view class="labTextCt">{{item.buyoutTimeStr}}</view>
+                            </view>
+                          </view>
+                          <view class="leaItem">
+                            <view class="label">借出方式</view>
+                            <view class="labelText">
+                              <view class="labTextCt">{{item.borrowWay}}</view>
+                            </view>
+                          </view>
+                          <view class="leaItem">
+                            <view class="label">借用地点</view>
+                            <view class="labelText">
+                              <view class="labTextCt">{{item.borrowProvinceName}}{{item.borrowCityName}}{{item.borrowDistrictName}}{{item.borrowAddr}}</view>
+                            </view>
+                          </view>
+                          <view class="leaItem">
+                            <view class="label">订 单 号</view>
+                            <view class="labelText">
+                              <view class="labTextCt">{{item.orderNo}}</view>
+                            </view>
+                          </view>
+                          <view class="leaItem">
+                            <view class="label">收费标准</view>
+                            <view class="labelText">
+                              <view class="labTextCt">{{item.chargingStandard}}</view>
+                            </view>
+                          </view>
+                        </view>
+                      </navigator>
+                    </view>
+
+                  </view>
+                  
+                </view>
+
+                <!-- 我是底线 -->
+                <view class="moreBaseline" a:if="{{ batteryBaseLine }}">- 我是底线 -</view>
+              </scroll-view>
+            </view> 
+
+          </view>
+        </tab-content>
+      </block>
+
+
+      <block>
+        <tab-content key="2">
+          <view class="tab-content">
+
+            <!-- 暂无数据 -->
+            <view class="noData leaseNoData" a:if="{{isLineNoData}}">
+              <view class="noDataImg"><image src="/assets/images/noData.png" mode="" /></view>
+              <view class="noDataTitle">暂无数据!</view>
+            </view>
+
+            <!-- 有数据 -->
+            <view class="batteryScrollWrap" a:elif="{{ lineLists.length != 0 }}">
+              <scroll-view class="scroll-view_H" scroll-y="{{true}}" style="height: {{winHeight}}rpx" onScrollToUpper="upper" onScrollToLower="lower" >
+                <view class="ordNumberTit">订单总数{{lineTotal}}条</view>
+                <view class="leaseListsContent">
+
+                  <view class="leaseListsbox bgfff" a:for="{{lineLists}}">
+                    
+                    <navigator url="/pages/memberLeaseDetail/memberLeaseDetail?orderNo={{item.orderNo}}">
+                      <view class="leaType {{ item.status == 2 ? 'leaType-1': '' }}" a:if="{{item.status == 2}}">
+                        <view class="typeTit">租借中</view>
+                        <view class="money">{{item.realAmount}}元</view>
+                      </view>
+
+                      <view class="leaType {{ item.status == 4 ? 'leaType-4': '' }}" a:if="{{item.status == 4}}">
+                        <view class="typeTit">已完成</view>
+                        <view class="money">{{item.realAmount}}元</view>
+                      </view>
+
+                      <view class="leaItemWrap">
+                        <view class="leaItem">
+                          <view class="label">借出时间</view>
+                          <view class="labelText">
+                            <view class="labTextCt">{{item.borrowTimeStr}}</view>
+                          </view>
+                        </view>
+                        <view class="leaItem">
+                          <view class="label">购买时长</view>
+                          <view class="labelText">
+                            <view class="labTextCt">{{item.borrowHours}}小时</view>
+                          </view>
+                        </view>
+                        <view class="leaItem">
+                          <view class="label">支付方式</view>
+                          <view class="labelText">
+                            <view class="labTextCt">{{item.payType}}</view>
+                          </view>
+                        </view>
+                        <view class="leaItem">
+                          <view class="label">借用地点</view>
+                          <view class="labelText">
+                            <view class="labTextCt">{{item.borrowProvinceName}}{{item.borrowCityName}}{{item.borrowDistrictName}}{{item.borrowAddr}}</view>
+                          </view>
+                        </view>
+                        <view class="leaItem">
+                          <view class="label">订 单 号</view>
+                          <view class="labelText">
+                            <view class="labTextCt">{{item.orderNo}}</view>
+                          </view>
+                        </view>
+                        <view class="leaItem">
+                          <view class="label">收费标准</view>
+                          <view class="labelText">
+                            <view class="labTextCt">{{item.chargingStandard}}</view>
+                          </view>
+                        </view>
+                      </view>
+                    </navigator>
+                  </view>
+
+                  
+                </view>
+
+                <!-- 我是底线 -->
+                <view class="moreBaseline" a:if="{{ lineBaseLine }}">- 我是底线 -</view>
+              </scroll-view>
+            </view> 
+            
+          </view>
+        </tab-content>
+      </block>
+
+    </tabs>
+</view>

@@ -1,0 +1,146 @@
+
+.orderDetailPage{
+  overflow: hidden;
+  
+  margin: 20rpx;
+  box-shadow:0px 5px 10px 0px rgba(214,214,214,0.5);
+}
+.orderDetailPage .oTitle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 66rpx;
+  overflow: hidden;
+  margin: 20rpx 20rpx 0;
+}
+.oTitle .oNo{
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.orderNumber{
+  font-size: 24rpx;
+}
+.oTitle .oStatus{
+  padding: 0 10rpx;
+  text-align: center ;
+  height: 46rpx;
+  line-height: 46rpx;
+  border-radius: 6rpx;
+}
+.oTitle .oStatus view{
+  line-height: 46rpx;
+  display: inline-block;
+}
+/* 租借中： */
+.oTitle-2 .oStatus{
+  color: #3699F1;
+  background-color: #EBF5FE;
+}
+/* 归还还未支付 */
+.oTitle-3 .oStatus{
+  color: #F54937;
+  background-color: #FEEBEB;
+}
+/* 已购买 */
+.oTitle-5 .oStatus{
+  color: #74C47A;
+  background-color: #ECF7ED;
+}
+/* 已完成 */
+.oTitle-4 .oStatus{
+  color: #333;
+  background-color: #eee;
+}
+/* 租借失败 */
+.oTitle-6 .oStatus{
+   color: #EF6920;
+  background-color:  #FFF3E3;
+}
+.oItemLists{
+  margin: 0 20rpx;
+}
+.oItemLists .oItem{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+.oItemLists .label{
+  width:30%;
+  color: #a0a0a0;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+.oItemLists .labelText{
+  display: flex;
+  flex-direction:row-reverse;
+  flex: 1;
+  color: #666;
+  line-height: 40rpx;
+}
+.oItemLists .labelText .labTextCt{
+  width:70%;
+  text-align: right;
+}
+.feadBackPre{
+  margin: 20rpx 0;
+  text-align: center;
+  font-size: 24rpx;
+}
+.feadBackPre .link{
+  display: inline-block;
+  color: #FF9501
+}
+
+/*common*/
+.oInfoLine{
+  height: 76rpx;
+  position: relative;
+  overflow: hidden;
+  margin: 0 20rpx;
+}
+.oInfoLine .line{
+  position: absolute;
+  top:38rpx;
+  left:0;
+  content: '';
+  display: block;
+  width:100%;
+  height: 1px;
+  border-bottom: 1rpx dashed #999;
+}
+.oInfoLine .title{
+  position: absolute;
+  top:10rpx;
+  left:50%;
+  margin-left: -80rpx;
+  width:160rpx;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  color: #999;
+  background-color: #fff;
+  z-index: 22;
+  text-align: center
+}
+.oInfoLine.oInfoLineCircle{
+  margin: 0;
+}
+.oInfoLine.oInfoLineCircle::before,.oInfoLine.oInfoLineCircle::after{
+  position: absolute;
+  top:15rpx;
+  content: '';
+  display: block;
+  width:46rpx;
+  height: 46rpx;
+  border-radius: 50%;
+  background-color: #f0f2f5;
+  z-index: 10;
+  box-shadow: inset 2px 2px 5px rgba(214,214,214,0.5);
+}
+.oInfoLine.oInfoLineCircle::before{
+  left:-23rpx;
+}
+.oInfoLine.oInfoLineCircle::after{
+  right:-23rpx;
+}
+.oStatus_2{}
+

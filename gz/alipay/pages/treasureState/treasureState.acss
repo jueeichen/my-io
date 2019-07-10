@@ -1,0 +1,153 @@
+.treasureState{
+  overflow: hidden
+}
+/*loading*/
+.treasureState.loading{
+  margin-top: 30%;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+.treaLoadImg{
+  width:565rpx;
+  height: 503rpx;
+}
+.treaLoadImg image{
+  width: 100%;
+  height: 100%;
+}
+.treaLoadImgWrap{
+  color: #fff;
+  position: relative
+}
+.treaLoadImgWrap .tit{
+  width:565rpx;
+  font-size: 28rpx;
+  position: absolute;
+  top:131rpx;
+  left:50%;
+  margin-left: -282rpx;
+}
+.treaLoadImgWrap .loadingNumber{
+  width:565rpx;
+  font-size: 65rpx;
+  font-weight: 400;
+  position: absolute;
+  top:216rpx;
+  left:50%;
+  margin-left: -282rpx;
+}
+.noScanText{
+  margin-top: -52px;
+  font-size: 30rpx;
+  color: #999;
+  text-align: center;
+  line-height: 40rpx
+}
+
+/*success*/
+.treaSuccessImgWrap{
+  margin: 80rpx auto 0;
+  width:565rpx;
+  height: 523rpx;
+  justify-content: center
+}
+.treaSuccessImg{
+  width:100%;
+  height: 100%;
+}
+.treaSuccessImg image{
+  width:100%;
+  height: 100%;
+}
+.treasureState .sucTit{
+  margin-top: -86rpx;
+  font-size: 38rpx;
+  color: #44A8F3;
+  line-height: 40rpx
+}
+.treasureState .sucDes{
+  margin-top: 10px;
+  font-size: 30rpx;
+  color: #999;
+  text-align: center;
+  line-height: 40rpx
+}
+.SucContent{
+  margin: 88rpx 40rpx 0 40rpx;
+}
+.SucContent .successUlTitle{
+  font-size:30rpx;
+  font-weight:bold;
+}
+.SucContent .successUlText{
+  margin-top: 20rpx;
+}
+.successUlText view{
+  position: relative;
+  padding-left: 26rpx;
+  color: #999;
+  font-size: 24rpx;
+  line-height: 44rpx;
+}
+.sRed{
+  color: #DF2815
+}
+.successUlText view::after{
+  position: absolute;
+  top:14rpx;
+  left:0;
+  width:10rpx;
+  height: 10rpx;
+  display: block;
+  content: '';
+  background-color: #2EADF0;
+  border-radius: 50%;
+}
+.SucContent .successBtnGroup{
+  display: flex;
+  height: 108rpx;
+  justify-content: center;
+  margin-top: 50rpx;
+}
+.successBtnGroup button{
+  width:228rpx;
+  height:78rpx;
+  line-height: 78rpx;
+  font-size: 34rpx;
+  color: #fff;
+  box-shadow:0px 5px 10px 0px rgba(54,153,241,0.5);
+  border-radius:10rpx;
+}
+.successBtnGroup .helpBtn{
+  margin-right: 80rpx;
+}
+
+/*fail*/
+.treaFailImgWrap{
+  margin-top: 220rpx;
+  width:501rpx;
+  height: 508rpx;
+}
+.treaFailImg,.treaFailImg image{
+  width:100%;
+  height: 100%;
+}
+.SucContent.failContent{
+  margin-top: 196rpx;
+}
+.sucTit.failTit{
+  color: #F54937
+}
+
+.progressWrap{
+  width:80%;
+  margin: 80rpx auto 0;
+}
+
+
+
+
+
+
+

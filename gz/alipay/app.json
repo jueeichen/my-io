@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/list/list",
+    "pages/index/index",
+    "pages/payDeposit/payDeposit",
+    "pages/member/member",
+    "pages/noRent/noRent",
+    "pages/noScan/noScan",
+    "pages/treasureState/treasureState",
+    "pages/memberAccountLists/memberAccountLists",
+    "pages/memberDepositRefund/memberDepositRefund",
+    "pages/memberDepositLists/memberDepositLists",
+    "pages/memberLease/memberLease",
+    "pages/memberHelp/memberHelp",
+    "pages/memberFeedback/memberFeedback",
+    "pages/memberAboutUs/memberAboutUs",
+    "pages/memberLeaseDetail/memberLeaseDetail",
+    "pages/mapSearch/mapSearch",
+    "pages/modifyLocation/modifyLocation",
+    "pages/rentChargingline/rentChargingline",
+    "pages/rentCharginglinePassword/rentCharginglinePassword",
+    "pages/rentChargingLineNotactive/rentChargingLineNotactive",
+    "pages/agreements/agreements",
+    "pages/memberNoticeContent/memberNoticeContent",
+    "pages/paymentOrder/paymentOrder",
+    "pages/usingPowerBank/usingPowerBank",
+    "pages/nearbyStore/nearbyStore",
+    "pages/memberMessage/memberMessage"
+  ],
+  "window": {
+    "defaultTitle": "特耐王",
+    "titleBarColor": "#2eadf0",
+    "enableInPageRender": "YES"
+  }
+}

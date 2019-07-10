@@ -1,0 +1,4 @@
+<form bindsubmit="getFormId"  onReset="" report-submit="true">
+      <button form-type="submit" class="touming" id="rentId" >
+      </button>
+</form>

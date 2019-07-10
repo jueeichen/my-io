@@ -1,0 +1,26 @@
+<view class="container pageGreyBg noticeListsWrap ">
+  <!-- 暂无数据 -->
+  <view class="noData" a:if="{{isNoData}}">
+    <view class="noDataImg"><image src="/assets/images/noData.png" mode="" /></view>
+    <view class="noDataTitle">暂无消息!</view>
+  </view>
+
+  <!-- 有数据 -->
+  <view class="helpScrollWrap" a:elif="{{ messageLists.length != 0 }}">
+      <view class="totalNum">共计：<text class="number">{{messageTotal}}条</text></view>
+
+      <view class="ntContentBox" a:for="{{messageLists}}">
+        <view class="ntTime">{{item.createBy}}</view>
+        <view class="ntContent bgfff">
+          <view class="title">{{item.title}}</view>
+          <view class="content">
+            {{item.content}}
+          </view>
+        </view>
+      </view>
+
+      <!-- 我是底线 -->
+      <view class="moreBaseline" a:if="{{ messageBaseLine }}">- 我是底线 -</view>
+    
+  </view>
+</view>

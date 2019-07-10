@@ -1,0 +1,84 @@
+<view class="container memberContainer">
+
+  <!-- top -->
+  <view class="memberHeadTop">
+    <view class="memberHead">
+      <image src='/assets/images/memberHeadbg.png' class='memberHead_bg'></image>
+      <view class="memTop">
+        <view class="information">
+          <!-- <view class="avatar"><image src="{{userInfo.avatar}}" mode="" /></view> -->
+          <view class="avatar">
+            <image src="{{userInfo.avatar}}" mode="" />
+          </view>
+          <view class="infText">
+            <!-- <view class="userName">{{userInfo.nickName}}</view> -->
+            <!-- <text class="userId">ID:{{userId}}</text> -->
+            <view class="userName">{{userInfo.nickName}}</view>
+            <text class="userId">ID:{{userId}}</text>
+          </view>
+        </view>
+        <view class="mesageBox">
+          <navigator class="mesLink" open-type="navigate" url="/pages/memberMessage/memberMessage">
+            <image class="mesIco" src="/assets/images/mesIco.png" mode="" />
+          </navigator>
+          <view class="{{isNews}}"></view>
+        </view>
+      </view>
+
+      <!-- 账户金额 -->
+      <view class="moneyDepositWrap">
+        <image class='moneyDepositWrap_bg' src='/assets/images/batterybg.png'></image>
+        <navigator open-type="navigate" url="/pages/transactionDetails/transactionDetails" class="moneyText">账户余额(元)
+          <text class="money">{{balanceMoney}}</text>
+        </navigator>
+        <view class="moneyDivid">
+          <image src="/assets/images/lightning.png" mode="" />
+        </view>
+        <navigator open-type="navigate" url="/pages/depositDetails/depositDetails" class="depositText">押金(元)
+          <text class="deposit">{{depositMoney}}</text>
+        </navigator>
+        <view class="returnDepositMoney" bindtap="showPopBtn">
+          <image class="returnDepositMoneyImg" src="/assets/images/returnDepositMoneyImg.png" mode="" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 列表 -->
+  <view class="memList">
+
+    <view class="memlist_ul">
+
+      <view class="memlist_li" wx:for="{{items2}}" wx:key="{{index}}" >
+        <navigator open-type="navigate" url="{{item.url}}">
+          <view class='memlist_padding'>
+            <image class="memlist_li_main" src="{{item.thumb}}" />
+            <view class="memlist_li_content">{{item.title}}
+             <image class="memlist_li_right" src="/assets/images/arrow_right.png" />
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+<!-- 弹窗 -->
+<view class="pop_windows" wx:if="{{isPopShow}}">
+<!-- 遮罩层 -->
+<view class='pop_mark'></view>
+<!-- 内容 -->
+<view class="pop_content">
+ <image src="/assets/images/payWithdrawalIco.png"  />
+   <text wx:if="{{!haveNoPayOrder&&isDeposit}}">请您确认是否要退押金？</text>
+   <text wx:elif="{{haveNoPayOrder&&isDeposit}}">您有未支付订单，\n将扣除订单费用，退还剩余押金。</text>
+   <text wx:else="{{!isDeposit}}">未交押金</text>
+   <view class='pop_btn'>
+   <view class='pop_btn_right' bindtap='returnDeposit'>确认</view>
+   <view class='pop_btn_no' bindtap='showPopBtn'>取消</view>
+   </view>
+</view>
+</view>
+
+
+
+</view>

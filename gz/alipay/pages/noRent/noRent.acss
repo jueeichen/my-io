@@ -1,0 +1,26 @@
+.noRentImg{
+  width:519rpx;
+  height: 313rpx;
+}
+.noRentImg image{
+  width: 100%;
+  height: 100%;
+}
+.noRentText{
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+  line-height: 40rpx
+}
+.noRentBtnWrap{
+  margin-top: 150rpx;
+  width:228rpx;
+  border-radius:10px;
+}
+.noRentBtnWrap .noRentBtn{
+  color: #fff;
+  font-size:34rpx;
+  font-weight:400;
+  box-shadow:0px 5px 10px 0px rgba(54,153,241,0.5);
+}

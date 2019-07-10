@@ -1,0 +1,96 @@
+.totalNum{
+  padding: 0 30rpx;
+  text-align: right;
+  font-size: 24rpx;
+  line-height: 46rpx;
+}
+.totalNum .number{
+  color: #3699F1
+}
+
+
+.am-tabs-content-wrap{
+  background-color: transparent
+}
+.ntContentBox{
+  margin-top: 40rpx;
+}
+.ntContentBox .ntTime{
+  text-align: center;
+  font-size: 26rpx;
+  color: #666;
+}
+.ntContent{
+  margin-top: 26rpx;
+  color: #666;
+}
+.ntContent .title{
+  height: 66rpx;
+  line-height: 66rpx;
+  overflow: hidden;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  border-bottom: 1px solid #F7F6FA;
+}
+.ntContent .content{
+  padding:20rpx;
+  font-size: 26rpx;
+  line-height: 38rpx;
+}
+
+.nomegBox{
+  margin-top: 20rpx; 
+}
+.nomegBox .systemTitle{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 60rpx 0 20rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  border: 1px solid #F7F6FA;
+  color: #666;
+  position: relative;
+}
+.systemTitle .title{
+  font-size: 28rpx;
+  font-weight: 600;
+  flex: 1;
+}
+.systemTitle  .time{
+  font-size: 24rpx
+}
+.systemTitle .inputArrow{
+  position: absolute;
+  top:23rpx;
+  right: 20rpx;
+  width:24rpx;
+  height: 12rpx;
+  transform: rotate(-90deg)
+}
+.systemContent{
+  padding:28rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.systemContent .sysImg{
+  width:208rpx;
+  height: 136rpx;
+  margin-right: 30rpx;
+}
+.systemContent .sysImg image{
+  width: 100%;
+  height: 100%;
+  border-radius: 5rpx;
+}
+.systemContent .sysDes{
+  flex: 1;
+  line-height: 40rpx;
+  max-height: 126rpx;
+  overflow: hidden;
+  font-size: 26rpx;
+}
+
+
+
+
+

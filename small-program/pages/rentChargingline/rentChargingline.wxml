@@ -1,0 +1,36 @@
+<view class="container pageGreyBg rentLineContainer">
+<image class='rentChargingline_bg' src='/assets/images/rentChargelineBg.png'></image>
+  <view class="rentLineWrap">
+    <view class="rentLineHead">
+      <view class="lineHTop">
+        <view class="sn">{{snNo}}</view>
+        <!-- <view class="sn">SN198722324</view> -->
+
+        <view class="records" bindtap="toRentRecord">使用记录 <image src="/assets/images/rentLineArror.png"  /></view>
+      </view>
+      <view class="lineHDes">
+       请确认线充已插电，且指示灯亮起，选择充电套餐支付成功后，点击完成获取密码，在设备上输入密码即可充电。 </view>
+    </view>
+
+    <form class="rentlineBoxLists" bindsubmit="jumpLinePwd" bindreset="" report-submit="true">
+      <view class="rentListBox" wx:for="{{rentLists}}" data-key="{{index}}" wx:key="{{index}}">
+      <view class="rentListBox_li">
+        
+        <view class="chargeTime">充电{{item.rentHours}}小时</view>
+          <view class="chargeMoney"><text class="money">{{item.amount}}</text>元</view>
+          <image src="/assets/images/rentlineBoxBg.png"></image>
+        <button form-type="submit" class="boxLink" data-type="{{item.id}}" ></button>
+      </view>
+      
+      </view>
+    </form>
+
+    <view class="rentlineAgreement">
+      点击租借即同意
+      <navigator url="/pages/agreements/agreements" class="agreementLink">《用户协议》</navigator>
+      </view>
+ 
+
+    <!-- <view>{{'djsTime'}}</view> -->
+  </view>
+</view>

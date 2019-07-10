@@ -1,0 +1,19 @@
+<view>
+   <view class="about_top">
+      <image src="{{appLogo}}"></image>
+   </view>
+   <view>
+      <view class='about_item'>
+           <view class='about_title'>微信公众号</view>
+           <view class='about_text'>{{wxAccountName}}</view>     
+      </view>
+      <view class='about_item'>
+           <view class='about_title'>客服电话</view>
+           <view class='about_text'>{{servicePhone}}</view>     
+      </view>
+        <view class='about_item'>
+           <view class='about_title'>公司官网</view>
+           <view class='about_text'>{{websiteUrl}}</view>     
+      </view>
+   </view>
+</view>

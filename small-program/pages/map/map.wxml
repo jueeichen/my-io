@@ -1,0 +1,56 @@
+<view class="container mapSearch">
+  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" markers="{{markers}}" bindmarkertap="markertap" bindtap="onMapTap" bindregionchange="onRegionchange" show-location></map>
+
+
+  <view class='headTop'>
+    <view class='hCenterLeft'>
+      <view class='hCenterBtn' bindtap='enterMember'>
+        <image class='hCenterImg' src="{{userInfo.avatarUrl}}"></image>
+        <image class='hCenterImg loukong' src="/assets/images/loukong.png"></image>
+      </view>
+      <image class='hCenterSlogn' src="/assets/images/hCenterSlogn.png"></image>
+    </view>
+    <image class="hShopBtn" src="/assets/images/hShopBtn.png" bindtap="enterNearbyStores"></image>
+  </view>
+
+  <cover-image class='markerIco' src="/assets/images/marker.png"></cover-image>
+  <!-- 活动图 -->
+  <cover-image class='mapadWrap' wx:if="{{isShowActive}}" src="/assets/images/mapad01.png"></cover-image>
+  <cover-image class='map_mark' wx:if="{{isShowUseIng}}" style="{{styleString}}" bindtap="toMemberLease" src="../../assets/images/map_mark.png" > </cover-image>
+    <cover-image class='map_mark' wx:if="{{isShowUseIng1}}" style="{{styleString}}" bindtap="toPayOrder" src="../../assets/images/map_mark2.png" >
+  </cover-image>
+  <cover-image class='searchLoationIco' src="/assets/images/searchLoationIco.png" bindtap="enterSearchCoverView"></cover-image>
+  <cover-image class='moveTolocationIco' src="/assets/images/moveTolocationIco.png" bindtap="enterCurrentLocation"></cover-image>
+  <cover-image class='mapQuestionsIco' src="/assets/images/mapQuestionsIco.png" bindtap="enterQuestions"></cover-image>
+
+
+
+  <cover-view class='sweepcodeBtn' bindtap="scanCode">
+    <cover-image src='../../assets/images/map_search_btn.png'></cover-image>
+  </cover-view>
+  <!-- <cover-view class='sweepcodeBtn usingStatus' wx:if="{{usingStatus === 1}}" bindtap="toOrderDetail">租借中</cover-view>
+  <cover-view class='sweepcodeBtn usingStatus' wx:if="{{usingStatus === 2}}" bindtap="toPaymentOrder">待支付</cover-view> -->
+
+
+  <!-- 浮层 目标点 -->
+  <cover-view class="targetPop" hidden="{{!targetChargingStatus}}">
+    <cover-image class='shopImg' src="{{shopDetails.shopLogo?shopDetails.shopLogo:'../../assets/images/shopimg_default.png'}}" binderror="onImageErr"></cover-image>
+    <cover-view class="shopPopContent">
+      <cover-view class="titP">
+        <cover-view class="title">{{shopDetails.title}}</cover-view>
+        <cover-view class="distanceMi">{{shopDetails.distance}}m</cover-view>
+        <cover-image class="navigation_img" bindtap="enterPlace" src="../../assets/images/navigation_img.png"></cover-image>
+      </cover-view>
+      <cover-view class="titP">{{shopDetails.detailAddr}}</cover-view>
+      <cover-view class="titP">营业时间：{{shopDetails.businessHours}}</cover-view>
+    </cover-view>
+    <cover-view class="oTher">
+      <cover-view class="oTherSapn borrowNum  {{!shopDetails.canBorrowNum  ? 'Unavailable' : 'available'}}">可借{{shopDetails.canBorrowNum?shopDetails.canBorrowNum:'0'}}</cover-view>
+      <cover-view class="oTherSapn stillNum {{!shopDetails.canBackNum  ? 'Unavailable' : 'available'}}">可还{{shopDetails.canBackNum?shopDetails.canBackNum:'0'}}</cover-view>
+       <cover-view class="redNotice">
+              {{(shopDetails.canBorrowNum || shopDetails.canBackNum) ? (!shopDetails.canBorrowNum ? '无可租借充电宝，请选择其他门店' : (!shopDetails.canBackNum ? '无可归还充电宝，请选择其他门店' : '')) : '设备无法提供租借，请选择其他门店'}}
+            </cover-view>
+    </cover-view>
+  </cover-view>
+
+</view>

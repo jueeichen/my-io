@@ -1,0 +1,221 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.1",
+	"appid": "wx46172dacb2f031ff",
+	"projectname": "super-progresstest",
+	"cloudfunctionTemplateRoot": "",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 24,
+			"list": [
+				{
+					"id": 0,
+					"name": "查找地图",
+					"pathName": "pages/mapSearch/mapSearch",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "memberMessage",
+					"pathName": "pages/memberMessage/memberMessage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "宝充状态",
+					"pathName": "pages/treasureState/treasureState",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "正在使用充电宝",
+					"pathName": "pages/usingPowerBank/usingPowerBank",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "付押金",
+					"pathName": "pages/payDeposit/payDeposit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "会员中心",
+					"pathName": "pages/member/member",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "押金明细",
+					"pathName": "pages/depositDetails/depositDetails",
+					"query": "snNo=GJ258800000001",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": 1011
+				},
+				{
+					"id": 8,
+					"name": "nearbyStores",
+					"pathName": "pages/nearbyStores/nearbyStores",
+					"query": "snNo=XC625500000009",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": 1011
+				},
+				{
+					"id": -1,
+					"name": "关于我们",
+					"pathName": "pages/memberAboutUs/memberAboutUs",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "线充",
+					"pathName": "pages/rentChargingline/rentChargingline",
+					"query": "type=2&snNo=XC625500000013",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "租借记录",
+					"pathName": "pages/rentalRecords/rentalRecords",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息中心",
+					"pathName": "pages/memberMessage/memberMessage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线充密码",
+					"pathName": "pages/providePassWord/providePassWord",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "线充",
+					"pathName": "pages/rentChargingline/rentChargingline",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "弹宝失败",
+					"pathName": "pages/treasureState/treasureState",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 18,
+					"name": "订单明细",
+					"pathName": "pages/paymentOrder/paymentOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 19,
+					"name": "测试",
+					"pathName": "pages/agreements/agreements",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "租界中",
+					"pathName": "pages/usingPowerBank/usingPowerBank",
+					"query": "type=2&snNo=XC625500000009",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "归还",
+					"pathName": "pages/paymentOrder/paymentOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 22,
+					"name": "押金租借",
+					"pathName": "pages/payDeposit/payDeposit",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 23,
+					"name": "用户协议",
+					"pathName": "pages/noRent/noRent",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "用户协议",
+					"pathName": "pages/ttest/ttest",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

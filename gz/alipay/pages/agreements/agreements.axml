@@ -1,0 +1,6 @@
+
+
+<view class="container argumentWrap">
+  <import src="/assets/wxParse/wxParse.axml"/>
+  <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>

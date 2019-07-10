@@ -1,0 +1,41 @@
+<view class='transactionDetails'>
+<!-- 暂无数据 -->   
+<view class="noData" wx:if="{{isNoData1}}">
+   <view class="noDataImg">
+      <image src="/assets/images/noData.png" mode="" />
+   </view>
+   <view class="noDataTitle">暂无明细!                                                
+   </view>
+</view> 
+<!-- 有数据 -->
+<view  wx:if="{{isNoData2}}">
+  <view class='totle-number'>
+    共计：
+    <text>{{totalElements}}条</text>
+  </view>
+  <view class='content-container'>
+    <scroll-view
+      scroll-y
+      style="height: {{scrollViewHeight}}px;"
+      bindscrolltolower="scrollToBottom"
+    >
+      <view class='content-item' wx:for="{{orderList}}">
+        <view class='top'>
+          <view class='left'>订单号：{{item.orderNumber}}</view>
+          <view class='right'>{{item.detailNumber}}</view>
+        </view>
+        <view class='text'>
+          <view class='text-item'>
+            <view class='left'>余额充值：</view>
+            <view class='right'>{{item.payType}}</view>
+          </view>
+          <view class='text-item'>
+            <view class='left'>充值时间：</view>
+            <view class='right'>{{item.payTime}}</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+</view>

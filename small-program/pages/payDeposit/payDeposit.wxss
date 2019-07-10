@@ -1,0 +1,133 @@
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+
+.depositHead{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  width:746rpx;
+  height: 382rpx;
+  color: #fff;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+}
+
+
+.container .content-top {
+  width: 100%;
+  height: 382rpx;
+}
+.container .content-top .top-image {
+  width: 100%;
+  height: 100%;
+}
+.depositTit{
+  width:310rpx;
+  line-height: 45rpx;
+  font-size: 30rpx;
+  margin-left: 78rpx;
+  position: relative;
+  top: -10px;
+}
+
+.depositMoney{
+  font-weight: bold;
+  margin-right: 80rpx;
+  position: relative;
+  top: -12px;
+}
+.depositMoney .dollar{
+  font-size: 30rpx;
+  font-family: "Microsoft Yahei"
+}
+.depositMoney .money{
+  font-size: 78rpx;
+}
+.returnWrap{
+  margin: 82rpx 48rpx 0 48rpx;
+}
+.returnWrap .returnBox{
+  display: flex;
+  margin-bottom: 45rpx;
+}
+.returnBox .retico{
+  width:40rpx;
+  height: 40rpx;
+}
+.retico image{
+  width:40rpx;
+  height: 100%;
+}
+.returnBox .retmain{
+  margin-left: 22rpx;
+}
+.retmain .title{
+  line-height:40rpx;
+  font-size:30rpx;
+  font-weight:bold;
+  color: #333;
+}
+.retmain .des{
+  margin-top: 20rpx;
+  line-height: 48rpx;
+  position: relative
+}
+.retmain .desLine{
+  padding-bottom: 44rpx;
+}
+.retmain .desLine::after{
+  position: absolute;
+  bottom: 0;
+  left:0;
+  content:'';
+  display: block;
+  width:596rpx;
+  height: 1px;
+  background-color: #eee
+}
+.despre{
+  font-size:24rpx;
+  color: #999;
+  display: block
+}
+.retCheck checkbox::after{
+  position: absolute;
+  left:0;
+  top:0
+}
+.payBtnWrap{
+  width:710rpx;
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%)
+}
+.payBtnWrap button{
+  text-align: center;
+  width:100%;
+  color:white;
+  height: 98rpx;
+  letter-spacing:20rpx;
+  border-radius: 10rpx;
+  padding-left:53rpx;
+  background:linear-gradient(0deg,rgba(255,113,35,1) 0%,rgba(255,199,32,1) 100%);
+}
+.agrument{
+  text-align: center;
+  color:#9a9a9a;
+  font-size: 24rpx;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%)
+}
+.agrument .argumentLink{
+  display: inline-block;
+  color: #31a5f1;
+}

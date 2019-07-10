@@ -1,0 +1,50 @@
+<view class="container">
+  <!-- head -->
+  <view class="depositHead">
+    <view class="depositTit">
+      <text class="depTit1">您未达到免押租借要求</text>
+      <text class="depTit2">请先充值押金</text>
+    </view>
+    <view class="depositMoney">
+      <text class="dollar">￥</text>
+      <text class="money">{{rentalDeposit}}</text>
+    </view>
+  </view>
+
+  <!-- main -->
+  <view class="returnWrap">
+
+    <view class="returnBox">
+      <view class="retico"><image src="/assets/images/depositlc.png" mode="" /></view>
+      <view class="retmain">
+          <view class="title">押金退还流程</view>
+          <view class="des desLine">
+            <text class="despre">订单完成后，可在“个人中心--我的钱包”，申请提现。</text>
+            <text class="despre">押金原路返还，预计0-3个工作日到账。</text>
+          </view>
+      </view>
+    </view>
+    
+    <view class="returnBox">
+      <view class="retico"><image src="/assets/images/deposityj.png" mode="" /></view>
+      <view class="retmain">
+          <view class="title">押金自动退还</view>
+          <view class="des">
+            <text class="despre">充电宝归还并支付完成后，押金将自动原路返还。</text>
+          </view>
+      </view>
+      <view class="retCheck">
+        <checkbox value="{{checkVal}}" checked="{{checkVal}}" onChange="changeEvent" />
+      </view>
+    </view>
+  </view>
+
+  <!-- btn -->
+  <form onSubmit="payBtnEvent" onReset="" report-submit="true">
+    <view class="payBtnWrap">
+      <button formType="submit" onTap="payBtnEvent">支付</button>
+    </view>
+  </form>
+  <view class="agrument">点击支付即同意<navigator url="/pages/payDeposit/payDeposit" redirect class="argumentLink">《用户协议》</navigator></view>
+
+</view>

@@ -18,8 +18,12 @@ export default function ajax(url, data = {}, type = 'GET') {
       promise = axios.post(url, data)
     }
     promise.then(response => {
+      // eslint-disable-next-line no-console
+      console.log(response)
       resolve(response.data)
     }).catch((err) => {
+      // eslint-disable-next-line no-console
+      console.log(err)
       reject(err)
     })
 

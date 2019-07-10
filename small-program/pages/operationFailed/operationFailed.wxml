@@ -1,0 +1,6 @@
+<view class="container">
+<image  src="/assets/images/failed.png"></image>
+<text>{{content}}</text>
+<!-- <text>请稍后重试</text> -->
+<button bindtap='turnBack'>返回</button>
+</view>

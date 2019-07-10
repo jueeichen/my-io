@@ -1,0 +1,298 @@
+.paymentOrder {
+  background-color: #F0F2F5;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  display:flex;
+  flex-direction:column;
+  /* align-items:center;
+  justify-content: center; */
+}
+
+.paymentOrder .container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.paymentOrder .background {
+  width: 100%;
+  height: 400rpx;
+  z-index: -1;
+}
+
+.paymentOrder .top {
+  text-align: center;
+  z-index: 9;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 450rpx;
+}
+
+.paymentOrder .top .content {
+  color: #fff;
+  width: 50%;
+  height: 100px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.paymentOrder .top .content image {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 2px;
+  left: 20px;
+}
+
+.paymentOrder .top .content view {
+  width: 100%;
+  height: 30px;
+}
+
+.paymentOrder .top .content .title {
+  font-size: 45rpx;
+  margin-bottom: 20rpx;
+  margin-left: 5px;
+}
+
+.paymentOrder .top .content .text {
+  font-size: 24rpx;
+  margin-bottom: 30rpx;
+}
+
+.paymentOrder .top .content .text2 {
+  font-size: 80rpx;
+}
+
+.paymentOrder .top .content .text2 text {
+  font-size: 32rpx;
+}
+
+
+.paymentOrder .top .btn {
+  color: #FF7123;
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%)
+}
+
+.paymentOrder .top .btn .flex-item {
+  width: 248rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #fff;
+  border-radius: 40rpx;
+  margin: 0 20px;
+  box-shadow: 0px 0px 19px 1px rgba(174,182,215,0.49);
+}
+
+
+.paymentOrder .top .bottom-text {
+  color: #F54937;
+  font-size: 24rpx;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space:nowrap;
+}
+
+
+.paymentOrder .bottom {
+  width: 100%;
+  height: 680rpx;
+  padding: 20px;
+  margin-top: 240px;
+  box-sizing: border-box;
+  background-color: #F0F2F5;
+}
+
+
+.paymentOrder .bottom .content {
+  width: 100%;
+  height: 110%;
+  color: #AEB6D7;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0px 0px 10rpx 1rpx rgba(174,182,215,0.5);
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+
+.paymentOrder .bottom .content .content-top {
+  color: #333333;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.paymentOrder .bottom .content .center-line {
+  width:100%;
+  height:0;
+  border-top:1px dashed rgba(184,184,184,0.3);
+  margin-top: 10px;
+  position: relative
+}
+ .center-line::after,.center-line::before{
+     position: absolute;
+  top:15rpx;
+  content: '';
+  display: block;
+  width:46rpx;
+  height: 46rpx;
+  border-radius: 50%;
+  background-color:#F0F2F5;
+  z-index: 10;
+ }
+ .center-line::before{
+  left:-40rpx;
+  top:-25rpx;
+  box-shadow:inset 0rpx 0rpx 0rpx rgba(174,182,215,0.49);
+
+}
+.center-line::after{
+  right:-40rpx;
+  top:-25rpx;
+  box-shadow:inset 0rpx 0rpx 0rpx rgba(174,182,215,0.49);
+
+}
+/* .paymentOrder .bottom .content .left-circle {
+  background-color: #F0F2F5;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  position: absolute;
+  top: 30px;
+  left: -13px;
+}
+
+.paymentOrder .bottom .content .right-circle {
+  background-color: #F0F2F5;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  position: absolute;
+  top: 30px;
+  right: -13px;
+} */
+
+
+.paymentOrder .bottom .content .content-bottom {
+  margin-top: 20px;
+  width: 100%;
+  height: 30px;
+}
+
+
+.paymentOrder .bottom .content .content-bottom  .bottom-item {
+  width: 100%;
+  height: 100%;
+  line-height: 30px;
+  color: #999999;
+  font-size: 28rpx;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.paymentOrder .bottom .content .content-bottom  .bottom-item .left  {
+  width: 50%;
+  float: left;
+}
+
+.paymentOrder .bottom .content .content-bottom  .bottom-item .right {
+  text-align: right;
+}
+
+
+
+.paymentOrder .withdraw-model {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background:rgba(0,0,0,0.6);
+  z-index: 10;
+}
+
+.paymentOrder .withdraw-model .content-box {
+  width: 540rpx;
+  height: 500rpx;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.paymentOrder .withdraw-model image {
+  width: 230rpx;
+  height: 230rpx;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
+}
+
+.paymentOrder .withdraw-model .box {
+  width: 100%;
+  height: 380rpx;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  border-radius: 10rpx;
+  box-shadow: 0px 0px 19px 1px rgba(174,182,215,0.49);
+}
+
+
+.paymentOrder .withdraw-model .box .text {
+  font-size: 26rpx;
+  color: #666666;
+  width: 100%;
+  height: 30px;
+  padding: 0 30px;
+  text-align: center;
+  box-sizing: border-box;
+  position: absolute;
+  bottom:50%;
+}
+
+.paymentOrder .withdraw-model .box .text view {
+  margin-bottom: 10px;
+}
+
+
+.paymentOrder .withdraw-model .box .btn {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+
+}
+
+
+.paymentOrder .withdraw-model .box .btn view {
+  width: 50%;
+  text-align: center;
+  font-size: 34rpx;
+  color: #999999;
+}
+
+.paymentOrder .withdraw-model .box .btn view:first-child {
+  color: #3699F1;
+}

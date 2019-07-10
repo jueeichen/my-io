@@ -1,0 +1,28 @@
+<view class="container depositRefund">
+
+  <view class="depSuccessHead">
+    <view class="depSuccessIco"><image src="../../assets/images/depSuccessIco.png" mode="" /></view>
+    <view class="depSuccessTit">申请成功</view>
+  </view>
+
+  <view class="depSuccessInfo">
+    <view class="depLi">
+      <view class="depLiTitle">押金退还</view>
+      <view class="depLiInfo">+{{depositMoney}}元</view>
+    </view>
+    <view class="depLi" wx:if="{{orderStatus}}">
+      <view class="depLiTitle">支付订单</view>
+      <view class="depLiInfo">-{{orderMoney}}元</view>
+    </view>
+    <view class="depLi">
+      <view class="depLiTitle">申请时间</view>
+      <view class="depLiInfo">{{applyDate}}</view>
+    </view>
+    <view class="depDescription"><text class="red">*</text> 押金原路返回，预计0-3个工作日到账，请耐心等待。</view>
+  </view>
+
+  <view class="depBtnWrap">
+    <button type="primary" class="depBtnItem depBtnMember" bindtap="jumpMemberCenter">个人中心</button>
+    <button type="primary" class="depBtnItem depBtnLease" bindtap="jumpScan">扫码租借</button>
+  </view>
+</view>

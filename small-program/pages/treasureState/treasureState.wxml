@@ -1,0 +1,92 @@
+<view class="container">
+  <!-- loading -->
+  <view class="treasureState loading" wx:if="{{state1}}">
+    <view class="treaLoadImgWrap tc">
+      <view class="tit">
+      </view>
+      <view class="loadingNumber">
+      </view>
+      <view class="treaLoadImg prepare">
+        <image src="../../assets/images/treaLoadImg.png" mode="" />
+        <view class="progress_circle">
+          <canvas class="progress_bg" width="520" height="520" style="width:100%;height:100%;" canvas-id="canvasProgressbg">
+          </canvas>
+          <canvas class="progress_canvas" width="520" height="520" style="width:100%;height:100%;" canvas-id="canvasProgress">
+          </canvas>
+          <text class="progress_text">
+        {{step/2}}%
+      </text>
+        </view>
+      </view>
+    </view>
+    <view class="noScanText ">
+      <view class="renText1">请勿关闭小程序
+      </view>
+      <block class="renText2">并尽快取走充电宝。
+      </block>
+
+    </view>
+    <!-- <progress class="progressWrap" percent="99" show-info active /> -->
+
+  </view>
+  <!-- success -->
+  <view class="treasureState success" wx:if="{{state2}}">
+    <view class="treaSuccessImgWrap ">
+      <view class="treaSuccessImg">
+        <image src="../../assets/images/treaSuccessImg.png" mode="" />
+      </view>
+    </view>
+    <view class="sucTit tc">租借成功
+    </view>
+    <view class="sucDes tc">
+      <view>请在设备上取走您的充电宝
+      </view> 使用后请尽快归还
+    </view>
+    <view class="SucContent">
+      <view class="successUlTitle">计费和押金规则
+      </view>
+      <view class="successUlText">
+        <view>前{{freeExperienceMinutes}}分钟免费，每小时{{hourlyFee}}元，每天{{cappingEveryday}}元封顶。
+        </view>
+        <view>退还押金，请至“个人中心”操作。
+        </view>
+        <view>若您选择了押金自动退还，系统先扣除订单费用，再退还剩余押金。
+        </view>
+        <view>充电宝
+          <text class="sRed">超{{buyoutOvertime}}天
+          </text>
+          未归还，系统将<text class="sRed">自动扣除{{rentalDeposit}}元押金</text>。
+      
+        </view>
+      </view>
+      <view class="successBtnGroup">
+        <button  class="helpBtn" bindtap="toMemberHelp">帮助中心
+        </button>
+        <button  class="memberBtn" bindtap="toMemberCenter">个人中心
+        </button>
+      </view>
+    </view>
+  </view>
+  <!-- fail -->
+  <view class="treasureState fail flexContainer" wx:if="{{state3}}">
+    <view class="treaFailImgWrap">
+      <view class="treaFailImg">
+        <image src="../../assets/images/treaFailImg.png" mode="" />
+      </view>
+    </view>
+    <view class="tc sucTit failTit">租借失败
+    </view>
+    <view class="sucDes tc">
+      <view>非常抱歉，充电宝弹出失败
+      </view> 您可重新扫描二维码进行租借
+    </view>
+    <view class="SucContent failContent">
+      <view class="successBtnGroup">
+        <button  class="helpBtn" bindtap="toScan">重新扫描
+        </button>
+        <button  class="memberBtn" bindtap="toMemberCenter">个人中心
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

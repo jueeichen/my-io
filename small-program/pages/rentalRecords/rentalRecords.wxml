@@ -1,0 +1,66 @@
+<view class='rentalRecords'>
+  <view class='top-content'>
+    <view wx:for="{{tabsName}}" style="color: {{activeIndex === index ? '#FF7123' : '#666666'}};border-bottom-color: {{activeIndex === index ? '#FF7123' : '#666666'}};border-bottom-width: {{activeIndex === index ? '2px' : '0'}}" data-activeIndex="{{index}}"
+      bindtap='tabClick' wx:key="{{index}}">{{item}}</view>
+  </view>
+  <!-- 暂无数据 -->
+
+  <view class="noData" wx:if="{{isNoData1}}">
+    <view class="noDataImg">
+      <image src="/assets/images/noData.png" mode="" />
+    </view>
+    <view class="noDataTitle">暂无消息!
+    </view>
+  </view>
+  <!-- 有数据 -->
+  <view class='' wx:if="{{isNoData2}}">
+    <view class='totle-number'>
+      订单总数：
+      <text>{{totleNumber}}条</text>
+    </view>
+    <view class='content-container'>
+      <scroll-view scroll-y style="height: 85vh;" bindscrolltoupper="scrollToTop" bindscrolltolower="scrollToBottom" scroll-top="{{scrollTop}}">
+        <view wx:for="{{tabsData}}" style="opacity: {{activeIndex === index ? '1' : '0'}};" wx:key="tab">
+          <view class='content-item' wx:for="{{item.tab}}" wx:for-item="tab" wx:key="{{index}}" bindtap='navOrderDetail' data-key="{{index}}" data-tab="{{tab}}">
+            <view class='top' wx:if="{{tab.leaseState.status==='6'}}">
+              <view class='left orange'>{{tab.leaseState.name}}</view>
+              <view class='right orange top_right'>{{tab.leaseState.value}}元</view>
+              <image class="arrow_right" src="/assets/images/right.png" />
+            </view>
+            <view class='top' wx:elif="{{tab.leaseState.status==='5'}}">
+              <view class='left green'>{{tab.leaseState.name}}</view>
+              <view class='right green'>{{tab.leaseState.value}}元</view>
+              <image class="arrow_right" src="/assets/images/right.png" />
+
+            </view>
+            <view class='top' wx:elif="{{tab.leaseState.status==='3'}}">
+              <view class='left red'>{{tab.leaseState.name}}</view>
+              <view class='right red'>{{tab.leaseState.value}}元</view>
+              <image class="arrow_right" src="/assets/images/right.png" />
+
+            </view>
+            <view class='top' wx:elif="{{tab.leaseState.status==='4'}}">
+              <view class='left gray'>{{tab.leaseState.name}}</view>
+              <view class='right gray'>{{tab.leaseState.value}}元</view>
+              <image class="arrow_right" src="/assets/images/right.png" />
+
+            </view>
+            <view class='top' wx:else>
+              <view class='left blue'>{{tab.leaseState.name}}</view>
+              <view class='right blue'>{{tab.leaseState.value}}元</view>
+              <image class="arrow_right" src="/assets/images/right.png" />
+
+            </view>
+            <view class='text'>
+              <view class='text-item' wx:if="{{dataItem.value}}" wx:for="{{tab.listItem}}" wx:for-item="dataItem" wx:key="{{index}}">
+                <view class='left'>{{dataItem.name}}</view>
+                <view class='right'>{{dataItem.value}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+     <view class="moreBaseline" wx:if="{{bottomLineState}}">- 我是底线 -</view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

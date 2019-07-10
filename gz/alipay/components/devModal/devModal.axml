@@ -1,0 +1,17 @@
+<view class="pagePop payPop {{isPopShow ? '' : 'hideClass'}}">
+  <view class="popWindow payWithdrawal">
+    <slot name="popTopIco" />
+
+    <view class="popMainContent drawContent bgfff {{isPopShow ? 'anniToDown' : ''}}">
+      <slot name="popMainContent" />
+      <view class="popBtnsWrap">
+        <button class="popBottomBtn popSureBtn " type="default" onTap="handleSure">确认</button>
+        <view class="popBtnline"></view>
+        <button class="popBottomBtn popcancelBtn " type="default" onTap="handleCancel">取消</button>
+      </view>
+    </view>
+
+  </view>
+</view>
+
+

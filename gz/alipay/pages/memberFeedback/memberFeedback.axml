@@ -1,0 +1,39 @@
+<view class="container feedbackWrap">
+  <form onSubmit="handleFeedback">
+    <view class="feedTit"><text class="fRed">*</text>反馈类别</view>
+    <view class="feedSelect">
+      <picker onChange="handleTypeInput" name="type" value="{{index}}" range="{{typeLists}}">
+        <view class="picker">
+          <block a:if="{{!typeIndex}}">{{typeLists[0]}}</block>
+          <block a:else="{{typeIndex}}">{{typeLists[typeIndex]}}</block>
+        </view>
+      </picker>
+      <image class="inputArrow" src="/assets/images/inputArrow.png" mode="" />
+    </view>
+
+    <view class="feedTit feedTit2" a:if="{{isShowCategory}}"><text class="fRed">*</text>反馈类型</view>
+    <view class="feedSelect" a:if="{{isShowCategory}}">
+      <picker onChange="handleCategoryInput" name="category" value="{{index}}" range="{{categoryLists}}">
+        <view class="picker">
+          <block a:if="{{!categoryIndex}}">{{categoryLists[0]}}</block>
+          <block a:else="{{categoryIndex}}">{{categoryLists[categoryIndex]}}</block>
+        </view>
+      </picker>
+      <image class="inputArrow" src="/assets/images/inputArrow.png" mode="" />
+    </view>
+
+    <view class="feedTit feedTit2" a:if="{{isShowCategory}}"><text class="fRed">*</text>SN码</view>
+    <view class="feedSelect" a:if="{{isShowCategory}}">
+      <input class="feedSnInput" placeholder="" name="snNo" />
+    </view>
+
+    <view class="feedTit"><text class="fRed">*</text>反馈内容</view>
+    <view>
+      <textarea class="feedContent" placeholder="" name="content" />
+    </view>
+
+    <view class="feedBtnWrap">
+      <button formType="submit" type="primary" class="feedBtn">反馈</button>
+    </view>
+  </form>
+</view>

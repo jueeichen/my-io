@@ -1,0 +1,104 @@
+.depositHead{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  width:746;
+  height: 382rpx;
+  color: #fff;
+  background: url(/assets/images/depositHeadbg.png) no-repeat;
+  background-size: cover;
+}
+.depositTit{
+  width:310rpx;
+  line-height: 46rpx;
+  font-size: 30rpx;
+  margin-left: 78rpx;
+}
+.depositMoney{
+  font-weight: bold;
+  margin-right: 80rpx;
+}
+.depositMoney .dollar{
+  font-size: 30rpx;
+  font-family: "Microsoft Yahei"
+}
+.depositMoney .money{
+  font-size: 78rpx;
+}
+.returnWrap{
+  margin: 82rpx 48rpx 0 48rpx;
+}
+.returnWrap .returnBox{
+  display: flex;
+  margin-bottom: 45rpx;
+}
+.returnBox .retico{
+  width:40rpx;
+  height: 40rpx;
+}
+.retico image{
+  width:100%;
+  height: 100%;
+}
+.returnBox .retmain{
+  margin-left: 22rpx;
+}
+.retmain .title{
+  line-height:40rpx;
+  font-size:30rpx;
+  font-weight:bold;
+  color: #333;
+}
+.retmain .des{
+  margin-top: 20rpx;
+  line-height: 48rpx;
+  position: relative
+}
+.retmain .desLine{
+  padding-bottom: 44rpx;
+}
+.retmain .desLine::after{
+  position: absolute;
+  bottom: 0;
+  left:0;
+  content:'';
+  display: block;
+  width:596rpx;
+  height: 1px;
+  background-color: #eee
+}
+.despre{
+  font-size:24rpx;
+  color: #999;
+  display: block
+}
+.retCheck checkbox{
+  border:2px solid #e3e5f1
+}
+.retCheck checkbox::after{
+  position: absolute;
+  left:0;
+  top:0
+}
+.payBtnWrap{
+  width:710rpx;
+  margin: 200rpx auto 27rpx;
+}
+.payBtnWrap button{
+  width:100%;
+  height: 98rpx;
+  letter-spacing:45rpx;
+  border-radius: 10rpx;
+  box-shadow:0px 5px 10px 0px rgba(54,153,241,0.5);
+}
+.agrument{
+  margin-top: 27rpx;
+  text-align: center;
+  color:#9a9a9a;
+  font-size: 24rpx;
+}
+.agrument .argumentLink{
+  display: inline-block;
+  color: #31a5f1;
+}

@@ -1,0 +1,6 @@
+<view class="container">
+<image  src="/assets/images/depSuccessIco.png"></image>
+<text>充值成功</text>
+<text>{{rentalDeposit}}</text>
+<button bindtap='complete'>完成</button>
+</view>

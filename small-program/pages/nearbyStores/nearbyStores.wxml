@@ -1,0 +1,46 @@
+<wxs src="./nearbyStores.wxs" module="tools" />
+
+<view class='nearbyStores'>
+  <scroll-view
+    style="height: {{scrollViewHeight}}px;"
+    scroll-y
+    enable-back-to-top
+    bindscrolltolower="scrollToBottom"
+  >
+    <view class='store-item' wx:for="{{storesList}}"  data-placeData="{{item}}">
+      <view class="flex-wrp" style="flex-direction:column;">
+        <view class="flex-item item-top">
+          <view class="flex-wrp" style="flex-direction:row;">
+            <view class="flex-item item-image">
+              <image src='{{item.shopImg?item.shopImg:"../../assets/images/shopimg_default.png"}}' binderror="loadImgErr" data-id="{{item.id}}"></image>
+            </view>
+            <view class="flex-item item-content">
+              <view>{{item.shopName}}</view>
+              <view>{{item.detailAddr}}</view>
+              <view>营业时间：{{item.businessHours}}</view>
+            </view>
+            <view class="flex-item item-distance">
+              {{item.juli}}m
+              <image  class="navigation_img" data-key="{{index}}" bindtap="enterPlace" src="../../assets/images/navigation_img.png"/>
+            </view>
+          </view>
+        </view>
+        <view class="flex-item item-bottom">
+          <view class="flex-wrp" style="flex-direction:row;">
+            <view class="flex-item bottom-item">
+              <view class="{{item.canBorrowNum ? 'green' : 'gray'}}">{{'可借'}}{{item.canBorrowNum}}
+              </view>
+            </view>
+            <view class="flex-item bottom-item">
+              <view class="{{item.canBackNum ? 'green' : 'gray'}}">{{'可还'}}{{ item.canBackNum}}
+              </view>
+            </view>
+            <view class="flex-item bottom-item">
+              {{(item.canBorrowNum || item.canBackNum) ? (!item.canBorrowNum ? '无可租借充电宝，请选择其他门店' : (!item.canBackNum ? '无可归还充电宝，请选择其他门店' : '')) : '设备无法提供租借，请选择其他门店'}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,58 @@
+<view class="container">
+  <!-- head -->
+  <view class='content-top'>
+    <image class='top-image' src='../../assets/images/depositHeadbg.png'></image>
+    <view class="depositHead">
+      <view class="depositTit">
+        <view class="depTit1">租借充电宝</view>
+        <view class="depTit2">需先充值押金</view>
+      </view>
+      <view class="depositMoney">
+        <text class="dollar">￥</text>
+        <text class="money">{{rentalDeposit}}</text>
+      </view>
+    </view>
+  </view>
+  
+
+  <!-- main -->
+  <view class="returnWrap">
+
+    <view class="returnBox">
+      <view class="retico"><image src="../../assets/images/depositlc.png" mode="" /></view>
+      <view class="retmain">
+          <view class="title">押金退还流程</view>
+          <view class="des desLine">
+            <text class="despre">订单完成后，可在个人中心申请押金退还。押金原路返还，预计5个工作日到账。</text>
+            <!-- <text class="despre">押金原路返还，预计0-3个工作日到账。</text> -->
+          </view>
+      </view>
+    </view>
+    
+    <view class="returnBox">
+      <view class="retico"><image src="../../assets/images/deposityj.png" mode="" /></view>
+      <view class="retmain">
+          <view class="title">押金自动退还</view>
+          <view class="des">
+            <text class="despre">充电宝归还并支付完成后，押金将自动原路返还。</text>
+          </view>
+      </view>
+      <view class="retCheck">
+        <checkbox-group bindchange="changeEvent">
+          <label class="checkbox" wx:for="{{checkVals}}">
+            <checkbox value="{{item.name}}" checked="{{item.checked}}" />
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+  </view>
+
+  <!-- btn -->
+  <form bindsubmit="payBtnEvent" bindreset="" report-submit="true">
+    <view class="payBtnWrap">
+      <button form-type="submit">支 付</button>
+    </view>
+  </form>
+  <view class="agrument">点击支付即同意<navigator url="/pages/rechargeAgreement/rechargeAgreement" redirect class="argumentLink">《充值协议》</navigator></view>
+
+</view>

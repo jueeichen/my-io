@@ -1,0 +1,82 @@
+<view class='paymentOrder'>
+  <image class='background' src='../../assets/images/memberHeadbg.png'></image>
+  <view class="container">
+    <view class="top">
+      <view class='content'>
+        <image src='../../assets/images/paySuccessIco.png'></image>
+        <view class='title'>
+          归还成功
+        </view>
+        <view class='text'>需支付</view>
+        <view class='text2'>
+          <text>¥</text>{{amount}}
+        </view>
+      </view>
+      <view class='btn'>
+        <view class="flex-item" bindtap='handleDeposit'>押金提现</view>
+        <view class="flex-item" bindtap='payByOrderNo'>确认支付</view>
+      </view>
+      <view class='bottom-text'>
+        温馨提示：押金提现申请后，扣除订单费用，退还剩余押金！
+      </view>
+    </view>
+    <view class="bottom">
+      <view class='content'>
+        <view class='content-top'>订单明细</view>
+        <view class='center-line'></view>
+        <view class='left-circle'></view>
+        <view class='right-circle'></view>
+        <view class='content-bottom'>
+          <view class='bottom-item'>
+            <view class='left'>借出时间</view>
+            <view class='right'>{{borrowTime}}</view>
+          </view>
+          <view class='bottom-item'>
+            <view class='left'>归还时间</view>
+            <view class='right'>{{returnTime}}</view>
+          </view>
+          <view class='bottom-item'>
+            <view class='left'>租借时长</view>
+            <view class='right'>{{useTime}}</view>
+          </view>
+          <view class='bottom-item'>
+            <view class='left'>借用地点</view>
+            <view class='right'>{{borrowShopName}}</view>
+          </view>
+          <view class='bottom-item'>
+            <view class='left'>归还地点</view>
+            <view class='right'>{{returnShopName}}</view>
+          </view>
+          <view class='bottom-item'>
+            <view class='left'>充电宝SN码</view>
+            <view class='right'>{{snNo}}</view>
+          </view>
+          <view class='bottom-item'>
+            <view class='left'>收费标准</view>
+            <view class='right'>{{chargingStandard}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class='withdraw-model' wx:if="{{isPopShow}}">
+    <view class='content-box'>  
+      <image src='../../assets/images/payWithdrawalIco.png'></image>
+      <view class='box'>
+        <view class='text' wx:if="{{!isNoPayOrder}}">
+          <view>请您确认是否要退押金？</view>
+        </view>
+        <view class='text' wx:else="{{isNoPayOrder}}">
+          <view>您有未支付订单，</view>
+          <view>将扣除订单费用，退还剩余押金。</view>
+        </view>
+        <view class='btn'>
+          <view bindtap='onSureHandle'>确 认</view>
+          <view bindtap='onCancleHandle'>取 消</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

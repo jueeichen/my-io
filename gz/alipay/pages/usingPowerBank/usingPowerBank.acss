@@ -1,0 +1,90 @@
+.usingPowerBankWrap{
+
+}
+.usingPowerBankAd{
+  width: 100%;
+  height: rpx;
+}
+.usingPowerBankAd image{
+  width: 100%;
+  height: 1163rpx;
+}
+.usingPowerContent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left:0;
+  bottom: 0;
+  width: 100%;
+  height: 472rpx;
+  background: url(/assets/images/usingPowerContent.png) no-repeat;
+  background-size: 100% 100%;
+}
+.usingPowerContent .startTiming{
+  margin-top: 98rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+.startMoney{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 54rpx;
+}
+.startMoney .money{
+  padding:0 40rpx 0 40rpx;
+  font-size: 82rpx;
+  margin-right: 8rpx;
+  position: relative;
+  color: #333;
+  font-weight: bold;
+}
+.money .dollar{
+  position: absolute;
+  left:0;
+  bottom: 12rpx;
+  color: #333;
+  font-size: 30rpx;
+  margin-right: 18rpx;
+  font-weight: normal
+  
+}
+.money .help{
+  width:29rpx;
+  height: 29rpx;
+  position: absolute;
+  top:0rpx;
+  right: 0;
+}
+
+.startBottom{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60rpx;
+}
+.startBottom .useBotBox{
+  width:120rpx;
+  text-align: center;
+}
+.startBottom .useBotBox1{
+  margin-left: 80rpx;
+}
+.startBottom .useBotBox2{
+  margin-right: 80rpx;
+}
+.useBotBox .uImg{
+  width:60rpx;
+  height: 60rpx;
+  margin: 0 auto;
+}
+.useBotBox .title{
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+.useBotBox image{
+  width: 100%;
+  height: 100%;
+}

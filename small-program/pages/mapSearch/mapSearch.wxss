@@ -1,0 +1,172 @@
+.mapSearch {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  /* background-color: #fff; */
+  overflow: hidden;
+}
+
+.mapSearch .flex-wrp {
+  display: flex;
+  width: 100vw;
+  height: 100%;
+}
+
+.mapSearch .flex-wrp .top {
+  width: 100%;
+  height: 60vh;
+  /* background-color: #999; */
+  position: relative;
+  z-index: 1;
+  padding-top: 50px;
+  box-sizing: border-box;
+}
+
+
+.mapSearch .flex-wrp .top .search-input {
+  width: 100%;
+  height: 50vh;
+  padding: 15rpx 15rpx 5rpx 15rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  z-index: 9;
+}
+
+.mapSearch .flex-wrp .top .search-input .input-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.mapSearch .flex-wrp .top .search-input icon {
+  position: absolute;
+  top: 36%;
+  left: 40%;
+}
+
+
+
+.mapSearch .flex-wrp .top .search-input .text {
+  font-size: 28rpx;
+  color: #999999;
+  position: absolute;
+  top: 50%;
+  left: 52%;
+  transform: translate(-50%, -50%)
+}
+
+.mapSearch .flex-wrp .top .search-input .btn {
+  width: 50px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  display: inline-block;
+  font-size: 28rpx;
+  color: #666666;
+  position: absolute;
+  top: 48%;
+  right: 10px;
+  transform: translateY(-50%);
+  z-index: 9
+}
+
+.mapSearch .flex-wrp .top .search-input input {
+  background-color: #fff;
+  box-shadow: 0px 0px 19px 1px rgba(174,182,215,0.49);
+  z-index: 9;
+  height: 40px;
+}
+
+.mapSearch .flex-wrp .bottom {
+  width: 100%;
+  height: 50%;
+}
+
+.mapSearch #mapSearch {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+
+
+.bottomSelect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  z-index: 99;
+}
+
+.bottomSelect .btn {
+  position: absolute;
+  top: 0;
+  right: -5px;
+  width: 80px;
+  height: 38px;
+  line-height: 19px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  z-index: 999;
+}
+
+.bottomSelect .btn cover-image {
+  width: 80px;
+  height: 38px;
+  line-height: 38px;
+  position: absolute;
+  left: 0;
+}
+
+
+.bottomSelect .content {
+  background-color: #fff;
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 10px;
+  overflow: scroll;
+  z-index: 999;
+}
+
+.bottomSelect .content .select-item {
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  border-bottom: #eee solid 1px;
+  text-align: left;
+  font-size: 28rpx;
+  color: #666666;
+  text-indent: 10px;
+  position: relative;
+  z-index: 999;
+  background-color: #fff;
+}
+
+.bottomSelect .content .select-item .select-img {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%)
+}
+
+
+.markerIco {
+  width: 34rpx;
+  height: 57rpx;
+  position: fixed;
+  z-index: 9999;
+  top: 30%;
+  left: 48%;
+  background: transparent;
+}
