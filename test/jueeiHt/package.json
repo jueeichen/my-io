@@ -20,7 +20,7 @@
     "koa-router": "^7.2.1",
     "koa-static": "^3.0.0",
     "koa-views": "^6.0.2",
-    "mongoose": "^5.2.4",
+    "mongoose": "^5.7.5",
     "blueimp-md5": "^2.10.0",
     "cookie-parser": "~1.4.3",
     "runkoa": "^1.5.2",
