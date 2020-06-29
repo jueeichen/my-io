@@ -32,12 +32,19 @@ module.exports = {
       postcss: {
         plugins: [
           require('postcss-pxtorem')({
-            rootValue : 50, // 换算的基数
-            selectorBlackList  : ['el','mu'], // 忽略转换正则匹配项
-            propList   : ['*'],
+            rootValue: 50, // 换算的基数
+            selectorBlackList: ['el', 'mu'], // 忽略转换正则匹配项
+            propList: ['*'],
           }),
         ]
       }
     }
   },
+  chainWebpack: config => {
+    config.module.rule('pug')
+      .test(/\.pug$/)
+      .use('pug-html-loader')
+      .loader('pug-html-loader')
+      .end()
+  }
 }
