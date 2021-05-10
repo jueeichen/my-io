@@ -2493,9 +2493,9 @@ home-or-tmp@^3.0.0:
   integrity sha1-V6j+JM8zzdUkhgoVgh3cJchmcfs=
 
 hosted-git-info@^2.1.4:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
-  integrity sha512-7T/BxH19zbcCTa8XkMlbK5lTo1WtgkFi3GvdWEyNuc4Vex7/9Dqbnpsf4JMydcfj9HCg4zUWFTL3Za6lapg5/w==
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
+  integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
 html-encoding-sniffer@^1.0.2:
   version "1.0.2"
@@ -4825,11 +4825,6 @@ realpath-native@^1.0.0:
   integrity sha512-+S3zTvVt9yTntFrBpm7TQmQ3tzpCrnA1a/y+3cUHAc9ZR6aIjG0WNLR+Rj79QpJktY+VeW/TQtFlQ1bzsehI8g==
   dependencies:
     util.promisify "^1.0.0"
-
-redux-devtools-extension@^2.13.7:
-  version "2.13.7"
-  resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.7.tgz#14bd7a1a7c8bee7f397beb1116fd16fc9633b752"
-  integrity sha512-F2GlWMWxCTJGRjJ+GSZcGDcVAj6Pbf77FKb4C9S8eni5Eah6UBGNwxNj8K1MTtmItdZH1Wx+EvIifHN2KKcQrw==
 
 redux-logger@^3.0.6:
   version "3.0.6"
