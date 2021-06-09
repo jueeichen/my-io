@@ -1,0 +1,55 @@
+@import '../../static/css/common.styl'
+
+.login-mask
+  position fixed
+  left 0
+  right 0
+  top 0
+  bottom 0
+  background-color rgba(0, 0, 0, 0.75)
+  z-index 10000
+.login-mask-content
+  position absolute
+  background-color #ffffff
+  width 600rpx
+  left 50%
+  top 50%
+  overflow hidden
+  transform translate(-50%, -50%)
+  border-radius 16rpx
+  text-align center
+.login-mask-title
+  font-size 36rpx
+  font-weight bold
+  padding 40rpx 0 34rpx
+.login-mask-desc
+  color #666
+  margin-bottom 40rpx
+.login-btns
+  height 88rpx
+  border-top 1px solid #f5f5f5
+  border-radius 0 0 16rpx 16rpx
+  overflow hidden
+  display flex
+  .login-btn
+    text-align center
+    flex 1
+    height 88rpx
+    line-height 88rpx
+    font-size 32rpx
+    &-cancel
+      color #999
+      border-right 1px solid #f5f5f5
+    &-confirm
+      color #f12020
+      font-weight bold
+      background-color #fff
+      padding 0 !important
+      margin 0
+      border 0
+      &::after
+        display none
+        box-sizing border-box
+        outline none
+        border-radius 0
+        height 100%

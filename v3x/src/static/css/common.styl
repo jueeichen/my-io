@@ -1,0 +1,49 @@
+
+// 行动色
+// 主要按钮正常态+app主色调-蓝色+重要文字
+$color-normal = #479CFE
+// 主按钮按下态:
+$color-down = #408ce4
+// 主按钮不可用态:
+$color-disable = rgba(71, 156, 254, 0.4)
+// app主色调-2 橙红色
+$color-normal-red = #FF5000
+// 重要文字-1 黑色
+$color-normal-black = #1A1A1A
+// 次要文字 灰色
+$color-gray-1 = #7e7e7e
+// 辅助信息 灰色
+$color-gray-2 = #7e7e7e
+// 分割线  浅灰色
+$color-gray-3 = #EEEEEE
+// 错误 , 警示
+$color-red = #F4333c
+// app背景色
+$color-bg = #F6F6F6
+_border-radius(n)
+  -webkit-border-radius n
+  -moz-border-radius n
+  border-radius n
+_flex-center()
+  display flex
+  justify-content center
+  align-items center
+_flex-start-column()
+  display flex
+  flex-direction column
+_flex-center-column()
+  _flex-start-column()
+  _flex-center()
+_img-bg()
+  position relative
+  >image
+    width 100%
+  >view
+    position absolute
+    left 0
+    top 0
+    width 100%
+    height 100%
+_box-sizing(top, left)
+  box-sizing border-box
+  padding top left

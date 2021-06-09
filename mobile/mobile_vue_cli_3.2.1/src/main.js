@@ -10,9 +10,16 @@ import _ from 'lodash'
 Vue.prototype._ = _
 Vue.config.productionTip = false //阻止生产环境生成警告;
 Vue.prototype.$np=NP;
+if(process.env.NODE_ENV=='development'){
+  // const VConsole = require('vconsole')
+  // const vconsole = new VConsole();
+  // Vue.use(vconsole)
+}
 
+
+// console.log('Hello world');
 new Vue({
   render: h => h(App),
   router,
-  store
+  store,
 }).$mount('#app')

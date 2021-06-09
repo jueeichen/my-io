@@ -30,6 +30,7 @@
     "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "vconsole": "^3.3.4",
     "vue-template-compiler": "^2.5.17",
     "zepto-webpack": "^1.2.1"
   },

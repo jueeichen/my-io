@@ -1,5 +1,6 @@
 // vue.config.js
 const webpack = require("webpack");//配置全局jq用到;
+const path = require('path');
 module.exports = {
   // 选项...
   baseUrl: process.env.NODE_ENV === 'production' ? './' : '/',//开发环境需要./
@@ -9,6 +10,7 @@ module.exports = {
   filenameHashing: false,//关闭文件名哈希
   lintOnSave: true,
   productionSourceMap: false,
+ 
   devServer: {
     // host: "localhost",//一般无需设置;
     port: 3001, // 端口号
@@ -46,5 +48,10 @@ module.exports = {
       .use('pug-html-loader')
       .loader('pug-html-loader')
       .end()
-  }
+    config.resolve.alias
+      .set('@src', path.join(__dirname, 'src'))
+      .end()
+  },
 }
+console.log(global.process.env.NODE_ENV,"<=webpack")
+

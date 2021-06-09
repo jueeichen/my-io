@@ -1,0 +1,86 @@
+@import '../../static/css/common.styl';
+
+.list-item {
+  margin-bottom: 30rpx;
+  width: 690rpx;
+  height: 310rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  _flex-center();
+  justify-content: flex-start;
+  _box-sizing(40rpx, 30rpx);
+
+  >image {
+    width: 194rpx;
+    height: 230rpx;
+    border-radius: 12rpx;
+  }
+
+  >view {
+    _flex-center-column();
+    _box-sizing(6rpx, 20rpx);
+    padding-right: 0;
+    flex-grow: 1;
+    height: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .list-item-title {
+      font-size: 34rpx;
+      font-weight: 600;
+      color: #0A0A0A;
+    }
+
+    .list-item-tag {
+      display: flex;
+
+      >view {
+        margin-right: 20rpx;
+        margin-left: 2rpx;
+        width: 120rpx;
+        height: 42rpx;
+        border-radius: 8rpx;
+        border: 2rpx solid #0091FF;
+        _flex-center();
+        font-size: 24rpx;
+        font-weight: 400;
+        color: #479CFE;
+      }
+    }
+
+    .list-item-tuition {
+      font-size: 26rpx;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #8B8B8B;
+    }
+
+    .list-item-application {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+
+      .fee {
+        font-size: 26rpx;
+        font-weight: 400;
+        color: #FF5000;
+
+        >text {
+          font-size: 40rpx;
+          font-weight: 500;
+        }
+      }
+
+      .sign-up {
+        background: #479CFE;
+        border-radius: 28rpx;
+        font-size: 26rpx;
+        font-weight: 500;
+        color: #FFFFFF;
+        width: 144rpx;
+        height: 56rpx;
+        _flex-center();
+      }
+    }
+  }
+}

@@ -23,3 +23,16 @@ export const _throttle = (func, wait, ...args) => {
 
     }
 }
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+  

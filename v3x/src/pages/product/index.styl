@@ -1,0 +1,33 @@
+@import '../../static/css/common.styl'
+
+.tab-item
+	background-color $color-bg
+	width 100%
+	padding-top 30rpx
+	padding-bottom 220rpx
+	// height 100rpx
+	_flex-start-column()
+	align-items center
+.index
+	width 750rpx
+	_flex-start-column()
+	align-items center
+.van-tabs__line
+	background-color transparent !important
+	width 20rpx !important
+	height 15rpx !important
+	border-width 10rpx
+	border-radius 50% !important
+	border-style solid !important
+	border-color transparent transparent rgba(71, 156, 254, 1) transparent !important
+.van-ellipsis
+	color $color-gray-1
+	font-size 30rpx
+.van-tabs__content
+	margin-top: 12rpx
+.van-tab--active .van-ellipsis
+	color $color-normal-black !important
+	font-size 36rpx !important
+	font-weight 700 !important
+.index-tabs
+	width 750rpx

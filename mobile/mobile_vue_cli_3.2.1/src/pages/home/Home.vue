@@ -2,11 +2,12 @@
 <template lang="pug">
 div
 	.aaa(@click="text()") d节流fd
-	.bbb(@click="text1()") 第三方   防抖
+	.bbb#mode(@click="text1()") 第三方   防抖
 </template>
 
 <script>
-import {_debounce,_throttle} from './tools'
+import '@src/pages/home/csss.css'
+import { _debounce, _throttle } from './tools'
 export default {
 	data() {
 		return {
@@ -15,21 +16,28 @@ export default {
 			num: 1,
 			arr: [1, 2, 3],
 			arr1: [5, 7, 8],
-			arr2: [5, 7, 8,[1, 2, 3]],
+			arr2: [5, 7, 8, [1, 2, 3]],
 			obj: { name: '你好', age: 2 },
 			bul: false,
 
 		}
 	},
 	mounted() {
-		  window.addEventListener('scroll', this.handleScroll)
 
-		let arr3 =	this.arr2.reduce((arg,item)=>{
-			 return	Array.isArray(item)?arg.concat(item):[...arg,item]
-			},[])
-			console.log(arr3)
+		const arr222 = [{ code: "021213", menuName: '余额明细', rightFlag: true },{ code: "021213", menuName: '余额明细', rightFlag: true },{ code: "021213", menuName: '余额明细', rightFlag: true },{ code: "021213", menuName: '余额明细', rightFlag: true }]   
+		const obj222 = {}
+		arr222.map(item => {
+			obj222.menuName = item.menuName
+		})
+		console.log(obj222)
+		window.addEventListener('scroll', this.handleScroll)
 
-	
+		let arr3 = this.arr2.reduce((arg, item) => {
+			return Array.isArray(item) ? arg.concat(item) : [...arg, item]
+		}, [])
+		console.log(arr3)
+
+
 		function foo() {
 			console.log(this.name)
 		}
@@ -115,27 +123,87 @@ export default {
 		var test = new fn();
 		console.log(test); //{a:2}
 		console.log(a)
+
+
+		let objarr = [{ age: 5, name: 1 }, { age: 1, name: 2 }, { age: 2, name: 3 }, { age: 0, name: 3 }, { name: 4, age: undefined }, { name: 5, age: null }, { name: 5, age: undefined }, { name: 7, age: NaN }, { age: 0, name: 3 }]
+		// objarr.sort((a,b)=>a.age -b.age)
+		let arr123 = objarr.filter(item => {
+			return typeof item.age == 'number'
+		})
+		console.log(arr123, "<<<<")
+
+		console.log(typeof this.handleScroll)
+		console.log(this.quickSort([1, 20, 10, 30, 22, 11, 55, 24, 31, 88, 12, 100, 50]))
+
+
 	},
 	methods: {
-		  handleScroll () {
 
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-	console.log(scrollTop)
-	alert('scrollTop'+scrollTop)
-  },
+		//手写一个冒泡排序:
+		swap(array, i, j) {
+			const num = array[i]
+			array[i] = array[j]
+			array[j] = num
+			return array
+		},
+		maopao(array) {
+
+
+		},
+		//手写一个选择排序
+		// change(array) {
+		// 	const LENGTH = array.length
+		// 	let minIndex = 0
+		// 	for (let i = 0; i < LENGTH - 1; i++) {
+		// 		let index = i
+		// 		for (let j = i + 1; j < LENGTH; j++) {
+		// 			if (array[index] > array[j]) {
+		// 				index = j
+		// 			}
+
+		// 		}
+		// 		this.swap(array, i, index)
+		// 	}
+		// 	return array
+		// },
+		//手写一个快速排序
+		quickSort(arr) {
+			const LENGTH = arr.length
+			if (LENGTH <= 1) { //如果ary小于等于1一项 不做处理
+				return arr
+			}
+			//第一步找中间项 并把中间项提取出来
+			const middleIndex = Math.floor(LENGTH / 2)
+			const middle = arr.splice(middleIndex, 1)[0]
+			const left = [],
+				right = []
+			arr.map(current => {
+				current < middle ? left.push(current) : right.push(current)
+
+			})
+
+			//第二步是拼接并递归
+			return [...this.quickSort(left), middle, ...this.quickSort(right)]
+		},
+		handleScroll() {
+
+			var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+			console.log(scrollTop)
+			// alert('scrollTop'+scrollTop)
+		},
 
 		text1() {
-		let fn = _debounce(this.add, 5000, "防抖")
-		fn()
+			let fn = _debounce(this.add, 5000, "防抖")
+			fn()
 		},
 		text() {
-		let fn = _throttle(this.add, 5000, "节流")
-		fn()
+			let fn = _throttle(this.add, 5000, "节流")
+			fn()
 		},
 		_debounce(func, wait = 3000) {
 			let timeout = null;
 			console.log(arguments)
-			return function()  {
+			return function() {
 				console.log("11111")
 				let context = this
 				if (timeout) clearTimeout(timeout)
