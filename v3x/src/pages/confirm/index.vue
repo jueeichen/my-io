@@ -71,7 +71,7 @@ export default {
         specialitiesName: '10001',
         signuperName:  '邓杰',
         signuperMobile: '18077016310',
-        signupCouponDetailId: '',
+        signupCouponDetailId: '1',
       });
       console.log("res=>",res)
     };
