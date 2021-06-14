@@ -91,10 +91,26 @@ const actions = {
   //获取产品详情
   getProductDetailById(context, obj) {
     return new Promise(async (resolve) => {
-      debugger
+
       const data: any = await $api('GETPRODUCTDETAILBYID', { id: obj.id }, {}, {})
-      
-      console.log(context)
+
+      console.log("产品详情", data)
+      resolve(data.data)
+    })
+    // console.log(context)
+  },
+  //生成订单
+  createOrder(context, obj) {
+    return new Promise(async (resolve) => {
+      const data: any = await $api('CREATEORDERLEARN', {
+        productId: obj.productId,
+        specialitiesName: obj.specialitiesName, 
+        signuperName: obj.signuperName, 
+        signuperMobile: obj.signuperMobile,
+        signupCouponDetailId: obj.signupCouponDetailId
+      }, {}, {})
+      console.log("context=>", context)
+      console.log("产品详情", data)
       resolve(data.data)
     })
     // console.log(context)
