@@ -1,31 +1,36 @@
 <template>
-  <navbar :parameter="parameter" />
-  <view class="my-order">
-    <view class="my-order-index">
-      <van-tabs
-        :swipeable="true"
-        :animated="true"
-        :sticky="true"
-        :offset-top="tabsHeight"
-      >
-        <van-tab title="报名待支付">
-          <view class="tab-item">
-            <my-order-item />
-          </view>
-        </van-tab>
-        <van-tab title="学费待支付">
-          <view class="tab-item">
-            <my-order-item />
-          </view>
-        </van-tab>
-        <van-tab title="已完成">
-          <view class="tab-item">
-            <my-order-item />
-          </view>
-        </van-tab>
-      </van-tabs>
+  <view>
+    <navbar :parameter="parameter" />
+    <view class="my-order">
+      <view class="my-order-index">
+        <van-tabs
+          :swipeable="true"
+          :animated="true"
+          :sticky="true"
+          :offset-top="tabsHeight"
+        >
+          <van-tab title="报名待支付">
+            <view class="tab-item">
+              <my-order-item
+                :initData="item"
+                v-for="(item, index) in list"
+                :key="index"
+              />
+            </view>
+          </van-tab>
+          <van-tab title="学费待支付">
+            <view class="tab-item">
+              <!-- <my-order-item /> -->
+            </view>
+          </van-tab>
+          <van-tab title="已完成">
+            <view class="tab-item">
+              <!-- <my-order-item /> -->
+            </view>
+          </van-tab>
+        </van-tabs>
+      </view>
     </view>
-
   </view>
 </template>
 
@@ -35,25 +40,35 @@ import MyOrderItem from "@/components/myOrderItem/index.vue";
 
 import "./index.styl";
 import { useStore } from "vuex";
+import { onMounted, ref } from "vue";
 
 export default {
   name: "myOrder",
   components: {
-    navbar, MyOrderItem
+    navbar,
+    MyOrderItem,
   },
   setup(props) {
     const store = useStore();
+    const list = ref([]);
     const test = () => {
       console.log("test");
     };
+    onMounted(async () => {
+      const res = await store.dispatch("global/getOrderList");
+      console.log(res);
+      list.value = res.orderList;
+    });
     return {
       tabsHeight: store.state.global.tabsHeight,
       test,
+      list,
       parameter: {
-        title: "我的订单"
-      }
+        title: "我的订单",
+        return: 1,
+      },
     };
-  }
+  },
 };
 </script>
 

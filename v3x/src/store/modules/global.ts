@@ -104,13 +104,40 @@ const actions = {
     return new Promise(async (resolve) => {
       const data: any = await $api('CREATEORDERLEARN', {
         productId: obj.productId,
-        specialitiesName: obj.specialitiesName, 
-        signuperName: obj.signuperName, 
+        specialitiesName: obj.specialitiesName,
+        signuperName: obj.signuperName,
         signuperMobile: obj.signuperMobile,
         signupCouponDetailId: obj.signupCouponDetailId
       }, {}, {})
       console.log("context=>", context)
       console.log("产品详情", data)
+      resolve(data.data)
+    })
+    // console.log(context)
+  },
+  //支付订单
+  payOrder(context, obj) {
+    return new Promise(async (resolve) => {
+      const data: any = await $api('PAYORDER', {
+        orderNo: obj.orderNo
+      }, {}, {})
+      console.log("payOrder=>", context)
+      console.log("payOrder", data)
+      resolve(data.data)
+    })
+    // console.log(context)
+  },
+  //我的订单列表
+  getOrderList(context) {
+    return new Promise(async (resolve) => {
+      const data: any = await $api('GETORDERLIST', {
+        status:1
+      }, {
+        pageNum: 1,
+        pageSize: 10
+      }, {})
+      console.log("payOrder=>", context)
+      console.log("payOrder", data)
       resolve(data.data)
     })
     // console.log(context)

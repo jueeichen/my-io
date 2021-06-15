@@ -1,13 +1,8 @@
 <template>
-  <view class="my-order-items">
-
+  <view class="my-order-items" v-if="initData.orderNo">
     <view class="my-order-li-title">
-      <view>
-        订单号20210409115618
-      </view>
-      <view>
-        已完成
-      </view>
+      <view> 订单号{{initData.orderNo}} </view>
+      <view> 已完成 </view>
     </view>
     <view class="my-order-li-img">
       <image
@@ -15,53 +10,29 @@
         mode="aspectFill"
       ></image>
       <view>
-        <view>
-          中南财经政法大学定制班
-        </view>
-        <view>
-          信息与科学技术专业
-        </view>
+        <view> {{initData.schoolName}} </view>
+        <view>  {{initData.productName}}  </view>
       </view>
     </view>
     <view class="my-order-items-li">
-      <view>
-        学费(含报名费)
-      </view>
-      <view>
-        ¥7500.00
-      </view>
+      <view> 学费(含报名费) </view>
+      <view> ¥{{initData.productPrice}} </view>
     </view>
     <view class="my-order-items-li">
-      <view>
-        报名费
-      </view>
-      <view>
-        ¥300.00
-      </view>
+      <view> 报名费 </view>
+      <view> ¥{{initData.signupPrice}} </view>
     </view>
     <view class="my-order-items-li">
-      <view>
-        优惠券
-      </view>
-      <view style="color:#FF5000">
-        -¥600.00
-      </view>
+      <view> 优惠券 </view>
+      <view style="color: #ff5000"> -¥{{initData.signupPayAmount}} </view>
     </view>
     <view class="my-order-items-total">
-      <view>
-        实付金额: ¥
-      </view>
-      <view>
-        6900.00
-      </view>
+      <view> 实付金额: ¥ </view>
+      <view> {{initData.productPrice-initData.signupPayAmount}}  </view>
     </view>
     <view class="my-order-items-btn">
-      <view>
-        报名完成加老师微信号，「我的」-「班主任微信号」
-      </view>
-      <view>
-        查看详情
-      </view>
+      <view> 报名完成加老师微信号，「我的」-「班主任微信号」 </view>
+      <view> 查看详情 </view>
     </view>
     <!-- <view class="my-order-item-title">中南财经政法大学定制班</view>
     <view class="my-order-items-index">
@@ -77,7 +48,6 @@
         <view class="sign-up">立即使用</view>
 
     </view> -->
-
   </view>
 </template>
 
@@ -87,7 +57,12 @@ import "./index.styl";
 import Taro from "@tarojs/taro";
 import { useStore } from "vuex";
 export default {
-  props: {},
+  props: {
+    initData: {
+      type: Object,
+      default: () => {},
+    },
+  },
   setup(props) {
     const store = useStore();
     return {};

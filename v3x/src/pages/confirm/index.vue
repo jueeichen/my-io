@@ -65,15 +65,23 @@ export default {
     navbar,
   },
   setup() {
+    
+    const pay = async (orderNo) => {
+      const res = await store.dispatch("global/payOrder", {
+        orderNo,
+      });
+      console.log("res=>", res);
+    };
     const sumitOrder = async () => {
       const res = await store.dispatch("global/createOrder", {
-        productId: '10001',
-        specialitiesName: '10001',
-        signuperName:  '邓杰',
-        signuperMobile: '18077016310',
-        signupCouponDetailId: '1',
+        productId: "10001",
+        specialitiesName: "10001",
+        signuperName: "邓杰",
+        signuperMobile: "18077016310",
+        signupCouponDetailId: "",
       });
-      console.log("res=>",res)
+      console.log("res=>", res);
+      pay(res.orderNo)
     };
     return {
       parameter: {
@@ -81,6 +89,7 @@ export default {
         return: 1,
       },
       sumitOrder,
+      pay,
       username: ref(null),
       phone: ref(null),
     };
