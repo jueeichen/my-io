@@ -20,14 +20,14 @@
         </view>
         <view class="my-top-bottom">
           <view class="" @tap="jump('/pages/coupon/index')">
-            <view class="my-top-detail">1 </view>
+            <view class="my-top-detail">{{userInfo.receiveCount||0}}</view>
             <view class="my-top-menu"
               >优惠券
               <van-icon name="arrow" class="iconfont icon-back" />
             </view>
           </view>
           <view class="" @tap="jump('/pages/integral/index')">
-            <view class="my-top-detail">1261 </view>
+            <view class="my-top-detail">{{accountPoint||0}} </view>
             <view class="my-top-menu"
               >积分商城
               <van-icon name="arrow" class="iconfont icon-back" />
@@ -64,11 +64,11 @@
 
           <view class="" @>已完成 </view>
         </view>
-        <view class=""  @tap="jump('/pages/myOrder/index')">
+        <view class="" @tap="jump('/pages/myOrder/index')">
           <image src="../../static/images/my/all_order_icon@2x.png" class="">
           </image>
 
-          <view class="" >全部订单 </view>
+          <view class="">全部订单 </view>
         </view>
       </view>
       <image
@@ -113,6 +113,7 @@ import listItem from "@/components/listItem/index.vue";
 import "./index.styl";
 import { useStore } from "vuex";
 import Taro from "@tarojs/taro";
+import { onMounted,ref } from "vue";
 
 export default {
   name: "Index",
@@ -126,16 +127,28 @@ export default {
   },
   setup(props) {
     const store = useStore();
+    const userInfo = ref({});
+    const accountPoint = ref({});
 
+    
     const test = () => {
       console.log("test");
     };
-    const navTarget = (e)=>{
+    const navTarget = (e) => {
       wx.navigateTo({
-        url:e
-      })
-    }
+        url: e,
+      });
+    };
+    onMounted(async () => {
+       let res = await store.dispatch("global/getAccountPoint");
+      accountPoint.value= res.accountPoint
+      await store.dispatch("global/getUserInfo");
+      userInfo.value = store.state.global.userInfo;
+      console.log(userInfo);
+    });
     return {
+      accountPoint,
+      userInfo,
       tabsHeight: store.state.global.tabsHeight,
       test,
       navTarget,
