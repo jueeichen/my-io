@@ -16,7 +16,7 @@
               <open-data type="userNickName"></open-data>
             </view>
           </view>
-          <view class="my-top-btn"> 去缴学费 </view>
+          <view class="my-top-btn"  @tap="jump('/pages/myOrder/index?id=1')"> 去缴学费 </view>
         </view>
         <view class="my-top-bottom">
           <view class="" @tap="jump('/pages/coupon/index')">
@@ -42,12 +42,12 @@
         </view>
       </view>
       <view class="my-center">
-        <view class="" @tap="jump('/pages/myOrder/index?index=1')">
+        <view class="" @tap="jump('/pages/myOrder/index?id=0')">
           <image src="../../static/images/my/payment_sign_icon@2x.png" class="">
           </image>
           <view class="">报名待支付 </view>
         </view>
-        <view class="" @tap="jump('/pages/myOrder/index?index=2')">
+        <view class="" @tap="jump('/pages/myOrder/index?id=1')">
           <image
             src="../../static/images/my/payment_tuition_icon@2x.png"
             class=""
@@ -55,7 +55,7 @@
           </image>
           <view class="">学费待支付 </view>
         </view>
-        <view class="" @tap="jump('/pages/myOrder/index?index=3')">
+        <view class="" @tap="jump('/pages/myOrder/index?id=2')">
           <image
             src="../../static/images/my/payment_succes_icon@2x.png"
             class=""
@@ -64,10 +64,9 @@
 
           <view class="" @>已完成 </view>
         </view>
-        <view class="" @tap="jump('/pages/myOrder/index')">
+        <view class="" @tap="jump('/pages/myOrder/index?id=0')">
           <image src="../../static/images/my/all_order_icon@2x.png" class="">
           </image>
-
           <view class="">全部订单 </view>
         </view>
       </view>
@@ -128,7 +127,7 @@ export default {
   setup(props) {
     const store = useStore();
     const userInfo = ref({});
-    const accountPoint = ref({});
+    const accountPoint = ref(0);
 
     
     const test = () => {

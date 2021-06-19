@@ -5,12 +5,12 @@
       mode="aspectFill"
     ></image>
     <view>
-      <view class="list-item-title">{{initData.productName}}</view>
+      <view class="list-item-title" v-if="initData.productName">{{splitStr(initData.productName,7)}}</view>
       <view class="list-item-tag">
         <view
           v-for="(item,index) in initData.serviceTagsList"
           :key="index"
-        >{{item.tagName}}</view>
+        >{{splitStr(item.tagName,4)}}</view>
       </view>
       <view class="list-item-tuition">学费¥{{initData.productPrice}}</view>
       <view class="list-item-application">
@@ -42,8 +42,20 @@ export default {
     return {
       signUp: (id) => {
         wx.navigateTo({ url: '/pages/detail/index?id=' + id })
-      }
+      },
+      splitStr
     };
   },
 };
+   function splitStr(str, length) {
+    if (typeof str === "string") {
+      if (typeof length === "number") {
+        return str.length > length ? str.substr(0, length) + "..." : str;
+      } else {
+        return str.length > 6 ? str.substr(0, 6) + "..." : str;
+      }
+    } else {
+      return str;
+    }
+  }
 </script>

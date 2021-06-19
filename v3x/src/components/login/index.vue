@@ -58,7 +58,7 @@ export default {
       isShow.value = false;
       console.log(ctx)
       if (ctx.attrs.onCancel) {
-        debugger
+        
         console.log(ctx.attrs.onCancel)
 
         ctx.attrs.onCancel()

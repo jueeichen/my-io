@@ -8,7 +8,7 @@
           <view class="integral-top-contet">
             <view class="integral-top-contet-top">
               <image src="" />
-              <view class="integral-coin">1261</view>
+              <view class="integral-coin">{{ accountPoint }}</view>
               <view class="integral-symbol">积分</view>
               <van-icon
                 name="arrow"
@@ -26,19 +26,17 @@
       <view class="integral-list">
         <view
           class="integral-list-item"
-          v-for="(item, index) in 4"
+          v-for="(item, index) in list"
           :key="index"
         >
           <image class=""></image>
-          <view class="integral-list-item-title"
-            >中南财经政法大学硕士报名费</view
-          >
+          <view class="integral-list-item-title">{{ item.couponName }}</view>
           <view class="integral-list-item-bottom">
             <view class="">
-              <text class="">360</text>
+              <text class="">{{ item.couponName }}</text>
               <text class="">积分</text>
             </view>
-            <view class="">去兑换</view>
+            <view class="" @tap="exchangeCoupon(item.couponId)">去兑换</view>
           </view>
         </view>
       </view>
@@ -51,6 +49,7 @@ import navbar from "@/components/navbar/index.vue";
 
 import "./index.styl";
 import { useStore } from "vuex";
+import { onMounted, ref } from "vue";
 
 export default {
   name: "integral",
@@ -62,9 +61,37 @@ export default {
     const test = () => {
       console.log("test");
     };
+    const accountPoint = ref(0);
+    const list = ref([]);
+    const exchangeCoupon =async (couponId) => {
+      let res = await store.dispatch("global/exchangeCoupon", {
+        couponId,
+        exchangeNum: 1,
+      });
+    };
+    onMounted(async () => {
+      let res = await store.dispatch("global/getAccountPoint");
+      // list.value = res.confImages;
+      console.log("res===>", res);
+      accountPoint.value = res.accountPoint;
+      // let data = await store.dispatch("global/getAccountList", { type: 1 });
+      // console.log("data===>", data);
+      const res1 = await store.dispatch("global/getCouponList", {
+        status: 102,
+        couponType: null,
+        pageNum: 1,
+        pageSize: 10,
+      });
+      list.value = res1.couponInfos;
+      console.log("couponList=>", list);
+    });
+
     return {
+      list,
       tabsHeight: store.state.global.tabsHeight,
       test,
+      exchangeCoupon,
+      accountPoint,
       parameter: {
         title: "积分商城",
         return: 1,

@@ -37,21 +37,23 @@ export default {
       default: 0
     }
   },
-  setup(props) {
+  setup(props,ctx) {
     const store = useStore();
-    console.log(props)
+    console.log("1234",props,ctx)
+    const state = ref(0)
     const statusStr = computed(() => {
       let str = ""
-      props.active == 1 && (str = "立即领取")
-      props.active == 2 && (str = "立即使用")
-      props.active == 3 && (str = "使用详情")
-      props.active == 4 && (str = "已失效")
+      props.active == 1 && (str = "立即领取",state.value=101)
+      props.active == 2 && (str = "立即使用",state.value=1)
+      props.active == 3 && (str = "使用详情",state.value=2)
+      props.active == 4 && (str = "已失效",state.value=3)
       return str
     })
     const onClick = async () => {
       if (props.active == 1) {
         let res = await store.dispatch('global/receiveCoupon', { couponId: props.initData.couponId })
         console.log(res)
+        ctx.attrs.onInitList(state.value)
       }
        if (props.active == 2) {
         wx.switchTab({url:'/pages/product/index'})

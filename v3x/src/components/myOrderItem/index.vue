@@ -1,8 +1,12 @@
 <template>
   <view class="my-order-items" v-if="initData.orderNo">
-    <view class="my-order-li-title">
-      <view> 订单号{{initData.orderNo}} </view>
-      <view> 已完成 </view>
+    <view class="my-order-li-title" @tap="cancel(initData.orderNo)">
+      <view> 订单号{{ initData.orderNo }} </view>
+      <view>
+        {{
+          active == 1 ? "报名费待支付" : active == 2 ? "学费待支付" : "已完成"
+        }}
+      </view>
     </view>
     <view class="my-order-li-img">
       <image
@@ -10,29 +14,60 @@
         mode="aspectFill"
       ></image>
       <view>
-        <view> {{initData.schoolName}} </view>
-        <view>  {{initData.productName}}  </view>
+        <view> {{ initData.schoolName }} </view>
+        <view> {{ initData.productName }} </view>
       </view>
     </view>
     <view class="my-order-items-li">
       <view> 学费(含报名费) </view>
-      <view> ¥{{initData.productPrice}} </view>
+      <view> ¥{{ initData.productPrice }} </view>
     </view>
     <view class="my-order-items-li">
       <view> 报名费 </view>
-      <view> ¥{{initData.signupPrice}} </view>
+      <view> ¥{{ initData.signupPrice }} </view>
     </view>
     <view class="my-order-items-li">
       <view> 优惠券 </view>
-      <view style="color: #ff5000"> -¥{{initData.signupPayAmount}} </view>
+      <view style="color: #ff5000">
+        -¥
+        {{
+          active == 1
+            ? initData.signupCouponAmount || 0
+            : active == 2
+            ? initData.tuitionCouponAmount || 0
+            : initData.signupCouponAmount || initData.tuitionCouponAmount || 0
+        }}
+      </view>
     </view>
     <view class="my-order-items-total">
-      <view> 实付金额: ¥ </view>
-      <view> {{initData.productPrice-initData.signupPayAmount}}  </view>
+      <view>
+        {{ active == 1 ? "报名费应付" : active == 2 ? "学费应付" : "实付金额" }}
+        : ¥
+      </view>
+      <view>
+        {{
+          active == 1
+            ? initData.signupPayAmount
+            : active == 2
+            ? initData.productPrice - initData.signupPrice
+            : initData.signupPayAmount
+        }}
+      </view>
     </view>
     <view class="my-order-items-btn">
-      <view> 报名完成加老师微信号，「我的」-「班主任微信号」 </view>
-      <view> 查看详情 </view>
+      <view
+        >{{
+          active == 1
+            ? "订单将于23小时59分自动取消"
+            : active == 2
+            ? "为了不影响入学, 请尽快完成支付"
+            : "报名完成加老师微信号，「我的」-「班主任微信号」"
+        }}
+      </view>
+
+      <view @tap="goPaySign(initData.orderNo)" v-if="active == 1">去支付 </view>
+      <view @tap="navConfirm" v-else-if="active == 2">学费待支付 </view>
+      <view v-else> 查看详情 </view>
     </view>
     <!-- <view class="my-order-item-title">中南财经政法大学定制班</view>
     <view class="my-order-items-index">
@@ -62,10 +97,46 @@ export default {
       type: Object,
       default: () => {},
     },
+    active: {
+      type: Number,
+      default: 0,
+    },
   },
   setup(props) {
     const store = useStore();
-    return {};
+    const goPaySign = async (orderNo) => {
+      const res = await store.dispatch("global/payOrder", {
+        orderNo,
+      });
+      console.log("res=>", JSON.parse(res.orderStr));
+      const params = JSON.parse(res.orderStr);
+      delete params.appId;
+      const data = await store.dispatch("global/wxPay", params);
+      console.log("data=>", data);
+    };
+    const navConfirm = () => {
+      const params = {
+        pageType: 1,
+        productId: props.initData.productId,
+        orderNo: props.initData.orderNo,
+        initData: props.initData,
+      };
+      debugger
+      store.dispatch("global/setConfirmData", params);
+      wx.navigateTo({
+        url: "/pages/confirm/index",
+      });
+    };
+    const cancel = async (orderNo) => {
+      const res = await store.dispatch("global/cancelLorder", {
+        orderNo,
+      });
+    };
+    return {
+      goPaySign,
+      navConfirm,
+      cancel,
+    };
   },
 };
 </script>

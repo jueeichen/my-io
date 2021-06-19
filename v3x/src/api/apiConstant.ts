@@ -118,7 +118,7 @@ export const SELECTCOUPON = '/orderLearn/selectCoupon'
 export const GETORDERLIST = '/orderLearn/getOrderList'
 
 /**
- * CANCELORDER-POST请求 重新选择优惠券
+ * CANCELORDER-POST请求 取消订单
  * 
  * @param {String} orderNo	  	
  * 
@@ -170,3 +170,5 @@ export const EXCHANGECOUPON = '/couponInfo/exchangeCoupon'
 * @param {String} couponId			优惠券ID	
 */
 export const RECEIVECOUPON = '/couponInfo/receiveCoupon'
+
+

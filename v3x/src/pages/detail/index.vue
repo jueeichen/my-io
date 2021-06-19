@@ -30,7 +30,7 @@
     <view class="detail-menu">
       <view class="detail-menu-items">
         <view class="itme-title">报名费</view>
-        <text class="item-right"> ¥{{ initData.signupNum }}</text>
+        <text class="item-right"> ¥{{ initData.signupPrice }}</text>
       </view>
       <view class="detail-menu-items">
         <view class="itme-title">优惠券</view>
@@ -47,7 +47,7 @@
             :class="{ 'active-detail-menu': index == specialIndex }"
             v-for="(item, index) in initData.specialitiesList"
             :key="index"
-            >{{ item.specialitiesName }}</text
+            >{{splitStr(item.specialitiesName,4)  }}</text
           >
         </view>
       </view>
@@ -63,9 +63,11 @@
     </view>
     <view class="detail-rich">
       <view class="detail-rich-title">详情</view>
-      <image />
+
+      <view class="rich-text" v-html="initData.detail" />
+      
     </view>
-    <view class="detail-bottom-btn">
+    <view class="detail-bottom-btn" @tap="navConfirm">
       <view>立即报名</view>
     </view>
     <template v-if="isShowCoupon">
@@ -111,13 +113,15 @@ export default {
   },
   setup(props) {
     const ctx = getCurrentInstance();
-    const id = ref(0);
     const initData = ref({});
     const banner = ref([]);
     const specialIndex = ref(0);
     const isShowCoupon = ref(false);
-    const couponList = ref([])
-    id.value = props.tid.match(/(?<=(=)).*/g, "")[0];
+    const couponList = ref([]);
+    const id = ref(0);
+    // id.value = props.tid.match(/(?<=(=)).*/g, "")[0];
+    id.value  = props.tid.split("=")[1]
+    
     const onChangeSpecial = (e) => {
       specialIndex.value = e;
     };
@@ -126,10 +130,11 @@ export default {
         id: id.value,
       });
       initData.value = res.productInfo;
+      console.log("banner=>", banner);
       banner.value = res.productInfo.bannerList;
       console.log("initData1=>", initData);
       const data = await store.dispatch("global/getCouponList", {
-        status: 101,
+        status: 1,
         couponType: null,
         pageNum: 1,
         pageSize: 10,
@@ -137,7 +142,28 @@ export default {
       couponList.value = data.couponInfos;
       console.log("couponList=>", couponList);
     });
+    const navConfirm = () => {
+      const params = {
+        pageType: 0,
+        productId: id.value,
+        orderNo: id.value,
+        useCounponId: "",
+        specialitiesName:
+          initData.value.specialitiesList.length > 0
+            ? initData.value.specialitiesList[specialIndex.value]
+                .specialitiesName || ""
+            : "",
+        initData: initData.value,
+        couponValue: 0,
+      };
+      store.dispatch("global/setConfirmData", params);
+      wx.navigateTo({
+        url: "/pages/confirm/index?id=" + id.value,
+      });
+    };
     return {
+      splitStr,
+      navConfirm,
       couponList,
       id,
       initData,
@@ -152,4 +178,15 @@ export default {
     };
   },
 };
+   function splitStr(str, length) {
+    if (typeof str === "string") {
+      if (typeof length === "number") {
+        return str.length > length ? str.substr(0, length) + "..." : str;
+      } else {
+        return str.length > 6 ? str.substr(0, 6) + "..." : str;
+      }
+    } else {
+      return str;
+    }
+  }
 </script>

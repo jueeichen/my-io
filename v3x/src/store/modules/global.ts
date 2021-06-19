@@ -13,6 +13,7 @@ const state = {
   commonConfImage: {},
   userInfo: {},
   couponList: [],
+  confirmData: {},
 }
 
 const mutations = {
@@ -34,9 +35,15 @@ const mutations = {
     state.userInfo = data
     Taro.setStorageSync('userInfo', data)
   },
+  SET_CONFIRMDATA(state, data) {
+    state.confirmData = data
+  },
 }
 
 const actions = {
+  setConfirmData(context, data) {
+    context.commit('SET_CONFIRMDATA', data)
+  },
   setNavHeight(context, navHeight) {
     context.commit('SET_NAVHEIGHT', navHeight)
   },
@@ -123,15 +130,19 @@ const actions = {
       }, {}, {})
       console.log("payOrder=>", context)
       console.log("payOrder", data)
-      resolve(data.data)
+      const params = JSON.parse(data.data.orderStr);
+      delete params.appId;
+
+      const res = await context.dispatch("wxPay", params);
+      resolve(res)
     })
     // console.log(context)
   },
   //我的订单列表
-  getOrderList(context) {
+  getOrderList(context,obj) {
     return new Promise(async (resolve) => {
       const data: any = await $api('GETORDERLIST', {
-        status:1
+        status: obj.status
       }, {
         pageNum: 1,
         pageSize: 10
@@ -141,9 +152,98 @@ const actions = {
       resolve(data.data)
     })
     // console.log(context)
-  }
-}
+  },
+  //调用微信支付
+  wxPay(context, obj) {
+    return new Promise((resolve, reject) => {
+      console.log("obj=>", obj)
 
+      wx.requestPayment({
+        timeStamp: obj.timeStamp,
+        nonceStr: obj.nonceStr,
+        package: obj.package,
+        signType: obj.signType,
+        paySign: obj.paySign,
+        success: (res) => {
+          console.log(res)
+          resolve(res)
+          wx.navigateTo({
+            url:'/pages/myOrder/index?id=2'
+          });
+        },
+        fail: (res) => {
+          console.log(res)
+          console.log(context)
+          reject(res)
+          // this.triggerEvent("onReLoad",{})
+
+        },
+      })
+    })
+    // console.log(context)
+  },
+  //积分商城数据：
+  // GETACCOUNTPOINT
+  getAccountPoint(context) {
+    return new Promise(async (resolve) => {
+      const data: any = await $api('GETACCOUNTPOINT', {
+      }, {}, {})
+      console.log("getAccountPoint=》", data)
+      resolve(data.data)
+    })
+    // console.log(context)
+  },
+  //积分商城列表：
+  // GETACCOUNTPOINT
+  getAccountList(context, obj) {
+    return new Promise(async (resolve) => {
+      const data: any = await $api('GETACCOUNTPOINTDETAILBYTYPE', {
+        type: obj.type
+      }, {}, {})
+      console.log("getAccountList=》", data)
+      resolve(data.data)
+    })
+    // console.log(context)
+  },
+  //
+  //重新选择优惠券
+  // SELECTCOUPON
+  selectCounpon(context, obj) {
+    return new Promise(async (resolve) => {
+      const data: any = await $api('SELECTCOUPON', {
+        orderNo: obj.orderNo,
+        tuitionCouponDetailId: obj.tuitionCouponDetailId
+      }, {}, {})
+      console.log("selectCounpon=》", data)
+      resolve(data.data)
+    })
+    // console.log(context)
+  },
+  //  CANCELORDER
+  cancelLorder(context, obj) {
+    return new Promise(async (resolve) => {
+      const data: any = await $api('CANCELORDER', {
+        orderNo: obj.orderNo
+      }, {}, {})
+      console.log("selectCounpon=》", data)
+      resolve(data.data)
+    })
+    // console.log(context)
+  },
+  //
+  exchangeCoupon(context, obj) {
+    return new Promise(async (resolve) => {
+      const data: any = await $api('EXCHANGECOUPON', {
+        couponId: obj.couponId,
+        exchangeNum: obj.exchangeNum
+      }, {}, {})
+      console.log("selectCounpon=》", data)
+      resolve(data.data)
+    })
+    // console.log(context)
+  },
+}
+// 
 const getters = {
 
 }
