@@ -1,23 +1,24 @@
 <template>
   <view class="counpon-items">
-    <view class="counpon-item-title">{{initData.couponName}}</view>
+    <view class="counpon-item-title">{{ initData.couponName }}</view>
     <view class="counpon-items-index">
       <image
         src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2367570774,2939782776&fm=11&gp=0.jpg"
         mode="aspectFill"
       ></image>
       <view>
-        <view class="list-item-title">{{initData.couponName}}</view>
-        <view class="fee">¥<text>{{initData.couponDenomination}}</text> </view>
-        <view class="list-item-tuition">有效期：截止{{initData.validEndTime}}</view>
+        <view class="list-item-title">{{ initData.couponName }}</view>
+        <view class="fee"
+          >¥<text>{{ initData.couponDenomination }}</text>
+        </view>
+        <view class="list-item-tuition"
+          >有效期：截止{{ initData.validEndTime }}</view
+        >
       </view>
-      <view
-        class="sign-up"
-        @tap="onClick"
-      >{{statusStr}}</view>
+      <view v-if="!isUse" class="sign-up" @tap="onClick">{{ statusStr }}</view>
+      <view v-else class="sign-up" >已选择</view>
 
     </view>
-
   </view>
 </template>
 
@@ -30,35 +31,49 @@ export default {
   props: {
     initData: {
       type: Object,
-      default: () => { }
+      default: () => {},
     },
     active: {
       type: String,
-      default: 0
-    }
+      default: 0,
+    },
+    index: {
+      type: Number,
+      default: 0,
+    },
+    isUse: {
+      type: Boolean,
+      default: false,
+    },
   },
-  setup(props,ctx) {
+  setup(props, ctx) {
     const store = useStore();
-    console.log("1234",props,ctx)
-    const state = ref(0)
+    console.log("1234", props, ctx);
+    const state = ref(0);
     const statusStr = computed(() => {
-      let str = ""
-      props.active == 1 && (str = "立即领取",state.value=101)
-      props.active == 2 && (str = "立即使用",state.value=1)
-      props.active == 3 && (str = "使用详情",state.value=2)
-      props.active == 4 && (str = "已失效",state.value=3)
-      return str
-    })
+      let str = "";
+      props.active == 1 && ((str = "立即领取"), (state.value = 101));
+      props.active == 2 && ((str = "立即使用"), (state.value = 1));
+      props.active == 3 && ((str = "使用详情"), (state.value = 2));
+      props.active == 4 && ((str = "已失效"), (state.value = 3));
+      return str;
+    });
     const onClick = async () => {
       if (props.active == 1) {
-        let res = await store.dispatch('global/receiveCoupon', { couponId: props.initData.couponId })
-        console.log(res)
-        ctx.attrs.onInitList(state.value)
+        let res = await store.dispatch("global/receiveCoupon", {
+          couponId: props.initData.couponId,
+        });
+        console.log(res);
+        ctx.attrs.onInitList(state.value);
       }
-       if (props.active == 2) {
-        wx.switchTab({url:'/pages/product/index'})
+      if (props.active == 2) {
+        if (ctx.attrs.onUse) {
+          ctx.attrs.onUse(props.index);
+          return;
+        }
+        wx.switchTab({ url: "/pages/product/index" });
       }
-    }
+    };
     return { statusStr, onClick };
   },
 };

@@ -47,15 +47,21 @@ const actions = {
   setNavHeight(context, navHeight) {
     context.commit('SET_NAVHEIGHT', navHeight)
   },
-  async getProfile(context) {
-    const data: any = await $api('GETCOMMONCONF', {}, {}, {})
-    context.commit('SET_COMMONCONF', data.data)
+  getProfile(context) {
+    return new Promise(async (resolve) => {
+      const data: any = await $api('GETCOMMONCONF', {}, {}, {})
+      context.commit('SET_COMMONCONF', data.data)
+      resolve(data.data)
+    })
     // console.log(context)
   },
-  async getUserInfo(context) {
-    const data: any = await $api('GETUSERINFO', {}, {}, {})
-    context.commit('GET_USERINFO', data.data)
-    // console.log(context)
+  getUserInfo(context) {
+    return new Promise(async (resolve) => {
+      const data: any = await $api('GETUSERINFO', {}, {}, {})
+      context.commit('GET_USERINFO', data.data)
+      
+      resolve(data.data)
+    })
   },
   getCommonConfImage(context, type) {
     return new Promise(async (resolve) => {
@@ -139,7 +145,7 @@ const actions = {
     // console.log(context)
   },
   //我的订单列表
-  getOrderList(context,obj) {
+  getOrderList(context, obj) {
     return new Promise(async (resolve) => {
       const data: any = await $api('GETORDERLIST', {
         status: obj.status
@@ -168,7 +174,7 @@ const actions = {
           console.log(res)
           resolve(res)
           wx.navigateTo({
-            url:'/pages/myOrder/index?id=2'
+            url: '/pages/myOrder/index?id=2'
           });
         },
         fail: (res) => {
@@ -239,6 +245,17 @@ const actions = {
       }, {}, {})
       console.log("selectCounpon=》", data)
       resolve(data.data)
+    })
+    // console.log(context)
+  },
+  decryptPhone(context, obj) {
+    return new Promise(async (resolve) => {
+      const data: any = await $api('DECRYPTPHONE', {
+        encryptedData: obj.encryptedData,
+        iv: obj.iv
+      }, {}, {})
+      console.log("decryptPhone=》", data.res)
+      resolve(data.res)
     })
     // console.log(context)
   },

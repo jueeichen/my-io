@@ -1,8 +1,5 @@
 <template>
-  <view
-    class="login-mask"
-    v-if="isShow"
-  >
+  <view class="login-mask" v-if="isShow">
     <view class="login-mask-content">
       <view class="login-mask-title">提示</view>
       <view class="login-mask-desc">进一步操作需要授权您的手机号</view>
@@ -11,7 +8,8 @@
           class="login-btn login-btn-cancel flex1"
           v-if="hideCancel !== true"
           @tap="cancelLogin"
-        >随便逛逛</view>
+          >随便逛逛</view
+        >
         <button
           class="login-btn login-btn-confirm"
           hover-class="none"
@@ -29,6 +27,7 @@
 import { ref, reactive, getCurrentInstance } from "vue";
 import "./index.styl";
 import $api from "@/api/index.ts";
+import store from "@/store";
 
 export default {
   props: {
@@ -49,27 +48,22 @@ export default {
     const isRequest = ref(false);
     const code = ref("");
     const isShowGetUserInfo = ref(false);
-    const ctx = getCurrentInstance()
-
-
+    const ctx = getCurrentInstance();
 
     // function
     const cancelLogin = () => {
       isShow.value = false;
-      console.log(ctx)
+      console.log(ctx);
       if (ctx.attrs.onCancel) {
-        
-        console.log(ctx.attrs.onCancel)
+        console.log(ctx.attrs.onCancel);
 
-        ctx.attrs.onCancel()
+        ctx.attrs.onCancel();
       }
-
     };
     const open = () => {
-      console.log(wx.getStorageSync('userInfo'))
-      if (wx.getStorageSync('userInfo').mobile) {
-
-        return
+      console.log(wx.getStorageSync("userInfo"));
+      if (wx.getStorageSync("userInfo").mobile) {
+        return;
       }
       isShow.value = true;
     };
@@ -77,18 +71,31 @@ export default {
     const loginGetUserInfo = async (e) => {
       if (e.detail.encryptedData) {
         // this.startLogin(e.detail);
-        let data = await $api('DECRYPTPHONE', {
-          // code:_code.value,
-          encryptedData: e.detail.encryptedData,
-          iv: e.detail.iv
-        }, {}, {})
-        console.log(data)
-        if (data.res.code == 10000) {
-          cancelLogin()
+        try {
+          const data = await store.dispatch("global/decryptPhone", {
+            encryptedData: e.detail.encryptedData,
+            iv: e.detail.iv,
+          });
+          console.log(data);
+
+          if (data.code == 10000) {
+            isShow.value = false;
+          } else if (!wx.getStorageSync("userInfo").mobile) {
+            const res = await store.dispatch("global/getUserInfo");
+            if (res.mobile) {
+              isShow.value = false;
+            } else {
+              cancelLogin();
+            }
+          }
+        } catch (err) {
+          cancelLogin();
         }
+
+        // }
       } else {
         // this.$toast("请允许授权");
-        wx.showToast({ title: '请允许授权', icon: 'none' })
+        wx.showToast({ title: "请允许授权", icon: "none" });
       }
     };
     return {
@@ -103,9 +110,9 @@ export default {
       /*方法start=> */
       cancelLogin,
       loginGetUserInfo,
-      open
+      open,
       /*方法<=end */
     };
-  }
+  },
 };
 </script>
