@@ -102,7 +102,7 @@ export default {
       list_2: store.state.product.list_2,
       code: _code,
       parameter: {
-        title: "首页",
+        title: "产品",
         return: 1,
       },
       getPhoneNumber: async (e) => {

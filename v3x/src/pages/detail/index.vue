@@ -186,7 +186,7 @@ export default {
       initData,
       banner,
       parameter: {
-        title: "首页",
+        title: "详情",
         return: 1,
       },
       onChangeSpecial,

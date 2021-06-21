@@ -62,7 +62,7 @@
           >
           </image>
 
-          <view class="" @>已完成 </view>
+          <view class="" >已完成 </view>
         </view>
         <view class="" @tap="jump('/pages/myOrder/index?id=0')">
           <image src="../../static/images/my/all_order_icon@2x.png" class="">
