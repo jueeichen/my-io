@@ -138,12 +138,20 @@ const request = async (url, body = {}, data = {}, _options) => {
       },
       success: (res) => {
         // console.log(res.data)
-        initJSON(res.data.data).then(r => {
-          resovle({ data: r, res: res.data })
-          if(res.data.code==='10001'){
-            wx.showToast({title:res.data.message,icon:'none'})
+        if (res.data.data) {
+          initJSON(res.data.data).then(r => {
+            resovle({ data: r, res: res.data })
+            if (res.data.code === '10001') {
+              wx.showToast({ title: res.data.message, icon: 'none' })
+            }
+          })
+        } else {
+          resovle({ data: null, res: res.data })
+          if (res.data.code === '10001') {
+            wx.showToast({ title: res.data.message, icon: 'none' })
           }
-        })
+        }
+
       },
       fail: (err) => {
         reject(err)

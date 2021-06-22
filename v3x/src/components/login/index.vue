@@ -77,9 +77,9 @@ export default {
             iv: e.detail.iv,
           });
           console.log(data);
-
           if (data.code == 10000) {
             isShow.value = false;
+            await store.dispatch("global/getUserInfo");
           } else if (!wx.getStorageSync("userInfo").mobile) {
             const res = await store.dispatch("global/getUserInfo");
             if (res.mobile) {
