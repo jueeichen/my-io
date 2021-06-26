@@ -35,7 +35,7 @@
           </view>
           <view class="" @tap="jump('/pages/poster/index')">
             <view class="">
-              <image src="../../static/images/my/poster_icon@2x.png" class="" />
+              <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/poster_icon@2x.png" class="" />
             </view>
             <view class="my-top-menu">推广海报 </view>
           </view>
@@ -43,13 +43,13 @@
       </view>
       <view class="my-center">
         <view class="" @tap="jump('/pages/myOrder/index?id=0')">
-          <image src="../../static/images/my/payment_sign_icon@2x.png" class="">
+          <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/payment_sign_icon@2x.png" class="">
           </image>
           <view class="">报名待支付 </view>
         </view>
         <view class="" @tap="jump('/pages/myOrder/index?id=1')">
           <image
-            src="../../static/images/my/payment_tuition_icon@2x.png"
+            src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/payment_tuition_icon@2x.png"
             class=""
           >
           </image>
@@ -57,7 +57,7 @@
         </view>
         <view class="" @tap="jump('/pages/myOrder/index?id=2')">
           <image
-            src="../../static/images/my/payment_succes_icon@2x.png"
+            src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/payment_succes_icon@2x.png"
             class=""
           >
           </image>
@@ -65,34 +65,34 @@
           <view class="" >已完成 </view>
         </view>
         <view class="" @tap="jump('/pages/myOrder/index?id=0')">
-          <image src="../../static/images/my/all_order_icon@2x.png" class="">
+          <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/all_order_icon@2x.png" class="">
           </image>
           <view class="">全部订单 </view>
         </view>
       </view>
       <image
-        src="../../static/images/my/mine_activity@2x.png"
+        src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/mine_activity@2x.png"
         class="my-main-img"
         v-if="false"
       />
       <view class="my-bottom">
         <view class="my-bottom-item" @tap="jump('/pages/service/index')">
           <view class="my-bottom-item_left">
-            <image src="../../static/images/my/teacher_icon@2x.png" />
+            <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/teacher_icon@2x.png" />
             <view class="">班主任微信 </view>
           </view>
           <van-icon name="arrow" class="iconfont icon-back" />
         </view>
         <view class="my-bottom-item" @tap="jump('/pages/process/index')">
           <view class="my-bottom-item_left">
-            <image src="../../static/images/my/procss_icon@2x.png" />
+            <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/procss_icon@2x.png" />
             <view class="">拿证流程 </view>
           </view>
           <van-icon name="arrow" class="iconfont icon-back" />
         </view>
         <view class="my-bottom-item" @tap="jump('/pages/about/index')">
           <view class="my-bottom-item_left">
-            <image src="../../static/images/my/about_us@2x.png" />
+            <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/about_us@2x.png" />
             <view class="">关于我们 </view>
           </view>
           <van-icon name="arrow" class="iconfont icon-back" />
@@ -129,10 +129,6 @@ export default {
     const userInfo = ref({});
     const accountPoint = ref(0);
 
-    
-    const test = () => {
-      console.log("test");
-    };
     const navTarget = (e) => {
       wx.navigateTo({
         url: e,
@@ -149,7 +145,6 @@ export default {
       accountPoint,
       userInfo,
       tabsHeight: store.state.global.tabsHeight,
-      test,
       navTarget,
       cancel: () => {
         wx.switchTab({ url: "/pages/index/index" });

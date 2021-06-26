@@ -5,7 +5,7 @@
       <!-- <login /> -->
       <image
         class="main-img"
-        src="../../static/images/activity.png"
+        src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/activity.png"
         mode="widthFix"
       ></image>
 
@@ -24,7 +24,7 @@
         >
           <view class="list-item-title">{{ item.couponName }}</view>
           <view class="list-item-content">
-            <image src="../../static/images/school-logo.png" mode="widthFix" />
+            <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/school-logo.png" mode="widthFix" />
             <view class="list-item-right">
               <view class="list-item-right-top">{{splitStr(item.couponName,7)   }}</view>
               <view class="list-item-right-center">

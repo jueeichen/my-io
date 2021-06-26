@@ -44,11 +44,14 @@
         </van-tabs>
       </view>
     </view>
+    <no-data v-if="list.length<1"/>
   </view>
 </template>
 
 <script>
 import navbar from "@/components/navbar/index.vue";
+import noData from "@/components/noData/index.vue";
+
 import MyOrderItem from "@/components/myOrderItem/index.vue";
 
 import "./index.styl";
@@ -59,6 +62,7 @@ export default {
   name: "myOrder",
   components: {
     navbar,
+    noData,
     MyOrderItem,
   },
   setup(props) {
@@ -73,7 +77,7 @@ export default {
     };
     onMounted(async () => {
       const res = await store.dispatch("global/getOrderList", {
-        status: active + 1,
+        status: active.value + 1,
       });
       console.log(res);
       list.value = res.orderList;

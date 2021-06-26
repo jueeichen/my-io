@@ -205,7 +205,11 @@ const actions = {
     return new Promise(async (resolve) => {
       const data: any = await $api('GETACCOUNTPOINTDETAILBYTYPE', {
         type: obj.type
-      }, {}, {})
+      }, {
+        pageNum: 1,
+        pageSize: 10
+      }
+      , {})
       console.log("getAccountList=》", data)
       resolve(data.data)
     })
@@ -258,6 +262,7 @@ const actions = {
       resolve(data.res)
     })
   },
+  
 }
 // 
 const getters = {
