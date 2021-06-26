@@ -15,13 +15,14 @@
         <view class="service-content-1"> 班主任微信</view>
         <view class="service-content-2"> 扫一扫上面的二维码, 加我微信</view>
       </view>
+
       <view class="service-content-3"
         >请保存到相册后，微信扫一扫加老师微信号
       </view>
-      <view class="service-btn">
-        <image src="" />
-        <view> 保存图片</view>
-      </view>
+    </view>
+    <view class="service-btn">
+      <image src="" />
+      <view> 保存图片</view>
     </view>
   </view>
 </template>
