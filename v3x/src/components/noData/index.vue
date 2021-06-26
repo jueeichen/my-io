@@ -1,5 +1,5 @@
 <template>
-  <view class="no-data-content">
+  <view class="no-data-content" >
 
     <image :src="initData.img||'https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/no-data.png'" />
 

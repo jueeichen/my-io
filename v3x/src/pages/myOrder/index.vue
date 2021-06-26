@@ -19,6 +19,8 @@
                 v-for="(item, index) in list"
                 :key="index"
               />
+              <no-data v-if="list.length<1" />
+
             </view>
           </van-tab>
           <van-tab title="学费待支付">
@@ -29,6 +31,8 @@
                 v-for="(item, index) in list"
                 :key="index"
               />
+              <no-data v-if="list.length<1" />
+
             </view>
           </van-tab>
           <van-tab title="已完成">
@@ -39,12 +43,13 @@
                 v-for="(item, index) in list"
                 :key="index"
               />
+              <no-data v-if="list.length<1" />
+
             </view>
           </van-tab>
         </van-tabs>
       </view>
     </view>
-    <no-data v-if="list.length<1"/>
   </view>
 </template>
 

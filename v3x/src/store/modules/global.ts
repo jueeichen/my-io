@@ -14,6 +14,7 @@ const state = {
   userInfo: {},
   couponList: [],
   confirmData: {},
+  qrcode:'',
 }
 
 const mutations = {
@@ -38,6 +39,9 @@ const mutations = {
   SET_CONFIRMDATA(state, data) {
     state.confirmData = data
   },
+  SET_QRCODE(state, data) {
+    state.qrcode = data
+  },
 }
 
 const actions = {
@@ -59,7 +63,7 @@ const actions = {
     return new Promise(async (resolve) => {
       const data: any = await $api('GETUSERINFO', {}, {}, {})
       context.commit('GET_USERINFO', data.data)
-      
+
       resolve(data.data)
     })
   },
@@ -209,7 +213,7 @@ const actions = {
         pageNum: 1,
         pageSize: 10
       }
-      , {})
+        , {})
       console.log("getAccountList=》", data)
       resolve(data.data)
     })
@@ -248,7 +252,7 @@ const actions = {
         exchangeNum: obj.exchangeNum
       }, {}, {})
       console.log("selectCounpon=》", data)
-      resolve(data.data)
+      resolve(data)
     })
     // console.log(context)
   },
@@ -262,7 +266,27 @@ const actions = {
       resolve(data.res)
     })
   },
-  
+  //CGETCERTFLOW 拿证流程
+  getCertFlow(context) {
+    return new Promise(async (resolve) => {
+      const data: any = await $api('GETCERTFLOW', {
+      }, {}, {})
+      console.log("CGETCERTFLOW=》", data.res)
+      resolve(data.data)
+    })
+  },
+//GETMINIQRCODE
+getMiniQrcode(context) {
+  return new Promise(async (resolve) => {
+    const data: any = await $api('GETMINIQRCODE', {
+    }, {}, {})
+    console.log("getMiniQrcode=》", data.res)
+    context.commit('SET_QRCODE', data.data.qrcodeUrl)
+
+    resolve(data.data)
+  })
+},
+
 }
 // 
 const getters = {

@@ -8,7 +8,7 @@ const path = require('path') // eslint-disable-line
 // }
 
 const vant_weapp_config = () => {
-  const arr = ['wxs', 'common/style', 'common/index.wxss', 'button', 'icon', 'info', 'loading', 'tabs', 'tab', 'sticky',"cell","cell-group"]
+  const arr = ['wxs', 'common/style', 'common/index.wxss', 'button', 'icon', 'info', 'loading', 'tabs', 'tab', 'sticky',"cell","cell-group","steps","progress"]
   // const arr = ['vant-weapp/']
   const fromBase = 'src/components/vant-weapp/'
   const toBase = 'dist/components/vant-weapp/'

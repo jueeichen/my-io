@@ -2,10 +2,11 @@
   <swiper
     :style="{width,height}"
     :indicator-dots="indicatorDots"
-    :autoplay="autoplay"
+    :autoplay="auto"
     :interval="interval"
     :duration="duration"
     :circular="circular"
+    @change="onChange"
   >
     <swiper-item
       v-for="(item, index) in initData"
@@ -14,31 +15,66 @@
     >
       <view class="swiper-item">
         <image
-          :src="item.showImgUrl||item.imgUrl"
+          :src=" item.showImgUrl||item.imgUrl"
           :style="{width,height}"
           mode="aspectFill"
         ></image>
+        <image
+          class="qrcode"
+          :src="global.qrcode"
+          mode="aspectFill"
+        ></image>
+
         <!-- {{ item.img }} -->
       </view>
     </swiper-item>
   </swiper>
+
 </template>
 
 <script>
-import { computed, ref } from "vue";
+import { computed, ref, onMounted, toRaw } from "vue";
 import "./index.styl";
 import Taro from "@tarojs/taro";
 import { useStore } from "vuex";
+
 export default {
   props: {
     width: { type: String, default: '690rpx' },
     height: { type: String, default: '250rpx' },
-    initData: { type: Object, default: () => { } }
+    initData: { type: Object, default: () => { } },
+    auto: { type: Boolean, default: true },
+    poster: { type: Boolean, default: false },
   },
-  setup(props) {
+  setup(props,ctx) {
+    const imgInfo = ref({
+      width: 0,
+      height: 0
+    })
+    const global = ref('')
     const store = useStore();
-    console.log("props===>1", props)
+    console.log("props===>1", ctx)
+    // const onChange = (e) => {
+    //   if(ctx.attrs.onChange){
+    //     ctx.attrs.onChange(e.detail.current)
+    //   }
+    //   // console.log(e.detail.current,ctx.attrs.onChange)
+
+    // }
+    onMounted(() => {
+
+      global.value = toRaw(store.state.global)
+
+      setTimeout(() => {
+        console.log("global.value=>", global.value.qrcode)
+
+      }, 3000)
+
+    })
+
     return {
+      global,
+      // onChange,
       background: [
         {
           url: "",
