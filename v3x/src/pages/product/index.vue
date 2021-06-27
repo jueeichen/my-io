@@ -4,8 +4,14 @@
     <login />
 
     <view class="index">
-      <c-swiper v-if="true" :initData="banner.confImages" />
-      <view class="index-tabs" v-if="true">
+      <c-swiper
+        v-if="true"
+        :initData="banner.confImages"
+      />
+      <view
+        class="index-tabs"
+        v-if="true"
+      >
         <van-tabs
           :swipeable="true"
           :animated="true"
@@ -15,12 +21,17 @@
           @change="onChange"
         >
           <van-tab title="推荐">
-            <view class="tab-item" v-if="list">
+            <view
+              class="tab-item"
+              v-if="list"
+            >
               <list-item
                 v-for="(item, index) in list"
                 :initData="item"
                 :key="index"
               />
+              <no-data v-if="list.length<1" />
+
             </view>
           </van-tab>
           <van-tab title="本科教育">
@@ -30,6 +41,8 @@
                 :initData="item"
                 :key="index"
               />
+              <no-data v-if="list_1.length<1" />
+
             </view>
           </van-tab>
           <van-tab title="研究生">
@@ -39,6 +52,8 @@
                 :initData="item"
                 :key="index"
               />
+              <no-data v-if="list_2.length<1" />
+
             </view>
           </van-tab>
         </van-tabs>
@@ -51,10 +66,13 @@
         获取手机号
       </button>
     </view>
+
   </view>
 </template>
 
 <script>
+import noData from "@/components/noData/index.vue";
+
 import login from "@/components/login/index.vue";
 import navbar from "@/components/navbar/index.vue";
 import cSwiper from "@/components/swiper/index.vue";
@@ -73,6 +91,7 @@ export default {
   components: {
     // NumberDisplay,
     // NumberSubmit,
+    noData,
     login,
     navbar,
     cSwiper,

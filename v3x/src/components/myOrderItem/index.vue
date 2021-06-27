@@ -10,7 +10,7 @@
     </view>
     <view class="my-order-li-img">
       <image
-        src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2367570774,2939782776&fm=11&gp=0.jpg"
+        :src="initData.showImgUrl"
         mode="aspectFill"
       ></image>
       <view>

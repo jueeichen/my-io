@@ -23,7 +23,11 @@ export default {
     "van-tabs": "./components/vant-weapp/tabs/index",
     "van-tab": "./components/vant-weapp/tab/index",
     "van-cell-group": "./components/vant-weapp/cell-group/index",
-    "van-cell": "./components/vant-weapp/cell/index"
+    "van-cell": "./components/vant-weapp/cell/index",
+    "van-steps": "./components/vant-weapp/steps/index",
+    "van-progress": "./components/vant-weapp/progress/index",
+
+    
   },
   window: {
     backgroundTextStyle: 'light',

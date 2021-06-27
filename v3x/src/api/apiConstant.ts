@@ -172,3 +172,10 @@ export const EXCHANGECOUPON = '/couponInfo/exchangeCoupon'
 export const RECEIVECOUPON = '/couponInfo/receiveCoupon'
 
 
+
+
+/**
+* //userInfo/getMiniQrcode-POST请求 领取优惠券
+* @param {String} couponId			优惠券ID	
+*/
+export const GETMINIQRCODE = '/userInfo/getMiniQrcode'
