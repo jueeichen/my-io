@@ -4,14 +4,8 @@
     <login />
 
     <view class="index">
-      <c-swiper
-        v-if="true"
-        :initData="banner.confImages"
-      />
-      <view
-        class="index-tabs"
-        v-if="true"
-      >
+      <c-swiper v-if="true" :initData="banner.confImages" />
+      <view class="index-tabs" v-if="true">
         <van-tabs
           :swipeable="true"
           :animated="true"
@@ -21,17 +15,13 @@
           @change="onChange"
         >
           <van-tab title="推荐">
-            <view
-              class="tab-item"
-              v-if="list"
-            >
+            <view class="tab-item" v-if="list">
               <list-item
                 v-for="(item, index) in list"
                 :initData="item"
                 :key="index"
               />
-              <no-data v-if="list.length<1" />
-
+              <no-data v-if="list.length < 1" />
             </view>
           </van-tab>
           <van-tab title="本科教育">
@@ -41,8 +31,7 @@
                 :initData="item"
                 :key="index"
               />
-              <no-data v-if="list_1.length<1" />
-
+              <no-data v-if="list_1.length < 1" />
             </view>
           </van-tab>
           <van-tab title="研究生">
@@ -52,8 +41,7 @@
                 :initData="item"
                 :key="index"
               />
-              <no-data v-if="list_2.length<1" />
-
+              <no-data v-if="list_2.length < 1" />
             </view>
           </van-tab>
         </van-tabs>
@@ -66,7 +54,6 @@
         获取手机号
       </button>
     </view>
-
   </view>
 </template>
 
@@ -161,6 +148,9 @@ export default {
         }
       },
     };
+  },
+  onShareAppMessage(options) {
+    return this.onShareAppMessage(options);
   },
   onShow() {
     // console.log(this);

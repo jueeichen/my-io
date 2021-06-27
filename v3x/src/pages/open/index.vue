@@ -8,66 +8,52 @@
       @change="onChange"
       @tap="next"
     >
-      <van-tab
-        title=""
-        v-for="(item,index) in list"
-        :key="index"
-      >
+      <van-tab title="" v-for="(item, index) in list" :key="index">
         <view class="tab-item">
-          <image
-            class="open-image"
-            :src="item.showImgUrl"
-            mode="aspectFill"
-          />
+          <image class="open-image" :src="item.showImgUrl" mode="aspectFill" />
         </view>
       </van-tab>
-
     </van-tabs>
-
   </view>
 </template>
 
 <script>
-
 import { ref, getCurrentInstance, onMounted, useRouter, reactive } from "vue";
 import "./index.styl";
 import store from "@/store";
 export default {
   name: "Index",
-  components: {
-  },
+  components: {},
   setup(props) {
-    const active = ref(0)
-    const list = ref([])
+    const active = ref(0);
+    const list = ref([]);
     const onChange = (e) => {
-      console.log(e.detail.index)
-      active.value = e.detail.index
-
-    }
+      console.log(e.detail.index);
+      active.value = e.detail.index;
+    };
     const next = () => {
       if (active.value == list.value.length) {
-
-        wx.switchTab({ url: '/pages/index/index' })
-        wx.setStorageSync('aleadyOpen', true)
-        return
+        wx.switchTab({ url: "/pages/index/index" });
+        wx.setStorageSync("aleadyOpen", true);
+        return;
       }
-      active.value++
-    }
+      active.value++;
+    };
     onMounted(async () => {
       let res = await store.dispatch("global/getCommonConfImage", "3");
       list.value = res.confImages;
       console.log("list===>", list);
     });
 
-
-
-
     return {
       list,
       active,
       next,
-      onChange
+      onChange,
     };
+  },
+  onShareAppMessage(options) {
+    return this.onShareAppMessage(options);
   },
 };
 function splitStr(str, length) {

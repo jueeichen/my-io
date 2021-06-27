@@ -4,30 +4,24 @@
     <view class="service">
       <!-- <view > </view> -->
       <view class="service-container">
-        <view
-          class="service-container-top"
-          v-if="false"
-        >
+        <view class="service-container-top" v-if="false">
           <image src=""></image>
           <view>
             <view>静音 </view>
             <view>广东 深圳</view>
           </view>
         </view>
-        <image
-          class="qr-code"
-          :src="initData.showImgUrl"
-        ></image>
+        <image class="qr-code" :src="initData.showImgUrl"></image>
         <view class="service-content-1"> 班主任微信</view>
         <view class="service-content-2"> 扫一扫上面的二维码, 加我微信</view>
       </view>
-      <view class="service-content-3">请保存到相册后，微信扫一扫加老师微信号
+      <view class="service-content-3"
+        >请保存到相册后，微信扫一扫加老师微信号
       </view>
-      <view
-        class="service-btn"
-        @tap="copyImg(initData.showImgUrl)"
-      >
-        <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/save.png" />
+      <view class="service-btn" @tap="copyImg(initData.showImgUrl)">
+        <image
+          src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/save.png"
+        />
         <view> 保存图片</view>
       </view>
     </view>
@@ -48,58 +42,54 @@ export default {
   },
   setup(props) {
     const store = useStore();
-    const initData = ref({})
+    const initData = ref({});
     onMounted(async () => {
       let res = await store.dispatch("global/getCommonConfImage", "104");
-      initData.value = res.confImages[0]
-      console.log(initData.value)
+      initData.value = res.confImages[0];
+      console.log(initData.value);
     });
     const copyImg = (url) => {
       wx.getImageInfo({
         src: url,
         success: (res) => {
-          console.log(res)
+          console.log(res);
           wx.saveImageToPhotosAlbum({
             filePath: res.path,
             success: (e) => {
-              this.$utils.toast('保存成功！', 1500)
-              this.close()
+              wx.showToast({ title: "保存成功！" });
             },
-            fail: res => {
+            fail: (res) => {
               wx.getSetting({
                 success(res) {
                   if (!res.authSetting["scope.writePhotosAlbum"]) {
                     wx.showModal({
-                      title: '警告',
-                      content: '请打开相册权限，否则无法保存图片到相册',
+                      title: "警告",
+                      content: "请打开相册权限，否则无法保存图片到相册",
                       success(res) {
                         if (res.confirm) {
                           wx.openSetting({
                             success(res) {
-                              console.log(res)
-                            }
-                          })
+                              console.log(res);
+                            },
+                          });
                         } else if (res.cancel) {
                           wx.showToast({
-                            title: '取消授权',
+                            title: "取消授权",
                             icon: "none",
-                            duration: 2000
-                          })
+                            duration: 2000,
+                          });
                         }
-                      }
-                    })
+                      },
+                    });
                   }
                 },
-
-              })
-
-            }
-          })
+              });
+            },
+          });
         },
-        fail(res) { }
-      })
-
-    }
+        fail(res) {},
+      });
+    };
 
     return {
       copyImg,
@@ -109,8 +99,12 @@ export default {
         title: "班主任微信",
         return: 1,
       },
-      imgUrl: 'https://img0.baidu.com/it/u=2487554976,3641386267&fm=26&fmt=auto&gp=0.jpg'
+      imgUrl:
+        "https://img0.baidu.com/it/u=2487554976,3641386267&fm=26&fmt=auto&gp=0.jpg",
     };
+  },
+  onShareAppMessage(options) {
+    return this.onShareAppMessage(options);
   },
 };
 </script>

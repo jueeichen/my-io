@@ -35,7 +35,13 @@
       <view class="detail-menu-items" @tap="isShowCoupon = true">
         <view class="itme-title">优惠券</view>
         <view class="item-right-btn">
-          <text class="" > {{(couponIndex===null)?'领券':'¥'+couponList[couponIndex].couponDenomination}}</text>
+          <text class="">
+            {{
+              couponIndex === null
+                ? "领券"
+                : "¥" + couponList[couponIndex].couponDenomination
+            }}</text
+          >
           <van-icon name="arrow" class="iconfont" />
         </view>
       </view>
@@ -54,9 +60,9 @@
       <view class="detail-menu-items no-line">
         <view class="itme-title">保障</view>
         <view class="detail-menu-item-content">
-          <view class="" v-for="(item, index) in 6" :key="index">
-            <image />
-            <text class=""> 就近考试 </text>
+          <view class="" v-for="(item, index) in initData.serviceTagsList" :key="index">
+            <image src="../../static/images/label.png"/>
+            <text class=""> {{item.tagName}} </text>
           </view>
         </view>
       </view>
@@ -77,16 +83,22 @@
           <!-- <image src="" @tap="isShowCoupon = false" /> -->
           <van-icon name="cross" @tap="isShowCoupon = false" />
         </view>
-        <view >
-          <view >优惠券 {{( couponIndex===null)?'0':'1'}}张, 共抵扣</view>
-          <view>¥{{(couponIndex===null)?'0':couponList[couponIndex].couponDenomination}}</view>
+        <view>
+          <view>优惠券 {{ couponIndex === null ? "0" : "1" }}张, 共抵扣</view>
+          <view
+            >¥{{
+              couponIndex === null
+                ? "0"
+                : couponList[couponIndex].couponDenomination
+            }}</view
+          >
         </view>
         <view class="coupon-pop-list">
           <coupon-item
             :initData="item"
-            :active="item.receiveStatus==1?2:1"
+            :active="item.receiveStatus == 1 ? 2 : 1"
             :index="index"
-            :isUse="couponIndex===index"
+            :isUse="couponIndex === index"
             @use="goUse"
             @initList="initList"
             v-for="(item, index) in couponList"
@@ -128,12 +140,12 @@ export default {
     const onChangeSpecial = (e) => {
       specialIndex.value = e;
     };
-    const couponIndex = ref(null)
+    const couponIndex = ref(null);
     const goUse = (index) => {
-      console.log("use",index);
-      couponIndex.value=index
+      console.log("use", index);
+      couponIndex.value = index;
     };
-    const initList = async() => {
+    const initList = async () => {
       console.log("initList");
       const data = await store.dispatch("global/getCouponList", {
         status: 103,
@@ -160,7 +172,7 @@ export default {
         productId: id.value,
         orderNo: id.value,
         useCounponId: "",
-        couponIndex:couponIndex.value,
+        couponIndex: couponIndex.value,
         specialitiesName:
           initData.value.specialitiesList.length > 0
             ? initData.value.specialitiesList[specialIndex.value]
@@ -193,6 +205,12 @@ export default {
       specialIndex,
       isShowCoupon,
     };
+  },
+  onShareAppMessage(options) {
+    return this.onShareAppMessage({
+      ...options,
+      path: "/pages/detail/index?id=" + this.id,
+    });
   },
 };
 function splitStr(str, length) {

@@ -88,7 +88,7 @@ export default {
       console.log("couponList=>", list);
     };
     onMounted(async () => {
-      initList(101)
+      initList(101);
     });
     const onchange = async (e) => {
       console.log(e);
@@ -96,7 +96,7 @@ export default {
       let type = e.detail.index;
       e.detail.index === 0 && (type = 101);
 
-      initList(type)
+      initList(type);
     };
     return {
       tabsHeight: store.state.global.tabsHeight,
@@ -109,6 +109,9 @@ export default {
         return: 1,
       },
     };
+  },
+  onShareAppMessage(options) {
+    return this.onShareAppMessage(options);
   },
 };
 </script>

@@ -5,7 +5,10 @@
       <!-- <login /> -->
       <image
         class="main-img"
-        src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/activity.png"
+        :src="
+          poster ||
+          'https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/activity.png'
+        "
         mode="widthFix"
       ></image>
 
@@ -16,40 +19,43 @@
       </view>
 
       <!-- <scroll-view class="scroll-view"> -->
-      <view
-        class="active-list-ul"
-        v-if="list.length > 0"
-      >
+      <view class="active-list-ul" v-if="list.length > 0">
         <view
           class="active-list-item"
           v-for="(item, index) in list"
           :key="index"
         >
-          <view class="list-item-title">{{ item.couponName }}</view>
+          <!-- <view class="list-item-title">{{ item.couponName }}</view> -->
           <view class="list-item-content">
             <image
               src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/school-logo.png"
               mode="widthFix"
             />
             <view class="list-item-right">
-              <view class="list-item-right-top">{{splitStr(item.couponName,7)   }}</view>
+              <view class="list-item-right-top">{{
+                splitStr(item.couponName, 7)
+              }}</view>
               <view class="list-item-right-center">
                 <text>¥</text>
                 <text>{{ item.couponDenomination }}</text>
               </view>
-              <view class="list-item-right-bottom">有效期：截止{{ item.validEndTime }}</view>
+              <view class="list-item-right-bottom"
+                >有效期：截止{{ timestampToStr(item.validEndTime,'Y年M月D日') }}</view
+              >
             </view>
           </view>
           <view
             @tap="getCoupon(item.couponId)"
             class="list-item-right-btn"
             v-if="item.receiveStatus == 0"
-          >立即领取</view>
+            >立即领取</view
+          >
           <view
             @tap="switchProduct"
             class="list-item-right-btn list-item-right-btn-else"
             v-else
-          >立即使用</view>
+            >立即使用</view
+          >
         </view>
       </view>
       <!-- </scroll-view> -->
@@ -81,6 +87,8 @@ export default {
   setup(props) {
     const store = useStore();
     const list = ref([]);
+    const poster = ref([]);
+
     const test = () => {
       console.log("test");
     };
@@ -88,6 +96,10 @@ export default {
       let res = await store.dispatch("global/getCommonConfImage", "1");
       list.value = res.confImages;
       console.log("list===>", list);
+      let res1 = await store.dispatch("global/getCommonConfImage", "101");
+
+      poster.value = res1.confImages[0].showImgUrl;
+      console.log("poster===>", res1);
     });
     const getCoupon = async (id) => {
       console.log(id);
@@ -95,10 +107,12 @@ export default {
         couponId: id,
       });
       let res1 = await store.dispatch("global/getCommonConfImage", "1");
-      list.value = res1.confImages;
+      list.value = res.confImages;
     };
     return {
+      
       splitStr,
+      poster,
       list,
       tabsHeight: store.state.global.tabsHeight,
       test,
@@ -117,8 +131,8 @@ export default {
     // this.getTabBar().setData({
     //   selected: 0,
     // });
-    console.log(this.a)
-    console.log(this)
+    console.log(this.a);
+    console.log(this);
   },
   //  onShareAppMessage(options) {
   //   // 设置菜单中的转发按钮触发转发事件时的转发内容
@@ -142,10 +156,9 @@ export default {
     console.log("用户触发上拉加载更多");
   },
   onShareAppMessage(options) {
-    return this.onShareAppMessage(options)
-  }
+    return this.onShareAppMessage(options);
+  },
 };
-
 
 function splitStr(str, length) {
   if (typeof str === "string") {

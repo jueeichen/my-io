@@ -15,6 +15,7 @@ export default {
     'pages/service/index',
     'pages/process/index',
     'pages/open/index',
+    "zofui_sales/pages/index/index"
   ],
   // 注册vant-ui 出现报错需要在config/index中添加路径
   usingComponents: {

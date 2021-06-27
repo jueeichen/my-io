@@ -9,10 +9,7 @@
       </view>
     </view>
     <view class="my-order-li-img">
-      <image
-        :src="initData.showImgUrl"
-        mode="aspectFill"
-      ></image>
+      <image :src="initData.showImgUrl" mode="aspectFill"></image>
       <view>
         <view> {{ initData.schoolName }} </view>
         <view> {{ initData.productName }} </view>
@@ -67,7 +64,7 @@
 
       <view @tap="goPaySign(initData.orderNo)" v-if="active == 1">去支付 </view>
       <view @tap="navConfirm" v-else-if="active == 2">学费待支付 </view>
-      <view v-else> 查看详情 </view>
+      <view v-else @tap="navDetail(initData.orderNo)"> 查看详情 </view>
     </view>
     <!-- <view class="my-order-item-title">中南财经政法大学定制班</view>
     <view class="my-order-items-index">
@@ -121,10 +118,15 @@ export default {
         orderNo: props.initData.orderNo,
         initData: props.initData,
       };
-      debugger
+      // debugger
       store.dispatch("global/setConfirmData", params);
       wx.navigateTo({
         url: "/pages/confirm/index",
+      });
+    };
+    const navDetail = (id) => {
+      wx.navigateTo({
+        url: "/pages/orderDetail/index?id=" + id,
       });
     };
     const cancel = async (orderNo) => {
@@ -133,6 +135,7 @@ export default {
       });
     };
     return {
+      navDetail,
       goPaySign,
       navConfirm,
       cancel,

@@ -5,8 +5,8 @@
       <view class="confirm-top">
         <image src="" mode="" />
         <view>
-          <text>{{ confirmData.initData.schoolName}}</text>
-          <text>专业:{{confirmData.specialitiesName}}</text>
+          <text>{{ confirmData.initData.schoolName }}</text>
+          <text>专业:{{ confirmData.specialitiesName }}</text>
         </view>
       </view>
       <view class="confirm-center">
@@ -24,7 +24,7 @@
           <text>{{ confirmData.initData.signupPrice }}元</text>
         </view>
         <view @tap="isShowCoupon = true">
-          <view >
+          <view>
             <text>优惠券</text>
           </view>
           <text>
@@ -59,6 +59,7 @@
           </view>
           <input
             v-model="phone"
+            type="number"
             placeholder="请输入报名人的手机号"
             :disabled="pageType == 1"
           />
@@ -110,7 +111,7 @@
             :initData="item"
             :active="item.receiveStatus == 1 ? 2 : 1"
             :index="index"
-            :isUse="couponIndex===index"
+            :isUse="couponIndex === index"
             @use="goUse"
             @initList="initList"
             v-for="(item, index) in couponList"
@@ -223,6 +224,9 @@ export default {
       phone,
       isShowCoupon,
     };
+  },
+  onShareAppMessage(options) {
+    return this.onShareAppMessage(options);
   },
 };
 </script>

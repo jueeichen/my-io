@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import modulesA from './modules/modulesA'
+import tools from './modules/tools'
 import modulesB from './modules/modulesB'
 import global from './modules/global'
 import product from './modules/product'
@@ -55,7 +55,7 @@ const store = createStore({
     global:global,
     moduleA: moduleA,
     moduleB: moduleB,
-    modulesA: modulesA,
+    tools: tools,
     modulesB: modulesB,
     product:product
   }

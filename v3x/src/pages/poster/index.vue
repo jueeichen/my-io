@@ -1,9 +1,6 @@
 <template>
   <view class="poster">
-    <navbar
-      style="position:fixed;top:0;left:0"
-      :parameter="parameter"
-    />
+    <navbar style="position: fixed; top: 0; left: 0" :parameter="parameter" />
     <view class="poster-main">
       <!-- <view v-if="initData.length>0">{{initData[0].showImgUrl}}
         {{initData[1].showImgUrl}}</view> -->
@@ -25,26 +22,24 @@
       <view class="poster-btn">
         <view @tap="createPoster(list[swiperIndex].showImgUrl)">
           <view>
-            <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/save.png" />
-
+            <image
+              src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/save.png"
+            />
           </view>
-          <view>
-            保存图片
-          </view>
+          <view> 保存图片 </view>
         </view>
-        <view>
+        <button  open-type="share">
           <view>
-            <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/wechat.png" />
-
+            <image
+              src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/wechat.png"
+            />
           </view>
-          <view>
-            分享给好友
-          </view>
-        </view>
+          <view> 分享给好友 </view>
+        </button>
       </view>
     </view>
     <canvas
-      v-if="list.length>0"
+      v-if="list.length > 0"
       canvas-id="createPoster"
       :style="'width:580rpx;height:1030rpx;'"
       class="createPoster"
@@ -64,158 +59,150 @@ export default {
   name: "about",
   components: {
     navbar,
-    cSwiper
+    cSwiper,
   },
   setup(props) {
-    const swiperIndex = ref(0)
+    const swiperIndex = ref(0);
     const store = useStore();
     const list = ref([]);
     const initData = ref([]);
-    const global = ref('')
+    const global = ref("");
     const imgInfo = ref({
       width: 0,
-      height: 0
-    })
+      height: 0,
+    });
 
     const getImg = (src) => {
       // let img = src.replace(/http/, 'https')
       // debugger
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         wx.getImageInfo({
           src,
-          success: res => {
+          success: (res) => {
             if (/json/.test(res.path)) {
               // console.log(src)
               // console.log(res)
               wx.showToast({
-                title: '获取图片失败，请重试！',
-                icon: 'none',
-                mask: true
+                title: "获取图片失败，请重试！",
+                icon: "none",
+                mask: true,
               });
               setTimeout(() => {
-                this.close()
-              }, 2000)
+                this.close();
+              }, 2000);
             } else {
-              resolve(res)
+              resolve(res);
             }
           },
           fail: (e) => {
-            console.log(e)
+            console.log(e);
             wx.showToast({
-              title: '获取图片失败，请重试！',
-              icon: 'none',
-              mask: true
+              title: "获取图片失败，请重试！",
+              icon: "none",
+              mask: true,
             });
-
-          }
-        })
-      })
-    }
+          },
+        });
+      });
+    };
     const rpx2Px = () => {
-      let rpx
+      let rpx;
       wx.getSystemInfo({
         success: function (res) {
           rpx = res.windowWidth / 375 / 2;
         },
-      })
-      return rpx
-    }
+      });
+      return rpx;
+    };
     const onChange = (e) => {
-      swiperIndex.value = e.detail.current
-      console.log(swiperIndex)
-    }
+      swiperIndex.value = e.detail.current;
+      console.log(swiperIndex);
+    };
     const copyImg = (url) => {
-
       wx.getImageInfo({
         src: url,
         success: (res) => {
-          console.log(res)
+          console.log(res);
           wx.saveImageToPhotosAlbum({
             filePath: res.path,
             success: (e) => {
-              wx.showToast({ title: '保存成功' })
+              wx.showToast({ title: "保存成功" });
             },
-            fail: res => {
+            fail: (res) => {
               wx.getSetting({
                 success(res) {
                   if (!res.authSetting["scope.writePhotosAlbum"]) {
                     wx.showModal({
-                      title: '警告',
-                      content: '请打开相册权限，否则无法保存图片到相册',
+                      title: "警告",
+                      content: "请打开相册权限，否则无法保存图片到相册",
                       success(res) {
                         if (res.confirm) {
                           wx.openSetting({
                             success(res) {
-                              console.log(res)
-                            }
-                          })
+                              console.log(res);
+                            },
+                          });
                         } else if (res.cancel) {
                           wx.showToast({
-                            title: '取消授权',
+                            title: "取消授权",
                             icon: "none",
-                            duration: 2000
-                          })
+                            duration: 2000,
+                          });
                         }
-                      }
-                    })
+                      },
+                    });
                   }
                 },
-
-              })
-
-            }
-          })
+              });
+            },
+          });
         },
-        fail(res) { }
-      })
-
-    }
+        fail(res) {},
+      });
+    };
     const createPoster = (img) => {
-      const r2p = rpx => parseInt(rpx2Px() * rpx)
-      return new Promise(async resolve => {
-        const ctx = wx.createCanvasContext('createPoster');
-        const img0 = await getImg(img)
+      const r2p = (rpx) => parseInt(rpx2Px() * rpx);
+      return new Promise(async (resolve) => {
+        const ctx = wx.createCanvasContext("createPoster");
+        const img0 = await getImg(img);
         ctx.drawImage(img0.path, 0, 0, r2p(580), r2p(1030));
 
         // ctx.restore();
-        ctx.save()
+        ctx.save();
         //二维码
-        const img4 = await getImg(global.value.qrcode)
-        console.log(img4.path)
-        const r = r2p(75)
-        const x = r2p(580 - 150 - 30)
-        const y = r2p(1030 - 150 - 30)
+        const img4 = await getImg(global.value.qrcode);
+        console.log(img4.path);
+        const r = r2p(75);
+        const x = r2p(580 - 150 - 30);
+        const y = r2p(1030 - 150 - 30);
 
-        ctx.arc(x + r, y + r, r, 0, Math.PI * 2)
+        ctx.arc(x + r, y + r, r, 0, Math.PI * 2);
         ctx.clip();
 
         ctx.drawImage(img4.path, x, y, 2 * r, 2 * r);
-        ctx.save()
+        ctx.save();
 
-        ctx.draw(false, res => {
+        ctx.draw(false, (res) => {
           wx.canvasToTempFilePath({
-            canvasId: 'createPoster',
-            success: contextInfo => {
-              resolve(contextInfo)
-              copyImg(contextInfo.tempFilePath)
+            canvasId: "createPoster",
+            success: (contextInfo) => {
+              resolve(contextInfo);
+              copyImg(contextInfo.tempFilePath);
             },
-            fail: function (res) {
-
-            },
+            fail: function (res) {},
             complete: function () {
               wx.hideLoading();
-            }
+            },
           });
         });
-      })
-
-    }
+      });
+    };
 
     onMounted(async () => {
       let res = await store.dispatch("global/getCommonConfImage", "4");
       list.value = res.confImages;
       let res1 = await store.dispatch("global/getMiniQrcode");
-      global.value = toRaw(store.state.global)
+      global.value = toRaw(store.state.global);
 
       //GETMINIQRCODE
 
@@ -239,12 +226,7 @@ export default {
       //   console.log("initData.value=>", initData.value)
       // })
       // })
-
-
-
-
     });
-
 
     return {
       swiperIndex,
@@ -260,7 +242,10 @@ export default {
         return: 1,
       },
     };
-  }
+  },
+  onShareAppMessage(options) {
+    return this.onShareAppMessage(options);
+  },
 };
 </script>
 

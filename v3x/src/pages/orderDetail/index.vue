@@ -35,7 +35,7 @@
       </view>
       <view class="order-detail-items">
         <text>报名费优惠券</text>
-        <text style="color:#FF5000">-¥100.00</text>
+        <text style="color: #ff5000">-¥100.00</text>
       </view>
       <view class="order-detail-items-bottom-right">
         <text>报名费应付: </text>
@@ -51,12 +51,10 @@
       <view>
         <text>下单时间</text>
         <text> 2021.04.29 12:00:23</text>
-
       </view>
       <view>
         <text>支付时间</text>
         <text> 2021.04.29 12:00:23</text>
-
       </view>
     </view>
   </view>
@@ -70,7 +68,7 @@ import { useStore } from "vuex";
 export default {
   name: "orderDetail",
   components: {
-    navbar
+    navbar,
   },
   setup(props) {
     const store = useStore();
@@ -81,10 +79,13 @@ export default {
       tabsHeight: store.state.global.tabsHeight,
       test,
       parameter: {
-        title: "订单详情"
-      }
+        title: "订单详情",
+      },
     };
-  }
+  },
+  onShareAppMessage(options) {
+    return this.onShareAppMessage(options);
+  },
 };
 </script>
 
