@@ -46,35 +46,17 @@ export default {
     auto: { type: Boolean, default: true },
     poster: { type: Boolean, default: false },
   },
-  setup(props,ctx) {
+  setup(props, ctx) {
     const imgInfo = ref({
       width: 0,
       height: 0
     })
     const global = ref('')
     const store = useStore();
-    console.log("props===>1", ctx)
-    // const onChange = (e) => {
-    //   if(ctx.attrs.onChange){
-    //     ctx.attrs.onChange(e.detail.current)
-    //   }
-    //   // console.log(e.detail.current,ctx.attrs.onChange)
-
-    // }
-    onMounted(() => {
-
-      global.value = toRaw(store.state.global)
-
-      setTimeout(() => {
-        console.log("global.value=>", global.value.qrcode)
-
-      }, 3000)
-
-    })
+    global.value = toRaw(store.state.global)
 
     return {
       global,
-      // onChange,
       background: [
         {
           url: "",

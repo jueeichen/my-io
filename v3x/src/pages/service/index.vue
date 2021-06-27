@@ -21,16 +21,6 @@
         <view class="service-content-1"> 班主任微信</view>
         <view class="service-content-2"> 扫一扫上面的二维码, 加我微信</view>
       </view>
-<<<<<<< HEAD
-
-      <view class="service-content-3"
-        >请保存到相册后，微信扫一扫加老师微信号
-      </view>
-    </view>
-    <view class="service-btn">
-      <image src="" />
-      <view> 保存图片</view>
-=======
       <view class="service-content-3">请保存到相册后，微信扫一扫加老师微信号
       </view>
       <view
@@ -40,7 +30,6 @@
         <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/save.png" />
         <view> 保存图片</view>
       </view>
->>>>>>> 5b23e7d995dc69064efbbfac46389133d0e5025d
     </view>
   </view>
 </template>

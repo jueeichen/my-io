@@ -14,7 +14,7 @@ export default {
     'pages/myOrder/index',
     'pages/service/index',
     'pages/process/index',
-
+    'pages/open/index',
   ],
   // 注册vant-ui 出现报错需要在config/index中添加路径
   usingComponents: {

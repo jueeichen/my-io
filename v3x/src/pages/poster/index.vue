@@ -78,6 +78,8 @@ export default {
     })
 
     const getImg = (src) => {
+      // let img = src.replace(/http/, 'https')
+      // debugger
       return new Promise(resolve => {
         wx.getImageInfo({
           src,
@@ -123,6 +125,7 @@ export default {
       console.log(swiperIndex)
     }
     const copyImg = (url) => {
+
       wx.getImageInfo({
         src: url,
         success: (res) => {
@@ -130,7 +133,7 @@ export default {
           wx.saveImageToPhotosAlbum({
             filePath: res.path,
             success: (e) => {
-              wx.showToast({title:'保存成功'})
+              wx.showToast({ title: '保存成功' })
             },
             fail: res => {
               wx.getSetting({
@@ -179,7 +182,14 @@ export default {
         //二维码
         const img4 = await getImg(global.value.qrcode)
         console.log(img4.path)
-        ctx.drawImage(img4.path, r2p(580 - 150 - 30), r2p(1030 - 150 - 30), r2p(150), r2p(150));
+        const r = r2p(75)
+        const x = r2p(580 - 150 - 30)
+        const y = r2p(1030 - 150 - 30)
+
+        ctx.arc(x + r, y + r, r, 0, Math.PI * 2)
+        ctx.clip();
+
+        ctx.drawImage(img4.path, x, y, 2 * r, 2 * r);
         ctx.save()
 
         ctx.draw(false, res => {
@@ -234,7 +244,7 @@ export default {
 
 
     });
-  
+
 
     return {
       swiperIndex,

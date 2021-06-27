@@ -16,7 +16,10 @@
       </view>
 
       <!-- <scroll-view class="scroll-view"> -->
-      <view class="active-list-ul" v-if="list.length > 0">
+      <view
+        class="active-list-ul"
+        v-if="list.length > 0"
+      >
         <view
           class="active-list-item"
           v-for="(item, index) in list"
@@ -24,30 +27,29 @@
         >
           <view class="list-item-title">{{ item.couponName }}</view>
           <view class="list-item-content">
-            <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/school-logo.png" mode="widthFix" />
+            <image
+              src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/school-logo.png"
+              mode="widthFix"
+            />
             <view class="list-item-right">
               <view class="list-item-right-top">{{splitStr(item.couponName,7)   }}</view>
               <view class="list-item-right-center">
                 <text>¥</text>
                 <text>{{ item.couponDenomination }}</text>
               </view>
-              <view class="list-item-right-bottom"
-                >有效期：截止{{ item.validEndTime }}</view
-              >
+              <view class="list-item-right-bottom">有效期：截止{{ item.validEndTime }}</view>
             </view>
           </view>
           <view
             @tap="getCoupon(item.couponId)"
             class="list-item-right-btn"
             v-if="item.receiveStatus == 0"
-            >立即领取</view
-          >
+          >立即领取</view>
           <view
             @tap="switchProduct"
             class="list-item-right-btn list-item-right-btn-else"
             v-else
-            >立即使用</view
-          >
+          >立即使用</view>
         </view>
       </view>
       <!-- </scroll-view> -->
@@ -115,7 +117,23 @@ export default {
     // this.getTabBar().setData({
     //   selected: 0,
     // });
+    console.log(this.a)
+    console.log(this)
   },
+  //  onShareAppMessage(options) {
+  //   // 设置菜单中的转发按钮触发转发事件时的转发内容
+  //   var shareObj = {
+  //     title: "转发的标题",        // 默认是小程序的名称(可以写slogan等)
+  //     path: '/pages/index/index',        // 默认是当前页面，必须是以‘/’开头的完整路径
+  //     imageUrl: '',     //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+  //   }
+  //   // 来自页面内的按钮的转发
+  //   if (options.from == 'button') {
+
+  //   }
+  //   // 返回shareObj
+  //   return shareObj;
+  // },
   onPullDownRefresh() {
     console.log("用户触发下拉");
     wx.stopPullDownRefresh();
@@ -123,6 +141,9 @@ export default {
   onReachBottom() {
     console.log("用户触发上拉加载更多");
   },
+  onShareAppMessage(options) {
+    return this.onShareAppMessage(options)
+  }
 };
 
 
