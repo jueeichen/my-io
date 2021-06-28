@@ -4,7 +4,8 @@
     <login />
 
     <view class="index">
-      <c-swiper v-if="true" :initData="banner.confImages" />
+      <c-swiper v-if="true" :initData="banner.confImages"  width="690rpx"
+      height="250rpx" />
       <view class="index-tabs" v-if="true">
         <van-tabs
           :swipeable="true"
@@ -22,26 +23,29 @@
                 :key="index"
               />
               <no-data v-if="list.length < 1" />
+              <no-more v-if="showBottomLine" />
             </view>
           </van-tab>
           <van-tab title="本科教育">
             <view class="tab-item">
-              <list-item
-                v-for="(item, index) in list_1"
+            <list-item
+                v-for="(item, index) in list"
                 :initData="item"
                 :key="index"
               />
-              <no-data v-if="list_1.length < 1" />
+              <no-data v-if="list.length < 1" />
+              <no-more v-if="showBottomLine" />
             </view>
           </van-tab>
           <van-tab title="研究生">
             <view class="tab-item">
-              <list-item
-                v-for="(item, index) in list_2"
+            <list-item
+                v-for="(item, index) in list"
                 :initData="item"
                 :key="index"
               />
-              <no-data v-if="list_2.length < 1" />
+              <no-data v-if="list.length < 1" />
+              <no-more v-if="showBottomLine" />
             </view>
           </van-tab>
         </van-tabs>
@@ -59,6 +63,7 @@
 
 <script>
 import noData from "@/components/noData/index.vue";
+import noMore from "@/components/noMore/index.vue";
 
 import login from "@/components/login/index.vue";
 import navbar from "@/components/navbar/index.vue";
@@ -83,22 +88,86 @@ export default {
     navbar,
     cSwiper,
     ListItem,
+    noMore,
   },
   setup(props) {
+    const page = ref(1);
+    const pageSize = ref(10);
     const store = useStore();
     const _code = ref(0);
     const banner = ref([]);
-    const list = ref(null);
+    const list = ref([]);
     const active = ref(0);
-
-    onMounted(async () => {
-      await store.dispatch("product/getList", { page: 1, showBottom: false });
+    const showBottomLine = ref(false);
+    const getList = async () => {
+      const res = await store.dispatch("product/getList", {
+        page: page.value,
+        pageSize: pageSize.value,
+      });
+      list.value =
+        page.value == 1
+          ? res.productInfos
+          : [...list.value, ...res.productInfos];
+      if (res.productInfos.length == pageSize.value) {
+        page.value++;
+      } else {
+        console.log("到底了");
+        showBottomLine.value = true;
+      }
+      wx.stopPullDownRefresh();
+    };
+    const getListByType = async () => {
+      const res = await store.dispatch("product/getListByType", {
+        page: page.value,
+        pageSize: pageSize.value,
+        type: active.value,
+      });
+      
+      list.value =
+        page.value == 1
+          ? res.productInfos
+          : [...list.value, ...res.productInfos];
+      if (res.productInfos.length == pageSize.value) {
+        page.value++;
+      } else {
+        console.log("到底了");
+        showBottomLine.value = true;
+      }
+      wx.stopPullDownRefresh();
+    };
+    const onLoad = async () => {
+      active.value = 0;
+      page.value = 1;
+      list.value = [];
+      showBottomLine.value = false;
       banner.value = await store.dispatch("global/getCommonConfImage", "2");
+      getList();
+    };
+    const onChange = (e) => {
+      page.value = 1;
+      list.value = [];
+      showBottomLine.value = false;
+      console.log(e.detail.index);
+      active.value = e.detail.index;
+      if (active.value == 0) {
+        getList();
+        return;
+      }
+      getListByType();
+    };
+    onMounted(async () => {
+      onLoad();
       console.log(banner.value);
       list.value = store.state.product.list;
       console.log(list);
     });
     return {
+      showBottomLine,
+      onChange,
+      getList,
+      onLoad,
+      page,
+      pageSize,
       splitStr,
       active,
       banner,
@@ -124,29 +193,6 @@ export default {
         );
         console.log(data);
       },
-      onChange: (e) => {
-        console.log(e.detail.index);
-        if (e.detail.index == 0) {
-        }
-        if (e.detail.index == 1 && store.state.product.list_1.length == 0) {
-          store.dispatch("product/getListByType", {
-            page: 1,
-            type: e.detail.index,
-            showBottom: false,
-          });
-          // setTimeout(() => {
-          //   console.log("list_1=>",store.state.product.list_1)
-
-          // },2000)
-        }
-        if (e.detail.index == 2 && store.state.product.list_2.length == 0) {
-          store.dispatch("product/getListByType", {
-            page: 1,
-            type: e.detail.index,
-            showBottom: false,
-          });
-        }
-      },
     };
   },
   onShareAppMessage(options) {
@@ -159,11 +205,21 @@ export default {
     // });
   },
   onPullDownRefresh() {
-    this.$store.dispatch("product/getList", { page: 1, showBottom: false });
+    if (this.acitve == 0) {
+      this.onLoad();
+      return;
+    }
+    this.acitve = 0;
   },
   onReachBottom() {
+    if (this.showBottomLine) return;
     console.log("用户触发上拉加载更多");
-    this.$store.dispatch("product/getList");
+    if (this.acitve == 0 || this.acitve == undefined) {
+      this.acitve = 0;
+      this.getList();
+      return;
+    }
+    this.getListByType();
   },
 };
 function splitStr(str, length) {

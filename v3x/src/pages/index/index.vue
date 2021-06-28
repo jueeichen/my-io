@@ -5,6 +5,7 @@
       <!-- <login /> -->
       <image
         class="main-img"
+         @tap="jump('/pages/poster/index')"
         :src="
           poster ||
           'https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/activity.png'
@@ -107,7 +108,7 @@ export default {
         couponId: id,
       });
       let res1 = await store.dispatch("global/getCommonConfImage", "1");
-      list.value = res.confImages;
+      list.value = res1.confImages;
     };
     return {
       

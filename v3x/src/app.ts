@@ -74,6 +74,11 @@ App.mixin({
         str = str.replace('s', (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()))
         return str
       },
+      jump: (url) => {
+        wx.navigateTo({
+          url,
+        });
+      },
     }
   }
 

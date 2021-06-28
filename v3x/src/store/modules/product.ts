@@ -62,64 +62,64 @@ const actions = {
     context.commit('SET_SHOWBOTTOM', showBottom)
   },
   async getList(context, obj) {
-    if (obj.hasOwnProperty('showBottm')) {
-      context.dispatch('setShowBottom', obj.showBottom)
-    }
-    if (obj.hasOwnProperty('page')) {
-      context.dispatch('setPageNum', obj.page)
-    }
-    if (context.state.showBottom) return
-    let page = context.state.pageNum
-    const data: any = await $api('GETINDEXPRODUCTLIST', {}, { pageNum: page, pageSize: context.state.pageSize }, {})
-    let newList = data.data.productInfos
-    let oldList = context.state.list
-    let newArr
-    if (page == data.data.pageNum) {
-      if (newList.length > 0) {
-        newArr = page == 1 ? newList : [...oldList, ...newList]
-        context.commit('GETPRODUCTLIST', newArr)
-        context.dispatch('setPageNum', ++page)
-        console.log(context)
-        wx.stopPullDownRefresh();
-      } else {
-        //加载完毕 显示到底了
-        context.dispatch('setShowBottom', true)
-        wx.stopPullDownRefresh();
-      }
-    }
+    // if (obj.hasOwnProperty('showBottm')) {
+    //   context.dispatch('setShowBottom', obj.showBottom)
+    // }
+    // if (obj.hasOwnProperty('page')) {
+    //   context.dispatch('setPageNum', obj.page)
+    // }
+    // if (context.state.showBottom) return
+    // let page = context.state.pageNum
+    const data: any = await $api('GETINDEXPRODUCTLIST', {}, { pageNum: obj.page, pageSize: obj.pageSize }, {})
+    // let newList = data.data.productInfos
+    // let oldList = context.state.list
+    // let newArr
+    // if (page == data.data.pageNum) {
+    //   if (newList.length > 0) {
+    //     newArr = page == 1 ? newList : [...oldList, ...newList]
+    //     context.commit('GETPRODUCTLIST', newArr)
+    //     context.dispatch('setPageNum', ++page)
+    //     console.log(context)
+    //     wx.stopPullDownRefresh();
+    //   } else {
+    //     //加载完毕 显示到底了
+    //     context.dispatch('setShowBottom', true)
+    //     wx.stopPullDownRefresh();
+    //   }
+    // }
     return new Promise(resolve => {
-      resolve(context.state)
+      resolve(data.data)
     })
   },
   async getListByType(context, obj) {
-    if (obj.hasOwnProperty('showBottm')) {
-      context.dispatch('setShowBottom', obj.showBottom)
-    }
-    if (obj.hasOwnProperty('page')) {
-      context.dispatch('setPageNum', obj.page)
-    }
+    // if (obj.hasOwnProperty('showBottm')) {
+    //   context.dispatch('setShowBottom', obj.showBottom)
+    // }
+    // if (obj.hasOwnProperty('page')) {
+    //   context.dispatch('setPageNum', obj.page)
+    // }
     // if (context.state.showBottom) return
-    let page = context.state['pageNum_' + obj.type]
-    const data: any = await $api('GETPRODUCTLISTBYTYPE', { productType: obj.type }, { pageNum: page, pageSize: context.state.pageSize }, {})
+    // let page = context.state['pageNum_' + obj.type]
+    const data: any = await $api('GETPRODUCTLISTBYTYPE', { productType: obj.type }, { pageNum: obj.page, pageSize: obj.pageSize }, {})
     console.log(data)
 
-    let newList = data.data.productInfos
-    let oldList = context.state['list_' + obj.type]
-    if (page == data.data.pageNum) {
-      if (newList.length > 0) {
-        let newArr = page == 1 ? newList : [...oldList, ...newList]
-        context.commit('GETPRODUCTLIST_' + obj.type, newArr)
-        context.dispatch('setPageNum', ++page)
-        console.log(context)
-        wx.stopPullDownRefresh();
-      } else {
-        //加载完毕 显示到底了
-        context.dispatch('setShowBottom', true)
-        wx.stopPullDownRefresh();
-      }
-    }
+    // let newList = data.data.productInfos
+    // let oldList = context.state['list_' + obj.type]
+    // if (page == data.data.pageNum) {
+    //   if (newList.length > 0) {
+    //     let newArr = page == 1 ? newList : [...oldList, ...newList]
+    //     context.commit('GETPRODUCTLIST_' + obj.type, newArr)
+    //     context.dispatch('setPageNum', ++page)
+    //     console.log(context)
+    //     wx.stopPullDownRefresh();
+    //   } else {
+    //     //加载完毕 显示到底了
+    //     context.dispatch('setShowBottom', true)
+    //     wx.stopPullDownRefresh();
+    //   }
+    // }
     return new Promise(resolve => {
-      resolve(context.state)
+      resolve(data.data)
     })
   }
 }

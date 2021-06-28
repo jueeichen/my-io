@@ -23,8 +23,8 @@
           <text class="">{{ initData.useCouponPrice }}</text>
         </view>
       </view>
-      <view class="school-name">{{ initData.schoolName }} </view>
-      <view class="school-detail">{{ initData.productName }} </view>
+      <view class="school-name">{{ initData.productName }} </view>
+      <view class="school-detail">{{ initData.productTitle }} </view>
     </view>
 
     <view class="detail-menu">

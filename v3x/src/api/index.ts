@@ -109,6 +109,10 @@ function parse(str) {
 
 
 const request = async (url, body = {}, data = {}, _options) => {
+  wx.showLoading({
+    title: '加载中',
+    mask: true
+  })
   let options = { type: 'POST', ..._options }
   let _headers = {}
 
@@ -137,6 +141,7 @@ const request = async (url, body = {}, data = {}, _options) => {
         ..._headers
       },
       success: (res) => {
+        wx.hideLoading()
         // console.log(res.data)
         if (res.data.data) {
           initJSON(res.data.data).then(r => {
@@ -154,6 +159,8 @@ const request = async (url, body = {}, data = {}, _options) => {
 
       },
       fail: (err) => {
+        wx.hideLoading()
+
         reject(err)
       }
     })
