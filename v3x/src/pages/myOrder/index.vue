@@ -19,7 +19,8 @@
                 v-for="(item, index) in list"
                 :key="index"
               />
-              <no-data v-if="list.length < 1" />
+              <no-data v-if="page > 1 && list.length < 1" />
+              <no-more v-if=" list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
           <van-tab title="学费待支付">
@@ -30,7 +31,8 @@
                 v-for="(item, index) in list"
                 :key="index"
               />
-              <no-data v-if="list.length < 1" />
+              <no-data v-if="page > 1 && list.length < 1" />
+              <no-more v-if=" list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
           <van-tab title="已完成">
@@ -41,7 +43,8 @@
                 v-for="(item, index) in list"
                 :key="index"
               />
-              <no-data v-if="list.length < 1" />
+              <no-data v-if="page > 1 && list.length < 1" />
+              <no-more v-if=" list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
         </van-tabs>
@@ -53,6 +56,7 @@
 <script>
 import navbar from "@/components/navbar/index.vue";
 import noData from "@/components/noData/index.vue";
+import noMore from "@/components/noMore/index.vue";
 
 import MyOrderItem from "@/components/myOrderItem/index.vue";
 
@@ -66,36 +70,59 @@ export default {
     navbar,
     noData,
     MyOrderItem,
+    noMore,
   },
   setup(props) {
     const store = useStore();
-    const list = ref([]);
-    const active = ref(0);
     // active.value = +props.tid.match(/(?<=(=)).*/g, "")[0];
+    const active = ref(0);
     active.value = +props.tid.split("=")[1];
-
-    const test = () => {
-      console.log("test");
-    };
-    onMounted(async () => {
+    const page = ref(1);
+    const pageSize = ref(10);
+    const list = ref([]);
+    const showBottomLine = ref(false);
+    const getList = async () => {
       const res = await store.dispatch("global/getOrderList", {
+        page: page.value,
+        pageSize: pageSize.value,
         status: active.value + 1,
       });
-      console.log(res);
-      list.value = res.orderList;
-    });
-    const onChange = async (e) => {
-      console.log(e);
-      const res = await store.dispatch("global/getOrderList", {
-        status: e.detail.index + 1,
-      });
-      console.log(res);
-      list.value = res.orderList;
+      list.value =
+        page.value == 1 ? res.orderList : [...list.value, ...res.orderList];
+      if (res.orderList.length == pageSize.value) {
+        page.value++;
+      } else {
+        console.log("到底了");
+        showBottomLine.value = true;
+      }
+      wx.stopPullDownRefresh();
     };
+    const onLoad = async () => {
+      active.value = 0;
+      page.value = 1;
+      list.value = [];
+      showBottomLine.value = false;
+      getList();
+    };
+    const onChange = async (e) => {
+      page.value = 1;
+      list.value = [];
+      showBottomLine.value = false;
+      active.value = e.detail.index;
+      getList();
+    };
+    onMounted(async () => {
+      onLoad();
+    });
+
     return {
       active,
+      showBottomLine,
+      page,
+      pageSize,
+      getList,
+      onLoad,
       tabsHeight: store.state.global.tabsHeight,
-      test,
       list,
       onChange,
       parameter: {
@@ -106,6 +133,18 @@ export default {
   },
   onShareAppMessage(options) {
     return this.onShareAppMessage(options);
+  },
+  onPullDownRefresh() {
+    if (this.active == 0) {
+      this.onLoad();
+      return;
+    }
+    this.active = 0;
+  },
+  onReachBottom() {
+    if (this.showBottomLine) return;
+    console.log("用户触发上拉加载更多");
+    this.getList();
   },
 };
 </script>

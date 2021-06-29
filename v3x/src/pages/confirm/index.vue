@@ -3,7 +3,7 @@
     <navbar :parameter="parameter" />
     <view class="confirm-index">
       <view class="confirm-top">
-        <image src="" mode="" />
+        <image :src="confirmData.initData.showImgUrl" mode="" />
         <view>
           <text>{{ confirmData.initData.schoolName }}</text>
           <text>专业:{{ confirmData.specialitiesName }}</text>

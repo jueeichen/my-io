@@ -36,7 +36,7 @@ export default {
     navigationBarTitleText: 'WeChat',
     navigationBarTextStyle: 'black',
     navigationStyle: 'custom',
-    "enablePullDownRefresh": true,
+    enablePullDownRefresh: true
   },
   tabBar: {
     custom: false,

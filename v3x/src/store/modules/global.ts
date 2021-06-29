@@ -79,7 +79,7 @@ const actions = {
   //获取我的优惠券列表
   getCouponList(context, obj) {
     return new Promise(async (resolve) => {
-      const data: any = await $api('GETCOUPONLIST', { status: obj.status, couponType: obj.couponType }, { pageNum: obj.pageNum, pageSize: obj.pageSize }, {})
+      const data: any = await $api('GETCOUPONLIST', { status: obj.status, couponType: obj.couponType }, { pageNum: obj.page, pageSize: obj.pageSize }, {})
       context.commit('SET_COUPONLIST', data.data.couponInfos)
       console.log(context)
       resolve(data.data)
@@ -91,7 +91,7 @@ const actions = {
     return new Promise(async (resolve) => {
       const data: any = await $api('RECEIVECOUPON', { couponId: obj.couponId }, {}, {})
       console.log(context)
-      resolve(data.data)
+      resolve(data.res.code)
     })
     // console.log(context)
   },
@@ -154,11 +154,9 @@ const actions = {
       const data: any = await $api('GETORDERLIST', {
         status: obj.status
       }, {
-        pageNum: 1,
-        pageSize: 10
+        pageNum: obj.page, pageSize: obj.pageSize
       }, {})
-      console.log("payOrder=>", context)
-      console.log("payOrder", data)
+      console.log("getOrderList", data)
       resolve(data.data)
     })
     // console.log(context)

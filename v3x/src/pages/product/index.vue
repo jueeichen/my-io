@@ -4,8 +4,12 @@
     <login />
 
     <view class="product-index">
-      <c-swiper v-if="true" :initData="banner.confImages"  width="690rpx"
-      height="250rpx" />
+      <c-swiper
+        v-if="true"
+        :initData="banner.confImages"
+        width="690rpx"
+        height="250rpx"
+      />
       <view class="index-tabs" v-if="true">
         <van-tabs
           :swipeable="true"
@@ -16,47 +20,40 @@
           @change="onChange"
         >
           <van-tab title="推荐">
-            <view class="tab-item" v-if="list">
+            <view class="tab-item">
               <list-item
                 v-for="(item, index) in list"
                 :initData="item"
                 :key="index"
               />
-              <no-data v-if="list.length < 1" />
-              <no-more v-if="showBottomLine" />
+              <no-data v-if="page > 1 && list.length < 1" />
+              <no-more v-if=" list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
           <van-tab title="本科教育">
             <view class="tab-item">
-            <list-item
+              <list-item
                 v-for="(item, index) in list"
                 :initData="item"
                 :key="index"
               />
-              <no-data v-if="list.length < 1" />
-              <no-more v-if="showBottomLine" />
+              <no-data v-if="page > 1 && list.length < 1" />
+              <no-more v-if=" list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
           <van-tab title="研究生">
             <view class="tab-item">
-            <list-item
+              <list-item
                 v-for="(item, index) in list"
                 :initData="item"
                 :key="index"
               />
-              <no-data v-if="list.length < 1" />
-              <no-more v-if="showBottomLine" />
+              <no-data v-if="page > 1 && list.length < 1" />
+              <no-more v-if=" list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
         </van-tabs>
       </view>
-      <button
-        v-if="false"
-        open-type="getPhoneNumber"
-        @getphonenumber="getPhoneNumber"
-      >
-        获取手机号
-      </button>
     </view>
   </view>
 </template>
@@ -91,13 +88,13 @@ export default {
     noMore,
   },
   setup(props) {
-    const page = ref(1);
-    const pageSize = ref(10);
     const store = useStore();
     const _code = ref(0);
     const banner = ref([]);
-    const list = ref([]);
     const active = ref(0);
+    const page = ref(1);
+    const pageSize = ref(10);
+    const list = ref([]);
     const showBottomLine = ref(false);
     const getList = async () => {
       const res = await store.dispatch("product/getList", {
@@ -122,7 +119,7 @@ export default {
         pageSize: pageSize.value,
         type: active.value,
       });
-      
+
       list.value =
         page.value == 1
           ? res.productInfos
@@ -163,11 +160,11 @@ export default {
     });
     return {
       showBottomLine,
-      onChange,
-      getList,
-      onLoad,
       page,
       pageSize,
+      getList,
+      onLoad,
+      onChange,
       splitStr,
       active,
       banner,
@@ -205,17 +202,16 @@ export default {
     // });
   },
   onPullDownRefresh() {
-    if (this.acitve == 0) {
+    if (this.active == 0) {
       this.onLoad();
       return;
     }
-    this.acitve = 0;
+    this.active = 0;
   },
   onReachBottom() {
     if (this.showBottomLine) return;
     console.log("用户触发上拉加载更多");
-    if (this.acitve == 0 || this.acitve == undefined) {
-      this.acitve = 0;
+    if (this.active == 0 || this.active == undefined) {
       this.getList();
       return;
     }

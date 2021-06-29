@@ -1,6 +1,7 @@
 <template>
   <view class="my-order-items" v-if="initData.orderNo">
-    <view class="my-order-li-title" @tap="cancel(initData.orderNo)">
+    <!-- <view class="my-order-li-title" @tap="cancel(initData.orderNo)"> -->
+    <view class="my-order-li-title">
       <view> 订单号{{ initData.orderNo }} </view>
       <view>
         {{

@@ -51,6 +51,8 @@
             <view class="" @tap="exchangeCoupon(item.couponId)">去兑换</view>
           </view>
         </view>
+        <no-data v-if="page > 1 && list.length < 1" />
+        <no-more v-if="list.length > 0 && showBottomLine" />
       </view>
     </view>
     <view class="integral-mask"> </view>
@@ -63,19 +65,19 @@ import navbar from "@/components/navbar/index.vue";
 import "./index.styl";
 import { useStore } from "vuex";
 import { onMounted, ref } from "vue";
-
+import noData from "@/components/noData/index.vue";
+import noMore from "@/components/noMore/index.vue";
 export default {
   name: "integral",
   components: {
     navbar,
+    noData,
+    noMore,
   },
   setup(props) {
     const store = useStore();
-    const test = () => {
-      console.log("test");
-    };
+
     const accountPoint = ref(0);
-    const list = ref([]);
     const exchangeCoupon = async (couponId) => {
       let res = await store.dispatch("global/exchangeCoupon", {
         couponId,
@@ -89,26 +91,52 @@ export default {
       // }
       console.log(res);
     };
-    onMounted(async () => {
-      let res = await store.dispatch("global/getAccountPoint");
-      // list.value = res.confImages;
-      console.log("res===>", res);
-      accountPoint.value = res.accountPoint;
-
-      const res1 = await store.dispatch("global/getCouponList", {
+    const page = ref(1);
+    const pageSize = ref(10);
+    const list = ref([]);
+    const showBottomLine = ref(false);
+    const getList = async () => {
+      const res = await store.dispatch("global/getCouponList", {
         status: 102,
         couponType: null,
-        pageNum: 1,
-        pageSize: 10,
+        page: page.value,
+        pageSize: pageSize.value,
       });
-      list.value = res1.couponInfos;
-      console.log("couponList=>", list);
+      // list.value = res.couponInfos;
+      // console.log("couponList=>", list);
+      list.value =
+        page.value == 1 ? res.couponInfos : [...list.value, ...res.couponInfos];
+      if (res.couponInfos.length == pageSize.value) {
+        page.value++;
+      } else {
+        page.value++;
+
+        console.log("到底了");
+        showBottomLine.value = true;
+      }
+      wx.stopPullDownRefresh();
+    };
+    const onLoad = async () => {
+      page.value = 1;
+      list.value = [];
+      showBottomLine.value = false;
+      getList();
+      let res = await store.dispatch("global/getAccountPoint");
+      console.log("accountPoint===>", res);
+      accountPoint.value = res.accountPoint;
+    };
+    onMounted(async () => {
+      onLoad();
     });
 
     return {
+      showBottomLine,
+      page,
+      pageSize,
       list,
+      getList,
+      onLoad,
       tabsHeight: store.state.global.tabsHeight,
-      test,
       exchangeCoupon,
       accountPoint,
       parameter: {
@@ -124,6 +152,16 @@ export default {
   },
   onShareAppMessage(options) {
     return this.onShareAppMessage(options);
+  },
+  onPullDownRefresh() {
+    console.log("下拉刷新");
+
+    this.onLoad();
+  },
+  onReachBottom() {
+    if (this.showBottomLine) return;
+    console.log("用户触发上拉加载更多");
+    this.getList();
   },
 };
 </script>

@@ -5,7 +5,7 @@
       <!-- <login /> -->
       <image
         class="main-img"
-         @tap="jump('/pages/poster/index')"
+        @tap="jump('/pages/poster/index')"
         :src="
           poster ||
           'https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/activity.png'
@@ -28,10 +28,7 @@
         >
           <!-- <view class="list-item-title">{{ item.couponName }}</view> -->
           <view class="list-item-content">
-            <image
-              src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/school-logo.png"
-              mode="widthFix"
-            />
+            <image :src="item.showImgUrl" mode="widthFix" />
             <view class="list-item-right">
               <view class="list-item-right-top">{{
                 splitStr(item.couponName, 7)
@@ -41,7 +38,9 @@
                 <text>{{ item.couponDenomination }}</text>
               </view>
               <view class="list-item-right-bottom"
-                >有效期：截止{{ timestampToStr(item.validEndTime,'Y年M月D日') }}</view
+                >有效期：截止{{
+                  timestampToStr(item.validEndTime, "Y年M月D日")
+                }}</view
               >
             </view>
           </view>
@@ -110,6 +109,8 @@ export default {
       let res = await store.dispatch("global/receiveCoupon", {
         couponId: id,
       });
+      
+      if (res == 10001){ return;}
       let res1 = await store.dispatch("global/getCommonConfImage", "1");
       list.value = res1.confImages;
     };

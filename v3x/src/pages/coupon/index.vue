@@ -7,11 +7,12 @@
           :swipeable="true"
           :animated="true"
           :sticky="true"
+          :active="active"
           :offset-top="tabsHeight"
-          @change="onchange"
+          @change="onChange"
         >
           <van-tab title="待领取">
-            <view class="tab-item" v-if="list.length > 0">
+            <view class="tab-item">
               <coupon-item
                 :initData="item"
                 @initList="initList"
@@ -19,36 +20,44 @@
                 v-for="(item, index) in list"
                 :key="index"
               />
+              <no-data v-if="page > 1 && list.length < 1" />
+              <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
           <van-tab title="待使用">
-            <view class="tab-item" v-if="list.length > 0">
+            <view class="tab-item">
               <coupon-item
                 :active="2"
                 :initData="item"
                 v-for="(item, index) in list"
                 :key="index"
               />
+              <no-data v-if="page > 1 && list.length < 1" />
+              <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
           <van-tab title="已使用">
-            <view class="tab-item" v-if="list.length > 0">
+            <view class="tab-item">
               <coupon-item
                 :active="3"
                 :initData="item"
                 v-for="(item, index) in list"
                 :key="index"
               />
+              <no-data v-if="page > 1 && list.length < 1" />
+              <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
           <van-tab title="已失效">
-            <view class="tab-item" v-if="list.length > 0">
+            <view class="tab-item">
               <coupon-item
                 :initData="item"
                 :active="4"
                 v-for="(item, index) in list"
                 :key="index"
               />
+              <no-data v-if="page > 1 && list.length < 1" />
+              <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
         </van-tabs>
@@ -60,7 +69,8 @@
 <script>
 import navbar from "@/components/navbar/index.vue";
 import CouponItem from "@/components/couponItem/index.vue";
-
+import noData from "@/components/noData/index.vue";
+import noMore from "@/components/noMore/index.vue";
 import "./index.styl";
 import { useStore } from "vuex";
 import { ref, onMounted } from "vue";
@@ -70,40 +80,68 @@ export default {
   components: {
     navbar,
     CouponItem,
+    noData,
+    noMore,
   },
   setup(props) {
     const store = useStore();
-    const test = () => {
-      console.log("test");
-    };
+    const page = ref(1);
+    const pageSize = ref(10);
     const list = ref([]);
-    const initList = async (status) => {
+    const active = ref(0);
+    const showBottomLine = ref(false);
+    const getList = async () => {
+      let status = active.value;
+      active.value === 0 && (status = 101);
       const res = await store.dispatch("global/getCouponList", {
         status,
         couponType: null,
-        pageNum: 1,
-        pageSize: 10,
+        page: page.value,
+        pageSize: pageSize.value,
       });
-      list.value = res.couponInfos;
-      console.log("couponList=>", list);
-    };
-    onMounted(async () => {
-      initList(101);
-    });
-    const onchange = async (e) => {
-      console.log(e);
-      list.value = [];
-      let type = e.detail.index;
-      e.detail.index === 0 && (type = 101);
+      // list.value = res.couponInfos;
+      // console.log("couponList=>", list);
+      list.value =
+        page.value == 1 ? res.couponInfos : [...list.value, ...res.couponInfos];
+      if (res.couponInfos.length == pageSize.value) {
+        page.value++;
+      } else {
+        page.value++;
 
-      initList(type);
+        console.log("到底了");
+        showBottomLine.value = true;
+      }
+      wx.stopPullDownRefresh();
     };
+    const onLoad = async () => {
+      active.value = 0;
+      page.value = 1;
+      list.value = [];
+      showBottomLine.value = false;
+      getList();
+    };
+    const onChange = async (e) => {
+      page.value = 1;
+      list.value = [];
+      showBottomLine.value = false;
+      active.value = e.detail.index;
+      getList();
+    };
+ 
+    onMounted(async () => {
+      onLoad();
+    });
+
     return {
       tabsHeight: store.state.global.tabsHeight,
-      test,
+      active,
+      showBottomLine,
+      page,
+      pageSize,
       list,
-      initList,
-      onchange,
+      getList,
+      onChange,
+      onLoad,
       parameter: {
         title: "我的优惠券",
         return: 1,
@@ -112,6 +150,19 @@ export default {
   },
   onShareAppMessage(options) {
     return this.onShareAppMessage(options);
+  },
+  onPullDownRefresh() {
+    console.log("下拉刷新");
+    if (this.active == 0) {
+      this.onLoad();
+      return;
+    }
+    this.active = 0;
+  },
+  onReachBottom() {
+    if (this.showBottomLine) return;
+    console.log("用户触发上拉加载更多");
+    this.getList();
   },
 };
 </script>
