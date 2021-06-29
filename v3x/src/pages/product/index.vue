@@ -3,7 +3,7 @@
     <navbar :parameter="parameter" />
     <login />
 
-    <view class="index">
+    <view class="product-index">
       <c-swiper v-if="true" :initData="banner.confImages"  width="690rpx"
       height="250rpx" />
       <view class="index-tabs" v-if="true">

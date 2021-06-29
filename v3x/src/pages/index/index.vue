@@ -80,9 +80,12 @@ export default {
   components: {
     // NumberDisplay,
     // NumberSubmit,
+    // eslint-disable-next-line vue/no-unused-components
     login,
     navbar,
+    // eslint-disable-next-line vue/no-unused-components
     cSwiper,
+    // eslint-disable-next-line vue/no-unused-components
     listItem,
   },
   setup(props) {
@@ -111,7 +114,6 @@ export default {
       list.value = res1.confImages;
     };
     return {
-      
       splitStr,
       poster,
       list,
