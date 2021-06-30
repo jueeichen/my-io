@@ -1,6 +1,6 @@
 <template>
   <view class="counpon-items">
-    <view class="counpon-item-title">{{ initData.couponName }}</view>
+    <!-- <view class="counpon-item-title">{{ initData.couponName }}</view> -->
     <view class="counpon-items-index">
       <image
         src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2367570774,2939782776&fm=11&gp=0.jpg"
@@ -12,12 +12,11 @@
           >¥<text>{{ initData.couponDenomination }}</text>
         </view>
         <view class="list-item-tuition"
-          >有效期：截止{{ initData.validEndTime }}</view
+          >有效期：截止{{timestampToStr(initData.validEndTime,"Y年M月D日")  }}</view
         >
       </view>
       <view v-if="!isUse" class="sign-up" @tap="onClick">{{ statusStr }}</view>
-      <view v-else class="sign-up" >已选择</view>
-
+      <view v-else class="sign-up">已选择</view>
     </view>
   </view>
 </template>
@@ -52,6 +51,7 @@ export default {
     const state = ref(0);
     const statusStr = computed(() => {
       let str = "";
+      props.active == 0 && ((str = "待使用"), (state.value = ""));
       props.active == 1 && ((str = "立即领取"), (state.value = 101));
       props.active == 2 && ((str = "立即使用"), (state.value = 1));
       props.active == 3 && ((str = "使用详情"), (state.value = 2));
@@ -64,7 +64,7 @@ export default {
           couponId: props.initData.couponId,
         });
         console.log(res);
-        ctx.attrs.onInitList(state.value);
+        ctx.attrs.onInitList(state.value,props.active);
       }
       if (props.active == 2) {
         if (ctx.attrs.onUse) {
@@ -72,6 +72,11 @@ export default {
           return;
         }
         wx.switchTab({ url: "/pages/product/index" });
+      }
+      if (props.active == 0) {
+        if (ctx.attrs.onUse) {
+          ctx.attrs.onUse(props.index);
+        }
       }
     };
     return { statusStr, onClick };

@@ -73,17 +73,21 @@
       <view class="confirm-btn-left">
         <text>{{ pageType == 1 ? "学费" : "报名费" }}:</text>
         <text v-if="pageType == 0">{{
-          confirmData.initData.signupPrice -
-          (couponList.length > 0
-            ? couponList[couponIndex].couponDenomination
-            : 0)
+          filterNumber(
+            confirmData.initData.signupPrice -
+              (couponList.length > 0
+                ? couponList[couponIndex].couponDenomination
+                : 0)
+          )
         }}</text>
         <text v-else>{{
-          confirmData.initData.productPrice -
-          confirmData.initData.signupPrice -
-          (couponList.length > 0
-            ? couponList[couponIndex].couponDenomination
-            : 0)
+          filterNumber(
+            confirmData.initData.productPrice -
+              confirmData.initData.signupPrice -
+              (couponList.length > 0
+                ? couponList[couponIndex].couponDenomination
+                : 0)
+          )
         }}</text>
       </view>
       <view class="confirm-btn-right" @tap="sumitOrder"> 提交订单 </view>
@@ -109,7 +113,7 @@
         <view class="coupon-pop-list">
           <coupon-item
             :initData="item"
-            :active="item.receiveStatus == 1 ? 2 : 1"
+            :active="couponIndex === index ? 2 : 0"
             :index="index"
             :isUse="couponIndex === index"
             @use="goUse"
@@ -155,17 +159,28 @@ export default {
       username.value = confirmData.initData.signuperName;
     }
     if (pageType.value == 0) {
-      couponIndex.value = confirmData.couponIndex || 0;
+      // couponIndex.value = confirmData.couponIndex || 0;
+      couponIndex.value = 0;
     }
     const pay = async (orderNo) => {
-      const res = await store.dispatch("global/payOrder", {
-        orderNo,
-      });
-      console.log("res=>", JSON.parse(res.orderStr));
-      const params = JSON.parse(res.orderStr);
-      delete params.appId;
-      const data = await store.dispatch("global/wxPay", params);
-      console.log("data=>", data);
+      store
+        .dispatch("global/payOrder", {
+          orderNo,
+        })
+        .then((res) => {
+          console.log("res=>", res);
+          //支付成功跳转
+          wx.navigateTo({
+            url: "/pages/myOrder/index?id=" + (pageType.value + 1),
+          });
+        })
+        .catch((err) => {
+          console.log("err=>", err);
+          // 支付失败 两种情况pageType=0 跳转到订单详情页0 pagetype =1 跳转到订单量详情页1
+          wx.navigateTo({
+            url: "/pages/myOrder/index?id=" + (pageType.value ),
+          });
+        });
     };
     const sumitOrder = async () => {
       if (pageType.value == 1) {
@@ -180,6 +195,7 @@ export default {
         pay(confirmData.orderNo);
         return;
       }
+
       const res = await store.dispatch("global/createOrder", {
         productId: confirmData.productId,
         specialitiesName: confirmData.specialitiesName,
@@ -187,7 +203,6 @@ export default {
         signuperMobile: phone.value,
         signupCouponDetailId: couponList.value[couponIndex.value].receiveId,
       });
-
       pay(res.orderNo);
     };
     const goUse = (index) => {
@@ -196,9 +211,9 @@ export default {
     };
     const initList = async () => {
       const data = await store.dispatch("global/getCouponList", {
-        status: 103,
+        status: 1,
         couponType: pageType.value == 1 ? "2" : "1", // 1-报名费抵扣优惠券 2-学费抵扣优惠券
-        pageNum: 1,
+        page: 1,
         pageSize: 10,
       });
       couponList.value = data.couponInfos;

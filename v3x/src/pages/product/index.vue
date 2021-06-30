@@ -111,6 +111,7 @@ export default {
         console.log("到底了");
         showBottomLine.value = true;
       }
+      console.log("list=>",list.value)
       wx.stopPullDownRefresh();
     };
     const getListByType = async () => {

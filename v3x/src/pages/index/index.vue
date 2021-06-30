@@ -95,7 +95,7 @@ export default {
     const test = () => {
       console.log("test");
     };
-    onMounted(async () => {
+    const onLoad = async () => {
       let res = await store.dispatch("global/getCommonConfImage", "1");
       list.value = res.confImages;
       console.log("list===>", list);
@@ -103,18 +103,25 @@ export default {
 
       poster.value = res1.confImages[0].showImgUrl;
       console.log("poster===>", res1);
+      wx.stopPullDownRefresh();
+    };
+    onMounted(async () => {
+      onLoad();
     });
     const getCoupon = async (id) => {
       console.log(id);
       let res = await store.dispatch("global/receiveCoupon", {
         couponId: id,
       });
-      
-      if (res == 10001){ return;}
+
+      if (res == 10001) {
+        return;
+      }
       let res1 = await store.dispatch("global/getCommonConfImage", "1");
       list.value = res1.confImages;
     };
     return {
+      onLoad,
       splitStr,
       poster,
       list,
@@ -154,7 +161,7 @@ export default {
   // },
   onPullDownRefresh() {
     console.log("用户触发下拉");
-    wx.stopPullDownRefresh();
+    this.onLoad();
   },
   onReachBottom() {
     console.log("用户触发上拉加载更多");

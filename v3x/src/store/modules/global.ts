@@ -14,7 +14,7 @@ const state = {
   userInfo: {},
   couponList: [],
   confirmData: {},
-  qrcode:'',
+  qrcode: '',
 }
 
 const mutations = {
@@ -134,17 +134,24 @@ const actions = {
   },
   //支付订单
   payOrder(context, obj) {
-    return new Promise(async (resolve) => {
+    return new Promise(async (resolve, reject) => {
       const data: any = await $api('PAYORDER', {
         orderNo: obj.orderNo
       }, {}, {})
-      console.log("payOrder=>", context)
-      console.log("payOrder", data)
+      wx.showLoading({
+        title: '加载中...',
+        mask: true
+      })
       const params = JSON.parse(data.data.orderStr);
       delete params.appId;
 
-      const res = await context.dispatch("wxPay", params);
-      resolve(res)
+      context.dispatch("wxPay", params).then(
+        res => {
+          resolve(res)
+        }
+      ).catch(err => {
+        reject(err)
+      })
     })
     // console.log(context)
   },
@@ -175,14 +182,18 @@ const actions = {
         success: (res) => {
           console.log(res)
           resolve(res)
-          wx.navigateTo({
-            url: '/pages/myOrder/index?id=2'
-          });
+          wx.hideLoading()
+          // wx.navigateTo({
+          //   url: '/pages/myOrder/index?id=2'
+          // });
         },
         fail: (res) => {
           console.log(res)
           console.log(context)
+
           reject(res)
+          wx.hideLoading()
+
           // this.triggerEvent("onReLoad",{})
 
         },
@@ -273,17 +284,17 @@ const actions = {
       resolve(data.data)
     })
   },
-//GETMINIQRCODE
-getMiniQrcode(context) {
-  return new Promise(async (resolve) => {
-    const data: any = await $api('GETMINIQRCODE', {
-    }, {}, {})
-    console.log("getMiniQrcode=》", data.res)
-    context.commit('SET_QRCODE', data.data.qrcodeUrl)
+  //GETMINIQRCODE
+  getMiniQrcode(context) {
+    return new Promise(async (resolve) => {
+      const data: any = await $api('GETMINIQRCODE', {
+      }, {}, {})
+      console.log("getMiniQrcode=》", data.res)
+      context.commit('SET_QRCODE', data.data.qrcodeUrl)
 
-    resolve(data.data)
-  })
-},
+      resolve(data.data)
+    })
+  },
 
 }
 // 

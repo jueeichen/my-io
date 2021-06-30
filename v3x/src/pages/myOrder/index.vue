@@ -18,9 +18,10 @@
                 active="1"
                 v-for="(item, index) in list"
                 :key="index"
+                @changeActive="changeActive"
               />
               <no-data v-if="page > 1 && list.length < 1" />
-              <no-more v-if=" list.length > 0 && showBottomLine" />
+              <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
           <van-tab title="学费待支付">
@@ -32,7 +33,7 @@
                 :key="index"
               />
               <no-data v-if="page > 1 && list.length < 1" />
-              <no-more v-if=" list.length > 0 && showBottomLine" />
+              <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
           <van-tab title="已完成">
@@ -44,7 +45,7 @@
                 :key="index"
               />
               <no-data v-if="page > 1 && list.length < 1" />
-              <no-more v-if=" list.length > 0 && showBottomLine" />
+              <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
         </van-tabs>
@@ -77,6 +78,7 @@ export default {
     // active.value = +props.tid.match(/(?<=(=)).*/g, "")[0];
     const active = ref(0);
     active.value = +props.tid.split("=")[1];
+
     const page = ref(1);
     const pageSize = ref(10);
     const list = ref([]);
@@ -98,7 +100,6 @@ export default {
       wx.stopPullDownRefresh();
     };
     const onLoad = async () => {
-      active.value = 0;
       page.value = 1;
       list.value = [];
       showBottomLine.value = false;
@@ -110,6 +111,9 @@ export default {
       showBottomLine.value = false;
       active.value = e.detail.index;
       getList();
+    };
+    const changeActive = (index) => {
+      active.value = index;
     };
     onMounted(async () => {
       onLoad();
@@ -125,6 +129,7 @@ export default {
       tabsHeight: store.state.global.tabsHeight,
       list,
       onChange,
+      changeActive,
       parameter: {
         title: "我的订单",
         return: 1,

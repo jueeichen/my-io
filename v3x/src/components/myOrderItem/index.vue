@@ -1,7 +1,7 @@
 <template>
   <view class="my-order-items" v-if="initData.orderNo">
-    <!-- <view class="my-order-li-title" @tap="cancel(initData.orderNo)"> -->
-    <view class="my-order-li-title">
+    <view class="my-order-li-title" @tap="cancel(initData.orderNo)">
+      <!-- <view class="my-order-li-title"> -->
       <view> 订单号{{ initData.orderNo }} </view>
       <view>
         {{
@@ -44,11 +44,13 @@
       </view>
       <view>
         {{
-          active == 1
-            ? initData.signupPayAmount
-            : active == 2
-            ? initData.productPrice - initData.signupPrice
-            : initData.signupPayAmount
+          filterNumber(
+            active == 1
+              ? initData.signupPayAmount
+              : active == 2
+              ? initData.productPrice - initData.signupPrice
+              : initData.signupPayAmount
+          )
         }}
       </view>
     </view>
@@ -100,17 +102,22 @@ export default {
       default: 0,
     },
   },
-  setup(props) {
+  setup(props, ctx) {
     const store = useStore();
-    const goPaySign = async (orderNo) => {
-      const res = await store.dispatch("global/payOrder", {
-        orderNo,
-      });
-      console.log("res=>", JSON.parse(res.orderStr));
-      const params = JSON.parse(res.orderStr);
-      delete params.appId;
-      const data = await store.dispatch("global/wxPay", params);
-      console.log("data=>", data);
+    const goPaySign = (orderNo) => {
+      store
+        .dispatch("global/payOrder", {
+          orderNo,
+        })
+        .then((res) => {
+          console.log("res=>", res);
+          //支付成功跳转
+          ctx.attrs.onChangeActive(1);
+        })
+        .catch((err) => {
+          console.log("err=>", err);
+          // 原地不动
+        });
     };
     const navConfirm = () => {
       const params = {

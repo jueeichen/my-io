@@ -96,9 +96,9 @@
         <view class="coupon-pop-list">
           <coupon-item
             :initData="item"
-            :active="item.receiveStatus == 1 ? 2 : 1"
+            :active="item.receiveStatus == 1 ? 0 : 1"
             :index="index"
-            :isUse="couponIndex === index"
+            :isUse="false"
             @use="goUse"
             @initList="initList"
             v-for="(item, index) in couponList"
@@ -150,8 +150,8 @@ export default {
       const data = await store.dispatch("global/getCouponList", {
         status: 103,
         couponType: 1,
-        pageNum: 1,
-        pageSize: 10,
+        page: 1,
+        pageSize: 100,
       });
       couponList.value = data.couponInfos;
       console.log("couponList=>", couponList);

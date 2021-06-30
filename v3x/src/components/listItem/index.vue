@@ -9,8 +9,8 @@
       <view class="list-item-tag">
         <view
           v-for="(item,index) in initData.serviceTagsList"
-          :key="index"
-        >{{splitStr(item.tagName,4)}}</view>
+          :key="index" v-show="item.isShow=='1'"
+          >{{splitStr(item.tagName,4)}}</view>
       </view>
       <view class="list-item-tuition">学费¥{{initData.productPrice}}</view>
       <view class="list-item-application">

@@ -127,7 +127,13 @@ export default {
       active.value = e.detail.index;
       getList();
     };
- 
+    const initList = (status,acitve) => {
+      active.value = acitve-1;
+      page.value = 1;
+      list.value = [];
+      showBottomLine.value = false;
+      getList();
+    };
     onMounted(async () => {
       onLoad();
     });
@@ -142,6 +148,7 @@ export default {
       getList,
       onChange,
       onLoad,
+      initList,
       parameter: {
         title: "我的优惠券",
         return: 1,
