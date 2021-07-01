@@ -10,13 +10,18 @@
           poster ||
           'https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/activity.png'
         "
-        mode="widthFix"
       ></image>
+      <view class="position-content">
+        <view>距离获取免费上学资格</view>
+        <view
+          ><text> {{ toFreeNum }}</text
+          >人</view
+        >
+      </view>
 
       <view class="active-title">
         <text> </text>
         <view>升学优惠</view>
-        <text> </text>
       </view>
 
       <!-- <scroll-view class="scroll-view"> -->
@@ -51,7 +56,7 @@
             >立即领取</view
           >
           <view
-            @tap="switchProduct"
+            @tap="jump(item.jumpUrl)"
             class="list-item-right-btn list-item-right-btn-else"
             v-else
             >立即使用</view
@@ -91,18 +96,20 @@ export default {
     const store = useStore();
     const list = ref([]);
     const poster = ref([]);
-
+    const toFreeNum = ref(0);
     const test = () => {
       console.log("test");
     };
     const onLoad = async () => {
       let res = await store.dispatch("global/getCommonConfImage", "1");
       list.value = res.confImages;
-      console.log("list===>", list);
+      console.log("list===>", res);
       let res1 = await store.dispatch("global/getCommonConfImage", "101");
 
       poster.value = res1.confImages[0].showImgUrl;
+
       console.log("poster===>", res1);
+      toFreeNum.value = wx.getStorageSync("commonConf").toFreeNum;
       wx.stopPullDownRefresh();
     };
     onMounted(async () => {
@@ -121,6 +128,7 @@ export default {
       list.value = res1.confImages;
     };
     return {
+      toFreeNum,
       onLoad,
       splitStr,
       poster,

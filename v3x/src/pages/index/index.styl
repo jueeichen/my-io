@@ -1,130 +1,110 @@
-@import '../../static/css/common.styl';
+@import '../../static/css/common.styl'
 
-.active {
-	padding-bottom: 220rpx;
-	_flex-start-column();
-	align-items: center;
-}
-
-.main-img {
-	width: 750rpx;
-}
-
-.active-title {
-	margin: 46rpx 0 41rpx;
-	_flex-center();
-
-	text {
-		width: 113rpx;
-		height: 3rpx;
-		background: linear-gradient(270deg, #999999 0%, #ECFBFF 100%);
-		border-radius: 3rpx;
-	}
-
-	text:last-child {
-		transform: rotate(180deg);
-	}
-
-	view {
-		font-size: 40rpx;
-		font-weight: 700;
-		color: $color-normal-black;
-		padding: 0 35rpx;
-	}
-}
-
-.active-list-ul {
-	width: 750rpx;
-	_flex-start-column();
-	align-items: center;
-
-	.active-list-item {
-		margin-bottom: 30rpx;
-		border-radius: 8rpx;
-		box-sizing: border-box;
-		padding: 29rpx 0 0 18rpx;
-		position: relative;
-		width: 690rpx;
-		height: 236rpx;
-		background: #FFFEFC;
-		border: 2rpx solid #FDD9D0;
-		_flex-start-column();
-		align-items: center;
-
-		.list-item-title {
-			width: 100%;
-			font-size: 28rpx;
-			font-weight: 400;
-			color: #1A1A1A;
-		}
-	}
-
-	.list-item-content {
-		width: 100%;
-		margin-top: 21rpx;
-		_flex-center();
-		justify-content: flex-start;
-
-		>image {
-			width: 122rpx;
-			height: 122rpx;
-		}
-
-		.list-item-right {
-			margin-left: 20rpx;
-			flex-grow: 1;
-			_flex-start-column();
-
-			.list-item-right-top {
-				font-weight: 600;
-				color: #1A1A1A;
-				font-size: 30rpx;
-			}
-
-			.list-item-right-center {
-				_flex-center();
-				justify-content: flex-start;
-
-				>text:first-child {
-					font-weight: 600;
-					color: #FF5000;
-					font-size: 24rpx;
-				}
-
-				>text:last-child {
-					font-weight: 600;
-					color: #FF5000;
-					font-size: 42rpx;
-				}
-			}
-
-			.list-item-right-bottom {
-				color: #999999;
-				font-size: 20rpx;
-			}
-		}
-	}
-
-	.list-item-right-btn {
-		position: absolute;
-		_flex-center();
-		right: 19rpx;
-		top: 82rpx;
-		color: #fff;
-		width: 160rpx;
-		height: 68rpx;
-		font-size: 28rpx;
-		background: linear-gradient(261deg, #FE8700 0%, #FF6441 100%);
-		box-shadow: 0px 4rpx 14rpx 0px rgba(255, 206, 201, 1);
-		border-radius: 34rpx;
-	}
-
-	.list-item-right-btn-else {
-		border-radius: 34px;
-		border: 2rpx solid #FF5000;
-		background: #fff;
-		color: #FF5000;
-		box-shadow: 0px 4rpx 14rpx 0px rgba(255, 206, 201, 1);
-	}
-}
-
+.active
+	padding-bottom 220rpx
+	_flex-start-column()
+	align-items center
+	position: relative
+.main-img
+	width 750rpx
+	height 1060rpx
+.position-content
+	position absolute
+	left 50%
+	transform translateX(-50%)
+	top 647rpx
+	color #FFFFFF
+	_flex-center-column()
+	>view:first-child
+		font-size 32rpx
+		font-weight 500
+		color #FFFFFF
+		text-shadow 0px 2rpx 4rpx #F23727
+	>view:last-child
+		font-size 55rpx
+		>text 
+			font-size 88rpx
+	.active-title
+		margin 46rpx 0 41rpx
+		_flex-center()
+		text
+			width 113rpx
+			height 3rpx
+			background linear-gradient(270deg, #999999 0%, #ECFBFF 100%)
+			border-radius 3rpx
+		text:last-child
+			transform rotate(180deg)
+		view
+			font-size 40rpx
+			font-weight 700
+			color $color-normal-black
+			padding 0 35rpx
+	.active-list-ul
+		width 750rpx
+		_flex-start-column()
+		align-items center
+		.active-list-item
+			margin-bottom 30rpx
+			border-radius 8rpx
+			box-sizing border-box
+			padding 29rpx 0 0 18rpx
+			position relative
+			width 690rpx
+			height 236rpx
+			background #FFFEFC
+			border 2rpx solid #FDD9D0
+			_flex-start-column()
+			align-items center
+			.list-item-title
+				width 100%
+				font-size 28rpx
+				font-weight 400
+				color #1A1A1A
+		.list-item-content
+			width 100%
+			margin-top 21rpx
+			_flex-center()
+			justify-content flex-start
+			>image
+				width 122rpx
+				height 122rpx
+			.list-item-right
+				margin-left 20rpx
+				flex-grow 1
+				_flex-start-column()
+				.list-item-right-top
+					font-weight 600
+					color #1A1A1A
+					font-size 30rpx
+				.list-item-right-center
+					_flex-center()
+					justify-content flex-start
+					>text:first-child
+						font-weight 600
+						color #FF5000
+						font-size 24rpx
+					>text:last-child
+						font-weight 600
+						color #FF5000
+						font-size 42rpx
+				.list-item-right-bottom
+					color #999999
+					font-size 20rpx
+		.list-item-right-btn
+			position absolute
+			_flex-center()
+			right 19rpx
+			top 82rpx
+			color #fff
+			width 160rpx
+			height 68rpx
+			font-size 28rpx
+			background linear-gradient(261deg, #FE8700 0%, #FF6441 100%)
+			box-shadow 0px 4rpx 14rpx 0px rgba(255, 206, 201, 1)
+			border-radius 34rpx
+		.list-item-right-btn-else
+			border-radius 34px
+			border 2rpx solid #FF5000
+			background #fff
+			color #FF5000
+			box-shadow 0px 4rpx 14rpx 0px rgba(255, 206, 201, 1)

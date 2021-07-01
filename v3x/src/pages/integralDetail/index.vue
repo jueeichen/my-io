@@ -34,8 +34,16 @@
               </view>
               <view>贡 献 人：{{ item.createBy }}</view>
               <view>贡 献 ID：{{ item.accountId }}</view>
-              <view>贡献时间：{{ item.createDate }}</view>
-              <view>入账时间：{{ item.createDate }}</view>
+              <view
+                >贡献时间：{{
+                  timestampToStr(item.createDate, "Y年M月D日")
+                }}</view
+              >
+              <view
+                >入账时间：{{
+                  timestampToStr(item.createDate, "Y年M月D日")
+                }}</view
+              >
             </view>
           </view>
         </van-tab>
@@ -52,8 +60,16 @@
               </view>
               <view>贡 献 人：{{ item.createBy }}</view>
               <view>贡 献 ID：{{ item.accountId }}</view>
-              <view>贡献时间：{{ item.createDate }}</view>
-              <view>入账时间：{{ item.createDate }}</view>
+              <view
+                >贡献时间：{{
+                  timestampToStr(item.createDate, "Y年M月D日")
+                }}</view
+              >
+              <view
+                >入账时间：{{
+                  timestampToStr(item.createDate, "Y年M月D日")
+                }}</view
+              >
             </view>
           </view>
         </van-tab>

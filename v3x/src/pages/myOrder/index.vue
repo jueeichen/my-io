@@ -58,9 +58,7 @@
 import navbar from "@/components/navbar/index.vue";
 import noData from "@/components/noData/index.vue";
 import noMore from "@/components/noMore/index.vue";
-
 import MyOrderItem from "@/components/myOrderItem/index.vue";
-
 import "./index.styl";
 import { useStore } from "vuex";
 import { onMounted, ref } from "vue";
@@ -94,6 +92,8 @@ export default {
       if (res.orderList.length == pageSize.value) {
         page.value++;
       } else {
+        page.value++;
+
         console.log("到底了");
         showBottomLine.value = true;
       }

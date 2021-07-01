@@ -15,6 +15,7 @@ const state = {
   couponList: [],
   confirmData: {},
   qrcode: '',
+  orderDetail: {}
 }
 
 const mutations = {
@@ -41,6 +42,9 @@ const mutations = {
   },
   SET_QRCODE(state, data) {
     state.qrcode = data
+  },
+  SET_ORDERDETAIL(state, data) {
+    state.orderDetail = data
   },
 }
 
@@ -295,7 +299,10 @@ const actions = {
       resolve(data.data)
     })
   },
+  setOrderDetail(context, obj) {
+    context.commit('SET_ORDERDETAIL', obj)
 
+  },
 }
 // 
 const getters = {

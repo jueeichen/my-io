@@ -81,7 +81,7 @@ App.mixin({
       },
       filterNumber: (num) => {
         num = Math.floor(num * 100) / 100;
-        if (num < 0) {
+        if (num <= 0) {
           num = 0.01;
         }
 

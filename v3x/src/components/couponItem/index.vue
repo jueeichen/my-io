@@ -15,11 +15,11 @@
           >有效期：截止{{timestampToStr(initData.validEndTime,"Y年M月D日")  }}</view
         >
       </view>
-      <view v-if="!isUse" class="sign-up" @tap="onClick">{{ statusStr }}</view>
+      <view v-if="!isUse" :class="'sign-up '+(active==3||active==4?' sign-up-gray':'')" @tap="onClick">{{ statusStr }}</view>
       <view v-else class="sign-up">已选择</view>
     </view>
   </view>
-</template>
+</template> 
 
 <script>
 import { computed, ref } from "vue";
@@ -54,8 +54,8 @@ export default {
       props.active == 0 && ((str = "待使用"), (state.value = ""));
       props.active == 1 && ((str = "立即领取"), (state.value = 101));
       props.active == 2 && ((str = "立即使用"), (state.value = 1));
-      props.active == 3 && ((str = "使用详情"), (state.value = 2));
-      props.active == 4 && ((str = "已失效"), (state.value = 3));
+      props.active == 3 && ((str = "立即使用"), (state.value = 2));
+      props.active == 4 && ((str = "立即使用"), (state.value = 3));
       return str;
     });
     const onClick = async () => {

@@ -22,7 +22,9 @@
         </view>
         <view class="my-top-bottom">
           <view class="" @tap="jump('/pages/coupon/index')">
-            <view class="my-top-detail">{{ userInfo.receiveCount || 0 }}</view>
+            <view class="my-top-detail"
+              >{{ userInfo.unuseCount || 0 }} <text>{{ userInfo.receiveCount || 0 }}张可领</text>
+            </view>
             <view class="my-top-menu"
               >优惠券
               <van-icon name="arrow" class="iconfont icon-back" />
@@ -130,6 +132,7 @@ import "./index.styl";
 import { useStore } from "vuex";
 import Taro from "@tarojs/taro";
 import { onMounted, ref } from "vue";
+import Test from "../../../../mobile/mobile_vue_cli_3.2.1/src/pages/home/test.vue";
 
 export default {
   name: "Index",
@@ -141,7 +144,7 @@ export default {
     cSwiper,
     listItem,
   },
-  setup(props) {
+  setup(prop) {
     const store = useStore();
     const userInfo = ref({});
     const accountPoint = ref(0);

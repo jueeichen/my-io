@@ -6,7 +6,7 @@
         <image :src="confirmData.initData.showImgUrl" mode="" />
         <view>
           <text>{{ confirmData.initData.schoolName }}</text>
-          <text>专业:{{ confirmData.specialitiesName }}</text>
+          <text>专业:{{ confirmData.specialitiesName||confirmData.initData.specialitiesName }}</text>
         </view>
       </view>
       <view class="confirm-center">
@@ -27,7 +27,7 @@
           <view>
             <text>优惠券</text>
           </view>
-          <text>
+          <text  style="color: #ff5000">
             {{
               couponIndex === null
                 ? "领券"

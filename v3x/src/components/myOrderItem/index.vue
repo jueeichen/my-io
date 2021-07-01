@@ -1,30 +1,30 @@
 <template>
   <view class="my-order-items" v-if="initData.orderNo">
-    <view class="my-order-li-title" @tap="cancel(initData.orderNo)">
-      <!-- <view class="my-order-li-title"> -->
+    <!-- <view class="my-order-li-title" @tap="cancel(initData.orderNo)"> -->
+    <view class="my-order-li-title" @tap="navDetail">
       <view> 订单号{{ initData.orderNo }} </view>
-      <view>
+      <!-- <view>
         {{
           active == 1 ? "报名费待支付" : active == 2 ? "学费待支付" : "已完成"
         }}
-      </view>
+      </view> -->
     </view>
-    <view class="my-order-li-img">
+    <view class="my-order-li-img" @tap="navDetail">
       <image :src="initData.showImgUrl" mode="aspectFill"></image>
       <view>
         <view> {{ initData.schoolName }} </view>
         <view> {{ initData.productName }} </view>
       </view>
     </view>
-    <view class="my-order-items-li">
+    <view class="my-order-items-li" @tap="navDetail">
       <view> 学费(含报名费) </view>
       <view> ¥{{ initData.productPrice }} </view>
     </view>
-    <view class="my-order-items-li">
+    <view class="my-order-items-li" @tap="navDetail">
       <view> 报名费 </view>
       <view> ¥{{ initData.signupPrice }} </view>
     </view>
-    <view class="my-order-items-li">
+    <view class="my-order-items-li" @tap="navDetail">
       <view> 优惠券 </view>
       <view style="color: #ff5000">
         -¥
@@ -33,11 +33,12 @@
             ? initData.signupCouponAmount || 0
             : active == 2
             ? initData.tuitionCouponAmount || 0
-            : initData.signupCouponAmount || initData.tuitionCouponAmount || 0
+            : (+initData.signupCouponAmount || 0) +
+              (initData.tuitionCouponAmount || 0)
         }}
       </view>
     </view>
-    <view class="my-order-items-total">
+    <view class="my-order-items-total" @tap="navDetail">
       <view>
         {{ active == 1 ? "报名费应付" : active == 2 ? "学费应付" : "实付金额" }}
         : ¥
@@ -48,8 +49,12 @@
             active == 1
               ? initData.signupPayAmount
               : active == 2
-              ? initData.productPrice - initData.signupPrice
-              : initData.signupPayAmount
+              ? initData.productPrice -
+                (initData.signupPrice || 0) -
+                (initData.tuitionCouponAmount || 0)
+              : initData.productPrice -
+                (initData.signupCouponAmount || 0) -
+                (initData.tuitionCouponAmount || 0)
           )
         }}
       </view>
@@ -133,6 +138,10 @@ export default {
       });
     };
     const navDetail = (id) => {
+      store.dispatch("global/setOrderDetail", {
+        ...props.initData,
+        active: props.active,
+      });
       wx.navigateTo({
         url: "/pages/orderDetail/index?id=" + id,
       });
