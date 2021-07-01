@@ -63,7 +63,10 @@ export default {
         let res = await store.dispatch("global/receiveCoupon", {
           couponId: props.initData.couponId,
         });
-        console.log(res);
+        // console.log(res);
+        if (res == 10001) {
+        return;
+      }
         ctx.attrs.onInitList(state.value,props.active);
       }
       if (props.active == 2) {

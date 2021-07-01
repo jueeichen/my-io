@@ -1,7 +1,10 @@
 <template>
   <view>
     <navbar :parameter="parameter" />
-    <login ref="login" @cancel="cancel" />
+    <login
+      ref="login"
+      @cancel="cancel"
+    />
 
     <view class="my">
       <!-- <view class=""> </view> -->
@@ -12,30 +15,49 @@
               <open-data type="userAvatarUrl"></open-data>
             </view>
             <view class="">
-              <open-data type="groupName" open-gid="xxxxxx"></open-data>
+              <open-data
+                type="groupName"
+                open-gid="xxxxxx"
+              ></open-data>
               <open-data type="userNickName"></open-data>
             </view>
           </view>
-          <view class="my-top-btn" @tap="jump('/pages/myOrder/index?id=1')">
+          <view
+            class="my-top-btn"
+            @tap="jump('/pages/myOrder/index?id=1')"
+          >
             去缴学费
           </view>
         </view>
         <view class="my-top-bottom">
-          <view class="" @tap="jump('/pages/coupon/index')">
-            <view class="my-top-detail">{{ userInfo.receiveCount || 0 }}</view>
-            <view class="my-top-menu"
-              >优惠券
-              <van-icon name="arrow" class="iconfont icon-back" />
+          <view
+            class=""
+            @tap="jump('/pages/coupon/index')"
+          >
+            <view class="my-top-detail">{{ (+userInfo.receiveCount || 0) + (+userInfo.unuseCount || 0)}}</view>
+            <view class="my-top-menu">优惠券
+              <van-icon
+                name="arrow"
+                class="iconfont icon-back"
+              />
             </view>
           </view>
-          <view class="" @tap="jump('/pages/integral/index')">
+          <view
+            class=""
+            @tap="jump('/pages/integral/index')"
+          >
             <view class="my-top-detail">{{ accountPoint || 0 }} </view>
-            <view class="my-top-menu"
-              >积分商城
-              <van-icon name="arrow" class="iconfont icon-back" />
+            <view class="my-top-menu">积分商城
+              <van-icon
+                name="arrow"
+                class="iconfont icon-back"
+              />
             </view>
           </view>
-          <view class="" @tap="jump('/pages/poster/index')">
+          <view
+            class=""
+            @tap="jump('/pages/poster/index')"
+          >
             <view class="">
               <image
                 src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/poster_icon@2x.png"
@@ -47,7 +69,10 @@
         </view>
       </view>
       <view class="my-center">
-        <view class="" @tap="jump('/pages/myOrder/index?id=0')">
+        <view
+          class=""
+          @tap="jump('/pages/myOrder/index?id=0')"
+        >
           <image
             src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/payment_sign_icon@2x.png"
             class=""
@@ -55,7 +80,10 @@
           </image>
           <view class="">报名待支付 </view>
         </view>
-        <view class="" @tap="jump('/pages/myOrder/index?id=1')">
+        <view
+          class=""
+          @tap="jump('/pages/myOrder/index?id=1')"
+        >
           <image
             src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/payment_tuition_icon@2x.png"
             class=""
@@ -63,7 +91,10 @@
           </image>
           <view class="">学费待支付 </view>
         </view>
-        <view class="" @tap="jump('/pages/myOrder/index?id=2')">
+        <view
+          class=""
+          @tap="jump('/pages/myOrder/index?id=2')"
+        >
           <image
             src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/payment_succes_icon@2x.png"
             class=""
@@ -72,7 +103,10 @@
 
           <view class="">已完成 </view>
         </view>
-        <view class="" @tap="jump('/pages/myOrder/index?id=0')">
+        <view
+          class=""
+          @tap="jump('/pages/myOrder/index?id=0')"
+        >
           <image
             src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/all_order_icon@2x.png"
             class=""
@@ -87,32 +121,44 @@
         v-if="false"
       />
       <view class="my-bottom">
-        <view class="my-bottom-item" @tap="jump('/pages/service/index')">
+        <view
+          class="my-bottom-item"
+          @tap="jump('/pages/service/index')"
+        >
           <view class="my-bottom-item_left">
-            <image
-              src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/teacher_icon@2x.png"
-            />
+            <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/teacher_icon@2x.png" />
             <view class="">班主任微信 </view>
           </view>
-          <van-icon name="arrow" class="iconfont icon-back" />
+          <van-icon
+            name="arrow"
+            class="iconfont icon-back"
+          />
         </view>
-        <view class="my-bottom-item" @tap="jump('/pages/process/index')">
+        <view
+          class="my-bottom-item"
+          @tap="jump('/pages/process/index')"
+        >
           <view class="my-bottom-item_left">
-            <image
-              src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/procss_icon@2x.png"
-            />
+            <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/procss_icon@2x.png" />
             <view class="">拿证流程 </view>
           </view>
-          <van-icon name="arrow" class="iconfont icon-back" />
+          <van-icon
+            name="arrow"
+            class="iconfont icon-back"
+          />
         </view>
-        <view class="my-bottom-item" @tap="jump('/pages/about/index')">
+        <view
+          class="my-bottom-item"
+          @tap="jump('/pages/about/index')"
+        >
           <view class="my-bottom-item_left">
-            <image
-              src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/about_us@2x.png"
-            />
+            <image src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/about_us@2x.png" />
             <view class="">关于我们 </view>
           </view>
-          <van-icon name="arrow" class="iconfont icon-back" />
+          <van-icon
+            name="arrow"
+            class="iconfont icon-back"
+          />
         </view>
       </view>
     </view>
