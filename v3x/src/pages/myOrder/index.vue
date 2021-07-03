@@ -88,7 +88,7 @@ export default {
         status: active.value + 1,
       });
       list.value =
-        page.value == 1 ? res.orderList : [...list.value, ...res.orderList];
+        res.pageNum == 1 ? res.orderList : [...list.value, ...res.orderList];
       if (res.orderList.length == pageSize.value) {
         page.value++;
       } else {

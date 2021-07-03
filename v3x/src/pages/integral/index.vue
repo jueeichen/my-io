@@ -78,17 +78,26 @@ export default {
     const store = useStore();
 
     const accountPoint = ref(0);
+    const getAccountPoint = async () => {
+      let res = await store.dispatch("global/getAccountPoint");
+      console.log("accountPoint===>", res);
+      accountPoint.value = res.accountPoint;
+    };
     const exchangeCoupon = async (couponId) => {
       let res = await store.dispatch("global/exchangeCoupon", {
         couponId,
         exchangeNum: 1,
       });
-      // if(res.res.code==10000){
+      if(res.res.code==10000){
       wx.showModal({
         title: "提示",
         content: res.res.message,
+        showCancel: false,
+        success:()=>{
+          getAccountPoint()
+        }
       });
-      // }
+      }
       console.log(res);
     };
     const page = ref(1);
@@ -121,9 +130,7 @@ export default {
       list.value = [];
       showBottomLine.value = false;
       getList();
-      let res = await store.dispatch("global/getAccountPoint");
-      console.log("accountPoint===>", res);
-      accountPoint.value = res.accountPoint;
+      getAccountPoint();
     };
     onMounted(async () => {
       onLoad();

@@ -83,9 +83,9 @@
           <!-- <image src="" @tap="isShowCoupon = false" /> -->
           <van-icon name="cross" @tap="isShowCoupon = false" />
         </view>
-        <view>
-          <view>优惠券 {{ couponIndex === null ? "0" : "1" }}张, 共抵扣</view>
-          <view
+        <view v-show="false">
+          <view >优惠券 {{ couponIndex === null ? "0" : "1" }}张, 共抵扣</view>
+          <view  
             >¥{{
               couponIndex === null
                 ? "0"

@@ -18,13 +18,18 @@
       <view class="service-content-3"
         >请保存到相册后，微信扫一扫加老师微信号
       </view>
-      <view class="service-btn" @tap="copyImg(initData.showImgUrl)">
+      <view class="service-btn" @tap="createPoster(initData.showImgUrl)">
         <image
           src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/save.png"
         />
         <view> 保存图片</view>
       </view>
     </view>
+    <canvas
+      canvas-id="createPoster"
+      :style="'width:442rpx;height:448rpx;'"
+      class="createPoster"
+    ></canvas>
   </view>
 </template>
 
@@ -48,6 +53,94 @@ export default {
       initData.value = res.confImages[0];
       console.log(initData.value);
     });
+    // const copyImg = (url) => {
+    //   wx.getImageInfo({
+    //     src: url,
+    //     success: (res) => {
+    //       console.log(res);
+    //       wx.saveImageToPhotosAlbum({
+    //         filePath: res.path,
+    //         success: (e) => {
+    //           wx.showToast({ title: "保存成功！" });
+    //         },
+    //         fail: (res) => {
+    //           wx.getSetting({
+    //             success(res) {
+    //               if (!res.authSetting["scope.writePhotosAlbum"]) {
+    //                 wx.showModal({
+    //                   title: "警告",
+    //                   content: "请打开相册权限，否则无法保存图片到相册",
+    //                   success(res) {
+    //                     if (res.confirm) {
+    //                       wx.openSetting({
+    //                         success(res) {
+    //                           console.log(res);
+    //                         },
+    //                       });
+    //                     } else if (res.cancel) {
+    //                       wx.showToast({
+    //                         title: "取消授权",
+    //                         icon: "none",
+    //                         duration: 2000,
+    //                       });
+    //                     }
+    //                   },
+    //                 });
+    //               }
+    //             },
+    //           });
+    //         },
+    //       });
+    //     },
+    //     fail(res) {},
+    //   });
+    // };
+    const getImg = (src) => {
+      // let img = src.replace(/http/, 'https')
+      // debugger
+      return new Promise((resolve) => {
+        wx.getImageInfo({
+          src,
+          success: (res) => {
+            if (/json/.test(res.path)) {
+              // console.log(src)
+              // console.log(res)
+              wx.showToast({
+                title: "获取图片失败，请重试！",
+                icon: "none",
+                mask: true,
+              });
+              setTimeout(() => {
+                this.close();
+              }, 2000);
+            } else {
+              resolve(res);
+            }
+          },
+          fail: (e) => {
+            console.log(e);
+            wx.showToast({
+              title: "获取图片失败，请重试！",
+              icon: "none",
+              mask: true,
+            });
+          },
+        });
+      });
+    };
+    const rpx2Px = () => {
+      let rpx;
+      wx.getSystemInfo({
+        success: function (res) {
+          rpx = res.windowWidth / 375 / 2;
+        },
+      });
+      return rpx;
+    };
+    // const onChange = (e) => {
+    //   swiperIndex.value = e.detail.current;
+    //   console.log(swiperIndex);
+    // };
     const copyImg = (url) => {
       wx.getImageInfo({
         src: url,
@@ -56,7 +149,7 @@ export default {
           wx.saveImageToPhotosAlbum({
             filePath: res.path,
             success: (e) => {
-              wx.showToast({ title: "保存成功！" });
+              wx.showToast({ title: "保存成功" });
             },
             fail: (res) => {
               wx.getSetting({
@@ -90,9 +183,31 @@ export default {
         fail(res) {},
       });
     };
+    const createPoster = (img) => {
+      const r2p = (rpx) => parseInt(rpx2Px() * rpx);
+      return new Promise(async (resolve) => {
+        const ctx = wx.createCanvasContext("createPoster");
+        const img0 = await getImg(img);
+        ctx.drawImage(img0.path, 0, 0, r2p(442), r2p(448));
+        ctx.save();
+        ctx.draw(false, (res) => {
+          wx.canvasToTempFilePath({
+            canvasId: "createPoster",
+            success: (contextInfo) => {
+              resolve(contextInfo);
+              copyImg(contextInfo.tempFilePath);
+            },
+            fail: function (res) {},
+            complete: function () {
+              wx.hideLoading();
+            },
+          });
+        });
+      });
+    };
 
     return {
-      copyImg,
+      createPoster,
       initData,
       tabsHeight: store.state.global.tabsHeight,
       parameter: {

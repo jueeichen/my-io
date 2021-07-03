@@ -8,11 +8,11 @@
           <text v-if="initData.active != '2'">{{
             filterStatus(initData.active).content
           }}</text>
-          <text v-else>{{
+          <!-- <text v-else>{{
             filterStatus(initData.active).content1 +
             timestampToStr(initData.signupPayTime, "Y.M.D h:m:s") +
             filterStatus(initData.active).content2
-          }}</text>
+          }}</text> -->
         </view>
         <view class="order-top-btn"  v-if="initData.active != '3'">
           <view
@@ -141,7 +141,7 @@ export default {
           console.log("res=>", res);
           //支付成功跳转
           wx.navigateTo({
-            url: "/pages/myOrder/index?id=0",
+            url: "/pages/myOrder/index?id=1",
           });
         })
         .catch((err) => {
@@ -183,8 +183,10 @@ export default {
           obj = {
             status: "学费待支付",
             content: " ",
-            content1: "订单将于",
-            content2: "自动取消",
+            // content1: "订单将于",
+            // content2: "自动取消",
+            content1: "",
+            content2: "",
           };
         }
         if (type == "3") {

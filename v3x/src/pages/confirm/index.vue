@@ -6,7 +6,12 @@
         <image :src="confirmData.initData.showImgUrl" mode="" />
         <view>
           <text>{{ confirmData.initData.schoolName }}</text>
-          <text>专业:{{ confirmData.specialitiesName||confirmData.initData.specialitiesName }}</text>
+          <text
+            >专业:{{
+              confirmData.specialitiesName ||
+              confirmData.initData.specialitiesName
+            }}</text
+          >
         </view>
       </view>
       <view class="confirm-center">
@@ -27,10 +32,10 @@
           <view>
             <text>优惠券</text>
           </view>
-          <text  style="color: #ff5000">
+          <text style="color: #ff5000">
             {{
-              couponIndex === null
-                ? "领券"
+              couponIndex == 0
+                ? "请选券"
                 : "¥" +
                   (couponList.length > 0
                     ? couponList[couponIndex].couponDenomination
@@ -112,6 +117,7 @@
         </view>
         <view class="coupon-pop-list">
           <coupon-item
+            v-show="index > 0"
             :initData="item"
             :active="couponIndex === index ? 2 : 0"
             :index="index"
@@ -178,7 +184,7 @@ export default {
           console.log("err=>", err);
           // 支付失败 两种情况pageType=0 跳转到订单详情页0 pagetype =1 跳转到订单量详情页1
           wx.navigateTo({
-            url: "/pages/myOrder/index?id=" + (pageType.value ),
+            url: "/pages/myOrder/index?id=" + pageType.value,
           });
         });
     };
@@ -208,15 +214,26 @@ export default {
     const goUse = (index) => {
       console.log("use", index);
       couponIndex.value = index;
+      isShowCoupon.value = false;
     };
     const initList = async () => {
+      if (pageType.value == 1) {
+        await store.dispatch("global/selectCounpon", {
+          orderNo: confirmData.orderNo,
+          tuitionCouponDetailId: null,
+        });
+      }
+
       const data = await store.dispatch("global/getCouponList", {
         status: 1,
         couponType: pageType.value == 1 ? "2" : "1", // 1-报名费抵扣优惠券 2-学费抵扣优惠券
         page: 1,
         pageSize: 10,
       });
-      couponList.value = data.couponInfos;
+      couponList.value = [
+        { couponDenomination: 0, receiveId: null },
+        ...data.couponInfos,
+      ];
       console.log("couponList=>", couponList);
     };
     onMounted(async () => {

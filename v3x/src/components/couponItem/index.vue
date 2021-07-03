@@ -15,7 +15,7 @@
           >有效期：截止{{timestampToStr(initData.validEndTime,"Y年M月D日")  }}</view
         >
       </view>
-      <view v-if="!isUse" :class="'sign-up '+(active==3||active==4?' sign-up-gray':'')" @tap="onClick">{{ statusStr }}</view>
+      <view v-if="!isUse" :class="'sign-up '+(active==3||active==4||active==0?' sign-up-gray':'')" @tap="onClick">{{ statusStr }}</view>
       <view v-else class="sign-up">已选择</view>
     </view>
   </view>

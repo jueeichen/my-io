@@ -101,6 +101,7 @@ export default {
       console.log("test");
     };
     const onLoad = async () => {
+      await store.dispatch("global/getProfile");
       let res = await store.dispatch("global/getCommonConfImage", "1");
       list.value = res.confImages;
       console.log("list===>", res);
