@@ -129,7 +129,7 @@ export default {
         orderNo,
       });
       wx.redirectTo({
-        url: "/pages/myOrder/index",
+        url: "/pages/myOrder/index?id=0",
       });
     };
     const goPaySign = (orderNo) => {

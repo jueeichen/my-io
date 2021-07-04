@@ -45,7 +45,7 @@
           <view class="integral-list-item-title">{{ item.couponName }}</view>
           <view class="integral-list-item-bottom">
             <view class="">
-              <text class="">{{ item.couponDenomination }}</text>
+              <text class="">{{ item.exchangePoint }}</text>
               <text class="">积分</text>
             </view>
             <view class="" @tap="exchangeCoupon(item.couponId)">去兑换</view>

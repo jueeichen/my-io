@@ -156,18 +156,22 @@ export default {
         url: e,
       });
     };
-    onMounted(async () => {
+    const onLoad = async () => {
       let res = await store.dispatch("global/getAccountPoint");
       accountPoint.value = res.accountPoint;
       await store.dispatch("global/getUserInfo");
       userInfo.value = store.state.global.userInfo;
       console.log(userInfo);
+    };
+    onMounted(async () => {
+      onLoad();
     });
     return {
       accountPoint,
       userInfo,
       tabsHeight: store.state.global.tabsHeight,
       navTarget,
+      onLoad,
       cancel: () => {
         wx.switchTab({ url: "/pages/index/index" });
       },
@@ -196,6 +200,7 @@ export default {
   },
   onPullDownRefresh() {
     console.log("用户触发下拉");
+     this.onLoad();
     wx.stopPullDownRefresh();
   },
   onReachBottom() {

@@ -60,17 +60,45 @@
       <view class="detail-menu-items no-line">
         <view class="itme-title">保障</view>
         <view class="detail-menu-item-content">
-          <view class="" v-for="(item, index) in initData.serviceTagsList" :key="index">
-            <image src="../../static/images/label.png"/>
-            <text class=""> {{item.tagName}} </text>
+          <view
+            class=""
+            v-for="(item, index) in initData.serviceTagsList"
+            :key="index"
+          >
+            <image src="../../static/images/label.png" />
+            <text class=""> {{ item.tagName }} </text>
           </view>
         </view>
       </view>
     </view>
     <view class="detail-rich">
-      <view class="detail-rich-title">详情</view>
-
-      <view class="rich-text" v-html="initData.detail" />
+      <van-tabs
+        :active="active"
+        :swipeable="true"
+        :animated="true"
+        :sticky="true"
+        :offset-top="tabsHeight"
+        @change="onChange"
+      >
+        <van-tab title="学校简介">
+          <view class="tab-item">
+            <view class="rich-text" v-html="initData.detail" />
+          </view>
+        </van-tab>
+        <van-tab title="优势特点">
+          <view class="tab-item">
+            <image src="../../static/images/ys01.png" mode="widthFix" />
+            <image src="../../static/images/ys02.png" mode="widthFix" />
+            <image src="../../static/images/ys03.png" mode="widthFix" />
+          </view>
+        </van-tab>
+        <van-tab title="拿证流程">
+          <view class="tab-item">
+            <image src="../../static/images/step.jpg" mode="widthFix" />
+          </view>
+        </van-tab>
+      </van-tabs>
+      <!-- <view class="detail-rich-title">详情</view> -->
     </view>
     <view class="detail-bottom-btn" @tap="navConfirm">
       <view>立即报名</view>
@@ -84,8 +112,8 @@
           <van-icon name="cross" @tap="isShowCoupon = false" />
         </view>
         <view v-show="false">
-          <view >优惠券 {{ couponIndex === null ? "0" : "1" }}张, 共抵扣</view>
-          <view  
+          <view>优惠券 {{ couponIndex === null ? "0" : "1" }}张, 共抵扣</view>
+          <view
             >¥{{
               couponIndex === null
                 ? "0"

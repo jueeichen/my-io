@@ -1,79 +1,81 @@
 <template>
-  <navbar :parameter="parameter" />
-  <view class="integral-detail">
-    <!-- <view></view> -->
-    <view class="integral-detail-top">
-      <image
-        src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/integral-detail.png"
-      />
-      <view>
-        <view>可用积分</view>
-        <view>{{ accountPoint }}</view>
-        <view>积分规则</view>
+  <view>
+    <navbar :parameter="parameter" />
+    <view class="integral-detail">
+      <!-- <view></view> -->
+      <view class="integral-detail-top">
+        <image
+          src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/integral-detail.png"
+        />
+        <view>
+          <view>可用积分</view>
+          <view>{{ accountPoint }}</view>
+          <view>积分规则</view>
+        </view>
       </view>
-    </view>
 
-    <view class="index-tabs" v-if="true">
-      <van-tabs
-        @change="onChange"
-        :swipeable="true"
-        :animated="true"
-        :sticky="true"
-        :offset-top="tabsHeight"
-      >
-        <van-tab title="收入">
-          <view class="tab-item integral-detail-list">
-            <view
-              class="integral-detail-item"
-              v-for="(item, index) in list"
-              :key="index"
-            >
-              <view>
-                <view>{{ item.businessType }}</view>
-                <view>+{{ item.tradePoint }}</view>
+      <view class="index-tabs" v-if="true">
+        <van-tabs
+          @change="onChange"
+          :swipeable="true"
+          :animated="true"
+          :sticky="true"
+          :offset-top="tabsHeight"
+        >
+          <van-tab title="收入">
+            <view class="tab-item integral-detail-list">
+              <view
+                class="integral-detail-item"
+                v-for="(item, index) in list"
+                :key="index"
+              >
+                <view>
+                  <view>{{ item.businessType }}</view>
+                  <view>+{{ item.tradePoint }}</view>
+                </view>
+                <!-- <view>贡 献 人：{{ item.createBy }}</view> -->
+                <view>贡 献 ID：{{ item.userId }}</view>
+                <view
+                  >贡献时间：{{
+                    timestampToStr(item.createDate, "Y年M月D日")
+                  }}</view
+                >
+                <view
+                  >入账时间：{{
+                    timestampToStr(item.createDate, "Y年M月D日")
+                  }}</view
+                >
               </view>
-              <view>贡 献 人：{{ item.createBy }}</view>
-              <view>贡 献 ID：{{ item.accountId }}</view>
-              <view
-                >贡献时间：{{
-                  timestampToStr(item.createDate, "Y年M月D日")
-                }}</view
-              >
-              <view
-                >入账时间：{{
-                  timestampToStr(item.createDate, "Y年M月D日")
-                }}</view
-              >
             </view>
-          </view>
-        </van-tab>
-        <van-tab title="支出">
-          <view class="tab-item integral-detail-list">
-            <view
-              class="integral-detail-item"
-              v-for="(item, index) in list"
-              :key="index"
-            >
-              <view>
-                <view>{{ item.businessType }}</view>
-                <view>-{{ item.tradePoint }}</view>
+          </van-tab>
+          <van-tab title="支出">
+            <view class="tab-item integral-detail-list">
+              <view
+                class="integral-detail-item"
+                v-for="(item, index) in list"
+                :key="index"
+              >
+                <view>
+                  <view>{{ item.businessType }}</view>
+                  <view>-{{ item.tradePoint }}</view>
+                </view>
+                <!-- <view>贡 献 人：{{ item.createBy }}</view> -->
+                <view>贡 献 ID：{{ item.userId }}</view>
+                <view
+                  >贡献时间：{{
+                    timestampToStr(item.createDate, "Y年M月D日")
+                  }}</view
+                >
+                <view
+                  >入账时间：{{
+                    timestampToStr(item.createDate, "Y年M月D日")
+                  }}</view
+                >
               </view>
-              <view>贡 献 人：{{ item.createBy }}</view>
-              <view>贡 献 ID：{{ item.accountId }}</view>
-              <view
-                >贡献时间：{{
-                  timestampToStr(item.createDate, "Y年M月D日")
-                }}</view
-              >
-              <view
-                >入账时间：{{
-                  timestampToStr(item.createDate, "Y年M月D日")
-                }}</view
-              >
             </view>
-          </view>
-        </van-tab>
-      </van-tabs>
+          </van-tab>
+        </van-tabs>
+      </view>
     </view>
   </view>
 </template>

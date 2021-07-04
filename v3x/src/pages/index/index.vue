@@ -11,17 +11,24 @@
           'https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/activity.png'
         "
       ></image>
-      <view class="position-content">
-        <view>距离获取免费上学资格</view>
-        <view
-          ><text> {{ toFreeNum }}</text
-          >人</view
-        >
-      </view>
+      <template v-if="toFreeNum !== null">
+        <view class="position-content" v-if="toFreeNum > 0">
+          <view>距离获取免费上学资格</view>
+          <view
+            ><text> {{ toFreeNum }}</text
+            >人</view
+          >
+        </view>
+        <view class="position-content" v-else>
+          <view>已获取免费上学资格</view>
+          <view> </view>
+        </view>
+      </template>
 
       <view class="active-title">
         <text> </text>
         <view>升学优惠</view>
+        <text> </text>
       </view>
 
       <!-- <scroll-view class="scroll-view"> -->
@@ -96,7 +103,7 @@ export default {
     const store = useStore();
     const list = ref([]);
     const poster = ref([]);
-    const toFreeNum = ref(0);
+    const toFreeNum = ref(null);
     const test = () => {
       console.log("test");
     };

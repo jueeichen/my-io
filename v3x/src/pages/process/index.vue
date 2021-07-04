@@ -12,7 +12,7 @@
       />
       <view>
         <text>当前进度</text>
-        <text>{{filterNumber( learnStage / steps.length) }}%</text>
+        <text>{{ filterNumber(learnStage / steps.length* 100)  }}%</text>
       </view>
     </view>
     <van-steps
