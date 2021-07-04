@@ -40,7 +40,7 @@
         >
           <image
             class=""
-            src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/school-logo.png"
+           src="../../static/images/coupon_miller.png"
           ></image>
           <view class="integral-list-item-title">{{ item.couponName }}</view>
           <view class="integral-list-item-bottom">

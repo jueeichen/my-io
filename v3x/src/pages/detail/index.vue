@@ -87,14 +87,14 @@
         </van-tab>
         <van-tab title="优势特点">
           <view class="tab-item">
-            <image src="../../static/images/ys01.png" mode="widthFix" />
-            <image src="../../static/images/ys02.png" mode="widthFix" />
-            <image src="../../static/images/ys03.png" mode="widthFix" />
+            <!-- <image src="../../static/images/ys01.png" mode="widthFix" /> -->
+            <!-- <image src="../../static/images/ys02.png" mode="widthFix" /> -->
+            <!-- <image src="../../static/images/ys03.png" mode="widthFix" /> -->
           </view>
         </van-tab>
         <van-tab title="拿证流程">
           <view class="tab-item">
-            <image src="../../static/images/step.jpg" mode="widthFix" />
+            <!-- <image src="../../static/images/step.jpg" mode="widthFix" /> -->
           </view>
         </van-tab>
       </van-tabs>
