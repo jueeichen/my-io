@@ -82,14 +82,16 @@
       >
         <van-tab title="学校简介">
           <view class="tab-item">
-            <view class="rich-text" v-html="initData.detail" />
+            <view class="rich-text" v-html="initData.schoolIntro" />
           </view>
         </van-tab>
         <van-tab title="优势特点">
           <view class="tab-item">
-            <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/ys01.png" mode="widthFix" />
-            <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/ys02.png" mode="widthFix" />
-            <image src="https://jjlmobile.o/ss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/ys03.png" mode="widthFix" />
+            <view class="rich-text" v-html="initData.detail" />
+
+            <!-- <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/ys01.png" mode="widthFix" /> -->
+            <!-- <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/ys02.png" mode="widthFix" /> -->
+            <!-- <image src="https://jjlmobile.o/ss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/ys03.png" mode="widthFix" /> -->
           </view>
         </van-tab>
         <van-tab title="拿证流程">

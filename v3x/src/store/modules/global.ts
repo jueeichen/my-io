@@ -223,8 +223,9 @@ const actions = {
       const data: any = await $api('GETACCOUNTPOINTDETAILBYTYPE', {
         type: obj.type
       }, {
-        pageNum: 1,
-        pageSize: 10
+         pageNum: obj.page, pageSize: obj.pageSize
+        // pageNum: 1,
+        // pageSize: 10
       }
         , {})
       console.log("getAccountList=》", data)

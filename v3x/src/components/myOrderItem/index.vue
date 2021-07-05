@@ -1,7 +1,13 @@
 <template>
-  <view class="my-order-items" v-if="initData.orderNo">
+  <view
+    class="my-order-items"
+    v-if="initData.orderNo"
+  >
     <!-- <view class="my-order-li-title" @tap="cancel(initData.orderNo)"> -->
-    <view class="my-order-li-title" @tap="navDetail">
+    <view
+      class="my-order-li-title"
+      @tap="navDetail"
+    >
       <view> 订单号{{ initData.orderNo }} </view>
       <!-- <view>
         {{
@@ -9,36 +15,55 @@
         }}
       </view> -->
     </view>
-    <view class="my-order-li-img" @tap="navDetail">
-      <image :src="initData.showImgUrl" mode="aspectFill"></image>
+    <view
+      class="my-order-li-img"
+      @tap="navDetail"
+    >
+      <image
+        :src="initData.showImgUrl"
+        mode="aspectFill"
+      ></image>
       <view>
         <view> {{ initData.schoolName }} </view>
         <view> {{ initData.productName }} </view>
       </view>
     </view>
-    <view class="my-order-items-li" @tap="navDetail">
+    <view
+      class="my-order-items-li"
+      @tap="navDetail"
+    >
       <view> 学费(含报名费) </view>
       <view> ¥{{ initData.productPrice }} </view>
     </view>
-    <view class="my-order-items-li" @tap="navDetail">
+    <view
+      class="my-order-items-li"
+      @tap="navDetail"
+    >
       <view> 报名费 </view>
       <view> ¥{{ initData.signupPrice }} </view>
     </view>
-    <view class="my-order-items-li" @tap="navDetail">
+    <view
+      class="my-order-items-li"
+      @tap="navDetail"
+    >
       <view> 优惠券 </view>
       <view style="color: #ff5000">
         -¥
-        {{
+        {{filterNumber(
           active == 1
             ? initData.signupCouponAmount || 0
             : active == 2
             ? initData.tuitionCouponAmount || 0
             : (+initData.signupCouponAmount || 0) +
               (initData.tuitionCouponAmount || 0)
+        )
         }}
       </view>
     </view>
-    <view class="my-order-items-total" @tap="navDetail">
+    <view
+      class="my-order-items-total"
+      @tap="navDetail"
+    >
       <view>
         {{ active == 1 ? "报名费应付" : active == 2 ? "学费应付" : "实付金额" }}
         : ¥
@@ -60,8 +85,7 @@
       </view>
     </view>
     <view class="my-order-items-btn">
-      <view
-        >{{
+      <view>{{
           active == 1
             ? "订单将于23小时59分自动取消"
             : active == 2
@@ -70,9 +94,18 @@
         }}
       </view>
 
-      <view @tap="goPaySign(initData.orderNo)" v-if="active == 1">去支付 </view>
-      <view @tap="navConfirm" v-else-if="active == 2">学费待支付 </view>
-      <view v-else @tap="navDetail(initData.orderNo)"> 查看详情 </view>
+      <view
+        @tap="goPaySign(initData.orderNo)"
+        v-if="active == 1"
+      >去支付 </view>
+      <view
+        @tap="navConfirm"
+        v-else-if="active == 2"
+      >学费待支付 </view>
+      <view
+        v-else
+        @tap="navDetail(initData.orderNo)"
+      > 查看详情 </view>
     </view>
     <!-- <view class="my-order-item-title">中南财经政法大学定制班</view>
     <view class="my-order-items-index">
@@ -100,7 +133,7 @@ export default {
   props: {
     initData: {
       type: Object,
-      default: () => {},
+      default: () => { },
     },
     active: {
       type: Number,

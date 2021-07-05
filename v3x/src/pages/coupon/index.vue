@@ -102,7 +102,7 @@ export default {
       // list.value = res.couponInfos;
       // console.log("couponList=>", list);
       list.value =
-        page.value == 1 ? res.couponInfos : [...list.value, ...res.couponInfos];
+        res.pageNum == 1 ? res.couponInfos : [...list.value, ...res.couponInfos];
       if (res.couponInfos.length == pageSize.value) {
         page.value++;
       } else {

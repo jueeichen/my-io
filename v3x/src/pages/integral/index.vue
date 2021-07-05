@@ -10,9 +10,7 @@
               class="integral-top-contet-top"
               @tap="jump('/pages/integralDetail/index')"
             >
-              <image
-                src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/integral.png"
-              />
+              <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/integral.png" />
               <view class="integral-coin">{{ accountPoint }}</view>
               <view class="integral-symbol">积分</view>
               <van-icon
@@ -21,14 +19,11 @@
                 color="#fff"
               />
             </view>
-            <view class="integral-top-contet-bottom"
-              >分享好友赚积分, 享免升学资格喔</view
-            >
+            <view class="integral-top-contet-bottom">分享好友赚积分, 享免升学资格喔</view>
             <view
               class="integral-top-contet-btn"
               @tap="jump('/pages/poster/index')"
-              >赚积分</view
-            >
+            >赚积分</view>
           </view>
         </view>
       </view>
@@ -40,7 +35,7 @@
         >
           <image
             class=""
-           src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/coupon_miller.png"
+            src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/coupon_miller.png"
           ></image>
           <view class="integral-list-item-title">{{ item.couponName }}</view>
           <view class="integral-list-item-bottom">
@@ -48,14 +43,17 @@
               <text class="">{{ item.exchangePoint }}</text>
               <text class="">积分</text>
             </view>
-            <view class="" @tap="exchangeCoupon(item.couponId)">去兑换</view>
+            <view
+              class=""
+              @tap="exchangeCoupon(item.couponId)"
+            >去兑换</view>
           </view>
         </view>
         <no-data v-if="page > 1 && list.length < 1" />
         <no-more v-if="list.length > 0 && showBottomLine" />
       </view>
     </view>
-    <view class="integral-mask"> </view>
+  
   </view>
 </template>
 
@@ -64,7 +62,7 @@ import navbar from "@/components/navbar/index.vue";
 
 import "./index.styl";
 import { useStore } from "vuex";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, toRaw } from "vue";
 import noData from "@/components/noData/index.vue";
 import noMore from "@/components/noMore/index.vue";
 export default {
@@ -88,15 +86,15 @@ export default {
         couponId,
         exchangeNum: 1,
       });
-      if(res.res.code==10000){
-      wx.showModal({
-        title: "提示",
-        content: res.res.message,
-        showCancel: false,
-        success:()=>{
-          getAccountPoint()
-        }
-      });
+      if (res.res.code == 10000) {
+        wx.showModal({
+          title: "提示",
+          content: res.res.message,
+          showCancel: false,
+          success: () => {
+            getAccountPoint()
+          }
+        });
       }
       console.log(res);
     };
@@ -114,7 +112,7 @@ export default {
       // list.value = res.couponInfos;
       // console.log("couponList=>", list);
       list.value =
-        page.value == 1 ? res.couponInfos : [...list.value, ...res.couponInfos];
+        res.pageNum == 1? res.couponInfos : [...list.value, ...res.couponInfos];
       if (res.couponInfos.length == pageSize.value) {
         page.value++;
       } else {

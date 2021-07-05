@@ -102,12 +102,14 @@ export default {
         pageSize: pageSize.value,
       });
       list.value =
-        page.value == 1
+        res.pageNum == 1
           ? res.productInfos
           : [...list.value, ...res.productInfos];
       if (res.productInfos.length == pageSize.value) {
         page.value++;
       } else {
+        page.value++;
+
         console.log("到底了");
         showBottomLine.value = true;
       }
@@ -122,12 +124,14 @@ export default {
       });
 
       list.value =
-        page.value == 1
+        res.pageNum == 1 
           ? res.productInfos
           : [...list.value, ...res.productInfos];
       if (res.productInfos.length == pageSize.value) {
         page.value++;
       } else {
+        page.value++;
+
         console.log("到底了");
         showBottomLine.value = true;
       }

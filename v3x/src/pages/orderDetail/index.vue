@@ -14,7 +14,10 @@
             filterStatus(initData.active).content2
           }}</text> -->
         </view>
-        <view class="order-top-btn"  v-if="initData.active != '3'">
+        <view
+          class="order-top-btn"
+          v-if="initData.active != '3'"
+        >
           <view
             v-if="initData.active == '1'"
             @tap="goPaySign(initData.orderNo)"
@@ -22,12 +25,18 @@
             <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/payment@2x.png" />
             <text class="active">立即支付</text>
           </view>
-          <view v-else @tap="navConfirm">
+          <view
+            v-else
+            @tap="navConfirm"
+          >
             <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/payment@2x.png" />
 
             <text class="active">立即支付</text>
           </view>
-          <view @tap="cancel(initData.orderNo)" v-if="initData.active == '1'">
+          <view
+            @tap="cancel(initData.orderNo)"
+            v-if="initData.active == '1'"
+          >
             <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/cancel_order@2x.png" />
 
             <text>取消订单 </text>
@@ -52,17 +61,16 @@
         </view>
         <view class="order-detail-items">
           <text>优惠券</text>
-          <text style="color: #ff5000"
-            >-¥
-            {{
+          <text style="color: #ff5000">-¥
+            {{filterNumber(
               initData.active == 1
                 ? initData.signupCouponAmount || 0
                 : initData.active == 2
                 ? initData.tuitionCouponAmount || 0
                 : (+initData.signupCouponAmount || 0) +
                   (initData.tuitionCouponAmount || 0)
-            }}</text
-          >
+            )
+            }}</text>
         </view>
         <view class="order-detail-items-bottom-right">
           <text>报名费应付: </text>
@@ -80,8 +88,7 @@
                     (initData.signupCouponAmount || 0) -
                     (initData.tuitionCouponAmount || 0)
               )
-            }}</text
-          >
+            }}</text>
         </view>
       </view>
       <view class="order-no">
