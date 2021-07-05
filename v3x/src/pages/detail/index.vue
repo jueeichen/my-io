@@ -65,7 +65,7 @@
             v-for="(item, index) in initData.serviceTagsList"
             :key="index"
           >
-            <image src="../../static/images/label.png" />
+            <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/label.png" />
             <text class=""> {{ item.tagName }} </text>
           </view>
         </view>
@@ -87,14 +87,14 @@
         </van-tab>
         <van-tab title="优势特点">
           <view class="tab-item">
-            <!-- <image src="../../static/images/ys01.png" mode="widthFix" /> -->
-            <!-- <image src="../../static/images/ys02.png" mode="widthFix" /> -->
-            <!-- <image src="../../static/images/ys03.png" mode="widthFix" /> -->
+            <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/ys01.png" mode="widthFix" />
+            <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/ys02.png" mode="widthFix" />
+            <image src="https://jjlmobile.o/ss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/ys03.png" mode="widthFix" />
           </view>
         </van-tab>
         <van-tab title="拿证流程">
           <view class="tab-item">
-            <!-- <image src="../../static/images/step.jpg" mode="widthFix" /> -->
+            <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/step.jpg" mode="widthFix" />
           </view>
         </van-tab>
       </van-tabs>

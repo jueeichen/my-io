@@ -19,16 +19,16 @@
             v-if="initData.active == '1'"
             @tap="goPaySign(initData.orderNo)"
           >
-            <image src="../../static/images/payment@2x.png" />
+            <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/payment@2x.png" />
             <text class="active">立即支付</text>
           </view>
           <view v-else @tap="navConfirm">
-            <image src="../../static/images/payment@2x.png" />
+            <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/payment@2x.png" />
 
             <text class="active">立即支付</text>
           </view>
           <view @tap="cancel(initData.orderNo)" v-if="initData.active == '1'">
-            <image src="../../static/images/cancel_order@2x.png" />
+            <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/cancel_order@2x.png" />
 
             <text>取消订单 </text>
           </view>

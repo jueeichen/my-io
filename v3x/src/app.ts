@@ -53,7 +53,7 @@ App.mixin({
         var shareObj = {
           title: "快来一起把本科读完，错过又等2年！",        // 默认是小程序的名称(可以写slogan等)
           path: (options.path ? options.path + '&' : '/pages/index/index?') + 'u=' + uid,        // 默认是当前页面，必须是以‘/’开头的完整路径
-          imageUrl: '../../static/images/tabs/share.jpg',     //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+          imageUrl: 'https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/share.jpg',     //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
         }
         // 来自页面内的按钮的转发
         if (options.from == 'button') {

@@ -41,7 +41,7 @@
           <view class="" @tap="jump('/pages/poster/index')">
             <view class="">
               <image
-                src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/poster_icon@2x.png"
+                src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/my/poster_icon@2x.png"
                 class=""
               />
             </view>
@@ -52,7 +52,7 @@
       <view class="my-center">
         <view class="" @tap="jump('/pages/myOrder/index?id=0')">
           <image
-            src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/payment_sign_icon@2x.png"
+            src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/my/payment_sign_icon@2x.png"
             class=""
           >
           </image>
@@ -60,7 +60,7 @@
         </view>
         <view class="" @tap="jump('/pages/myOrder/index?id=1')">
           <image
-            src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/payment_tuition_icon@2x.png"
+            src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/my/payment_tuition_icon@2x.png"
             class=""
           >
           </image>
@@ -68,7 +68,7 @@
         </view>
         <view class="" @tap="jump('/pages/myOrder/index?id=2')">
           <image
-            src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/payment_succes_icon@2x.png"
+            src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/my/payment_succes_icon@2x.png"
             class=""
           >
           </image>
@@ -77,7 +77,7 @@
         </view>
         <view class="" @tap="jump('/pages/myOrder/index?id=0')">
           <image
-            src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/all_order_icon@2x.png"
+            src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/my/all_order_icon@2x.png"
             class=""
           >
           </image>
@@ -85,7 +85,7 @@
         </view>
       </view>
       <image
-        src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/mine_activity@2x.png"
+        src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/my/mine_activity@2x.png"
         class="my-main-img"
         v-if="false"
       />
@@ -93,7 +93,7 @@
         <view class="my-bottom-item" @tap="jump('/pages/service/index')">
           <view class="my-bottom-item_left">
             <image
-              src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/teacher_icon@2x.png"
+              src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/my/teacher_icon@2x.png"
             />
             <view class="">班主任微信 </view>
           </view>
@@ -102,7 +102,7 @@
         <view class="my-bottom-item" @tap="jump('/pages/process/index')">
           <view class="my-bottom-item_left">
             <image
-              src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/procss_icon@2x.png"
+              src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/my/procss_icon@2x.png"
             />
             <view class="">拿证流程 </view>
           </view>
@@ -111,7 +111,7 @@
         <view class="my-bottom-item" @tap="jump('/pages/about/index')">
           <view class="my-bottom-item_left">
             <image
-              src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/my/about_us@2x.png"
+              src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/my/about_us@2x.png"
             />
             <view class="">关于我们 </view>
           </view>

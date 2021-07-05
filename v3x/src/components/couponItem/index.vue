@@ -3,7 +3,7 @@
     <!-- <view class="counpon-item-title">{{ initData.couponName }}</view> -->
     <view class="counpon-items-index">
       <image
-        src="../../static/images/coupon_miller.png"
+        src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/coupon_miller.png"
         mode="aspectFill"
       ></image>
       <view>

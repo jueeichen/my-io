@@ -23,7 +23,7 @@
         <view @tap="createPoster(list[swiperIndex].showImgUrl)">
           <view>
             <image
-              src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/save.png"
+              src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/save.png"
             />
           </view>
           <view> 保存图片 </view>
@@ -31,7 +31,7 @@
         <button  open-type="share">
           <view>
             <image
-              src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/wechat.png"
+              src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/wechat.png"
             />
           </view>
           <view> 分享给好友 </view>

@@ -20,7 +20,7 @@
       </view>
       <view class="service-btn" @tap="createPoster(initData.showImgUrl)">
         <image
-          src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/save.png"
+          src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/save.png"
         />
         <view> 保存图片</view>
       </view>

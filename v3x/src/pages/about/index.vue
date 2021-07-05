@@ -52,7 +52,7 @@ export default {
           jumpUrl: "290174020@qq.com",
           params: {},
           showImgUrl:
-            "https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/integral-detail.png",
+            "https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/integral-detail.png",
           sortNo: 11,
           type: "2",
         },

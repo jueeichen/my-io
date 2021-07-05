@@ -8,7 +8,7 @@
         @tap="jump('/pages/poster/index')"
         :src="
           poster ||
-          'https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/activity.png'
+          'https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/activity.png'
         "
       ></image>
       <template v-if="toFreeNum !== null">

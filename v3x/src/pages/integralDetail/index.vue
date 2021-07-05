@@ -5,7 +5,7 @@
       <!-- <view></view> -->
       <view class="integral-detail-top">
         <image
-          src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/integral-detail.png"
+          src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/integral-detail.png"
         />
         <view>
           <view>可用积分</view>

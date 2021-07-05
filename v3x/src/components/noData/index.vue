@@ -1,7 +1,7 @@
 <template>
   <view class="no-data-content" >
 
-    <image :src="initData.img||'https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/no-data.png'" />
+    <image :src="initData.img||'https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/no-data.png'" />
 
     <text>{{initData.content||'请给我一份订单让我飞到你身边'}}</text>
 

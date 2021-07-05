@@ -3,7 +3,7 @@
     <navbar :parameter="parameter" />
     <view class="integral">
       <view class="integral-top">
-        <image src="../../static/images/integral-bg.png" />
+        <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/integral-bg.png" />
         <view>
           <view class="integral-top-contet">
             <view
@@ -11,7 +11,7 @@
               @tap="jump('/pages/integralDetail/index')"
             >
               <image
-                src="https://jjlmobile.oss-cn-shenzhen.aliyuncs.com/images/miniImgList/test/images/integral.png"
+                src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/integral.png"
               />
               <view class="integral-coin">{{ accountPoint }}</view>
               <view class="integral-symbol">积分</view>
@@ -40,7 +40,7 @@
         >
           <image
             class=""
-           src="../../static/images/coupon_miller.png"
+           src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/coupon_miller.png"
           ></image>
           <view class="integral-list-item-title">{{ item.couponName }}</view>
           <view class="integral-list-item-bottom">
