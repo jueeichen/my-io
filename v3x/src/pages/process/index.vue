@@ -4,7 +4,7 @@
     <view class="step-top">
       <view> 你已完成{{ learnStage }}步, 离拿证更近了 </view>
       <van-progress
-        :percentage="learnStage"
+        :percentage="filterNumber(learnStage / steps.length* 100) "
         track-color="rgba(255,255,255,0.3)"
         color="rgba(255,255,255,1)"
         stroke-width="16rpx"
@@ -17,7 +17,7 @@
     </view>
     <van-steps
       :steps="steps"
-      :active="learnStage"
+      :active="learnStage-1"
       direction="vertical"
       active-color="#479CFE"
       inactive-color="#7E7E7E"
@@ -76,6 +76,9 @@ export default {
         {
           text: "12月录取通知书发放",
           desc: "会收到教育局短信以及学校发的录取通知书",
+        },{
+          text: "12月中缴纳学费",
+          desc: "缴纳学费，完成学籍注册",
         },
         {
           text: "2月中缴纳学费",
