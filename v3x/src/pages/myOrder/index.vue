@@ -20,7 +20,13 @@
                 :key="index"
                 @changeActive="changeActive"
               />
-              <no-data v-if="page > 1 && list.length < 1" />
+              <no-data
+                :initData="{
+                  content: '暂无订单~',
+                  img: 'https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/no-data.png',
+                }"
+                v-if="page > 1 && list.length < 1"
+              />
               <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
@@ -32,7 +38,14 @@
                 v-for="(item, index) in list"
                 :key="index"
               />
-              <no-data v-if="page > 1 && list.length < 1" />
+              <no-data
+                :initData="{
+                  content: '暂无订单~',
+                  img: 'https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/no-data.png',
+                }"
+                v-if="page > 1 && list.length < 1"
+              />
+
               <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
@@ -44,7 +57,14 @@
                 v-for="(item, index) in list"
                 :key="index"
               />
-              <no-data v-if="page > 1 && list.length < 1" />
+              <no-data
+                :initData="{
+                  content: '暂无订单~',
+                  img: 'https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/no-data.png',
+                }"
+                v-if="page > 1 && list.length < 1"
+              />
+
               <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>

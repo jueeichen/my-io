@@ -65,7 +65,9 @@
             v-for="(item, index) in initData.serviceTagsList"
             :key="index"
           >
-            <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/label.png" />
+            <image
+              src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/label.png"
+            />
             <text class=""> {{ item.tagName }} </text>
           </view>
         </view>
@@ -82,12 +84,15 @@
       >
         <van-tab title="学校简介">
           <view class="tab-item">
-            <view class="rich-text" v-html="initData.schoolIntro" />
+            <view
+              class="rich-text"
+              v-html="filterRichText(initData.schoolIntro)"
+            />
           </view>
         </van-tab>
         <van-tab title="优势特点">
           <view class="tab-item">
-            <view class="rich-text" v-html="initData.detail" />
+            <view class="rich-text" v-html="filterRichText(initData.detail)" />
 
             <!-- <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/ys01.png" mode="widthFix" /> -->
             <!-- <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/ys02.png" mode="widthFix" /> -->
@@ -96,7 +101,10 @@
         </van-tab>
         <van-tab title="拿证流程">
           <view class="tab-item">
-            <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/step.jpg" mode="widthFix" />
+            <image
+              src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/step.jpg"
+              mode="widthFix"
+            />
           </view>
         </van-tab>
       </van-tabs>
@@ -234,6 +242,20 @@ export default {
       onChangeSpecial,
       specialIndex,
       isShowCoupon,
+      filterRichText: (text) => {
+        if (!text) {
+          return "";
+        }
+        let str = "";
+        text.replace(/<img[^>]*>/gi, function (match) {
+          str = match.replace(
+            /style\s*?=\s*?([‘"])[\s\S]*?\1/gi,
+            'style="width:750rpx;" mode="widthFix"'
+          ); // 替换style
+        });
+
+        return str;
+      },
     };
   },
   onShareAppMessage(options) {

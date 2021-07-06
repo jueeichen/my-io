@@ -184,6 +184,10 @@ export default {
       });
     };
     const createPoster = (img) => {
+       wx.showLoading({
+        title: "正在保存...",
+        mask: true,
+      });
       const r2p = (rpx) => parseInt(rpx2Px() * rpx);
       return new Promise(async (resolve) => {
         const ctx = wx.createCanvasContext("createPoster");

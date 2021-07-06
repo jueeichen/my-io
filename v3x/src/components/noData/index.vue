@@ -1,11 +1,11 @@
 <template>
   <view class="no-data-content" >
 
-    <!-- <image :src="initData.img||'https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/no-data.png'" /> -->
-    <image src="../../static/images/tabs/collect_coupons_nodata.png" mode="widthFix"/>
+    <image v-if="initData.img" :src="initData.img||'https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/no-data.png'" />
+    <image v-else src="../../static/images/tabs/collect_coupons_nodata.png" mode="widthFix"/>
       <!-- default:'../../static/images/tabs/collect_coupons_nodata.png', -->
 
-    <text>{{initData.content||'暂无数据~'||'请给我一份订单让我飞到你身边'}}</text>
+    <text>{{initData.content||'暂无数据~'}}</text>
 
   </view>
 </template>

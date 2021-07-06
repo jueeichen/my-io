@@ -108,11 +108,14 @@ function parse(str) {
 }
 
 
-const request = async (url, body = {}, data = {}, _options) => {
-  wx.showLoading({
-    title: '加载中',
-    mask: true
-  })
+const request = async (url, body = {}, data = {}, _options, isShowLogin = false) => {
+  if (isShowLogin) {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+  }
+
   let options = { type: 'POST', ..._options }
   let _headers = {}
 

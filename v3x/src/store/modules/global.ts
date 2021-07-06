@@ -129,7 +129,7 @@ const actions = {
         signuperName: obj.signuperName,
         signuperMobile: obj.signuperMobile,
         signupCouponDetailId: obj.signupCouponDetailId
-      }, {}, {})
+      }, {}, {},true)
       console.log("context=>", context)
       console.log("产品详情", data)
       resolve(data.data)
@@ -141,7 +141,7 @@ const actions = {
     return new Promise(async (resolve, reject) => {
       const data: any = await $api('PAYORDER', {
         orderNo: obj.orderNo
-      }, {}, {})
+      }, {}, {},true)
       wx.showLoading({
         title: '加载中...',
         mask: true

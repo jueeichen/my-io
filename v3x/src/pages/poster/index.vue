@@ -28,7 +28,7 @@
           </view>
           <view> 保存图片 </view>
         </view>
-        <button  open-type="share">
+        <button open-type="share">
           <view>
             <image
               src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/wechat.png"
@@ -161,6 +161,10 @@ export default {
       });
     };
     const createPoster = (img) => {
+      wx.showLoading({
+        title: "正在生成海报...",
+        mask: true,
+      });
       const r2p = (rpx) => parseInt(rpx2Px() * rpx);
       return new Promise(async (resolve) => {
         const ctx = wx.createCanvasContext("createPoster");

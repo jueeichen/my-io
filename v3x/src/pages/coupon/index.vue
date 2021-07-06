@@ -32,7 +32,12 @@
                 v-for="(item, index) in list"
                 :key="index"
               />
-              <no-data v-if="page > 1 && list.length < 1" />
+              <no-data
+                :initData="{
+                  content: '暂无优惠券~',
+                }"
+                v-if="page > 1 && list.length < 1"
+              />
               <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
@@ -44,7 +49,12 @@
                 v-for="(item, index) in list"
                 :key="index"
               />
-              <no-data v-if="page > 1 && list.length < 1" />
+              <no-data
+                :initData="{
+                  content: '暂无优惠券~',
+                }"
+                v-if="page > 1 && list.length < 1"
+              />
               <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
@@ -56,7 +66,12 @@
                 v-for="(item, index) in list"
                 :key="index"
               />
-              <no-data v-if="page > 1 && list.length < 1" />
+              <no-data
+                :initData="{
+                  content: '暂无优惠券~',
+                }"
+                v-if="page > 1 && list.length < 1"
+              />
               <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
@@ -102,7 +117,9 @@ export default {
       // list.value = res.couponInfos;
       // console.log("couponList=>", list);
       list.value =
-        res.pageNum == 1 ? res.couponInfos : [...list.value, ...res.couponInfos];
+        res.pageNum == 1
+          ? res.couponInfos
+          : [...list.value, ...res.couponInfos];
       if (res.couponInfos.length == pageSize.value) {
         page.value++;
       } else {
@@ -127,8 +144,8 @@ export default {
       active.value = e.detail.index;
       getList();
     };
-    const initList = (status,acitve) => {
-      active.value = acitve-1;
+    const initList = (status, acitve) => {
+      active.value = acitve - 1;
       page.value = 1;
       list.value = [];
       showBottomLine.value = false;
