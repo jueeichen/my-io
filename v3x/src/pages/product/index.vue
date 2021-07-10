@@ -12,6 +12,7 @@
       />
       <view class="index-tabs" v-if="true">
         <van-tabs
+          color="#479CFE"
           :swipeable="true"
           :animated="true"
           :sticky="true"
@@ -27,7 +28,7 @@
                 :key="index"
               />
               <no-data v-if="page > 1 && list.length < 1" />
-              <no-more v-if=" list.length > 0 && showBottomLine" />
+              <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
           <van-tab title="本科教育">
@@ -38,7 +39,7 @@
                 :key="index"
               />
               <no-data v-if="page > 1 && list.length < 1" />
-              <no-more v-if=" list.length > 0 && showBottomLine" />
+              <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
           <van-tab title="研究生">
@@ -49,7 +50,7 @@
                 :key="index"
               />
               <no-data v-if="page > 1 && list.length < 1" />
-              <no-more v-if=" list.length > 0 && showBottomLine" />
+              <no-more v-if="list.length > 0 && showBottomLine" />
             </view>
           </van-tab>
         </van-tabs>
@@ -113,7 +114,7 @@ export default {
         console.log("到底了");
         showBottomLine.value = true;
       }
-      console.log("list=>",list.value)
+      console.log("list=>", list.value);
       wx.stopPullDownRefresh();
     };
     const getListByType = async () => {
@@ -124,7 +125,7 @@ export default {
       });
 
       list.value =
-        res.pageNum == 1 
+        res.pageNum == 1
           ? res.productInfos
           : [...list.value, ...res.productInfos];
       if (res.productInfos.length == pageSize.value) {

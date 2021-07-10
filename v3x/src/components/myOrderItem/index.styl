@@ -1,116 +1,87 @@
-@import '../../static/css/common.styl';
+@import '../../static/css/common.styl'
 
-.my-order-items {
-  position: relative;
-  margin-bottom: 30rpx;
-  width: 690rpx;
-  background: #FFFFFF;
-  border-radius: 12rpx;
-  _box-sizing(29rpx, 30rpx);
-  padding-bottom: 10rpx;
-
-  .my-order-li-title {
-    _flex-center();
-    justify-content: space-between;
-
-    >view:first-child {
-      font-size: 32rpx;
-      font-weight: 500;
-      color: #1A1A1A;
-    }
-
-    >view:last-child {
-      font-size: 28rpx;
-      font-weight: 400;
-      color: #999999;
-    }
-  }
-
-  .my-order-li-img {
-    display: flex;
-    margin-top: 35rpx;
-    margin-bottom: 27rpx;
-
-    >image {
-      width: 151rpx;
-      height: 179rpx;
-      margin-right: 17rpx;
-    }
-
-    >view {
-      >view:first-child {
-        margin-top: 21rpx;
-        font-size: 30rpx;
-        font-weight: 400;
-        color: #0A0A0A;
-      }
-
-      >view:last-child {
-        margin-top: 20rpx;
-        font-size: 26rpx;
-        font-weight: 400;
-        color: #999999;
-      }
-    }
-  }
-
-  .my-order-items-li {
-    _flex-center();
-    justify-content: space-between;
-    margin-bottom: 30rpx;
-
-    >view {
-      font-size: 28px;
-      font-weight: 400;
-      color: #1A1A1A;
-    }
-  }
-
-  .my-order-items-total {
-    display: flex;
-    justify-content: flex-end;
-
-    >view:first-child {
-      font-size: 28px;
-      font-weight: 400;
-      color: #0A0A0A;
-    }
-
-    >view:last-child {
-      font-weight: 500;
-      color: #0A0A0A;
-      width: 147px;
-      height: 38px;
-      font-size: 38px;
-      transform: translateY(-10rpx);
-    }
-  }
-
-  .my-order-items-btn {
-    margin-top: 33rpx;
-    border-top: 1px solid #EEEEEE;
-    padding-top: 20rpx;
-    _flex-center();
-    justify-content: space-between;
-
-    >view:first-child {
-      width: 430rpx;
-      height: 91rpx;
-      font-size: 28rpx;
-      font-weight: 400;
-      color: #479CFE;
-      line-height: 36rpx;
-    }
-
-    >view:last-child {
-      _flex-center();
-      width: 180rpx;
-      height: 68rpx;
-      border-radius: 34rpx;
-      border: 1rpx solid #D4D4D4;
-      font-size: 28rpx;
-      font-weight: 400;
-      color: #1A1A1A;
-    }
-  }
-}
+.my-order-items
+  position relative
+  margin-bottom 30rpx
+  width 690rpx
+  background #FFFFFF
+  border-radius 12rpx
+  _box-sizing(29rpx, 30rpx)
+  padding-bottom 10rpx
+  .my-order-li-title
+    _flex-center()
+    justify-content space-between
+    >view:first-child
+      font-size 30rpx
+      font-weight 600
+      color #1A1A1A
+  .my-order-li-img
+    display flex
+    margin-top 35rpx
+    margin-bottom 27rpx
+    background: #FBFCFB;
+    border-radius: 8rpx;
+    >image
+      width 151rpx
+      height 179rpx
+      margin-right 17rpx
+    >view
+      >view:first-child
+        margin-top 21rpx
+        font-size 30rpx
+        font-weight 400
+        color #0A0A0A
+      >view:last-child
+        margin-top 20rpx
+        font-size 26rpx
+        font-weight 400
+        color #999999
+  .my-order-items-li
+    _flex-center()
+    justify-content space-between
+    margin-bottom 30rpx
+    >view
+      font-size 28px
+      font-weight 400
+      color #1A1A1A
+  .my-order-items-total
+    display flex
+    justify-content flex-end
+    >view:first-child
+      font-size 28rpx
+      font-weight 400
+      color #0A0A0A
+    >view:last-child
+      font-weight 500
+      color #0A0A0A
+      // width: 147px;
+      // height: 38px;
+      font-size 38rpx
+      transform translateY(-10rpx)
+  .my-order-items-btn
+    margin-top 33rpx
+    border-top 1px solid #EEEEEE
+    padding-top 20rpx
+    _flex-center()
+    justify-content space-between
+    >view:first-child
+      width 430rpx
+      height 91rpx
+      font-size 28rpx
+      font-weight 400
+      color #479CFE
+      line-height 36rpx
+      _flex-center()
+    >view:last-child
+      _flex-center()
+      width 180rpx
+      height 68rpx
+      border-radius 34rpx
+      border 1rpx solid #D4D4D4
+      font-size 28rpx
+      font-weight 400
+      color #1A1A1A
+    .blue-btn
+      background #479CFE
+      border none
+      color #fff !important

@@ -1,5 +1,5 @@
 <template>
-  <view class="hide-100vh">
+  <view class="hide-100vh main-content">
     <navbar :parameter="parameter" />
     <view class="service">
       <!-- <view > </view> -->

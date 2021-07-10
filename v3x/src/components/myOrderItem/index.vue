@@ -89,16 +89,16 @@
           active == 1
             ? "订单将于23小时59分自动取消"
             : active == 2
-            ? "为了不影响入学, 请尽快完成支付"
+            ? "恭喜您已报名成功，请加班主任微信号！（在“我的”-“班主任微信”）"
             : "报名完成加老师微信号，「我的」-「班主任微信号」"
         }}
       </view>
 
-      <view
+      <view class="blue-btn"
         @tap="goPaySign(initData.orderNo)"
         v-if="active == 1"
       >去支付 </view>
-      <view
+      <view class="blue-btn"
         @tap="navConfirm"
         v-else-if="active == 2"
       >学费待支付 </view>

@@ -2,6 +2,8 @@
   <swiper
     :style="{width,height}"
     :indicator-dots="indicatorDots"
+    indicator-color="rgba(255, 255, 255, 0.5)"
+    indicator-active-color="rgba(255, 255, 255, 1)"
     :autoplay="auto"
     :interval="interval"
     :duration="duration"
@@ -77,7 +79,7 @@ export default {
       indicatorDots: true,
       vertical: false,
       autoplay: true,
-      interval: 2000,
+      interval: 6000,
       duration: 500,
       circular: true,
       jump: (url) => {

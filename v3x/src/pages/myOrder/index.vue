@@ -4,6 +4,7 @@
     <view class="my-order">
       <view class="my-order-index">
         <van-tabs
+          color="#479CFE"
           :active="active"
           :swipeable="true"
           :animated="true"

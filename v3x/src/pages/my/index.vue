@@ -16,12 +16,12 @@
               <open-data type="userNickName"></open-data>
             </view>
           </view>
-          <view class="my-top-btn" @tap="jump('/pages/myOrder/index?id=1')">
+          <view v-if="userInfo.productId" class="my-top-btn" @tap="jump('/pages/myOrder/index?id=1')">
             去缴学费
           </view>
         </view>
         <view class="my-top-bottom">
-          <view class="" @tap="jump('/pages/coupon/index')">
+          <view class="" @tap="jumpByLogin('/pages/coupon/index')">
             <view class="my-top-detail"
               >{{ userInfo.unuseCount || 0 }}
               <text>{{ userInfo.receiveCount || 0 }}张可领</text>
@@ -31,14 +31,14 @@
               <van-icon name="arrow" class="iconfont icon-back" />
             </view>
           </view>
-          <view class="" @tap="jump('/pages/integral/index')">
+          <view class="" @tap="jumpByLogin('/pages/integral/index')">
             <view class="my-top-detail">{{ accountPoint || 0 }} </view>
             <view class="my-top-menu"
               >积分商城
               <van-icon name="arrow" class="iconfont icon-back" />
             </view>
           </view>
-          <view class="" @tap="jump('/pages/poster/index')">
+          <view class="" @tap="jumpByLogin('/pages/poster/index')">
             <view class="">
               <image
                 src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/my/poster_icon@2x.png"
@@ -99,7 +99,7 @@
           </view>
           <van-icon name="arrow" class="iconfont icon-back" />
         </view>
-        <view class="my-bottom-item" @tap="jump('/pages/process/index')">
+        <view class="my-bottom-item" @tap="jumpByLogin('/pages/process/index')">
           <view class="my-bottom-item_left">
             <image
               src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/my/procss_icon@2x.png"
@@ -118,7 +118,7 @@
           <van-icon name="arrow" class="iconfont icon-back" />
         </view>
       </view>
-      userId: {{ userInfo.userId }}
+      <!-- userId: {{ userInfo.userId }} -->
     </view>
   </view>
 </template>
@@ -134,7 +134,6 @@ import "./index.styl";
 import { useStore } from "vuex";
 import Taro from "@tarojs/taro";
 import { onMounted, ref } from "vue";
-import Test from "../../../../mobile/mobile_vue_cli_3.2.1/src/pages/home/test.vue";
 
 export default {
   name: "Index",
@@ -166,6 +165,26 @@ export default {
     onMounted(async () => {
       onLoad();
     });
+    const isLogin = () => {
+      return new Promise((resolve) => {
+        const userInfo = wx.getStorageSync("userInfo");
+        if (userInfo && !userInfo.mobile) {
+          //需要登录
+          this.$refs.login.open();
+        } else {
+          resolve();
+        }
+      });
+    };
+    const jump = (url) => {
+      wx.navigateTo({
+        url,
+      });
+    };
+    const jumpByLogin = async (url) => {
+      await isLogin();
+      jump(url);
+    };
     return {
       accountPoint,
       userInfo,
@@ -178,20 +197,14 @@ export default {
       parameter: {
         title: "我的",
       },
-      jump: (url) => {
-        wx.navigateTo({
-          url,
-        });
-      },
+      isLogin,
+      jump,jumpByLogin
     };
   },
+
   onShow() {
     console.log(Taro.getApp());
-    const userInfo = wx.getStorageSync("userInfo");
-    if (userInfo && !userInfo.mobile) {
-      //需要登录
-      this.$refs.login.open();
-    }
+
     // this.$refs.login.open()
 
     // this.getTabBar().setData({
@@ -200,7 +213,7 @@ export default {
   },
   onPullDownRefresh() {
     console.log("用户触发下拉");
-     this.onLoad();
+    this.onLoad();
     wx.stopPullDownRefresh();
   },
   onReachBottom() {

@@ -4,7 +4,9 @@
     <view class="integral-detail">
       <!-- <view></view> -->
       <view class="integral-detail-top">
-        <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/integral-detail.png" />
+        <image
+          src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/integral-detail.png"
+        />
         <view>
           <view>可用积分</view>
           <view>{{ accountPoint }}</view>
@@ -12,12 +14,10 @@
         </view>
       </view>
 
-      <view
-        class="index-tabs"
-        v-if="true"
-      >
+      <view class="index-tabs" v-if="true">
         <van-tabs
-        :active="active"
+          color="#479CFE"
+          :active="active"
           @change="onChange"
           :swipeable="true"
           :animated="true"
@@ -37,12 +37,30 @@
                 </view>
                 <!-- <view>贡 献 人：{{ item.createBy }}</view> -->
                 <view>贡 献 ID：{{ item.userId }}</view>
-                <view>贡献时间：{{
-                    timestampToStr(item.createDate, "Y年M月D日")
-                  }}</view>
-                <view>入账时间：{{
-                    timestampToStr(item.createDate, "Y年M月D日")
-                  }}</view>
+                <template v-if="active == 0">
+                  <view
+                    >贡献时间：{{
+                      timestampToStr(item.createDate, "Y年M月D日 h:m:s")
+                    }}</view
+                  >
+                  <view
+                    >入账时间：{{
+                      timestampToStr(item.createDate, "Y年M月D日 h:m:s")
+                    }}</view
+                  >
+                </template>
+                <template v-else>
+                  <view
+                    >兑换时间:{{
+                      timestampToStr(item.createDate, "Y年M月D日 h:m:s")
+                    }}</view
+                  >
+                  <view
+                    >兑换订单号:{{
+                      timestampToStr(item.createDate, "Y年M月D日 h:m:s")
+                    }}</view
+                  >
+                </template>
               </view>
             </view>
             <no-data v-if="page > 1 && list.length < 1" />
@@ -61,41 +79,44 @@
                 </view>
                 <!-- <view>贡 献 人：{{ item.createBy }}</view> -->
                 <view>贡 献 ID：{{ item.userId }}</view>
-                <view>贡献时间：{{
+                <view
+                  >贡献时间：{{
                     timestampToStr(item.createDate, "Y年M月D日")
-                  }}</view>
-                <view>入账时间：{{
+                  }}</view
+                >
+                <view
+                  >入账时间：{{
                     timestampToStr(item.createDate, "Y年M月D日")
-                  }}</view>
+                  }}</view
+                >
               </view>
-            </view>    
+            </view>
             <no-data v-if="page > 1 && list.length < 1" />
             <no-more v-if="list.length > 0 && showBottomLine" />
           </van-tab>
         </van-tabs>
       </view>
     </view>
-    <view class="integral-mask" v-if="isShowPop" >
+    <view class="integral-mask" v-if="isShowPop">
       <view>
-        <view>
-          活动规则
-        </view>
+        <view> 活动规则 </view>
         <text>
-          1、推荐一个用户报名成功后获得{{global.commonConf.extendRegisterPoint}}积分，缴学费成功获得{{global.commonConf.extendSignupPoint}}积分
+          1、推荐一个用户报名成功后获得{{
+            global.commonConf.extendRegisterPoint
+          }}积分，缴学费成功获得{{ global.commonConf.extendSignupPoint }}积分
         </text>
         <text>
-          2、推荐{{global.commonConf.toFreeNum}}名人报名成功，享受免费入学机会
+          2、推荐{{ global.commonConf.toFreeNum }}名人报名成功，享受免费入学机会
         </text>
-        <text>
-          3、积分与优惠券进行兑换，在“积分商城”中进行兑换。
-        </text>
-        <text>
-          4、只能在本平台使用，最终解释权归平台所有
-        </text>
-       
+        <text> 3、积分与优惠券进行兑换，在“积分商城”中进行兑换。 </text>
+        <text> 4、只能在本平台使用，最终解释权归平台所有 </text>
       </view>
-      <van-icon color="#ffffff" name="close" @tap="isShowPop=false" custom-style="margin-top:100rpx;font-size:54rpx" />
-
+      <van-icon
+        color="#ffffff"
+        name="close"
+        @tap="isShowPop = false"
+        custom-style="margin-top:100rpx;font-size:54rpx"
+      />
     </view>
   </view>
 </template>
@@ -111,7 +132,9 @@ import noMore from "@/components/noMore/index.vue";
 export default {
   name: "integralDetail",
   components: {
-    navbar,noData,noMore
+    navbar,
+    noData,
+    noMore,
   },
   setup(props) {
     const store = useStore();
@@ -121,10 +144,10 @@ export default {
     global.value = toRaw(store.state.global);
     // const list = ref({});
     const accountPoint = ref(0);
-    const onShowPop = async ()=>{
-      isShowPop.value = true
+    const onShowPop = async () => {
+      isShowPop.value = true;
       await store.dispatch("global/getProfile");
-    }
+    };
 
     const active = ref(0);
     const page = ref(1);
@@ -165,7 +188,7 @@ export default {
       getList();
     };
     onMounted(async () => {
-      onLoad()
+      onLoad();
       // let data = await store.dispatch("global/getAccountList", { type: 1 });
       // console.log("data===>", data);
       // list.value = data.details;
@@ -181,7 +204,7 @@ export default {
     //     console.log("data===>", data);
     //     list.value = data.details;
     //   }
-    // }; 
+    // };
     return {
       active,
       showBottomLine,
@@ -191,7 +214,8 @@ export default {
       onLoad,
       onShowPop,
       onChange,
-      list, global,
+      list,
+      global,
       tabsHeight: store.state.global.tabsHeight,
       accountPoint,
       isShowPop,

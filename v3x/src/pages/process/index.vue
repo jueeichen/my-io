@@ -1,27 +1,29 @@
 <template>
-  <navbar :parameter="parameter" />
-  <view class="step">
-    <view class="step-top">
-      <view> 你已完成{{ learnStage }}步, 离拿证更近了 </view>
-      <van-progress
-        :percentage="filterNumber(learnStage / steps.length* 100) "
-        track-color="rgba(255,255,255,0.3)"
-        color="rgba(255,255,255,1)"
-        stroke-width="16rpx"
-        :show-pivot="false"
-      />
-      <view>
-        <text>当前进度</text>
-        <text>{{ filterNumber(learnStage / steps.length* 100)  }}%</text>
+  <view>
+    <navbar :parameter="parameter" />
+    <view class="step">
+      <view class="step-top">
+        <view> 你已完成{{ learnStage }}步, 离拿证更近了 </view>
+        <van-progress
+          :percentage="filterNumber((learnStage / steps.length) * 100)"
+          track-color="rgba(255,255,255,0.3)"
+          color="rgba(255,255,255,1)"
+          stroke-width="16rpx"
+          :show-pivot="false"
+        />
+        <view>
+          <text>当前进度</text>
+          <text>{{ parseIntNum((learnStage / steps.length) * 100) }}%</text>
+        </view>
       </view>
+      <van-steps
+        :steps="steps"
+        :active="learnStage - 1"
+        direction="vertical"
+        active-color="#479CFE"
+        inactive-color="#7E7E7E"
+      />
     </view>
-    <van-steps
-      :steps="steps"
-      :active="learnStage-1"
-      direction="vertical"
-      active-color="#479CFE"
-      inactive-color="#7E7E7E"
-    />
   </view>
 </template>
 
@@ -52,6 +54,9 @@ export default {
         title: "拿证流程",
         return: 1,
       },
+      parseIntNum: (num) => {
+        return parseInt(num)
+      },
       steps: [
         {
           text: "报名",
@@ -76,7 +81,8 @@ export default {
         {
           text: "12月录取通知书发放",
           desc: "会收到教育局短信以及学校发的录取通知书",
-        },{
+        },
+        {
           text: "12月中缴纳学费",
           desc: "缴纳学费，完成学籍注册",
         },

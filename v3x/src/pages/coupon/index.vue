@@ -4,6 +4,7 @@
     <view class="coupon">
       <view class="coupon-index">
         <van-tabs
+          color="#479CFE"
           :swipeable="true"
           :animated="true"
           :sticky="true"

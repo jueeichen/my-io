@@ -7,7 +7,8 @@
       width="750rpx"
       height="420rpx"
     />
-    <!-- <view class=""> </view> -->
+
+    <view class="aleady-sign">已报名{{initData.signupNum||0}}人</view>
     <view class="detail-center" v-if="true">
       <view class="detail-center-top">
         <view class="">学费</view>
@@ -57,7 +58,7 @@
           >
         </view>
       </view>
-      <view class="detail-menu-items no-line">
+      <view class="detail-menu-items no-line baozhang">
         <view class="itme-title">保障</view>
         <view class="detail-menu-item-content">
           <view
@@ -75,6 +76,7 @@
     </view>
     <view class="detail-rich">
       <van-tabs
+        color="#479CFE"
         :active="active"
         :swipeable="true"
         :animated="true"

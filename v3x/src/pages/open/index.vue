@@ -1,6 +1,7 @@
 <template>
   <view class="oepn-index">
     <van-tabs
+      color="#479CFE"
       :swipeable="true"
       :animated="true"
       :active="active"
