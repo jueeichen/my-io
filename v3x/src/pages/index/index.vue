@@ -1,7 +1,7 @@
 <template>
   <view>
     <navbar :parameter="parameter" />
-    <view class="active">
+    <view class="active ">
       <!-- <login /> -->
       <image
         class="main-img"

@@ -5,7 +5,7 @@
       <view class="order-top">
         <view class="order-status">
           <text>{{ filterStatus(initData.active).status }}</text>
-          <text v-if="initData.active != '2'">{{
+          <text >{{
             filterStatus(initData.active).content
           }}</text>
           <!-- <text v-else>{{
@@ -14,6 +14,7 @@
             filterStatus(initData.active).content2
           }}</text> -->
         </view>
+        <view class="order-line"></view>
         <view
           class="order-top-btn"
           v-if="initData.active != '3'"
@@ -34,6 +35,7 @@
             <text class="active">立即支付</text>
           </view>
           <view
+          class="order-cancel"
             @tap="cancel(initData.orderNo)"
             v-if="initData.active == '1'"
           >
@@ -189,7 +191,7 @@ export default {
         if (type == "2") {
           obj = {
             status: "学费待支付",
-            content: " ",
+            content: "请尽快完成支付 ",
             // content1: "订单将于",
             // content2: "自动取消",
             content1: "",

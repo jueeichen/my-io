@@ -40,24 +40,24 @@
                 <template v-if="active == 0">
                   <view
                     >贡献时间：{{
-                      timestampToStr(item.createDate, "Y年M月D日 h:m:s")
+                      timestampToStr(item.createDate, "Y-M-D h:m:s")
                     }}</view
                   >
                   <view
                     >入账时间：{{
-                      timestampToStr(item.createDate, "Y年M月D日 h:m:s")
+                      timestampToStr(item.createDate, "Y-M-D h:m:s")
                     }}</view
                   >
                 </template>
                 <template v-else>
                   <view
                     >兑换时间:{{
-                      timestampToStr(item.createDate, "Y年M月D日 h:m:s")
+                      timestampToStr(item.createDate, "Y-M-D h:m:s")
                     }}</view
                   >
                   <view
                     >兑换订单号:{{
-                      timestampToStr(item.createDate, "Y年M月D日 h:m:s")
+                      timestampToStr(item.createDate, "Y-M-D h:m:s")
                     }}</view
                   >
                 </template>
@@ -78,17 +78,13 @@
                   <view>-{{ item.tradePoint }}</view>
                 </view>
                 <!-- <view>贡 献 人：{{ item.createBy }}</view> -->
-                <view>贡 献 ID：{{ item.userId }}</view>
+                <!-- <view>支出原因：{{ item.userId }}</view> -->
                 <view
-                  >贡献时间：{{
-                    timestampToStr(item.createDate, "Y年M月D日")
+                  >兑换时间：{{
+                    timestampToStr(item.createDate, "Y-M-D h:m:s")
                   }}</view
                 >
-                <view
-                  >入账时间：{{
-                    timestampToStr(item.createDate, "Y年M月D日")
-                  }}</view
-                >
+                <view>兑换积分订单号： {{ item.id }}</view>
               </view>
             </view>
             <no-data v-if="page > 1 && list.length < 1" />

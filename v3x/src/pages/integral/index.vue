@@ -40,10 +40,13 @@
           v-for="(item, index) in list"
           :key="index"
         >
-          <image
-            class=""
-            src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/coupon_miller.png"
-          ></image>
+          <view class="integral-list-item-img">
+            <image
+              class=""
+              src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/coupon_miller.png"
+            ></image>
+          </view>
+
           <view class="integral-list-item-title">{{ item.couponName }}</view>
           <view class="integral-list-item-bottom">
             <view class="">

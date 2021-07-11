@@ -1,153 +1,117 @@
-@import '../../static/css/common.styl';
+@import '../../static/css/common.styl'
 
-.order {
-	min-height: 100vh
-	padding-bottom: 50rpx;
-	_flex-start-column();
-	align-items: center;
-	background: #F6F6F6;
-
-	.order-top {
-		margin-top: 32rpx;
-		width: 690rpx;
-		background: #FFFEFC;
-		border-radius: 12rpx;
-		_box-sizing(0, 30rpx);
-
-		.order-status {
-			height: 193rpx;
-			_flex-center-column();
-			align-items: flex-start;
-
-			>text:first-child {
-				font-size: 46rpx;
-				font-weight: 500;
-				color: #1A1A1A;
-				margin-bottom: 19rpx;
-			}
-
-			>text:last-child {
-				font-size: 28rpx;
-				font-weight: 400;
-				color: #479CFE;
-			}
-		}
-
-		.order-top-btn {
-			width: 100%;
-			height: 164rpx;
-			_flex-center();
-			justify-content: space-between;
-			_box-sizing(0, 120rpx);
-
-			>view {
-				_flex-center-column();
-
-				>image {
-					width: 54rpx;
-					height: 54rpx;
-					margin-bottom: 14rpx;
-				}
-
-				>text {
-					white-space: nowrap;
-					font-size: 26rpx;
-					font-weight: 500;
-					color: #1A1A1A;
-				}
-
-				>text.active {
-					color: #479CFE;
-				}
-			}
-		}
-	}
-
-	.order-detail {
-		margin-top: 32rpx;
-		_box-sizing(30rpx, 30rpx);
-		width: 690rpx;
+.order
+	min-height 100vh
+	padding-bottom 50rpx
+	_flex-start-column()
+	align-items center
+	background #F6F6F6
+	.order-top
+		margin-top 32rpx
+		width 690rpx
+		background #FFFEFC
+		border-radius 12rpx
+		_box-sizing(0, 30rpx)
+		.order-status
+			height 193rpx
+			_flex-center-column()
+			align-items flex-start
+			>text:first-child
+				font-size 46rpx
+				font-weight 500
+				color #1A1A1A
+				margin-bottom 19rpx
+			>text:last-child
+				font-size 28rpx
+				font-weight 400
+				color #479CFE
+		.order-top-btn
+			width 100%
+			height 164rpx
+			_flex-center()
+			// justify-content space-between
+			// _box-sizing(0, 120rpx)
+			>view
+				_flex-center-column()
+				>image
+					width 54rpx
+					height 54rpx
+					margin-bottom 14rpx
+				>text
+					white-space nowrap
+					font-size 26rpx
+					font-weight 500
+					color #1A1A1A
+				>text.active
+					color #479CFE
+			.order-cancel
+				margin-left 238rpx
+	.order-detail
+		margin-top 32rpx
+		_box-sizing(30rpx, 30rpx)
+		width 690rpx
 		// height: 514rpx;
-		background: #FFFEFC;
-		border-radius: 12rpx;
-
-		.order-detail-top {
-			display: flex;
-
-			>image {
-				width: 151rpx;
-				height: 179rpx;
-				margin-right: 17rpx;
-			}
-
-			>view {
-				width: 374rpx;
-				height: 40rpx;
-				font-size: 30rpx;
-				font-weight: 400;
-				color: #0A0A0A;
-				_flex-start-column();
-
-				>text:first-child {
-					margin-top: 21rpx;
-					font-size: 30rpx;
-					font-weight: 400;
-					color: #0A0A0A;
-				}
-
-				>text:last-child {
-					margin-top: 20rpx;
-					font-size: 26rpx;
-					font-weight: 400;
-					color: #999999;
-				}
-			}
-		}
-
-		.order-detail-items {
-			margin-top: 27rpx;
-			_flex-center();
-			justify-content: space-between;
-		}
-
-		.order-detail-items-bottom-right {
-			margin-top: 60rpx;
-			display: flex;
-			justify-content: flex-end;
-		}
-	}
-
-	.order-no {
-		margin-top: 30rpx;
-		width: 690rpx;
-		// height: 165rpx;
-		background: #FFFEFC;
-		border-radius: 12rpx;
-		_box-sizing(0, 22rpx);
-		padding-top: 40rpx;
-		padding-bottom: 10rpx;
-		_flex-start-column();
-		justify-content: space-between;
-
-		>view {
-			_flex-center();
-			justify-content: space-between;
-
-			>text {
-				margin-bottom: 30rpx;
-			}
-
-			>text:first-child {
-				font-size: 28rpx;
-				font-weight: 400;
-				color: #999999;
-			}
-
-			>text:last-child {
-				font-size: 28rpx;
-				font-weight: 400;
-				color: #1A1A1A;
-			}
-		}
-	}
-}
+		background #FFFEFC
+		border-radius 12rpx
+		.order-detail-top
+			display flex
+			>image
+				width 151rpx
+				height 179rpx
+				margin-right 17rpx
+			>view
+				width 374rpx
+				height 40rpx
+				font-size 30rpx
+				font-weight 400
+				color #0A0A0A
+				_flex-start-column()
+				>text:first-child
+					margin-top 21rpx
+					font-size 30rpx
+					font-weight 400
+					color #0A0A0A
+				>text:last-child
+					margin-top 20rpx
+					font-size 26rpx
+					font-weight 400
+					color #999999
+		.order-detail-items
+			margin-top 27rpx
+			_flex-center()
+			justify-content space-between
+		.order-detail-items-bottom-right
+			margin-top 60rpx
+			display flex
+			justify-content flex-end
+			align-items: flex-end
+			font-size: 28rpx;
+			>text:last-child
+				font-size: 38rpx;
+	.order-no
+		margin-top 30rpx
+		width 690rpx
+		background #FFFEFC
+		border-radius 12rpx
+		_box-sizing(0, 22rpx)
+		padding-top 40rpx
+		padding-bottom 10rpx
+		_flex-start-column()
+		justify-content space-between
+		>view
+			_flex-center()
+			justify-content space-between
+			>text
+				margin-bottom 30rpx
+			>text:first-child
+				font-size 28rpx
+				font-weight 400
+				color #999999
+			>text:last-child
+				font-size 28rpx
+				font-weight 400
+				color #1A1A1A
+.order-line
+	width 630rpx
+	height 2rpx
+	background-color #EEEEEE

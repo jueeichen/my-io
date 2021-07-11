@@ -1,7 +1,8 @@
 <template>
   <navbar :parameter="parameter" />
-  <view class="about">
-    <c-swiper v-if="true" :initData="initData" width="750rpx" height="420rpx" />
+  <view class="about ">
+    <c-swiper v-if="initData.length>1" :initData="initData" width="750rpx" height="420rpx" />
+    <image class="about-main-img" v-else :src="initData[0].showImgUrl" mode="widthFix"/>
     <view>
       <view class="about-title"> 关于我们 </view>
       <view class="about-content">
@@ -15,7 +16,7 @@
         迄今为止，科畅教育已成功为企业运营管理人员、专本院校毕业学生、社会精英人士，提供了更为便捷、优质的课程项目解决方案，已有专家顾问团队，和完善的教育培训课程体系和咨询体系。选择科畅，让您的升学之路轻松简单。
       </view>
       <view class="about-title"> 公司地址 </view>
-      <image :src="initData[0].showImgUrl" />
+      <image src="../../static/images/map.png" />
       <view class="about-content">
         广东省深圳市南山区粤兴三道九号南京大学产学研基地B区2楼
       </view>

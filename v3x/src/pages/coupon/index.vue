@@ -1,7 +1,7 @@
 <template>
   <view>
     <navbar :parameter="parameter" />
-    <view class="coupon">
+    <view class="coupon ">
       <view class="coupon-index">
         <van-tabs
           color="#479CFE"

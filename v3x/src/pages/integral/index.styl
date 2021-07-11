@@ -2,13 +2,13 @@
 
 .integral
 	background #F4F4F4
-	height 100vh
+	min-height 95vh
 	.integral-top
 		position relative
 		>image
 			width 750rpx
 			height 373rpx
-			background-color white
+			// background-color white
 		>view
 			position absolute
 			width 100%
@@ -17,7 +17,7 @@
 			top 0
 			box-sizing border-box
 			padding 84rpx 30rpx 21rpx
-			background-color rgba(0, 0, 0, 0.1)
+			// background-color rgba(0, 0, 0, 0.1)
 			.integral-top-contet
 				width 690rpx
 				height 268rpx
@@ -79,23 +79,36 @@
 			background-color white
 			_flex-center-column()
 			box-sizing border-box
-			padding 46rpx 20rpx 40rpx
+			overflow: hidden
+			padding 0rpx 0rpx 30rpx
 			justify-content space-between
-			>image
-				width 132rpx
-				height 148rpx
+			.integral-list-item-img
+				width: 334rpx;
+				height: 230rpx;
+				background: #FDFCFC;
+				// background-color: pink
+				_flex-center()
+				>image
+					width 132rpx
+					height 148rpx
 			.integral-list-item-title
 				font-size 28rpx
 				font-weight 400
 				color #252525
+				width 100%
+				_box-sizing(0,20rpx)
+
 			.integral-list-item-bottom
 				width 100%
 				_flex-center()
+				_box-sizing(0,22rpx)
 				justify-content space-between
 				>view:first-child
 					font-size 28rpx
 					>text:first-child
 						color #F53000
+						font-size 36rpx
+
 					>text:last-child
 						color #252525
 				>view:last-child

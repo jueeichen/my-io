@@ -1,7 +1,7 @@
 <template>
   <view class="no-data-content" >
 
-    <image v-if="initData.img" :src="initData.img||'https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/no-data.png'" />
+    <image v-if="initData.img" :src="initData.img||'https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/no-data.png'"  mode="widthFix"/>
     <image v-else src="../../static/images/tabs/collect_coupons_nodata.png" mode="widthFix"/>
       <!-- default:'../../static/images/tabs/collect_coupons_nodata.png', -->
 

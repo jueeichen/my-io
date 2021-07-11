@@ -35,7 +35,7 @@
           <text style="color: #ff5000">
             {{
               couponIndex == 0
-                ? "请选券"
+                ? "领券"
                 : "¥" +
                   (couponList.length > 0
                     ? couponList[couponIndex].couponDenomination
@@ -77,6 +77,7 @@
     <view class="confirm-btn">
       <view class="confirm-btn-left">
         <text>{{ pageType == 1 ? "学费" : "报名费" }}:</text>
+        <text style="color: #ff5000">¥</text>
         <text v-if="pageType == 0">{{
           filterNumber(
             confirmData.initData.signupPrice -
@@ -95,7 +96,7 @@
           )
         }}</text>
       </view>
-      <view class="confirm-btn-right" @tap="sumitOrder"> 提交订单 </view>
+      <view class="confirm-btn-right" @tap="sumitOrder">提交订单 </view>
     </view>
     <template v-if="isShowCoupon">
       <view class="coupon-pop-mark"></view>

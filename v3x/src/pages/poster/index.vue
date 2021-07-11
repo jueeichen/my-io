@@ -1,6 +1,6 @@
 <template>
   <view class="poster">
-    <navbar style="position: fixed; top: 0; left: 0" :parameter="parameter" />
+    <navbar :parameter="parameter" />
     <view class="poster-main">
       <!-- <view v-if="initData.length>0">{{initData[0].showImgUrl}}
         {{initData[1].showImgUrl}}</view> -->
@@ -13,12 +13,18 @@
       <c-swiper
         v-if="true"
         :initData="list"
-        width="580rpx"
-        height="1031rpx"
+        color="#D8D8D8"
+        activeColor="#479CFE"
+        width="460rpx"
+        height="818rpx"
         :auto="false"
         :poster="true"
+        :showDots="false"
         @change="onChange"
       />
+      <view class="poster-dots"> 
+        <text :class="{'dots-active':index==swiperIndex}"  v-for="(item,index) in list" :key="index" />
+      </view>
       <view class="poster-btn">
         <view @tap="createPoster(list[swiperIndex].showImgUrl)">
           <view>
@@ -41,7 +47,7 @@
     <canvas
       v-if="list.length > 0"
       canvas-id="createPoster"
-      :style="'width:580rpx;height:1030rpx;'"
+      :style="'width:460rpx;height:818rpx;'"
       class="createPoster"
     ></canvas>
   </view>
@@ -169,16 +175,16 @@ export default {
       return new Promise(async (resolve) => {
         const ctx = wx.createCanvasContext("createPoster");
         const img0 = await getImg(img);
-        ctx.drawImage(img0.path, 0, 0, r2p(580), r2p(1030));
+        ctx.drawImage(img0.path, 0, 0, r2p(460), r2p(818));
 
         // ctx.restore();
         ctx.save();
         //二维码
         const img4 = await getImg(global.value.qrcode);
         console.log(img4.path);
-        const r = r2p(75);
-        const x = r2p(580 - 150 - 30);
-        const y = r2p(1030 - 150 - 30);
+        const r = r2p(50);
+        const x = r2p(460 - 100 - 30);
+        const y = r2p(818 - 100 - 10);
 
         ctx.arc(x + r, y + r, r, 0, Math.PI * 2);
         ctx.clip();

@@ -1,15 +1,19 @@
 <template>
-  <view>
+  <view class="product">
     <navbar :parameter="parameter" />
     <login />
 
     <view class="product-index">
-      <c-swiper
-        v-if="true"
-        :initData="banner.confImages"
-        width="690rpx"
-        height="250rpx"
-      />
+      <view class="product-index-swiper">
+        <c-swiper
+          v-if="true"
+          :initData="banner.confImages"
+          width="690rpx"
+          height="250rpx"
+          style="border-radius: 12rpx;overflow: hidden"
+        />
+      </view>
+
       <view class="index-tabs" v-if="true">
         <van-tabs
           color="#479CFE"

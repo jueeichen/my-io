@@ -42,6 +42,7 @@ export default {
     custom: false,
     color: "#969AA3",
     selectedColor: "#479CFE",
+    borderStyle  :'white',
     "list": [
       {
         "pagePath": "pages/index/index",
