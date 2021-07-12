@@ -17,12 +17,47 @@
         </view>
       </view>
       <van-steps
+        v-if="false"
         :steps="steps"
         :active="learnStage - 1"
         direction="vertical"
         active-color="#479CFE"
         inactive-color="#7E7E7E"
       />
+      <view class="steps-content-main">
+        <view
+          :class="
+            'steps-content-item ' +
+            (index > learnStage ? 'steps-content-item-border-gray' : '')
+          "
+          v-for="(item, index) in steps"
+          :key="index"
+        >
+          <image
+            v-if="learnStage == index"
+            class="steps-content-position"
+            src="../../static/images/process-1.png"
+            mode="widthFix"
+          />
+          <image
+            v-else-if="index < learnStage"
+            class="steps-content-position"
+            src="../../static/images/process-2.png"
+            mode="widthFix"
+          />
+          <image
+            v-else
+            class="steps-content-position steps-content-position-gray"
+          />
+          <view v-if="item.text">{{ item.text }}</view>
+          <text v-if="item.desc">{{ item.desc }}</text>
+          <image
+            v-if="item.img"
+            :src="item.img"
+            mode="widthFix"
+          />
+        </view>
+      </view>
     </view>
   </view>
 </template>
@@ -55,7 +90,7 @@ export default {
         return: 1,
       },
       parseIntNum: (num) => {
-        return parseInt(num)
+        return parseInt(num);
       },
       steps: [
         {
@@ -81,6 +116,7 @@ export default {
         {
           text: "12月录取通知书发放",
           desc: "会收到教育局短信以及学校发的录取通知书",
+          img: "../../static/images/tabs/process-img-1.jpg",
         },
         {
           text: "12月中缴纳学费",
@@ -93,6 +129,7 @@ export default {
         {
           text: "4月中 ",
           desc: "可以登录学信网查询自己的学籍",
+          img: "../../static/images/tabs/process-img-2.jpg",
         },
         {
           text: "期末考试",
