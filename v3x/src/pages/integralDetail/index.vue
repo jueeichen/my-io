@@ -97,9 +97,9 @@
       <view>
         <view> 活动规则 </view>
         <text>
-          1、推荐一个用户报名成功后获得{{
+          1、推荐一个用户注册成功获得{{
             global.commonConf.extendRegisterPoint
-          }}积分，缴学费成功获得{{ global.commonConf.extendSignupPoint }}积分
+          }}积分 ，报名成功获得{{ global.commonConf.extendRegisterPoint }}积分，缴学费成功获得{{ global.commonConf.extendSignupPoint }}积分
         </text>
         <text>
           2、推荐{{ global.commonConf.toFreeNum }}名人报名成功，享受免费入学机会

@@ -1,0 +1,76 @@
+@import '../../static/css/common.styl'
+
+.counpon-items-get
+  position relative
+  margin-bottom 30rpx
+  width 690rpx
+  // height 236rpx
+  background #FFFFFF
+  // background pink
+  border-radius 12rpx
+  _box-sizing(32rpx, 18rpx)
+  .counpon-item-title
+    font-size 28rpx
+    font-weight 400
+    color #1A1A1A
+  .counpon-items-index
+    _flex-center()
+    justify-content flex-start
+    >image
+      width 122rpx
+      height 122rpx
+      border-radius 12rpx
+    >view
+      _flex-center-column()
+      _box-sizing(6rpx, 20rpx)
+      padding-right 0
+      flex-grow 1
+      height 100%
+      justify-content space-between
+      align-items flex-start
+      .list-item-title
+        font-size 30rpx
+        font-weight 400
+        color #1A1A1A
+      .list-item-tuition
+        font-size 20rpx
+        font-family PingFangSC-Regular, PingFang SC
+        font-weight 400
+        color #8B8B8B
+      .fee
+        font-size 26rpx
+        font-weight 400
+        color #FF5000
+        >text
+          font-size 40rpx
+          font-weight 500
+    .sign-right
+      width 180rpx
+      height 123rpx
+      border-left 1rpx double #EFE6D5
+      // background-color yellow
+      _flex-center()
+      position relative
+      &::before, &::after
+        position absolute
+        left 0
+        top 0
+        display block
+        content ''
+        width 30rpx
+        height 30rpx
+        border-radius 50%
+        background-color #f6f6f6
+        transform: translate(-50%,-55rpx)
+      &::after
+        bottom 0
+        top unset
+        transform: translate(-50%,55rpx)
+      .sign-up-right
+        width 36rpx
+        height 36rpx
+      .sign-up
+        width 36rpx
+        height 36rpx
+        border 2rpx solid #C4C4C4
+        border-radius 50%

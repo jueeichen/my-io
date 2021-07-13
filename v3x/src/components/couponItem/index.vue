@@ -12,12 +12,34 @@
           >¥<text>{{ initData.couponDenomination }}</text>
         </view>
         <view class="list-item-tuition"
-          >有效期：截止{{timestampToStr(initData.validEndTime,"Y年M月D日")  }}</view
+          >有效期：截止{{
+            timestampToStr(initData.validEndTime, "Y年M月D日")
+          }}</view
         >
       </view>
-      <view v-if="!isUse" :class="'sign-up '+(active==3||active==4||active==0?' sign-up-gray':'')" @tap="onClick">{{ statusStr }}</view>
+      <view
+        v-if="!isUse"
+        :class="
+          'sign-up ' +
+          (active == 3 || active == 4 || active == 0 ? ' sign-up-gray' : '')
+        "
+        @tap="onClick"
+        >{{ statusStr }}</view
+      >
       <view v-else class="sign-up">已选择</view>
     </view>
+    <image
+      class="un-use"
+      v-if="active == 3"
+      src="../../static/images/tabs/unuse.png"
+      mode="widthFix"
+    ></image>
+    <image
+      class="un-use"
+      v-if="active == 4"
+      src="../../static/images/tabs/nouse.png"
+      mode="widthFix"
+    ></image>
   </view>
 </template> 
 
@@ -65,9 +87,9 @@ export default {
         });
         // console.log(res);
         if (res == 10001) {
-        return;
-      }
-        ctx.attrs.onInitList(state.value,props.active);
+          return;
+        }
+        ctx.attrs.onInitList(state.value, props.active);
       }
       if (props.active == 2) {
         if (ctx.attrs.onUse) {

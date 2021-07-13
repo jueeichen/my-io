@@ -6,6 +6,7 @@
     <view class="my">
       <!-- <view class=""> </view> -->
       <view class="my-top">
+        <image class="init-img" src="../../static/images/tabs/my.png" mode="widthFix"/>
         <view class="my-top-left">
           <view class="my-open-data">
             <view>

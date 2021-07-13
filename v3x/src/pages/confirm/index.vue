@@ -28,14 +28,14 @@
           </view>
           <text>{{ confirmData.initData.signupPrice }}元</text>
         </view>
-        <view @tap="isShowCoupon = true">
+        <view @tap="getCoupon">
           <view>
             <text>优惠券</text>
           </view>
           <text style="color: #ff5000">
             {{
-              couponIndex == 0
-                ? "领券"
+              couponIndex == null
+                ? "领取"
                 : "¥" +
                   (couponList.length > 0
                     ? couponList[couponIndex].couponDenomination
@@ -86,6 +86,11 @@
                 : 0)
           )
         }}</text>
+        <text v-else-if="couponIndex === null">{{
+          filterNumber(
+            confirmData.initData.productPrice - confirmData.initData.signupPrice
+          )
+        }}</text>
         <text v-else>{{
           filterNumber(
             confirmData.initData.productPrice -
@@ -103,31 +108,44 @@
       <view class="coupon-pop">
         <view>
           <view>优惠券明细</view>
-          <!-- <image src="" @tap="isShowCoupon = false" /> -->
-          <van-icon name="cross" @tap="isShowCoupon = false" />
+          <image
+            src="../../static/images/tabs/close.png"
+            @tap="isShowCoupon = false"
+          />
+          <!-- <van-icon name="cross" @tap="isShowCoupon = false" /> -->
         </view>
-        <view>
-          <view>优惠券 {{ couponIndex === null ? "0" : "1" }}张, 共抵扣</view>
+        <view v-show="initIndex !== null">
+          <view>优惠券 {{ initIndex === null ? "0" : "1" }}张, 共抵扣</view>
           <view
             >¥{{
-              couponIndex === null
+              initIndex === null
                 ? "0"
-                : couponList[couponIndex].couponDenomination
+                : couponList[initIndex].couponDenomination
             }}</view
           >
         </view>
         <view class="coupon-pop-list">
           <coupon-item
-            v-show="index > 0"
             :initData="item"
-            :active="couponIndex === index ? 2 : 0"
+            :active="item.receiveStatus == 1 ? 0 : 1"
             :index="index"
-            :isUse="couponIndex === index"
+            :isUse="index == initIndex"
             @use="goUse"
             @initList="initList"
             v-for="(item, index) in couponList"
             :key="index"
           />
+        </view>
+        <view
+          class="detail-bottom-btn"
+          @tap="
+            () => {
+              couponIndex = initIndex;
+              isShowCoupon = false;
+            }
+          "
+        >
+          <view>确定</view>
         </view>
       </view>
     </template>
@@ -136,7 +154,7 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import CouponItem from "@/components/couponItem/index.vue";
+import CouponItem from "@/components/getCoupon/index.vue";
 
 import "./index.styl";
 import navbar from "@/components/navbar/index.vue";
@@ -154,8 +172,26 @@ export default {
     const phone = ref(null);
     const pageType = ref(0); // 0-报名确认页 1-学费确认页
     const couponList = ref([]);
-    const couponIndex = ref(0);
-
+    // const couponIndex = ref(0);
+    const couponIndex = ref(null);
+    const initIndex = ref(null); //未确定的索引
+    const goUse = (index) => {
+      console.log("use", index);
+      if (index < 0) {
+        index = null;
+      }
+      initIndex.value = index;
+    };
+    const getCoupon = () => {
+      if (pageType.value == 0) {
+        return;
+      }
+      if (couponList.value.length < 1) {
+        wx.navigateTo({ url: "/pages/coupon/index" });
+        return;
+      }
+      isShowCoupon.value = true;
+    };
     const id = ref(0);
     // id.value = props.tid.match(/(?<=(=)).*/g, "")[0];
     console.log(store.state.global.confirmData);
@@ -212,11 +248,11 @@ export default {
       });
       pay(res.orderNo);
     };
-    const goUse = (index) => {
-      console.log("use", index);
-      couponIndex.value = index;
-      isShowCoupon.value = false;
-    };
+    // const goUse = (index) => {
+    //   console.log("use", index);
+    //   couponIndex.value = index;
+    //   isShowCoupon.value = false;
+    // };
     const initList = async () => {
       if (pageType.value == 1) {
         await store.dispatch("global/selectCounpon", {
@@ -224,25 +260,38 @@ export default {
           tuitionCouponDetailId: null,
         });
       }
-
+      if (pageType.value == 0) {
+        couponList.value = [
+          {
+            couponDenomination: confirmData.couponValue,
+            receiveId: confirmData.useCounponId,
+          },
+        ];
+        initIndex.value = 0;
+        couponIndex.value = 0;
+        return;
+      }
       const data = await store.dispatch("global/getCouponList", {
         status: 1,
         couponType: pageType.value == 1 ? "2" : "1", // 1-报名费抵扣优惠券 2-学费抵扣优惠券
         page: 1,
-        pageSize: 10,
+        pageSize: 100,
       });
-      couponList.value = [
-        { couponDenomination: 0, receiveId: null },
-        ...data.couponInfos,
-      ];
+      // couponList.value = [
+      //   { couponDenomination: 0, receiveId: null },
+      //   ...data.couponInfos,
+      // ];
+      couponList.value = data.couponInfos;
       console.log("couponList=>", couponList);
     };
     onMounted(async () => {
       initList();
     });
     return {
+      initIndex,
       initList,
       goUse,
+      getCoupon,
       parameter: {
         title: pageType.value == 1 ? "确认学费" : "确认报名",
         return: 1,

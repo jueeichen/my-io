@@ -164,7 +164,7 @@
 	>image
 		width 100%
 		height 500rpx
-		background-color pink
+		// background-color pink
 .detail-bottom-btn
 	_flex-center()
 	width 750rpx
@@ -194,16 +194,18 @@
 .coupon-pop
 	width 750rpx
 	position fixed
-	bottom 127rpx
+	height: 1058rpx
+	bottom 0
 	left 0
 	z-index 9999
-	background #FFFFFF
+	background #F6F6F6
 	border-radius 20rpx 20rpx 0px 0px
 	>view:first-child
 		_flex-center()
 		justify-content space-between
 		_box-sizing(0, 30rpx)
 		width 750rpx
+		background #FFFFFF
 		height 106rpx
 		border-bottom 1rpx solid #eee
 		>view
@@ -213,8 +215,10 @@
 		>image
 			width 40rpx
 			height 40rpx
-			background-color pink
+			// background-color pink
 	>view:nth-of-type(2)
+		background #FFFFFF
+
 		_flex-center()
 		justify-content flex-start
 		_box-sizing(0, 30rpx)
@@ -232,9 +236,8 @@
 		_box-sizing(34rpx, 30rpx)
 		padding-bottom 100rpx
 		width 750rpx
-		height 500rpx
+		height 739rpx
 		overflow auto
-		background #F6F6F6
 .rich-text
 	width 100%
 	padding-bottom 200rpx

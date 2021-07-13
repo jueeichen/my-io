@@ -1,8 +1,14 @@
 <template>
   <view>
     <navbar :parameter="parameter" />
-    <view class="active ">
+    <view class="active">
       <!-- <login /> -->
+      <image
+        class="rules-img"
+        src="../../static/images/tabs/activity_rules.png"
+        mode="widthFix"
+        @tap="onShowPop"
+      ></image>
       <image
         class="main-img"
         @tap="jump('/pages/poster/index')"
@@ -63,7 +69,7 @@
             >立即领取</view
           >
           <view
-            @tap="jump(item.jumpUrl)"
+            @tap="navDetail(item)"
             class="list-item-right-btn list-item-right-btn-else"
             v-else
             >立即使用</view
@@ -71,6 +77,27 @@
         </view>
       </view>
       <!-- </scroll-view> -->
+    </view>
+    <view class="integral-mask" v-if="isShowPop">
+      <view>
+        <view> 活动规则 </view>
+        <text>
+          1、推荐一个用户注册成功获得{{
+            global.commonConf.extendRegisterPoint
+          }}积分 ，报名成功获得{{ global.commonConf.extendRegisterPoint }}积分，缴学费成功获得{{ global.commonConf.extendSignupPoint }}积分
+        </text>
+        <text>
+          2、推荐{{ global.commonConf.toFreeNum }}名人报名成功，享受免费入学机会
+        </text>
+        <text> 3、积分与优惠券进行兑换，在“积分商城”中进行兑换。 </text>
+        <text> 4、只能在本平台使用，最终解释权归平台所有 </text>
+      </view>
+      <van-icon
+        color="#ffffff"
+        name="close"
+        @tap="isShowPop = false"
+        custom-style="margin-top:100rpx;font-size:54rpx"
+      />
     </view>
   </view>
 </template>
@@ -84,7 +111,7 @@ import cSwiper from "@/components/swiper/index.vue";
 import listItem from "@/components/listItem/index.vue";
 import "./index.styl";
 import { useStore } from "vuex";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, toRaw } from "vue";
 
 export default {
   name: "Index",
@@ -101,11 +128,26 @@ export default {
   },
   setup(props) {
     const store = useStore();
+
+    const isShowPop = ref(false);
+    const global = ref("");
+    global.value = toRaw(store.state.global);
+
     const list = ref([]);
     const poster = ref([]);
     const toFreeNum = ref(null);
     const test = () => {
       console.log("test");
+    };
+    const navDetail = (item) => {
+      wx.setStorageSync("indexCouponId", item.couponId);
+      wx.navigateTo({
+        url: item.jumpUrl,
+      });
+    };
+    const onShowPop = async () => {
+      isShowPop.value = true;
+      await store.dispatch("global/getProfile");
     };
     const onLoad = async () => {
       await store.dispatch("global/getProfile");
@@ -136,6 +178,10 @@ export default {
       list.value = res1.confImages;
     };
     return {
+      global,
+      isShowPop,
+      onShowPop,
+      navDetail,
       toFreeNum,
       onLoad,
       splitStr,

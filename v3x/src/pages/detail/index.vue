@@ -8,7 +8,7 @@
       height="420rpx"
     />
 
-    <view class="aleady-sign">已报名{{initData.signupNum||0}}人</view>
+    <view class="aleady-sign">已报名{{ initData.signupNum || 0 }}人</view>
     <view class="detail-center" v-if="true">
       <view class="detail-center-top">
         <view class="">学费</view>
@@ -33,13 +33,13 @@
         <view class="itme-title">报名费</view>
         <text class="item-right"> ¥{{ initData.signupPrice }}</text>
       </view>
-      <view class="detail-menu-items" @tap="isShowCoupon = true">
+      <view class="detail-menu-items" @tap="getCoupon">
         <view class="itme-title">优惠券</view>
         <view class="item-right-btn">
           <text class="">
             {{
               couponIndex === null
-                ? "领券"
+                ? "领取"
                 : "¥" + couponList[couponIndex].couponDenomination
             }}</text
           >
@@ -120,16 +120,19 @@
       <view class="coupon-pop">
         <view>
           <view>优惠券明细</view>
-          <!-- <image src="" @tap="isShowCoupon = false" /> -->
-          <van-icon name="cross" @tap="isShowCoupon = false" />
+          <image
+            src="../../static/images/tabs/close.png"
+            @tap="isShowCoupon = false"
+          />
+          <!-- <van-icon name="cross" @tap="isShowCoupon = false" /> -->
         </view>
-        <view v-show="false">
-          <view>优惠券 {{ couponIndex === null ? "0" : "1" }}张, 共抵扣</view>
+        <view v-show="initIndex !== null">
+          <view>优惠券 {{ initIndex === null ? "0" : "1" }}张, 共抵扣</view>
           <view
             >¥{{
-              couponIndex === null
+              initIndex === null
                 ? "0"
-                : couponList[couponIndex].couponDenomination
+                : couponList[initIndex].couponDenomination
             }}</view
           >
         </view>
@@ -138,12 +141,23 @@
             :initData="item"
             :active="item.receiveStatus == 1 ? 0 : 1"
             :index="index"
-            :isUse="false"
+            :isUse="index == initIndex"
             @use="goUse"
             @initList="initList"
             v-for="(item, index) in couponList"
             :key="index"
           />
+        </view>
+        <view
+          class="detail-bottom-btn"
+          @tap="
+            () => {
+              couponIndex = initIndex;
+              isShowCoupon = false;
+            }
+          "
+        >
+          <view>确定</view>
         </view>
       </view>
     </template>
@@ -153,7 +167,7 @@
 <script>
 import cSwiper from "@/components/swiper/index.vue";
 import navbar from "@/components/navbar/index.vue";
-import CouponItem from "@/components/couponItem/index.vue";
+import CouponItem from "@/components/getCoupon/index.vue";
 
 import { ref, getCurrentInstance, onMounted, useRouter, reactive } from "vue";
 import "./index.styl";
@@ -175,26 +189,55 @@ export default {
     const isShowCoupon = ref(false);
     const couponList = ref([]);
     const id = ref(0);
+    const activeId = wx.getStorageSync("indexCouponId");
+    if (activeId) {
+      //说明是从活动中心过来的
+      console.log("从活动中心过来的");
+      wx.setStorageSync("indexCouponId", false);
+    }
     // id.value = props.tid.match(/(?<=(=)).*/g, "")[0];
     id.value = props.tid.split("=")[1];
     const onChangeSpecial = (e) => {
       specialIndex.value = e;
     };
     const couponIndex = ref(null);
+    const initIndex = ref(null); //未确定的索引
     const goUse = (index) => {
       console.log("use", index);
-      couponIndex.value = index;
+      if (index < 0) {
+        index = null;
+      }
+      initIndex.value = index;
+    };
+    const getCoupon = () => {
+      if (couponList.value.length < 1) {
+        wx.navigateTo({ url: "/pages/coupon/index" });
+        return;
+      }
+
+      isShowCoupon.value = true;
     };
     const initList = async () => {
       console.log("initList");
       const data = await store.dispatch("global/getCouponList", {
-        status: 103,
+        status: 1,
         couponType: 1,
         page: 1,
         pageSize: 100,
       });
       couponList.value = data.couponInfos;
       console.log("couponList=>", couponList);
+      if (activeId) {
+        //说明是从活动中心过来的
+        console.log("从活动中心过来的122222");
+        let newArr = data.couponInfos;
+        newArr.map((item, index) => {
+          if (item.couponId == activeId) {
+            couponIndex.value = index;
+            initIndex.value = index;
+          }
+        });
+      }
     };
     onMounted(async () => {
       const res = await store.dispatch("global/getProductDetailById", {
@@ -207,11 +250,18 @@ export default {
       initList();
     });
     const navConfirm = () => {
+      let useCounponId = null;
+      let couponValue = 0;
+      if (couponIndex !== null) {
+        useCounponId = couponList.value[couponIndex.value].receiveId;
+        couponValue = couponList.value[couponIndex.value].couponDenomination;
+      }
       const params = {
         pageType: 0,
         productId: id.value,
         orderNo: id.value,
-        useCounponId: "",
+        useCounponId,
+        couponValue,
         couponIndex: couponIndex.value,
         specialitiesName:
           initData.value.specialitiesList.length > 0
@@ -219,7 +269,6 @@ export default {
                 .specialitiesName || ""
             : "",
         initData: initData.value,
-        couponValue: 0,
       };
       store.dispatch("global/setConfirmData", params);
       wx.navigateTo({
@@ -228,10 +277,12 @@ export default {
     };
 
     return {
+      getCoupon,
       goUse,
       initList,
       splitStr,
       navConfirm,
+      initIndex,
       couponIndex,
       couponList,
       id,
