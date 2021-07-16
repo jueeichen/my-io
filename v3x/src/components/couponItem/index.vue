@@ -1,6 +1,5 @@
 <template>
-  <view class="counpon-items">
-    <!-- <view class="counpon-item-title">{{ initData.couponName }}</view> -->
+  <!-- <view class="counpon-items">
     <view class="counpon-items-index">
       <image
         src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/coupon_miller.png"
@@ -17,16 +16,61 @@
           }}</view
         >
       </view>
-      <view
-        v-if="!isUse"
-        :class="
-          'sign-up ' +
-          (active == 3 || active == 4 || active == 0 ? ' sign-up-gray' : '')
-        "
-        @tap="onClick"
-        >{{ statusStr }}</view
-      >
-      <view v-else class="sign-up">已选择</view>
+      <view class="sign-right">
+        <view
+          v-if="!isUse"
+          :class="
+            'sign-up ' +
+            (active == 3 || active == 4 || active == 0 ? ' sign-up-gray' : '')
+          "
+          @tap="onClick"
+          >{{ statusStr }}</view
+        >
+        <view v-else class="sign-up">已选择</view>
+      </view>
+    </view>
+    <image
+      class="un-use"
+      v-if="active == 3"
+      src="../../static/images/tabs/unuse.png"
+      mode="widthFix"
+    ></image>
+    <image
+      class="un-use"
+      v-if="active == 4"
+      src="../../static/images/tabs/nouse.png"
+      mode="widthFix"
+    ></image>
+  </view> -->
+  <view class="counpon-items-get">
+    <view class="counpon-items-index">
+      <image
+        src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/coupon_miller.png"
+        mode="aspectFill"
+      ></image>
+      <view>
+        <view class="list-item-title">{{ initData.couponName }}</view>
+        <view class="fee"
+          >¥<text>{{ initData.couponDenomination }}</text>
+        </view>
+        <view class="list-item-tuition"
+          >有效期：截止{{
+            timestampToStr(initData.validEndTime, "Y年M月D日")
+          }}</view
+        >
+      </view>
+      <view class="sign-right">
+        <view
+          v-if="!isUse"
+          :class="
+            'sign-up ' +
+            (active == 3 || active == 4 || active == 0 ? ' sign-up-gray' : '')
+          "
+          @tap="onClick"
+          >{{ statusStr }}</view
+        >
+        <view v-else class="sign-up">已选择</view>
+      </view>
     </view>
     <image
       class="un-use"

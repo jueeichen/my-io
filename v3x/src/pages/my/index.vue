@@ -98,7 +98,7 @@
             />
             <view class="">班主任微信 </view>
           </view>
-          <van-icon name="arrow" class="iconfont icon-back" />
+          <van-icon color="#B4B4B4" name="arrow" class="iconfont icon-back" />
         </view>
         <view class="my-bottom-item" @tap="jumpByLogin('/pages/process/index')">
           <view class="my-bottom-item_left">
@@ -107,7 +107,7 @@
             />
             <view class="">拿证流程 </view>
           </view>
-          <van-icon name="arrow" class="iconfont icon-back" />
+          <van-icon color="#B4B4B4" name="arrow" class="iconfont icon-back" />
         </view>
         <view class="my-bottom-item" @tap="jump('/pages/about/index')">
           <view class="my-bottom-item_left">
@@ -116,7 +116,7 @@
             />
             <view class="">关于我们 </view>
           </view>
-          <van-icon name="arrow" class="iconfont icon-back" />
+          <van-icon color="#B4B4B4" name="arrow" class="iconfont icon-back" />
         </view>
       </view>
       <!-- userId: {{ userInfo.userId }} -->

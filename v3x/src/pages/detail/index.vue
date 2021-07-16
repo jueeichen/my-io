@@ -43,7 +43,7 @@
                 : "¥" + couponList[couponIndex].couponDenomination
             }}</text
           >
-          <van-icon name="arrow" class="iconfont" />
+          <van-icon color="#B4B4B4" name="arrow" class="iconfont" />
         </view>
       </view>
       <view class="detail-menu-items">
@@ -252,7 +252,7 @@ export default {
     const navConfirm = () => {
       let useCounponId = null;
       let couponValue = 0;
-      if (couponIndex !== null) {
+      if (couponIndex.value !== null) {
         useCounponId = couponList.value[couponIndex.value].receiveId;
         couponValue = couponList.value[couponIndex.value].couponDenomination;
       }

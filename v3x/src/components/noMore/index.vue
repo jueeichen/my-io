@@ -1,6 +1,6 @@
 <template>
   <view class="no-more">
-    <text>已经到底啦!</text>
+    <view>已经到底啦!</view>
   </view>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="active-page">
     <navbar :parameter="parameter" />
     <view class="active">
       <!-- <login /> -->
@@ -9,15 +9,16 @@
         mode="widthFix"
         @tap="onShowPop"
       ></image>
-      <image
-        class="main-img"
-        @tap="jump('/pages/poster/index')"
-        :src="
-          poster ||
-          'https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/activity.png'
-        "
-      ></image>
-      <template v-if="toFreeNum !== null">
+      <template v-if="toFreeNum !== null && toFreeNum > 0">
+        <image
+          class="main-img"
+          @tap="jump('/pages/poster/index')"
+          :src="
+            poster ||
+            'https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/activity.png'
+          "
+        ></image>
+        <!-- <template v-if="toFreeNum !== null"> -->
         <view class="position-content" v-if="toFreeNum > 0">
           <view>距离获取免费上学资格</view>
           <view
@@ -25,10 +26,18 @@
             >人</view
           >
         </view>
-        <view class="position-content" v-else>
-          <view>已获取免费上学资格</view>
-          <view> </view>
-        </view>
+        <!-- <view class="position-content" v-else>
+            <view>已获取免费上学资格</view>
+            <view> </view>
+          </view>
+        </template> -->
+      </template>
+      <template v-if="toFreeNum !== null && toFreeNum == 0">
+        <image
+          class="main-img"
+          @tap="jump('/pages/poster/index')"
+          :src="'../../static/images/tabs/activity-2.jpg'"
+        ></image>
       </template>
 
       <view class="active-title">
@@ -48,9 +57,7 @@
           <view class="list-item-content">
             <image :src="item.showImgUrl" mode="widthFix" />
             <view class="list-item-right">
-              <view class="list-item-right-top">{{
-                splitStr(item.couponName, 7)
-              }}</view>
+              <view class="list-item-right-top">{{ item.couponName }}</view>
               <view class="list-item-right-center">
                 <text>¥</text>
                 <text>{{ item.couponDenomination }}</text>
@@ -62,18 +69,20 @@
               >
             </view>
           </view>
-          <view
-            @tap="getCoupon(item.couponId)"
-            class="list-item-right-btn"
-            v-if="item.receiveStatus == 0"
-            >立即领取</view
-          >
-          <view
-            @tap="navDetail(item)"
-            class="list-item-right-btn list-item-right-btn-else"
-            v-else
-            >立即使用</view
-          >
+          <view class="sign-right">
+            <view
+              @tap="getCoupon(item.couponId)"
+              class="list-item-right-btn"
+              v-if="item.receiveStatus == 0"
+              >立即领取</view
+            >
+            <view
+              @tap="navDetail(item)"
+              class="list-item-right-btn list-item-right-btn-else"
+              v-else
+              >立即使用</view
+            >
+          </view>
         </view>
       </view>
       <!-- </scroll-view> -->
@@ -84,7 +93,9 @@
         <text>
           1、推荐一个用户注册成功获得{{
             global.commonConf.extendRegisterPoint
-          }}积分 ，报名成功获得{{ global.commonConf.extendRegisterPoint }}积分，缴学费成功获得{{ global.commonConf.extendSignupPoint }}积分
+          }}积分 ，报名成功获得{{
+            global.commonConf.extendRegisterPoint
+          }}积分，缴学费成功获得{{ global.commonConf.extendSignupPoint }}积分
         </text>
         <text>
           2、推荐{{ global.commonConf.toFreeNum }}名人报名成功，享受免费入学机会

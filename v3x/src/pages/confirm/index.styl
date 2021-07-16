@@ -53,6 +53,7 @@
 				display flex
 				align-items center
 				text:last-child
+				
 					font-size 26rpx
 					font-weight 400
 					color #999999
@@ -74,7 +75,8 @@
 		margin-top 30rpx
 		width 690rpx
 		background #FFFFFF
-		border-radius 12px
+		border-radius 12rpx 12rpx 0 0
+		// padding-bottom 32rpx
 		_flex-start-column()
 		>view
 			width 100%
@@ -100,6 +102,9 @@
 			>input
 				width 70%
 				color #1A1A1A
+				font-size 30rpx
+				font-weight 400
+				color #1A1A1A
 		>view::after
 			display block
 			content ''
@@ -110,19 +115,24 @@
 			border-bottom 1rpx solid #EEEEEE
 		>view:last-child::after
 			border-bottom none
-		.confirm-bottom-blue
-			font-size 24rpx
+	.confirm-bottom-blue
+		font-size 24rpx
+		font-weight 400
+		color #479CFE
+		width 690rpx
+		height 93px
+		background #FBFCFB
+		_flex-center()
+		border-radius 0 0 12rpx 12rpx
+	.confirm-btn-left
+		text:first-child
+			font-size 30rpx
 			font-weight 400
-			color #479CFE
-			.confirm-btn-left
-				text:first-child
-					font-size 30rpx
-					font-weight 400
-					color #1A1A1A
-				text:last-child
-					font-size 46px
-					font-weight 600
-					color #FF5000
+			color #1A1A1A
+		text:last-child
+			font-size 46px
+			font-weight 600
+			color #FF5000
 .confirm-btn
 	position fixed
 	bottom 0
@@ -162,7 +172,7 @@
 .coupon-pop
 	width 750rpx
 	position fixed
-	height: 1058rpx
+	height 1058rpx
 	bottom 0
 	left 0
 	z-index 9999
@@ -186,7 +196,6 @@
 			// background-color pink
 	>view:nth-of-type(2)
 		background #FFFFFF
-
 		_flex-center()
 		justify-content flex-start
 		_box-sizing(0, 30rpx)
@@ -224,3 +233,9 @@
 		font-size 36rpx
 		font-weight 500
 		color #FFFFFF
+.input-placeholder
+	font-size 30rpx
+	font-weight 400
+	color #999999
+.bottom-line
+	border-bottom 1rpx red solid

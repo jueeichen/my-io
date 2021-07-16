@@ -53,7 +53,18 @@ export default {
           jumpUrl: "290174020@qq.com",
           params: {},
           showImgUrl:
-            "https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/integral-detail.png",
+            "../../static/images/tabs/about_us1.jpg",
+          sortNo: 11,
+          type: "2",
+        },
+        {
+          createBy: "admin",
+          createDate: 1624611249397,
+          id: 10306,
+          jumpUrl: "290174020@qq.com",
+          params: {},
+          showImgUrl:
+            "../../static/images/tabs/about_us2.jpg",
           sortNo: 11,
           type: "2",
         },

@@ -16,9 +16,9 @@
       </view>
       <view class="confirm-center">
         <view>
-          <view>
+          <view class="bottom-line">
             <text>学费</text>
-            <text> (含报名费)</text>
+            <text style="margin-left:10rpx">(含报名费)</text>
           </view>
           <text>{{ confirmData.initData.productPrice }}元</text>
         </view>
@@ -32,16 +32,19 @@
           <view>
             <text>优惠券</text>
           </view>
-          <text style="color: #ff5000">
+          <view class="coupon-money" style="color: #ff5000">
             {{
-              couponIndex == null
-                ? "领取"
+              couponIndex === null
+                ? pageType == 0
+                  ? "无"
+                  : "领取"
                 : "¥" +
                   (couponList.length > 0
                     ? couponList[couponIndex].couponDenomination
                     : 0)
-            }}</text
-          >
+            }}
+            <van-icon color="#B4B4B4" name="arrow" class="iconfont" />
+          </view>
         </view>
       </view>
 
@@ -52,6 +55,7 @@
             <text> 姓名</text>
           </view>
           <input
+            placeholder-class="input-placeholder"
             placeholder="请输入报名人的姓名"
             v-model="username"
             :disabled="pageType == 1"
@@ -63,15 +67,16 @@
             <text> 手机号</text>
           </view>
           <input
+            placeholder-class="input-placeholder"
             v-model="phone"
             type="number"
             placeholder="请输入报名人的手机号"
             :disabled="pageType == 1"
           />
         </view>
-        <view class="confirm-bottom-blue">
-          注: 报名完成加老师微信号「我的」-「班主任微信号」
-        </view>
+      </view>
+      <view class="confirm-bottom-blue">
+        注: 报名完成加老师微信号「我的」-「班主任微信号」
       </view>
     </view>
     <view class="confirm-btn">
@@ -79,12 +84,14 @@
         <text>{{ pageType == 1 ? "学费" : "报名费" }}:</text>
         <text style="color: #ff5000">¥</text>
         <text v-if="pageType == 0">{{
-          filterNumber(
-            confirmData.initData.signupPrice -
-              (couponList.length > 0
-                ? couponList[couponIndex].couponDenomination
-                : 0)
-          )
+          couponIndex == null
+            ? filterNumber(confirmData.initData.signupPrice)
+            : filterNumber(
+                confirmData.initData.signupPrice -
+                  (couponList.length > 0
+                    ? couponList[couponIndex].couponDenomination
+                    : 0)
+              )
         }}</text>
         <text v-else-if="couponIndex === null">{{
           filterNumber(
@@ -101,7 +108,9 @@
           )
         }}</text>
       </view>
-      <view class="confirm-btn-right" @tap="sumitOrder">提交订单 </view>
+      <view class="confirm-btn-right" @tap="sumitOrder"
+        >提交订单{{ couponIndex }}
+      </view>
     </view>
     <template v-if="isShowCoupon">
       <view class="coupon-pop-mark"></view>
@@ -202,8 +211,9 @@ export default {
       username.value = confirmData.initData.signuperName;
     }
     if (pageType.value == 0) {
-      // couponIndex.value = confirmData.couponIndex || 0;
-      couponIndex.value = 0;
+      couponIndex.value = confirmData.couponIndex || null;
+      debugger;
+      // couponIndex.value = 0;
     }
     const pay = async (orderNo) => {
       store
@@ -238,13 +248,15 @@ export default {
         pay(confirmData.orderNo);
         return;
       }
-
+      let signupCouponDetailId = couponIndex.value
+        ? couponList.value[couponIndex.value].receiveId
+        : null;
       const res = await store.dispatch("global/createOrder", {
         productId: confirmData.productId,
         specialitiesName: confirmData.specialitiesName,
         signuperName: username.value,
         signuperMobile: phone.value,
-        signupCouponDetailId: couponList.value[couponIndex.value].receiveId,
+        signupCouponDetailId
       });
       pay(res.orderNo);
     };
@@ -269,6 +281,9 @@ export default {
         ];
         initIndex.value = 0;
         couponIndex.value = 0;
+        if(!confirmData.useCounponId){
+          couponIndex.value = null;
+        }
         return;
       }
       const data = await store.dispatch("global/getCouponList", {
