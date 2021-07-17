@@ -43,7 +43,7 @@
                     ? couponList[couponIndex].couponDenomination
                     : 0)
             }}
-            <van-icon color="#B4B4B4" name="arrow" class="iconfont" />
+            <van-icon v-if="pageType == 1" color="#B4B4B4" name="arrow" class="iconfont" />
           </view>
         </view>
       </view>

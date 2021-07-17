@@ -300,14 +300,16 @@ export default {
           return "";
         }
         let str = "";
-        text.replace(/<img[^>]*>/gi, function (match) {
-          str = match.replace(
-            /style\s*?=\s*?([‘"])[\s\S]*?\1/gi,
-            'style="width:750rpx;" mode="widthFix"'
-          ); // 替换style
-        });
-
-        return str;
+        // text.replace(/<img[^>]*>/gi, function (match) {
+        //   str = match.replace(
+        //     /style\s*?=\s*?([‘"])[\s\S]*?\1/gi,
+        //     'style="width:750rpx;" mode="widthFix"'
+        //   ); // 替换style
+        // });
+        text = text.replace(/style="width: 750px;"/g,'style="width:750rpx;" mode="widthFix"')
+        console.log(text)
+        // return str;
+        return text
       },
     };
   },
