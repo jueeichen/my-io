@@ -3,6 +3,7 @@ import store from './store/index'
 
 import './app.styl'
 import Taro from '@tarojs/taro'
+import { isObj } from './components/vant-weapp/common/validator'
 
 const App = createApp({
   // mixins: [myMixin],
@@ -41,6 +42,20 @@ const App = createApp({
 App.use(store)
 // App.mixin(myMixin)
 // console.log(App)
+// 将时间秒数转换成时分秒
+function getTimeText(seconds) {
+  var hours = parseInt(seconds / 3600)
+  var day = Math.floor(hours / 24)
+  var minute = parseInt((seconds - 3600 * hours) / 60)
+  var second = (seconds) % 60
+  hours = hours % 24
+  var obj = { day, hours, minute, second }
+  // tempArr.forEach(function (item) {
+  //   arr.push(item < 10 ? '0' + item : item)
+  // })
+  // return arr.join(':')
+  return obj
+}
 
 App.mixin({
   data() {
@@ -63,8 +78,7 @@ App.mixin({
         console.log(shareObj)
         return shareObj;
       },
-      timestampToStr(time, str) {
-
+      timestampToStr(time, str, subStr) {
         let date = new Date(time)
         str = str.replace('Y', date.getFullYear())
         str = str.replace('M', (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1))
@@ -72,6 +86,28 @@ App.mixin({
         str = str.replace('h', (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()))
         str = str.replace('m', (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()))
         str = str.replace('s', (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()))
+        if (subStr) {
+          console.log('时间', date.getTime())
+          console.log('当前时间', new Date().getTime())
+          const lowTime = date.getTime() - new Date().getTime()
+          const timeObj = getTimeText(parseInt(lowTime / 1000))
+          // const timeObj = getTimeText(59)
+          console.log(timeObj)
+          timeObj.day < 7 && (str = subStr + timeObj.day + '天')
+          if (timeObj.day == 0) {
+            str = subStr + timeObj.hours + '小时'
+            if (timeObj.hours == 0) {
+              str = subStr + timeObj.minute + '分钟'
+              if (timeObj.minute == 0) {
+                str = subStr + timeObj.second + '秒'
+              }
+            }
+          }
+          timeObj.day < 0 && (str = '已过期')
+        }
+
+        // debugger
+
         return str
       },
       jump: (url) => {

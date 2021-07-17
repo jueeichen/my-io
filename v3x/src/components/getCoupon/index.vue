@@ -12,8 +12,8 @@
           >¥<text>{{ initData.couponDenomination }}</text>
         </view>
         <view class="list-item-tuition"
-          >有效期：截止{{
-            timestampToStr(initData.validEndTime, "Y年M月D日")
+          >{{
+            timestampToStr(initData.validEndTime, "有效期：截止Y年M月D日","距到期仅剩")
           }}</view
         >
       </view>
