@@ -121,7 +121,7 @@
         <view>
           <view>优惠券明细</view>
           <image
-            src="../../static/images/tabs/close.png"
+            src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/close.png"
             @tap="isShowCoupon = false"
           />
           <!-- <van-icon name="cross" @tap="isShowCoupon = false" /> -->

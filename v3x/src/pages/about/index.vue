@@ -16,7 +16,7 @@
         迄今为止，科畅教育已成功为企业运营管理人员、专本院校毕业学生、社会精英人士，提供了更为便捷、优质的课程项目解决方案，已有专家顾问团队，和完善的教育培训课程体系和咨询体系。选择科畅，让您的升学之路轻松简单。
       </view>
       <view class="about-title"> 公司地址 </view>
-      <image src="../../static/images/map.png" />
+      <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/map.png" />
       <view class="about-content">
         广东省深圳市南山区粤兴三道九号南京大学产学研基地B区2楼
       </view>
@@ -53,7 +53,7 @@ export default {
           jumpUrl: "290174020@qq.com",
           params: {},
           showImgUrl:
-            "../../static/images/tabs/about_us1.jpg",
+            "https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/about_us1.jpg",
           sortNo: 11,
           type: "2",
         },
@@ -64,7 +64,7 @@ export default {
           jumpUrl: "290174020@qq.com",
           params: {},
           showImgUrl:
-            "../../static/images/tabs/about_us2.jpg",
+            "https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/about_us2.jpg",
           sortNo: 11,
           type: "2",
         },

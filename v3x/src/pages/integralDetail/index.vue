@@ -36,7 +36,7 @@
                   <view>+{{ item.tradePoint }}</view>
                 </view>
                 <!-- <view>贡 献 人：{{ item.createBy }}</view> -->
-                <view>贡 献 ID：{{ item.userId }}</view>
+                <view>贡 献 ID：{{ item.contributorUserId }}</view>
                 <template v-if="active == 0">
                   <view
                     >贡献时间：{{
@@ -84,7 +84,9 @@
                     timestampToStr(item.createDate, "Y-M-D h:m:s")
                   }}</view
                 >
-                <view>兑换积分订单号： {{ item.id }}</view>
+                <view v-if="item.orderNo"
+                  >兑换积分订单号： {{ item.orderNo || "null" }}</view
+                >
               </view>
             </view>
             <no-data v-if="page > 1 && list.length < 1" />
@@ -99,7 +101,9 @@
         <text>
           1、推荐一个用户注册成功获得{{
             global.commonConf.extendRegisterPoint
-          }}积分 ，报名成功获得{{ global.commonConf.extendRegisterPoint }}积分，缴学费成功获得{{ global.commonConf.extendSignupPoint }}积分
+          }}积分 ，报名成功获得{{
+            global.commonConf.extendRegisterPoint
+          }}积分，缴学费成功获得{{ global.commonConf.extendSignupPoint }}积分
         </text>
         <text>
           2、推荐{{ global.commonConf.toFreeNum }}名人报名成功，享受免费入学机会

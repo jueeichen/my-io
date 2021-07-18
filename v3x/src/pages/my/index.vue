@@ -1,14 +1,14 @@
 <template>
   <view>
     <navbar :parameter="parameter" />
-    <login ref="login" @cancel="cancel" />
+    <login ref="loginRef" @cancel="cancel" />
 
     <view class="my">
       <!-- <view class=""> </view> -->
       <view class="my-top">
         <image
           class="init-img"
-          src="../../static/images/tabs/my.png"
+          src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/my.png"
           mode="widthFix"
         />
         <view class="my-top-left">
@@ -155,6 +155,7 @@ export default {
     listItem,
   },
   setup(prop) {
+    const loginRef = ref(null)
     const store = useStore();
     const userInfo = ref({});
     const accountPoint = ref(0);
@@ -179,7 +180,7 @@ export default {
         const userInfo = wx.getStorageSync("userInfo");
         if (userInfo && !userInfo.mobile) {
           //需要登录
-          this.$refs.login.open();
+          loginRef.value.open();
         } else {
           resolve();
         }
@@ -195,6 +196,7 @@ export default {
       jump(url);
     };
     return {
+      loginRef,
       accountPoint,
       userInfo,
       tabsHeight: store.state.global.tabsHeight,

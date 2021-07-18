@@ -32,13 +32,13 @@
     <image
       class="un-use"
       v-if="active == 3"
-      src="../../static/images/tabs/unuse.png"
+      src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/unuse.png"
       mode="widthFix"
     ></image>
     <image
       class="un-use"
       v-if="active == 4"
-      src="../../static/images/tabs/nouse.png"
+      src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/nouse.png"
       mode="widthFix"
     ></image>
   </view>

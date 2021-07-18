@@ -36,13 +36,13 @@
           <image
             v-if="learnStage == index"
             class="steps-content-position"
-            src="../../static/images/process-1.png"
+            src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/process-1.png"
             mode="widthFix"
           />
           <image
             v-else-if="index < learnStage"
             class="steps-content-position"
-            src="../../static/images/process-2.png"
+            src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/process-2.png"
             mode="widthFix"
           />
           <image
@@ -51,11 +51,7 @@
           />
           <view v-if="item.text">{{ item.text }}</view>
           <text v-if="item.desc">{{ item.desc }}</text>
-          <image
-            v-if="item.img"
-            :src="item.img"
-            mode="widthFix"
-          />
+          <image v-if="item.img" :src="item.img" mode="widthFix" />
         </view>
       </view>
     </view>
@@ -116,20 +112,21 @@ export default {
         {
           text: "12月录取通知书发放",
           desc: "会收到教育局短信以及学校发的录取通知书",
-          img: "../../static/images/tabs/process-img-1.jpg",
+          img: "https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/process-img-1.jpg",
         },
         {
-          text: "2月中缴纳学费",
+          text: "12月中缴纳学费",
           desc: "缴纳学费，完成学籍注册",
+        },
+
+        {
+          text: "次年3月份入学典礼",
+          desc: "",
         },
         {
           text: "4月中 ",
           desc: "可以登录学信网查询自己的学籍",
-          img: "../../static/images/tabs/process-img-2.jpg",
-        },
-        {
-          text: "次年3月份入学典礼",
-          desc: "",
+          img: "https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/process-img-2.jpg",
         },
         {
           text: "期末考试",
@@ -145,7 +142,7 @@ export default {
         },
         {
           text: "论文答辩",
-          desc: "不会的请咨询班主任",
+          desc: "",
         },
         {
           text: "毕业",

@@ -5,7 +5,7 @@
       <!-- <login /> -->
       <image
         class="rules-img"
-        src="../../static/images/tabs/activity_rules.png"
+        src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/activity_rules.png"
         mode="widthFix"
         @tap="onShowPop"
       ></image>
@@ -35,8 +35,8 @@
       <template v-if="toFreeNum !== null && toFreeNum == 0">
         <image
           class="main-img"
-          @tap="jump('/pages/poster/index')"
-          :src="'../../static/images/tabs/activity-2.jpg'"
+          @tap="jump('/pages/integral/index')"
+          :src="'https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/activity-2.jpg'"
         ></image>
       </template>
 

@@ -75,7 +75,7 @@
             }}</text>
         </view>
         <view class="order-detail-items-bottom-right">
-          <text>报名费应付: </text>
+          <text>实付: </text>
           <text>¥</text>
           <text>
             {{

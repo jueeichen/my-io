@@ -110,6 +110,20 @@ App.mixin({
 
         return str
       },
+      timestampToStr_2(time, str) {
+        let date = new Date(time)
+        console.log('时间', date.getTime())
+        console.log('当前时间', new Date().getTime())
+        const lowTime = date.getTime() - new Date().getTime()
+        const { hours, minute, second } = getTimeText(parseInt(lowTime / 1000))
+        // const timeObj = getTimeText(59)
+
+        str = str.replace('h', (hours < 10 ? '0' + hours : hours))
+        str = str.replace('m', (minute < 10 ? '0' + minute : minute))
+        // str = str.replace('s', (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()))
+
+        return str
+      },
       jump: (url) => {
         wx.navigateTo({
           url,

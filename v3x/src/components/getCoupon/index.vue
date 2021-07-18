@@ -21,7 +21,7 @@
         <image
           v-if="isUse"
           class="sign-up-right"
-          src="../../static/images/tabs/right.png"
+          src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/right.png"
           @tap="onClick(0)"
         ></image>
         <image v-else class="sign-up" @tap="onClick(1)"></image>

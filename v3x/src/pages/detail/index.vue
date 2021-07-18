@@ -103,7 +103,7 @@
         </van-tab>
         <van-tab title="拿证流程">
           <view class="tab-item">
-            <image src="../../static/images/tabs/process.jpg" mode="widthFix" />
+            <image src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/process.jpg" mode="widthFix" />
           </view>
         </van-tab>
       </van-tabs>
@@ -118,7 +118,7 @@
         <view>
           <view>优惠券明细</view>
           <image
-            src="../../static/images/tabs/close.png"
+            src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/tabs/close.png"
             @tap="isShowCoupon = false"
           />
           <!-- <van-icon name="cross" @tap="isShowCoupon = false" /> -->

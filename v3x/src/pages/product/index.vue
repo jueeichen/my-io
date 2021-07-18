@@ -10,7 +10,7 @@
           :initData="banner.confImages"
           width="690rpx"
           height="250rpx"
-          style="border-radius: 12rpx;overflow: hidden"
+          :imgRadius="true"
         />
       </view>
 
@@ -185,7 +185,6 @@ export default {
       code: _code,
       parameter: {
         title: "产品",
-        return: 1,
       },
       getPhoneNumber: async (e) => {
         let data = await $api(

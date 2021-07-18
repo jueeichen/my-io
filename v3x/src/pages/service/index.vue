@@ -11,7 +11,7 @@
             <view>广东 深圳</view>
           </view>
         </view>
-        <image class="qr-code" :src="initData.showImgUrl"></image>
+        <image class="qr-code" :src="initData.showImgUrl" mode="widthFix"></image>
         <view class="service-content-1"> 班主任微信</view>
         <view class="service-content-2"> 扫一扫上面的二维码, 加我微信</view>
       </view>

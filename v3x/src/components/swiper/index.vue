@@ -18,10 +18,15 @@
       <view class="swiper-item">
         <image
           :src="item.showImgUrl || item.imgUrl"
-          :style="{ width, height }"
+          :style="{ width, height, borderRadius: imgRadius ? '12rpx' : '0rpx' }"
           mode="aspectFill"
         ></image>
-        <image v-if="poster" class="qrcode" :src="global.qrcode" mode="aspectFill"></image>
+        <image
+          v-if="poster"
+          class="qrcode"
+          :src="global.qrcode"
+          mode="aspectFill"
+        ></image>
 
         <!-- {{ item.img }} -->
       </view>
@@ -38,6 +43,8 @@ import { useStore } from "vuex";
 export default {
   props: {
     showDots: { type: Boolean, default: true },
+    imgRadius: { type: Boolean, default: false },
+
     width: { type: String, default: "690rpx" },
     color: { type: String, default: "rgba(255, 255, 255, 0.5)" },
     activeColor: { type: String, default: "rgba(255, 255, 255, 1)" },
