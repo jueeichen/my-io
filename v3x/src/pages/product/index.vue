@@ -162,12 +162,12 @@ export default {
       }
       getListByType();
     };
-    onMounted(async () => {
-      onLoad();
-      console.log(banner.value);
-      list.value = store.state.product.list;
-      console.log(list);
-    });
+    // onMounted(async () => {
+      // onLoad();
+      // console.log(banner.value);
+      // list.value = store.state.product.list;
+      // console.log(list);
+    // });
     return {
       showBottomLine,
       page,
@@ -206,6 +206,7 @@ export default {
     return this.onShareAppMessage(options);
   },
   onShow() {
+    this.onLoad()
     // console.log(this);
     // this.getTabBar().setData({
     //   selected: 1,

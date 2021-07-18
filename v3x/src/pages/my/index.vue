@@ -6,7 +6,11 @@
     <view class="my">
       <!-- <view class=""> </view> -->
       <view class="my-top">
-        <image class="init-img" src="../../static/images/tabs/my.png" mode="widthFix"/>
+        <image
+          class="init-img"
+          src="../../static/images/tabs/my.png"
+          mode="widthFix"
+        />
         <view class="my-top-left">
           <view class="my-open-data">
             <view>
@@ -17,7 +21,11 @@
               <open-data type="userNickName"></open-data>
             </view>
           </view>
-          <view v-if="userInfo.productId" class="my-top-btn" @tap="jump('/pages/myOrder/index?id=1')">
+          <view
+            v-if="userInfo.productId"
+            class="my-top-btn"
+            @tap="jump('/pages/myOrder/index?id=1')"
+          >
             去缴学费
           </view>
         </view>
@@ -163,9 +171,9 @@ export default {
       userInfo.value = store.state.global.userInfo;
       console.log(userInfo);
     };
-    onMounted(async () => {
-      onLoad();
-    });
+    // onMounted(async () => {
+    //   onLoad();
+    // });
     const isLogin = () => {
       return new Promise((resolve) => {
         const userInfo = wx.getStorageSync("userInfo");
@@ -199,12 +207,15 @@ export default {
         title: "我的",
       },
       isLogin,
-      jump,jumpByLogin
+      jump,
+      jumpByLogin,
     };
   },
 
   onShow() {
-    console.log(Taro.getApp());
+    this.onLoad();
+
+    // console.log(Taro.getApp());
 
     // this.$refs.login.open()
 

@@ -18,7 +18,7 @@
         <view>
           <view class="bottom-line">
             <text>学费</text>
-            <text style="margin-left:10rpx">(含报名费)</text>
+            <text style="margin-left: 10rpx">(含报名费)</text>
           </view>
           <text>{{ confirmData.initData.productPrice }}元</text>
         </view>
@@ -43,7 +43,12 @@
                     ? couponList[couponIndex].couponDenomination
                     : 0)
             }}
-            <van-icon v-if="pageType == 1" color="#B4B4B4" name="arrow" class="iconfont" />
+            <van-icon
+              v-if="pageType == 1"
+              color="#B4B4B4"
+              name="arrow"
+              class="iconfont"
+            />
           </view>
         </view>
       </view>
@@ -108,9 +113,7 @@
           )
         }}</text>
       </view>
-      <view class="confirm-btn-right" @tap="sumitOrder"
-        >提交订单{{ couponIndex }}
-      </view>
+      <view class="confirm-btn-right" @tap="sumitOrder">提交订单 </view>
     </view>
     <template v-if="isShowCoupon">
       <view class="coupon-pop-mark"></view>
@@ -248,15 +251,16 @@ export default {
         pay(confirmData.orderNo);
         return;
       }
-      let signupCouponDetailId = couponIndex.value
-        ? couponList.value[couponIndex.value].receiveId
-        : null;
+      let signupCouponDetailId =
+        couponIndex.value !== null
+          ? couponList.value[couponIndex.value].receiveId
+          : null;
       const res = await store.dispatch("global/createOrder", {
         productId: confirmData.productId,
         specialitiesName: confirmData.specialitiesName,
         signuperName: username.value,
         signuperMobile: phone.value,
-        signupCouponDetailId
+        signupCouponDetailId,
       });
       pay(res.orderNo);
     };
@@ -281,7 +285,7 @@ export default {
         ];
         initIndex.value = 0;
         couponIndex.value = 0;
-        if(!confirmData.useCounponId){
+        if (!confirmData.useCounponId) {
           couponIndex.value = null;
         }
         return;
@@ -299,9 +303,8 @@ export default {
       couponList.value = data.couponInfos;
       console.log("couponList=>", couponList);
     };
-    onMounted(async () => {
-      initList();
-    });
+    // onMounted(async () => {
+    // });
     return {
       initIndex,
       initList,
@@ -321,6 +324,9 @@ export default {
       phone,
       isShowCoupon,
     };
+  },
+  onShow() {
+    this.initList();
   },
   onShareAppMessage(options) {
     return this.onShareAppMessage(options);

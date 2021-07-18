@@ -119,10 +119,6 @@ export default {
           img: "../../static/images/tabs/process-img-1.jpg",
         },
         {
-          text: "12月中缴纳学费",
-          desc: "缴纳学费，完成学籍注册",
-        },
-        {
           text: "2月中缴纳学费",
           desc: "缴纳学费，完成学籍注册",
         },
@@ -130,6 +126,10 @@ export default {
           text: "4月中 ",
           desc: "可以登录学信网查询自己的学籍",
           img: "../../static/images/tabs/process-img-2.jpg",
+        },
+        {
+          text: "次年3月份入学典礼",
+          desc: "",
         },
         {
           text: "期末考试",

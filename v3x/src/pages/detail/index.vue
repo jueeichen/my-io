@@ -103,10 +103,7 @@
         </van-tab>
         <van-tab title="拿证流程">
           <view class="tab-item">
-            <image
-              src="https://wysx-mini.oss-cn-beijing.aliyuncs.com/images/step.jpg"
-              mode="widthFix"
-            />
+            <image src="../../static/images/tabs/process.jpg" mode="widthFix" />
           </view>
         </van-tab>
       </van-tabs>
@@ -247,7 +244,7 @@ export default {
       console.log("banner=>", banner);
       banner.value = res.productInfo.bannerList;
       console.log("initData1=>", initData);
-      initList();
+      // initList();
     });
     const navConfirm = () => {
       let useCounponId = null;
@@ -306,12 +303,18 @@ export default {
         //     'style="width:750rpx;" mode="widthFix"'
         //   ); // 替换style
         // });
-        text = text.replace(/style="width: 750px;"/g,'style="width:750rpx;" mode="widthFix"')
-        console.log(text)
+        text = text.replace(
+          /style="width: 750px;"/g,
+          'style="width:750rpx;" mode="widthFix"'
+        );
+        console.log(text);
         // return str;
-        return text
+        return text;
       },
     };
+  },
+  onShow() {
+    this.initList();
   },
   onShareAppMessage(options) {
     return this.onShareAppMessage({

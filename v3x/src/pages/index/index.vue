@@ -173,9 +173,9 @@ export default {
       toFreeNum.value = wx.getStorageSync("commonConf").toFreeNum;
       wx.stopPullDownRefresh();
     };
-    onMounted(async () => {
-      onLoad();
-    });
+    // onMounted(async () => {
+    //   onLoad();
+    // });
     const getCoupon = async (id) => {
       console.log(id);
       let res = await store.dispatch("global/receiveCoupon", {
@@ -212,11 +212,12 @@ export default {
     };
   },
   onShow() {
+    this.onLoad()
     // this.getTabBar().setData({
     //   selected: 0,
     // });
-    console.log(this.a);
-    console.log(this);
+    // console.log(this.a);
+    // console.log(this);
   },
   //  onShareAppMessage(options) {
   //   // 设置菜单中的转发按钮触发转发事件时的转发内容
