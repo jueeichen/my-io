@@ -2,6 +2,7 @@ import Taro from '@tarojs/taro'
 import * as apiConstant from './apiConstant'
 
 // const baseUrl = "http://39.103.198.184"
+// const baseUrl = "http://39.103.198.184:8081"
 // https://woyaoshangxue123.com/
 const baseUrl = "https://woyaoshangxue123.com"
 
