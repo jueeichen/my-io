@@ -54,7 +54,7 @@
             :class="{ 'active-detail-menu': index == specialIndex }"
             v-for="(item, index) in initData.specialitiesList"
             :key="index"
-            >{{ splitStr(item.specialitiesName, 4) }}</text
+            >{{item.specialitiesName}}</text
           >
         </view>
       </view>
@@ -296,19 +296,9 @@ export default {
         if (!text) {
           return "";
         }
-        let str = "";
-        // text.replace(/<img[^>]*>/gi, function (match) {
-        //   str = match.replace(
-        //     /style\s*?=\s*?([‘"])[\s\S]*?\1/gi,
-        //     'style="width:750rpx;" mode="widthFix"'
-        //   ); // 替换style
-        // });
-        text = text.replace(
-          /style="width: 750px;"/g,
-          'style="width:750rpx;" mode="widthFix"'
-        );
+        text=text.replace(/\s+style="[^"]*"/g,'')
+        text=text.replace(/<img/g, '<img style="display:block;width:100%;" mode="widthFix"')
         console.log(text);
-        // return str;
         return text;
       },
     };

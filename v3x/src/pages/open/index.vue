@@ -33,7 +33,7 @@ export default {
       active.value = e.detail.index;
     };
     const next = () => {
-      if (active.value == list.value.length) {
+      if (active.value >= list.value.length-1) {
         wx.switchTab({ url: "/pages/index/index" });
         wx.setStorageSync("aleadyOpen", true);
         return;
