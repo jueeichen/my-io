@@ -298,6 +298,9 @@ export default {
         }
         text=text.replace(/\s+style="[^"]*"/g,'')
         text=text.replace(/<img/g, '<img style="display:block;width:100%;" mode="widthFix"')
+        text=text.replace(/<span/g, '<span style="display:block;width:100%;box-sizing:border-box;padding:0 32rpx;line-height:58rpx;"')
+        text=text.replace(/<p/g, '<p style="font-size:30rpx;color:#1a1a1a"')
+
         console.log(text);
         return text;
       },
